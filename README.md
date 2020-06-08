@@ -7,7 +7,7 @@
 <p align="center">
  <img src="https://img.shields.io/badge/platform-iOS-9cf.svg">
  
- 협업을 위한 어플리케이션
+ <p align="center">협업을 위한 어플리케이션</p>
 </p>
 
 <br>
