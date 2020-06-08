@@ -49,9 +49,9 @@ close, fix, resolved: #2 (optional)
 
 - dev : default branch 
     - be
-    - dev-iOS
+    - dev-ios
     - be/feat
-    - dev-iOS/feat
+    - ios/feat
 
 <br>
 
