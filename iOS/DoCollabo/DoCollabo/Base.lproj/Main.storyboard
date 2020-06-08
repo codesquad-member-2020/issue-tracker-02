@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYW-wY-9vJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYW-wY-9vJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -32,17 +32,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fQA-Lb-Pld">
-                                <rect key="frame" x="62" y="666" width="290" height="116"/>
+                                <rect key="frame" x="62" y="626" width="290" height="116"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiL-DH-h1J" customClass="LeadingImageButton" customModule="DoCollabo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="290" height="52"/>
-                                        <color key="backgroundColor" white="0.1522902397260274" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="uXj-ld-u53"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <state key="normal" title="Sign In With Github" image="logo.github">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="signInWithGithubButtonDidTap:" destination="Plx-5T-Tfq" eventType="touchUpInside" id="7ee-8H-9eo"/>
@@ -75,7 +75,7 @@
                         <constraints>
                             <constraint firstItem="fQA-Lb-Pld" firstAttribute="centerX" secondItem="n4e-Wr-YWU" secondAttribute="centerX" id="4e9-CX-nd4"/>
                             <constraint firstItem="EKg-5q-FPR" firstAttribute="centerY" secondItem="n7B-wQ-4zF" secondAttribute="centerY" constant="-160" id="9F3-ph-DVC"/>
-                            <constraint firstItem="n4e-Wr-YWU" firstAttribute="bottom" secondItem="fQA-Lb-Pld" secondAttribute="bottom" constant="80" id="Fst-7M-rF4"/>
+                            <constraint firstItem="n4e-Wr-YWU" firstAttribute="bottom" secondItem="fQA-Lb-Pld" secondAttribute="bottom" constant="120" id="Fst-7M-rF4"/>
                             <constraint firstItem="EKg-5q-FPR" firstAttribute="centerX" secondItem="n4e-Wr-YWU" secondAttribute="centerX" id="jHO-0P-MM7"/>
                             <constraint firstItem="fQA-Lb-Pld" firstAttribute="width" secondItem="n7B-wQ-4zF" secondAttribute="width" multiplier="0.7" id="mf3-lj-26x"/>
                             <constraint firstItem="EKg-5q-FPR" firstAttribute="width" secondItem="n7B-wQ-4zF" secondAttribute="width" multiplier="0.7" id="onU-Pt-L7f"/>
