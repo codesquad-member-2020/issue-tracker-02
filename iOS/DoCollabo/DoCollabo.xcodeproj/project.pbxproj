@@ -19,6 +19,7 @@
 		386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F98248E291100ED3A5A /* IssuesViewController.swift */; };
 		386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */; };
 		38F0FB49248E2D870080FBBD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB48248E2D870080FBBD /* Colors.swift */; };
+		38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		386B8F98248E291100ED3A5A /* IssuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewController.swift; sourceTree = "<group>"; };
 		386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		38F0FB48248E2D870080FBBD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthURLStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				30789C21248E431D001D0415 /* MockNetworkManager.swift */,
+				38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30789C22248E431D001D0415 /* MockNetworkManager.swift in Sources */,
+				38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */,
 				30789C1F248E3FC1001D0415 /* UIView+Border.swift in Sources */,
 				386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */,
 				38F0FB49248E2D870080FBBD /* Colors.swift in Sources */,

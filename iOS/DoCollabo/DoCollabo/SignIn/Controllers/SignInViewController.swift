@@ -21,10 +21,15 @@ final class SignInViewController: UIViewController {
 
 extension SignInViewController {
     @IBAction func signInWithGithubButtonDidTap(_ sender: LeadingImageButton) {
-        
+        MockNetworkManager.authenticateWithGithub { (token) in
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func signInWithAppleButtonDidTap(_ sender: LeadingImageButton) {
+        MockNetworkManager.authenticateWithGithub { (token) in
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 
