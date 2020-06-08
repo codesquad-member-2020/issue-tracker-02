@@ -11,6 +11,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http.oauth2Login()
         .defaultSuccessUrl("/api/oauth2/authorization")
-        .failureUrl("/api/oauth2/authorization");
+        .failureUrl("/");
   }
 }
