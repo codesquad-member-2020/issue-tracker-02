@@ -13,11 +13,16 @@ final class IssuesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        fakeConfigureToken()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkToken()
+    }
+    
+    private func fakeConfigureToken() {
+        UserDefaults.standard.removeObject(forKey: .jwtToken)
     }
     
     private func checkToken() {
