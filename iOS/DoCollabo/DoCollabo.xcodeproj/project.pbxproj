@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C07248E1E3F001D0415 /* AppDelegate.swift */; };
 		30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C09248E1E3F001D0415 /* SceneDelegate.swift */; };
-		30789C0C248E1E3F001D0415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C0B248E1E3F001D0415 /* ViewController.swift */; };
+		30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C0B248E1E3F001D0415 /* TabBarViewController.swift */; };
 		30789C0F248E1E3F001D0415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30789C0D248E1E3F001D0415 /* Main.storyboard */; };
 		30789C11248E1E46001D0415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30789C10248E1E46001D0415 /* Assets.xcassets */; };
 		30789C14248E1E46001D0415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30789C12248E1E46001D0415 /* LaunchScreen.storyboard */; };
+		386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F98248E291100ED3A5A /* IssuesViewController.swift */; };
+		386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */; };
+		38F0FB49248E2D870080FBBD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB48248E2D870080FBBD /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		30789C04248E1E3F001D0415 /* DoCollabo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoCollabo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30789C07248E1E3F001D0415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30789C09248E1E3F001D0415 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		30789C0B248E1E3F001D0415 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		30789C0B248E1E3F001D0415 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		30789C0E248E1E3F001D0415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30789C10248E1E46001D0415 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30789C13248E1E46001D0415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30789C15248E1E46001D0415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		386B8F98248E291100ED3A5A /* IssuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewController.swift; sourceTree = "<group>"; };
+		386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		38F0FB48248E2D870080FBBD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,58 @@
 		30789C06248E1E3F001D0415 /* DoCollabo */ = {
 			isa = PBXGroup;
 			children = (
+				386B8F9A248E2AEE00ED3A5A /* SignIn */,
+				386B8F96248E28D800ED3A5A /* Issues */,
+				38F0FB47248E2D5F0080FBBD /* Extensions */,
 				30789C07248E1E3F001D0415 /* AppDelegate.swift */,
 				30789C09248E1E3F001D0415 /* SceneDelegate.swift */,
-				30789C0B248E1E3F001D0415 /* ViewController.swift */,
+				30789C0B248E1E3F001D0415 /* TabBarViewController.swift */,
 				30789C0D248E1E3F001D0415 /* Main.storyboard */,
 				30789C10248E1E46001D0415 /* Assets.xcassets */,
 				30789C12248E1E46001D0415 /* LaunchScreen.storyboard */,
 				30789C15248E1E46001D0415 /* Info.plist */,
 			);
 			path = DoCollabo;
+			sourceTree = "<group>";
+		};
+		386B8F96248E28D800ED3A5A /* Issues */ = {
+			isa = PBXGroup;
+			children = (
+				386B8F97248E28F500ED3A5A /* Controllers */,
+			);
+			path = Issues;
+			sourceTree = "<group>";
+		};
+		386B8F97248E28F500ED3A5A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				386B8F98248E291100ED3A5A /* IssuesViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		386B8F9A248E2AEE00ED3A5A /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				386B8F9B248E2AF500ED3A5A /* Controllers */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		386B8F9B248E2AF500ED3A5A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		38F0FB47248E2D5F0080FBBD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				38F0FB48248E2D870080FBBD /* Colors.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30789C0C248E1E3F001D0415 /* ViewController.swift in Sources */,
+				386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */,
+				38F0FB49248E2D870080FBBD /* Colors.swift in Sources */,
+				30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */,
 				30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */,
+				386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */,
 				30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
