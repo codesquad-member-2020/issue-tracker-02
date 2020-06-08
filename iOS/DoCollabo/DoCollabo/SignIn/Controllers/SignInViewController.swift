@@ -17,6 +17,17 @@ final class SignInViewController: UIViewController {
     }
 }
 
+// MARK:- Button Actions
+
+extension SignInViewController {
+    @IBAction func signInWithGithubButtonDidTap(_ sender: LeadingImageButton) {
+        
+    }
+    
+    @IBAction func signInWithAppleButtonDidTap(_ sender: LeadingImageButton) {
+    }
+}
+
 // MARK:- UI Configuration
 
 extension SignInViewController {
