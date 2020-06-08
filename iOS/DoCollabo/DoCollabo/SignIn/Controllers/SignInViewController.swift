@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 final class SignInViewController: UIViewController {
 
+    private var networkManager: NetworkManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        networkManager = NetworkManager()
         configureGradientLayer()
     }
 }
@@ -21,7 +25,7 @@ final class SignInViewController: UIViewController {
 
 extension SignInViewController {
     @IBAction func signInWithGithubButtonDidTap(_ sender: LeadingImageButton) {
-        MockNetworkManager.authenticateWithGithub { (token) in
+        networkManager.authenticateGithub(viewController: self) { (token) in
             UserDefaults.standard.set(token, forKey: .jwtToken)
             self.dismiss(animated: true, completion: nil)
         }
@@ -32,6 +36,14 @@ extension SignInViewController {
             UserDefaults.standard.set(token, forKey: .jwtToken)
             self.dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+// MARK:- ASWebAuthenticationPresentationContextProviding
+
+extension SignInViewController: ASWebAuthenticationPresentationContextProviding {
+    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        return view.window!
     }
 }
 
