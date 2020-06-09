@@ -17,7 +17,6 @@ final class SignInViewController: UIViewController {
         super.viewDidLoad()
 
         networkManager = NetworkManager()
-        configureGradientLayer()
     }
 }
 
@@ -60,17 +59,5 @@ extension SignInViewController {
 extension SignInViewController: ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         return view.window!
-    }
-}
-
-// MARK:- UI Configuration
-
-extension SignInViewController {
-    private func configureGradientLayer() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [Colors.keyBlue.cgColor, Colors.keyGreen.cgColor]
-        gradientLayer.frame = view.frame
-        gradientLayer.locations = [0, 1]
-        view.layer.insertSublayer(gradientLayer, at: 0)
     }
 }

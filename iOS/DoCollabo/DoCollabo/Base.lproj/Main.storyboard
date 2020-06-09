@@ -31,6 +31,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signin.background" translatesAutoresizingMaskIntoConstraints="NO" id="n8y-2f-Vrt">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fQA-Lb-Pld">
                                 <rect key="frame" x="62" y="626" width="290" height="116"/>
                                 <subviews>
@@ -76,9 +79,13 @@
                             <constraint firstItem="fQA-Lb-Pld" firstAttribute="centerX" secondItem="n4e-Wr-YWU" secondAttribute="centerX" id="4e9-CX-nd4"/>
                             <constraint firstItem="EKg-5q-FPR" firstAttribute="centerY" secondItem="n7B-wQ-4zF" secondAttribute="centerY" constant="-160" id="9F3-ph-DVC"/>
                             <constraint firstItem="n4e-Wr-YWU" firstAttribute="bottom" secondItem="fQA-Lb-Pld" secondAttribute="bottom" constant="120" id="Fst-7M-rF4"/>
+                            <constraint firstItem="n8y-2f-Vrt" firstAttribute="top" secondItem="n7B-wQ-4zF" secondAttribute="top" id="Ooq-7W-Xef"/>
+                            <constraint firstItem="n8y-2f-Vrt" firstAttribute="trailing" secondItem="n4e-Wr-YWU" secondAttribute="trailing" id="SJn-nD-19q"/>
+                            <constraint firstItem="n8y-2f-Vrt" firstAttribute="leading" secondItem="n4e-Wr-YWU" secondAttribute="leading" id="Y3p-8g-LPx"/>
                             <constraint firstItem="EKg-5q-FPR" firstAttribute="centerX" secondItem="n4e-Wr-YWU" secondAttribute="centerX" id="jHO-0P-MM7"/>
                             <constraint firstItem="fQA-Lb-Pld" firstAttribute="width" secondItem="n7B-wQ-4zF" secondAttribute="width" multiplier="0.7" id="mf3-lj-26x"/>
                             <constraint firstItem="EKg-5q-FPR" firstAttribute="width" secondItem="n7B-wQ-4zF" secondAttribute="width" multiplier="0.7" id="onU-Pt-L7f"/>
+                            <constraint firstAttribute="bottom" secondItem="n8y-2f-Vrt" secondAttribute="bottom" id="sie-2k-LFh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="n4e-Wr-YWU"/>
                     </view>
@@ -110,5 +117,6 @@
         <image name="logo.apple" width="21.333333969116211" height="21.333333969116211"/>
         <image name="logo.github" width="21.333333969116211" height="21.333333969116211"/>
         <image name="logo1" width="151.33332824707031" height="68"/>
+        <image name="signin.background" width="145.66667175292969" height="318"/>
     </resources>
 </document>
