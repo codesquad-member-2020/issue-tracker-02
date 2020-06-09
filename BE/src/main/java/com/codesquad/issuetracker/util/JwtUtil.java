@@ -1,6 +1,9 @@
 package com.codesquad.issuetracker.util;
 
+import com.codesquad.issuetracker.auth.data.User;
 import com.codesquad.issuetracker.config.property.JwtProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -37,5 +40,14 @@ public class JwtUtil {
 
   private byte[] generateKey() {
     return jwtProperty.getSecret().getBytes(StandardCharsets.UTF_8);
+  }
+
+  public User parseUser(String jwt) {
+    Claims claims = Jwts.parser()
+        .setSigningKey(generateKey())
+        .parseClaimsJws(jwt)
+        .getBody();
+
+    return new ObjectMapper().convertValue(claims.get("User"), User.class);
   }
 }
