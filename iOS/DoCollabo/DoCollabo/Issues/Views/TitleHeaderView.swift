@@ -33,6 +33,7 @@ class TitleHeaderView: UIView {
     
     private func configureUI() {
         backgroundView.roundCorner(cornerRadius: 16.0)
+        smallTitleLabel.isHidden = true
     }
     
     private func configureNib() {

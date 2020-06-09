@@ -18,6 +18,9 @@
 		30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC784E248F94C4004BA3B6 /* NetworkError.swift */; };
 		30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */; };
 		30AC7854248FBC85004BA3B6 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC7853248FBC85004BA3B6 /* NibView.swift */; };
+		3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861B005248FC582006FD89E /* IssuesCollectionView.swift */; };
+		3861B00B248FC654006FD89E /* IssueHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861B009248FC654006FD89E /* IssueHorizontalCell.swift */; };
+		3861B00C248FC654006FD89E /* IssueHorizontalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861B00A248FC654006FD89E /* IssueHorizontalCell.xib */; };
 		386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F98248E291100ED3A5A /* IssuesViewController.swift */; };
 		386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */; };
 		38D3643D248FA96300884972 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3643C248FA96300884972 /* TitleHeaderView.swift */; };
@@ -42,6 +45,9 @@
 		30AC784E248F94C4004BA3B6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 		30AC7853248FBC85004BA3B6 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		3861B005248FC582006FD89E /* IssuesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionView.swift; sourceTree = "<group>"; };
+		3861B009248FC654006FD89E /* IssueHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalCell.swift; sourceTree = "<group>"; };
+		3861B00A248FC654006FD89E /* IssueHorizontalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueHorizontalCell.xib; sourceTree = "<group>"; };
 		386B8F98248E291100ED3A5A /* IssuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewController.swift; sourceTree = "<group>"; };
 		386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		38D3643C248FA96300884972 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
@@ -142,6 +148,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		3861B00D248FD843006FD89E /* IssueCell */ = {
+			isa = PBXGroup;
+			children = (
+				3861B009248FC654006FD89E /* IssueHorizontalCell.swift */,
+				3861B00A248FC654006FD89E /* IssueHorizontalCell.xib */,
+			);
+			path = IssueCell;
+			sourceTree = "<group>";
+		};
 		386B8F96248E28D800ED3A5A /* Issues */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +196,8 @@
 			children = (
 				38D3643C248FA96300884972 /* TitleHeaderView.swift */,
 				38D3643E248FA96E00884972 /* TitleHeaderView.xib */,
+				3861B005248FC582006FD89E /* IssuesCollectionView.swift */,
+				3861B00D248FD843006FD89E /* IssueCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -254,6 +271,7 @@
 			files = (
 				30789C14248E1E46001D0415 /* LaunchScreen.storyboard in Resources */,
 				30789C11248E1E46001D0415 /* Assets.xcassets in Resources */,
+				3861B00C248FC654006FD89E /* IssueHorizontalCell.xib in Resources */,
 				38D3643F248FA96E00884972 /* TitleHeaderView.xib in Resources */,
 				30789C0F248E1E3F001D0415 /* Main.storyboard in Resources */,
 			);
@@ -274,11 +292,13 @@
 				30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */,
 				38F0FB49248E2D870080FBBD /* Colors.swift in Sources */,
 				30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */,
+				3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */,
 				30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */,
 				386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */,
 				30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */,
 				30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */,
 				38F0FB62248FA23F0080FBBD /* EndPoint.swift in Sources */,
+				3861B00B248FC654006FD89E /* IssueHorizontalCell.swift in Sources */,
 				30789C1D248E3A37001D0415 /* LeadingImageButton.swift in Sources */,
 				30AC7854248FBC85004BA3B6 /* NibView.swift in Sources */,
 			);

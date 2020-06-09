@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,31 +18,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHS-ei-5er">
-                                <rect key="frame" x="10.5" y="44" width="393" height="314.5"/>
+                                <rect key="frame" x="10.5" y="44" width="393" height="275.5"/>
                                 <color key="backgroundColor" name="key.navy"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="QHS-ei-5er" secondAttribute="height" multiplier="5:4" id="ZdY-Gq-gRc"/>
+                                    <constraint firstAttribute="width" secondItem="QHS-ei-5er" secondAttribute="height" multiplier="5:3.5" id="ZdY-Gq-gRc"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4S6-US-nCZ" customClass="TitleHeaderView" customModule="DoCollabo" customModuleProvider="target">
-                                <rect key="frame" x="10.5" y="44" width="393" height="220"/>
+                                <rect key="frame" x="10.5" y="44" width="393" height="151.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="A8O-zc-ada" customClass="IssuesCollectionView" customModule="DoCollabo" customModuleProvider="target">
+                                <rect key="frame" x="22.5" y="203.5" width="369" height="609.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tTw-9I-mle">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bas-cC-bVq">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yDQ-dD-eD4">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="QHS-ei-5er" firstAttribute="trailing" secondItem="A8O-zc-ada" secondAttribute="trailing" constant="12" id="EBb-41-hjF"/>
                             <constraint firstItem="4S6-US-nCZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HmP-HD-RqN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="A8O-zc-ada" secondAttribute="bottom" id="WUv-XL-hAO"/>
                             <constraint firstItem="QHS-ei-5er" firstAttribute="trailing" secondItem="4S6-US-nCZ" secondAttribute="trailing" id="X4Y-ev-Rf3"/>
-                            <constraint firstItem="4S6-US-nCZ" firstAttribute="height" secondItem="QHS-ei-5er" secondAttribute="height" multiplier="0.7" id="Y1G-LL-0zA"/>
+                            <constraint firstItem="4S6-US-nCZ" firstAttribute="height" secondItem="QHS-ei-5er" secondAttribute="height" multiplier="0.55" id="Y1G-LL-0zA"/>
                             <constraint firstItem="QHS-ei-5er" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YUD-6r-XHH"/>
+                            <constraint firstItem="A8O-zc-ada" firstAttribute="leading" secondItem="QHS-ei-5er" secondAttribute="leading" constant="12" id="cny-F8-Ga8"/>
                             <constraint firstItem="4S6-US-nCZ" firstAttribute="leading" secondItem="QHS-ei-5er" secondAttribute="leading" id="j2E-Le-0nE"/>
                             <constraint firstItem="QHS-ei-5er" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qkB-RQ-QBI"/>
+                            <constraint firstItem="A8O-zc-ada" firstAttribute="top" secondItem="4S6-US-nCZ" secondAttribute="bottom" constant="8" id="tlx-HZ-Zq1"/>
                             <constraint firstItem="QHS-ei-5er" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.95" id="w28-wm-nCg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Issues" id="zRf-ee-Xos"/>
                     <connections>
+                        <outlet property="issuesCollectionView" destination="A8O-zc-ada" id="ea6-Mf-Xkh"/>
                         <outlet property="titleHeaderBackgroundView" destination="QHS-ei-5er" id="Had-li-EhF"/>
                     </connections>
                 </viewController>

@@ -11,11 +11,13 @@ import UIKit
 final class IssuesViewController: UIViewController {
 
     @IBOutlet weak var titleHeaderBackgroundView: UIView!
+    @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         fakeConfigureToken()
+        configureCollectionViewDelegate()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,4 +51,26 @@ final class IssuesViewController: UIViewController {
 
 extension String {
     static let jwtToken: String = "jwtToken"
+}
+
+// MARK:- UICollectionViewDelegateFlowLayout
+
+extension IssuesViewController: UICollectionViewDelegateFlowLayout {
+    private func configureCollectionViewDelegate() {
+        issuesCollectionView.delegate = self
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 80)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 12.0
+    }
 }
