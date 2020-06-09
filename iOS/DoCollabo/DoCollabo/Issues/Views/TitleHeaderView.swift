@@ -12,6 +12,7 @@ import UIKit
 class TitleHeaderView: UIView {
 
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var smallTitleLabel: UILabel!
     
@@ -26,6 +27,15 @@ class TitleHeaderView: UIView {
     }
     
     private func configure() {
+        configureNib()
+        configureUI()
+    }
+    
+    private func configureUI() {
+        backgroundView.roundCorner(cornerRadius: 16.0)
+    }
+    
+    private func configureNib() {
         let bundle = Bundle(for: Self.self)
         bundle.loadNibNamed(String(describing: Self.self), owner: self, options: nil)
         addSubview(contentView)

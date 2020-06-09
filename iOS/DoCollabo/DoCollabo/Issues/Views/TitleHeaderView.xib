@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TitleHeaderView" customModule="DoCollabo" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundView" destination="ehg-ev-cjs" id="1Yp-NV-SPi"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="f3L-Hk-Rfu"/>
                 <outlet property="smallTitleLabel" destination="TAe-45-RYa" id="MDh-l9-Np8"/>
                 <outlet property="titleLabel" destination="7CZ-o7-xGD" id="wo5-3N-hjh"/>
@@ -44,7 +45,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="ehg-ev-cjs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="IdL-iH-whI"/>
                 <constraint firstAttribute="bottom" secondItem="ehg-ev-cjs" secondAttribute="bottom" id="V5t-tL-v4b"/>
