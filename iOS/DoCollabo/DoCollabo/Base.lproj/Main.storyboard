@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYW-wY-9vJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYW-wY-9vJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -23,10 +23,18 @@
                                     <constraint firstAttribute="width" secondItem="QHS-ei-5er" secondAttribute="height" multiplier="5:4" id="ZdY-Gq-gRc"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4S6-US-nCZ" customClass="TitleHeaderView" customModule="DoCollabo" customModuleProvider="target">
+                                <rect key="frame" x="10.5" y="44" width="393" height="220"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="4S6-US-nCZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HmP-HD-RqN"/>
+                            <constraint firstItem="QHS-ei-5er" firstAttribute="trailing" secondItem="4S6-US-nCZ" secondAttribute="trailing" id="X4Y-ev-Rf3"/>
+                            <constraint firstItem="4S6-US-nCZ" firstAttribute="height" secondItem="QHS-ei-5er" secondAttribute="height" multiplier="0.7" id="Y1G-LL-0zA"/>
                             <constraint firstItem="QHS-ei-5er" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YUD-6r-XHH"/>
+                            <constraint firstItem="4S6-US-nCZ" firstAttribute="leading" secondItem="QHS-ei-5er" secondAttribute="leading" id="j2E-Le-0nE"/>
                             <constraint firstItem="QHS-ei-5er" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qkB-RQ-QBI"/>
                             <constraint firstItem="QHS-ei-5er" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.95" id="w28-wm-nCg"/>
                         </constraints>
