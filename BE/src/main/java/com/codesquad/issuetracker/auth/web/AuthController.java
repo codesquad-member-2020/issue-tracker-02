@@ -4,6 +4,7 @@ import com.codesquad.issuetracker.auth.data.User;
 import com.codesquad.issuetracker.config.property.AppProperty;
 import com.codesquad.issuetracker.util.JwtUtil;
 import com.google.common.collect.ImmutableMap;
+import io.swagger.annotations.ApiOperation;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,6 +26,9 @@ public class AuthController {
     this.appProperty = appProperty;
   }
 
+  @ApiOperation(value = "Git 로그인의 콜백 API 입니다", notes =
+      "본 API 는 github 에서 사용하는 것으로 Client 가 직접 호출하는 것이 아닙니다\n\n"
+          + "Client Login API : 52.79.81.75:8080/oauth2/authorization/github")
   @ResponseStatus(HttpStatus.FOUND)
   @GetMapping("/authorization")
   public void authorization(@AuthenticationPrincipal OAuth2User principal,
