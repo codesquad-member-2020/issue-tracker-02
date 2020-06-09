@@ -25,9 +25,14 @@ final class SignInViewController: UIViewController {
 
 extension SignInViewController {
     @IBAction func signInWithGithubButtonDidTap(_ sender: LeadingImageButton) {
-        networkManager.authenticateGithub(viewController: self) { (token) in
-            UserDefaults.standard.set(token, forKey: .jwtToken)
-            self.dismiss(animated: true, completion: nil)
+        networkManager.authenticateGithub(viewController: self) { result in
+            switch result {
+            case .success(let token):
+                UserDefaults.standard.set(token, forKey: .jwtToken)
+                self.dismiss(animated: true, completion: nil)
+            case .failure(let error):
+                self.presentErrorAlert(error: error)
+            }
         }
     }
     
@@ -36,6 +41,17 @@ extension SignInViewController {
             UserDefaults.standard.set(token, forKey: .jwtToken)
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    private func presentErrorAlert(error: NetworkError) {
+        let alertController = ErrorAlertController(
+            title: "네트워크 에러",
+            message: error.description,
+            preferredStyle: .alert)
+        alertController.configure() { _ in
+            return
+        }
+        self.present(alertController, animated: true)
     }
 }
 

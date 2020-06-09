@@ -14,7 +14,7 @@ final class NetworkManager {
     
     func authenticateGithub(
         viewController: UIViewController,
-        completion: @escaping (String) -> Void) {
+        completion: @escaping (Result<String, NetworkError>) -> Void) {
         let githubURL = "http://52.79.81.75:8080/oauth2/authorization/github"
         guard let authURL = URL(string: githubURL) else { return }
         let scheme = "github.docollabo.app"
@@ -22,15 +22,23 @@ final class NetworkManager {
         session = ASWebAuthenticationSession(
             url: authURL,
             callbackURLScheme: scheme) { (callbackURL, error) in
-                if let error = error {
-                    // error 처리
+                if error != nil {
+                    self.session?.cancel()
+                    completion(.failure(.AuthenticationFailure))
                 }
                 guard let callbackURL = callbackURL else { return }
                 let urlComponents = URLComponents(string: callbackURL.absoluteString)
                 guard let token = urlComponents?.queryItems?.first?.value else { return }
-                completion(token)
+                completion(.success(token))
         }
         session?.presentationContextProvider = viewController as? ASWebAuthenticationPresentationContextProviding
         session?.start()
+    }
+    
+    func authenticateWithGithub(completion: @escaping (_ token: String) -> Void) {
+        let scheme = "github.docollabo.app"
+        let urlComponents = URLComponents(string: OAuthURLStub.callbackURL.absoluteString)
+        guard let token = urlComponents?.queryItems?.first?.value else { return }
+        completion(token)
     }
 }
