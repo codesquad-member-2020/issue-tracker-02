@@ -1,5 +1,3 @@
-spring:
-  profiles: log
 logging:
   level:
     root: debug
