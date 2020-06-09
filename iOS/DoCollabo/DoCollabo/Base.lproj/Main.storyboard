@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,10 +15,27 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHS-ei-5er">
+                                <rect key="frame" x="10.5" y="44" width="393" height="314.5"/>
+                                <color key="backgroundColor" name="key.navy"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QHS-ei-5er" secondAttribute="height" multiplier="5:4" id="ZdY-Gq-gRc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QHS-ei-5er" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YUD-6r-XHH"/>
+                            <constraint firstItem="QHS-ei-5er" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qkB-RQ-QBI"/>
+                            <constraint firstItem="QHS-ei-5er" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.95" id="w28-wm-nCg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Issues" id="zRf-ee-Xos"/>
+                    <connections>
+                        <outlet property="titleHeaderBackgroundView" destination="QHS-ei-5er" id="Had-li-EhF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,5 +136,8 @@
         <image name="logo.github" width="21.333333969116211" height="21.333333969116211"/>
         <image name="logo1" width="151.33332824707031" height="68"/>
         <image name="signin.background" width="145.66667175292969" height="318"/>
+        <namedColor name="key.navy">
+            <color red="0.20399999618530273" green="0.37999999523162842" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

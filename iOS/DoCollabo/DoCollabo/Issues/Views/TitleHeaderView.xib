@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TitleHeaderView" customModule="DoCollabo" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehg-ev-cjs">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f84-cF-vgw">
+                            <rect key="frame" x="20" y="81" width="374" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" name="key.navy"/>
+                    <constraints>
+                        <constraint firstItem="f84-cF-vgw" firstAttribute="centerX" secondItem="ehg-ev-cjs" secondAttribute="centerX" id="EW8-NM-ZPX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="ehg-ev-cjs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="IdL-iH-whI"/>
+                <constraint firstAttribute="bottom" secondItem="ehg-ev-cjs" secondAttribute="bottom" id="V5t-tL-v4b"/>
+                <constraint firstAttribute="trailing" secondItem="ehg-ev-cjs" secondAttribute="trailing" id="k3h-DC-ezY"/>
+                <constraint firstItem="ehg-ev-cjs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kJ5-rL-F6g"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-7.2463768115942031" y="-8.7053571428571423"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="key.navy">
+            <color red="0.20399999618530273" green="0.37999999523162842" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

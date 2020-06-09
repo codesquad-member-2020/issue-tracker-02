@@ -10,6 +10,8 @@ import UIKit
 
 final class IssuesViewController: UIViewController {
 
+    @IBOutlet weak var titleHeaderBackgroundView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +21,7 @@ final class IssuesViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkToken()
+        titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
     }
     
     private func fakeConfigureToken() {

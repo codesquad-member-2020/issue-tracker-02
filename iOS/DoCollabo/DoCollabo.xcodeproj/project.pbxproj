@@ -19,6 +19,8 @@
 		30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */; };
 		386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F98248E291100ED3A5A /* IssuesViewController.swift */; };
 		386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */; };
+		38D3643D248FA96300884972 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3643C248FA96300884972 /* TitleHeaderView.swift */; };
+		38D3643F248FA96E00884972 /* TitleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38D3643E248FA96E00884972 /* TitleHeaderView.xib */; };
 		38F0FB49248E2D870080FBBD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB48248E2D870080FBBD /* Colors.swift */; };
 		38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */; };
 		38F0FB5E248E73690080FBBD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5D248E73690080FBBD /* NetworkManager.swift */; };
@@ -40,6 +42,8 @@
 		30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 		386B8F98248E291100ED3A5A /* IssuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewController.swift; sourceTree = "<group>"; };
 		386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		38D3643C248FA96300884972 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
+		38D3643E248FA96E00884972 /* TitleHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleHeaderView.xib; sourceTree = "<group>"; };
 		38F0FB48248E2D870080FBBD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthURLStub.swift; sourceTree = "<group>"; };
 		38F0FB5D248E73690080FBBD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				386B8F97248E28F500ED3A5A /* Controllers */,
+				38D3643B248FA93500884972 /* Views */,
 			);
 			path = Issues;
 			sourceTree = "<group>";
@@ -166,6 +171,15 @@
 				386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		38D3643B248FA93500884972 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				38D3643C248FA96300884972 /* TitleHeaderView.swift */,
+				38D3643E248FA96E00884972 /* TitleHeaderView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		38F0FB47248E2D5F0080FBBD /* Extensions */ = {
@@ -237,6 +251,7 @@
 			files = (
 				30789C14248E1E46001D0415 /* LaunchScreen.storyboard in Resources */,
 				30789C11248E1E46001D0415 /* Assets.xcassets in Resources */,
+				38D3643F248FA96E00884972 /* TitleHeaderView.xib in Resources */,
 				30789C0F248E1E3F001D0415 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +265,7 @@
 			files = (
 				38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */,
 				30789C1F248E3FC1001D0415 /* UIView+Border.swift in Sources */,
+				38D3643D248FA96300884972 /* TitleHeaderView.swift in Sources */,
 				386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */,
 				38F0FB5E248E73690080FBBD /* NetworkManager.swift in Sources */,
 				30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */,
