@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYW-wY-9vJ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Issues-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="IssuesViewController" customModule="DoCollabo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Issues" id="zRf-ee-Xos"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+        </scene>
+        <!--Sign In View Controller-->
+        <scene sceneID="tRs-o0-Yjy">
+            <objects>
+                <viewController storyboardIdentifier="SignInViewController" id="Plx-5T-Tfq" customClass="SignInViewController" customModule="DoCollabo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n7B-wQ-4zF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signin.background" translatesAutoresizingMaskIntoConstraints="NO" id="n8y-2f-Vrt">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fQA-Lb-Pld">
+                                <rect key="frame" x="62" y="626" width="290" height="116"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiL-DH-h1J" customClass="LeadingImageButton" customModule="DoCollabo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="52"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="uXj-ld-u53"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <state key="normal" title="Sign In With Github" image="logo.github">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInWithGithubButtonDidTap:" destination="Plx-5T-Tfq" eventType="touchUpInside" id="7ee-8H-9eo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14g-x2-UWa" customClass="LeadingImageButton" customModule="DoCollabo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="64" width="290" height="52"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <state key="normal" title="Sign In With Apple" image="logo.apple">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInWithAppleButtonDidTap:" destination="Plx-5T-Tfq" eventType="touchUpInside" id="RHH-j8-RGT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="14g-x2-UWa" firstAttribute="height" secondItem="EiL-DH-h1J" secondAttribute="height" id="r2A-PH-7nV"/>
+                                </constraints>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo1" translatesAutoresizingMaskIntoConstraints="NO" id="EKg-5q-FPR">
+                                <rect key="frame" x="62" y="222.5" width="290" height="131"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EKg-5q-FPR" secondAttribute="height" multiplier="151:68" id="hya-8C-DRd"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fQA-Lb-Pld" firstAttribute="centerX" secondItem="n4e-Wr-YWU" secondAttribute="centerX" id="4e9-CX-nd4"/>
+                            <constraint firstItem="EKg-5q-FPR" firstAttribute="centerY" secondItem="n7B-wQ-4zF" secondAttribute="centerY" constant="-160" id="9F3-ph-DVC"/>
+                            <constraint firstItem="n4e-Wr-YWU" firstAttribute="bottom" secondItem="fQA-Lb-Pld" secondAttribute="bottom" constant="120" id="Fst-7M-rF4"/>
+                            <constraint firstItem="n8y-2f-Vrt" firstAttribute="top" secondItem="n7B-wQ-4zF" secondAttribute="top" id="Ooq-7W-Xef"/>
+                            <constraint firstItem="n8y-2f-Vrt" firstAttribute="trailing" secondItem="n4e-Wr-YWU" secondAttribute="trailing" id="SJn-nD-19q"/>
+                            <constraint firstItem="n8y-2f-Vrt" firstAttribute="leading" secondItem="n4e-Wr-YWU" secondAttribute="leading" id="Y3p-8g-LPx"/>
+                            <constraint firstItem="EKg-5q-FPR" firstAttribute="centerX" secondItem="n4e-Wr-YWU" secondAttribute="centerX" id="jHO-0P-MM7"/>
+                            <constraint firstItem="fQA-Lb-Pld" firstAttribute="width" secondItem="n7B-wQ-4zF" secondAttribute="width" multiplier="0.7" id="mf3-lj-26x"/>
+                            <constraint firstItem="EKg-5q-FPR" firstAttribute="width" secondItem="n7B-wQ-4zF" secondAttribute="width" multiplier="0.7" id="onU-Pt-L7f"/>
+                            <constraint firstAttribute="bottom" secondItem="n8y-2f-Vrt" secondAttribute="bottom" id="sie-2k-LFh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="n4e-Wr-YWU"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kPn-gO-hUd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="-530.35714285714289"/>
+        </scene>
+        <!--Tab Bar View Controller-->
+        <scene sceneID="CcO-cT-ZWe">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="oYW-wY-9vJ" customClass="TabBarViewController" customModule="DoCollabo" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mTa-Gj-aPb">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="yUS-IJ-hqx"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fdH-gQ-Ghq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo.apple" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="logo.github" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="logo1" width="151.33332824707031" height="68"/>
+        <image name="signin.background" width="145.66667175292969" height="318"/>
+    </resources>
+</document>
