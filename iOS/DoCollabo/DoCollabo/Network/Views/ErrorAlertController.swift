@@ -17,6 +17,7 @@ class ErrorAlertController: UIAlertController {
     func configure(
         actionTitle: String = "확인",
         actionHandler: @escaping (UIAlertAction) -> Void) {
+        title = "네트워크 에러"
         configureAction(title: actionTitle, handler: actionHandler)
     }
     

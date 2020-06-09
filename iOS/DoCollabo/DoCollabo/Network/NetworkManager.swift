@@ -12,12 +12,11 @@ import AuthenticationServices
 final class NetworkManager {
     private var session: ASWebAuthenticationSession?
     
-    func authenticateGithub(
+    func authenticateWithGithub(
         viewController: UIViewController,
         completion: @escaping (Result<String, NetworkError>) -> Void) {
-        let githubURL = "http://52.79.81.75:8080/oauth2/authorization/github"
-        guard let authURL = URL(string: githubURL) else { return }
-        let scheme = "github.docollabo.app"
+        guard let authURL = URL(string: EndPoint.githubOAuth) else { return }
+        let scheme = EndPoint.githubURLScheme
         
         session = ASWebAuthenticationSession(
             url: authURL,
@@ -35,8 +34,8 @@ final class NetworkManager {
         session?.start()
     }
     
-    func authenticateWithGithub(completion: @escaping (_ token: String) -> Void) {
-        let scheme = "github.docollabo.app"
+    func authenticateWithApple(completion: @escaping (_ token: String) -> Void) {
+        let scheme = "apple.docollabo.app"
         let urlComponents = URLComponents(string: OAuthURLStub.callbackURL.absoluteString)
         guard let token = urlComponents?.queryItems?.first?.value else { return }
         completion(token)

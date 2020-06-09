@@ -15,7 +15,6 @@
 		30789C14248E1E46001D0415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30789C12248E1E46001D0415 /* LaunchScreen.storyboard */; };
 		30789C1D248E3A37001D0415 /* LeadingImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C1C248E3A37001D0415 /* LeadingImageButton.swift */; };
 		30789C1F248E3FC1001D0415 /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C1E248E3FC1001D0415 /* UIView+Border.swift */; };
-		30789C22248E431D001D0415 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C21248E431D001D0415 /* MockNetworkManager.swift */; };
 		30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC784E248F94C4004BA3B6 /* NetworkError.swift */; };
 		30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */; };
 		386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F98248E291100ED3A5A /* IssuesViewController.swift */; };
@@ -23,6 +22,7 @@
 		38F0FB49248E2D870080FBBD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB48248E2D870080FBBD /* Colors.swift */; };
 		38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */; };
 		38F0FB5E248E73690080FBBD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5D248E73690080FBBD /* NetworkManager.swift */; };
+		38F0FB62248FA23F0080FBBD /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB61248FA23F0080FBBD /* EndPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,6 @@
 		30789C15248E1E46001D0415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30789C1C248E3A37001D0415 /* LeadingImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadingImageButton.swift; sourceTree = "<group>"; };
 		30789C1E248E3FC1001D0415 /* UIView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
-		30789C21248E431D001D0415 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		30AC784E248F94C4004BA3B6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 		386B8F98248E291100ED3A5A /* IssuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		38F0FB48248E2D870080FBBD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthURLStub.swift; sourceTree = "<group>"; };
 		38F0FB5D248E73690080FBBD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		38F0FB61248FA23F0080FBBD /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,21 +102,21 @@
 		30789C20248E430F001D0415 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				38F0FB5D248E73690080FBBD /* NetworkManager.swift */,
+				38F0FB61248FA23F0080FBBD /* EndPoint.swift */,
 				30AC7850248F9598004BA3B6 /* Views */,
 				30AC784D248F94B2004BA3B6 /* Errors */,
-				38F0FB5D248E73690080FBBD /* NetworkManager.swift */,
-				30789C23248E4332001D0415 /* Mocks */,
+				30789C23248E4332001D0415 /* Stubs */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		30789C23248E4332001D0415 /* Mocks */ = {
+		30789C23248E4332001D0415 /* Stubs */ = {
 			isa = PBXGroup;
 			children = (
-				30789C21248E431D001D0415 /* MockNetworkManager.swift */,
 				38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */,
 			);
-			path = Mocks;
+			path = Stubs;
 			sourceTree = "<group>";
 		};
 		30AC784D248F94B2004BA3B6 /* Errors */ = {
@@ -248,7 +248,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30789C22248E431D001D0415 /* MockNetworkManager.swift in Sources */,
 				38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */,
 				30789C1F248E3FC1001D0415 /* UIView+Border.swift in Sources */,
 				386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */,
@@ -260,6 +259,7 @@
 				386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */,
 				30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */,
 				30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */,
+				38F0FB62248FA23F0080FBBD /* EndPoint.swift in Sources */,
 				30789C1D248E3A37001D0415 /* LeadingImageButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
