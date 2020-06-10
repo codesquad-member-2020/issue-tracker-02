@@ -64,7 +64,9 @@ extension BadgesCollectionView: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = badges[indexPath.item]
-        let estimatedSize = self.estimatedSize(text: text, font: .systemFont(ofSize: 17.0))
+        let estimatedSize = self.estimatedSize(
+            text: text,
+            font: .systemFont(ofSize: BadgeCell.titleFontSize))
         let width = estimatedSize.width + BadgeCell.horizontalPadding
         let height = estimatedSize.height + BadgeCell.verticalPadding
         return CGSize(width: width, height: height)

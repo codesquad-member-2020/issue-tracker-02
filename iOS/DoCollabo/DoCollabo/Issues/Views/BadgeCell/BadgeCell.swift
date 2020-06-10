@@ -12,6 +12,7 @@ final class BadgeCell: UICollectionViewCell {
 
     static let horizontalPadding: CGFloat = 18.0
     static let verticalPadding: CGFloat = 10.0
+    static let titleFontSize: CGFloat = 14.0
     
     @IBOutlet weak var badgeBackgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,6 +20,7 @@ final class BadgeCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        titleLabel.font = .systemFont(ofSize: Self.titleFontSize, weight: .semibold)
         roundCorner(cornerRadius: 8.0)
     }
     
