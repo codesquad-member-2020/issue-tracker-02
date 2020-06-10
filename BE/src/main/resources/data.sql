@@ -31,3 +31,21 @@ VALUES (FALSE, 'anonymous', 'anonymous 1', 'anonymous contents1\nanonymous conte
        (FALSE, 'corykim0829', 'corykim0829 3', 'corykim0829 contents4\ncorykim0829 contents4\ncorykim0829 contents4',
         NOW(), NOW())
 ;
+
+INSERT INTO label (title, content, color)
+VALUES ('BE', 'BE label', '037a3b'),
+       ('FE', 'FE label', 'e206d7'),
+       ('iOS', 'iOS label', '6ac4e8')
+;
+
+INSERT INTO issue_labels (issue_id, labels_id)
+VALUES (5, 1),
+       (6, 2),
+       (7, 3),
+       (9, 1),
+       (10, 2),
+       (11, 3),
+       (13, 1),
+       (14, 2),
+       (15, 3)
+;

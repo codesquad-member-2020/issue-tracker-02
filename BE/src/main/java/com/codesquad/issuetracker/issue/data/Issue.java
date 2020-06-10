@@ -2,11 +2,16 @@ package com.codesquad.issuetracker.issue.data;
 
 import com.codesquad.issuetracker.auth.data.User;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
+import com.codesquad.issuetracker.label.data.Label;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import lombok.Builder;
 import lombok.Getter;
@@ -34,9 +39,14 @@ public class Issue {
   @UpdateTimestamp
   private LocalDateTime updateTimeAt;
 
+  @ManyToMany
+  @JoinColumn(name = "label_id")
+  private List<Label> labels = new ArrayList<>();
+
+
   @Builder
   private Issue(Long id, Boolean close, String userId, String title, String content,
-      LocalDateTime createdAt, LocalDateTime updateTimeAt) {
+      LocalDateTime createdAt, LocalDateTime updateTimeAt, List<Label> labels) {
     this.id = id;
     this.close = close;
     this.userId = userId;
@@ -44,6 +54,7 @@ public class Issue {
     this.content = content;
     this.createdAt = createdAt;
     this.updateTimeAt = updateTimeAt;
+    this.labels = labels;
   }
 
   public static Issue of(User user, IssueQuery query) {
@@ -51,6 +62,7 @@ public class Issue {
         .userId(user.getUserId())
         .title(query.getTitle())
         .content(query.getContent())
+        .labels(query.getLabels())
         .build();
   }
 
