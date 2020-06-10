@@ -10,10 +10,10 @@ import UIKit
 
 final class BadgesCollectionView: UICollectionView {
 
-    let badges: [String] = ["feedback", "iOS", "bug", "feedback", "iOS", "bug", "feedback", "feedback", "iOS", "bug", "feedback"]
+    var badges: [String] = []
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: layout)
+        super.init(frame: frame, collectionViewLayout: LeftAlignedCollectionViewFlowLayout())
         configure()
     }
     
@@ -23,8 +23,12 @@ final class BadgesCollectionView: UICollectionView {
     }
     
     private func configure() {
+        backgroundColor = .white
         registerCollectionViewCell()
-        isScrollEnabled = false
+        isScrollEnabled = true
+        showsHorizontalScrollIndicator = false
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        layout.scrollDirection = .horizontal
         dataSource = self
         delegate = self
     }
@@ -39,7 +43,7 @@ extension BadgesCollectionView: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
-        return Int.random(in: 4...11)
+        return badges.count
     }
     
     func collectionView(

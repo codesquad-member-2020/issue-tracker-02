@@ -23,11 +23,13 @@
 		30E22EE22490B09200EC0FD8 /* BadgesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EE12490B09200EC0FD8 /* BadgesCollectionView.swift */; };
 		3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861B005248FC582006FD89E /* IssuesCollectionView.swift */; };
 		3861B00B248FC654006FD89E /* IssueHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861B009248FC654006FD89E /* IssueHorizontalCell.swift */; };
-		3861B00C248FC654006FD89E /* IssueHorizontalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861B00A248FC654006FD89E /* IssueHorizontalCell.xib */; };
 		386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F98248E291100ED3A5A /* IssuesViewController.swift */; };
 		386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */; };
 		38879C552490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38879C542490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		38879C582490E48600EE84D7 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38879C572490E48600EE84D7 /* UIView+Shadow.swift */; };
+		38BDFA2A24912E79008E901D /* IssueHorizontalContentsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */; };
+		38BDFA2C24912F21008E901D /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */; };
+		38BDFA2E24913128008E901D /* IssueHorizontalTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */; };
 		38D3643D248FA96300884972 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3643C248FA96300884972 /* TitleHeaderView.swift */; };
 		38D3643F248FA96E00884972 /* TitleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38D3643E248FA96E00884972 /* TitleHeaderView.xib */; };
 		38F0FB49248E2D870080FBBD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB48248E2D870080FBBD /* Colors.swift */; };
@@ -55,11 +57,13 @@
 		30E22EE12490B09200EC0FD8 /* BadgesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesCollectionView.swift; sourceTree = "<group>"; };
 		3861B005248FC582006FD89E /* IssuesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionView.swift; sourceTree = "<group>"; };
 		3861B009248FC654006FD89E /* IssueHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalCell.swift; sourceTree = "<group>"; };
-		3861B00A248FC654006FD89E /* IssueHorizontalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueHorizontalCell.xib; sourceTree = "<group>"; };
 		386B8F98248E291100ED3A5A /* IssuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewController.swift; sourceTree = "<group>"; };
 		386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		38879C542490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		38879C572490E48600EE84D7 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalContentsStackView.swift; sourceTree = "<group>"; };
+		38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalTitleLabel.swift; sourceTree = "<group>"; };
 		38D3643C248FA96300884972 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
 		38D3643E248FA96E00884972 /* TitleHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleHeaderView.xib; sourceTree = "<group>"; };
 		38F0FB48248E2D870080FBBD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -171,7 +175,8 @@
 			isa = PBXGroup;
 			children = (
 				3861B009248FC654006FD89E /* IssueHorizontalCell.swift */,
-				3861B00A248FC654006FD89E /* IssueHorizontalCell.xib */,
+				38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */,
+				38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */,
 			);
 			path = IssueCell;
 			sourceTree = "<group>";
@@ -213,15 +218,31 @@
 		38D3643B248FA93500884972 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				30E22EE02490B01400EC0FD8 /* BadgeCell */,
+				38E101D12490FDD00036A74A /* CollectionViews */,
+				38E101D02490FDBE0036A74A /* Layouts */,
 				3861B00D248FD843006FD89E /* IssueCell */,
+				30E22EE02490B01400EC0FD8 /* BadgeCell */,
 				38D3643C248FA96300884972 /* TitleHeaderView.swift */,
 				38D3643E248FA96E00884972 /* TitleHeaderView.xib */,
-				3861B005248FC582006FD89E /* IssuesCollectionView.swift */,
-				30E22EE12490B09200EC0FD8 /* BadgesCollectionView.swift */,
-				38879C542490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		38E101D02490FDBE0036A74A /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				38879C542490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
+		38E101D12490FDD00036A74A /* CollectionViews */ = {
+			isa = PBXGroup;
+			children = (
+				3861B005248FC582006FD89E /* IssuesCollectionView.swift */,
+				30E22EE12490B09200EC0FD8 /* BadgesCollectionView.swift */,
+			);
+			path = CollectionViews;
 			sourceTree = "<group>";
 		};
 		38F0FB47248E2D5F0080FBBD /* Extensions */ = {
@@ -230,6 +251,7 @@
 				38F0FB48248E2D870080FBBD /* Colors.swift */,
 				30789C1E248E3FC1001D0415 /* UIView+Border.swift */,
 				38879C572490E48600EE84D7 /* UIView+Shadow.swift */,
+				38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -294,7 +316,6 @@
 			files = (
 				30789C14248E1E46001D0415 /* LaunchScreen.storyboard in Resources */,
 				30789C11248E1E46001D0415 /* Assets.xcassets in Resources */,
-				3861B00C248FC654006FD89E /* IssueHorizontalCell.xib in Resources */,
 				38D3643F248FA96E00884972 /* TitleHeaderView.xib in Resources */,
 				30789C0F248E1E3F001D0415 /* Main.storyboard in Resources */,
 				30E22EDF2490A61200EC0FD8 /* BadgeCell.xib in Resources */,
@@ -309,11 +330,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */,
+				38BDFA2C24912F21008E901D /* UIView+AutoLayout.swift in Sources */,
 				30789C1F248E3FC1001D0415 /* UIView+Border.swift in Sources */,
 				38D3643D248FA96300884972 /* TitleHeaderView.swift in Sources */,
 				386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */,
 				38F0FB5E248E73690080FBBD /* NetworkManager.swift in Sources */,
 				30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */,
+				38BDFA2E24913128008E901D /* IssueHorizontalTitleLabel.swift in Sources */,
+				38BDFA2A24912E79008E901D /* IssueHorizontalContentsStackView.swift in Sources */,
 				38F0FB49248E2D870080FBBD /* Colors.swift in Sources */,
 				38879C582490E48600EE84D7 /* UIView+Shadow.swift in Sources */,
 				30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */,
