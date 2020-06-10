@@ -26,7 +26,7 @@ public class IssueController {
   private final IssueService issueService;
   private final JwtUtil jwtUtil;
 
-  @ApiOperation(value = "Issue 를 가져옵니다")
+  @ApiOperation(value = "Issue 들을 가져옵니다")
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @GetMapping
   public List<Issue> getIssues(HttpServletRequest request) {
@@ -47,7 +47,6 @@ public class IssueController {
   @PostMapping
   public Issue create(@RequestBody IssueQuery query, HttpServletRequest request) {
     User user = jwtUtil.parseUser(request.getHeader("Authorization"));
-
     return issueService.create(user, query);
   }
 

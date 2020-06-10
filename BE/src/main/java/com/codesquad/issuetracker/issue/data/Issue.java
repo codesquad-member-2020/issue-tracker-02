@@ -54,6 +54,10 @@ public class Issue {
         .build();
   }
 
+  public Boolean isSameUser(User user) {
+    return this.userId.equals(user.getUserId());
+  }
+
   @PrePersist
   public void prePersist() {
     this.close = false;

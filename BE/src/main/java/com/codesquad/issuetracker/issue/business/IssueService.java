@@ -21,7 +21,13 @@ public class IssueService {
   }
 
   public Issue getIssue(User user, Long issueId) {
-    return issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
+    Issue findIssue = issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
+
+    if (!findIssue.isSameUser(user)) {
+      throw new RuntimeException("다른 유저의 Issue 입니다");
+    }
+
+    return findIssue;
   }
 
   @Transactional
@@ -32,6 +38,11 @@ public class IssueService {
   @Transactional
   public void delete(User user, Long issueId) {
     Issue findIssue = issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
+
+    if (!findIssue.isSameUser(user)) {
+      throw new RuntimeException("다른 유저의 Issue 입니다");
+    }
+
     issueRepository.delete(findIssue);
   }
 }
