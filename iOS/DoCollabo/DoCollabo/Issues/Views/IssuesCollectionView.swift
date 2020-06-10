@@ -45,8 +45,6 @@ extension IssuesCollectionView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: IssueHorizontalCell.self),
             for: indexPath)
-        cell.backgroundColor = .red
-        cell.roundCorner(cornerRadius: 12.0)
         return cell
     }
 }

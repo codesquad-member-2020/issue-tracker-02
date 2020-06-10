@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYW-wY-9vJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYW-wY-9vJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -29,7 +29,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="A8O-zc-ada" customClass="IssuesCollectionView" customModule="DoCollabo" customModuleProvider="target">
-                                <rect key="frame" x="22.5" y="203.5" width="369" height="609.5"/>
+                                <rect key="frame" x="0.0" y="203.5" width="414" height="609.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tTw-9I-mle">
                                     <size key="itemSize" width="128" height="128"/>
@@ -51,13 +51,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="QHS-ei-5er" firstAttribute="trailing" secondItem="A8O-zc-ada" secondAttribute="trailing" constant="12" id="EBb-41-hjF"/>
+                            <constraint firstAttribute="trailing" secondItem="A8O-zc-ada" secondAttribute="trailing" id="EBb-41-hjF"/>
                             <constraint firstItem="4S6-US-nCZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HmP-HD-RqN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="A8O-zc-ada" secondAttribute="bottom" id="WUv-XL-hAO"/>
                             <constraint firstItem="QHS-ei-5er" firstAttribute="trailing" secondItem="4S6-US-nCZ" secondAttribute="trailing" id="X4Y-ev-Rf3"/>
                             <constraint firstItem="4S6-US-nCZ" firstAttribute="height" secondItem="QHS-ei-5er" secondAttribute="height" multiplier="0.55" id="Y1G-LL-0zA"/>
                             <constraint firstItem="QHS-ei-5er" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YUD-6r-XHH"/>
-                            <constraint firstItem="A8O-zc-ada" firstAttribute="leading" secondItem="QHS-ei-5er" secondAttribute="leading" constant="12" id="cny-F8-Ga8"/>
+                            <constraint firstItem="A8O-zc-ada" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cny-F8-Ga8"/>
                             <constraint firstItem="4S6-US-nCZ" firstAttribute="leading" secondItem="QHS-ei-5er" secondAttribute="leading" id="j2E-Le-0nE"/>
                             <constraint firstItem="QHS-ei-5er" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qkB-RQ-QBI"/>
                             <constraint firstItem="A8O-zc-ada" firstAttribute="top" secondItem="4S6-US-nCZ" secondAttribute="bottom" constant="8" id="tlx-HZ-Zq1"/>

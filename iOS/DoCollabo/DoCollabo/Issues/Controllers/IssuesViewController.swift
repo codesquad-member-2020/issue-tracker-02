@@ -64,7 +64,9 @@ extension IssuesViewController: UICollectionViewDelegateFlowLayout {
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 120)
+        return CGSize(
+            width: collectionView.bounds.width * 0.95 - IssueHorizontalCell.horizontalPadding,
+            height: 120)
     }
     
     func collectionView(

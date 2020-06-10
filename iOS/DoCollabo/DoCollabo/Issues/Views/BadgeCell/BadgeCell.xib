@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -43,8 +43,8 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="75" height="41"/>
             <connections>
-                <outlet property="background" destination="gS1-RL-im5" id="Rd3-eh-37A"/>
-                <outlet property="label" destination="PAh-DB-s0D" id="02F-VL-GIH"/>
+                <outlet property="badgeBackgroundView" destination="gS1-RL-im5" id="Rd3-eh-37A"/>
+                <outlet property="titleLabel" destination="PAh-DB-s0D" id="02F-VL-GIH"/>
             </connections>
             <point key="canvasLocation" x="9.4202898550724647" y="-6.3616071428571423"/>
         </collectionViewCell>

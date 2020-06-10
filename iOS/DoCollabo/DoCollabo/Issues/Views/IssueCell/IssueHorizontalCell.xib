@@ -24,7 +24,7 @@
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hCb-fm-D6J" customClass="BadgesCollectionView" customModule="DoCollabo" customModuleProvider="target">
                         <rect key="frame" x="12" y="68" width="334" height="38"/>
-                        <color key="backgroundColor" red="0.86976736779999997" green="0.36666804549999998" blue="0.3143491149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Odx-QP-Ybv" customClass="LeftAlignedCollectionViewFlowLayout" customModule="DoCollabo" customModuleProvider="target">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>

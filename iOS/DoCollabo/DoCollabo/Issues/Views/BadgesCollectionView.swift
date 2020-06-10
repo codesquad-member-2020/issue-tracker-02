@@ -48,13 +48,12 @@ extension BadgesCollectionView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: BadgeCell.self),
             for: indexPath) as! BadgeCell
-        cell.configureLabel(badges[indexPath.item])
-        cell.background.backgroundColor = UIColor(
+        let randomColor = UIColor(
             red: CGFloat.random(in: 0...1),
             green: CGFloat.random(in: 0...1),
             blue: CGFloat.random(in: 0...1),
             alpha: 1)
-        cell.roundCorner(cornerRadius: 8.0)
+        cell.configureLabel(text: badges[indexPath.item], color: randomColor)
         return cell
     }
 }

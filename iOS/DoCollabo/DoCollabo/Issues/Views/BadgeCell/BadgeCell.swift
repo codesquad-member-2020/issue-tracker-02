@@ -13,14 +13,17 @@ final class BadgeCell: UICollectionViewCell {
     static let horizontalPadding: CGFloat = 18.0
     static let verticalPadding: CGFloat = 10.0
     
-    @IBOutlet weak var background: UIView!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var badgeBackgroundView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        roundCorner(cornerRadius: 8.0)
     }
     
-    func configureLabel(_ text: String) {
-        label.text = text
+    func configureLabel(text: String, color: UIColor) {
+        titleLabel.text = text
+        badgeBackgroundView.backgroundColor = color
     }
 }
