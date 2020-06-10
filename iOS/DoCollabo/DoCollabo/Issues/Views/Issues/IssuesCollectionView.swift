@@ -68,7 +68,7 @@ extension IssuesCollectionView: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: IssueHorizontalCell.self),
             for: indexPath) as! IssueHorizontalCell
         cell.widthAnchor.constraint(
-            equalToConstant: collectionView.frame.width * 0.8).isActive = true
+            equalToConstant: collectionView.frame.width * 0.87).isActive = true
         let issue = issuesStub[indexPath.item]
         cell.configureCell(
             title: issue.title,

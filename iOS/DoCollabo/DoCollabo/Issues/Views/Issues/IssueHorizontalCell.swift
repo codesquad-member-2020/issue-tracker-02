@@ -39,7 +39,6 @@ final class IssueHorizontalCell: UICollectionViewCell {
         if let issueLabels = issueLabels {
             let collectionView = IssueLabelsCollectionView()
             collectionView.labels = issueLabels
-            collectionView.fillSuperview()
             contentsStackView.addArrangedSubview(collectionView)
             collectionView.heightAnchor.constraint(equalToConstant: 36).isActive = true
         }
@@ -57,8 +56,8 @@ final class IssueHorizontalCell: UICollectionViewCell {
         contentsStackView = IssueHorizontalContentsStackView(arrangedSubviews: [titleLabel])
         
         roundCorner(cornerRadius: 12.0)
-        drawBorder(color: .lightGray, width: 0.5)
-        drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 5, opacity: 0.4)
+        drawBorder(color: .lightGray, width: 0.3)
+        drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
     }
     
     private func configureLayout() {
@@ -68,7 +67,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
             leadingAnchor: leadingAnchor,
             bottomAnchor: bottomAnchor,
             trailingAnchor: trailingAnchor,
-            padding: .init(top: 8, left: 12, bottom: 8, right: 12))
+            padding: .init(top: 12, left: 16, bottom: 12, right: 16))
     }
     
     override func prepareForReuse() {
