@@ -17,15 +17,15 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="be8-kD-jgo">
-                        <rect key="frame" x="12" y="12" width="44" height="21"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <rect key="frame" x="12" y="12" width="334" height="24"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hCb-fm-D6J" customClass="BadgesCollectionView" customModule="DoCollabo" customModuleProvider="target">
-                        <rect key="frame" x="12" y="65" width="334" height="41"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hCb-fm-D6J" customClass="BadgesCollectionView" customModule="DoCollabo" customModuleProvider="target">
+                        <rect key="frame" x="12" y="68" width="334" height="38"/>
                         <color key="backgroundColor" red="0.86976736779999997" green="0.36666804549999998" blue="0.3143491149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Odx-QP-Ybv">
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Odx-QP-Ybv">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -33,7 +33,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHk-Gi-A2w">
-                        <rect key="frame" x="12" y="37" width="334" height="24"/>
+                        <rect key="frame" x="12" y="40" width="334" height="24"/>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="rNw-T1-a67"/>
@@ -43,9 +43,10 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="hCb-fm-D6J" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="4cJ-Lo-Shq"/>
+                <constraint firstAttribute="trailing" secondItem="be8-kD-jgo" secondAttribute="trailing" constant="12" id="2xA-Yd-gMZ"/>
                 <constraint firstAttribute="bottom" secondItem="hCb-fm-D6J" secondAttribute="bottom" constant="12" id="B2F-if-Dkn"/>
                 <constraint firstItem="DHk-Gi-A2w" firstAttribute="top" secondItem="be8-kD-jgo" secondAttribute="bottom" constant="4" id="DAX-8Q-m1z"/>
+                <constraint firstItem="be8-kD-jgo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="Tr2-NB-ml9"/>
                 <constraint firstItem="be8-kD-jgo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="Voa-TR-B4V"/>
                 <constraint firstAttribute="trailing" secondItem="DHk-Gi-A2w" secondAttribute="trailing" constant="12" id="byi-IJ-SrO"/>
                 <constraint firstAttribute="trailing" secondItem="hCb-fm-D6J" secondAttribute="trailing" constant="12" id="c6g-Gv-K08"/>
