@@ -9,7 +9,9 @@
 import Foundation
 
 enum EndPoint {
-    static let baseURL: String = "http://52.79.81.75:8080"
+    static let baseURL: String = "http://52.79.81.75:8080/api"
     static let githubOAuth: String = "\(Self.baseURL)/oauth2/authorization/github"
     static let githubURLScheme: String = "github.docollabo.app"
+    static let issues: String = "\(Self.baseURL)/issues"
+    static let labels: String = "\(Self.baseURL)/labels"
 }
