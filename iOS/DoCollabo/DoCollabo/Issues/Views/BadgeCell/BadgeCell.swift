@@ -8,14 +8,13 @@
 
 import UIKit
 
-class LabelCollectionViewCell: UICollectionViewCell {
+class BadgeCell: UICollectionViewCell {
 
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func changeBackground(_ color: UIColor) {
