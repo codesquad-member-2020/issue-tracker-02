@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IssuesCollectionView: UICollectionView {
+final class IssuesCollectionView: UICollectionView {
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: UICollectionViewFlowLayout())

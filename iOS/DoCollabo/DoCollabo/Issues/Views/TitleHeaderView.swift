@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class TitleHeaderView: UIView {
+final class TitleHeaderView: UIView {
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var backgroundView: UIView!
