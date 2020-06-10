@@ -9,7 +9,7 @@
 import Foundation
 import AuthenticationServices
 
-final class NetworkManager {
+final class OAuthNetworkManager {
     private var session: ASWebAuthenticationSession?
     
     func authenticateWithGithub(
