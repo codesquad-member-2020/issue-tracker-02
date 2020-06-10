@@ -10,6 +10,8 @@ import UIKit
 
 final class BadgesCollectionView: UICollectionView {
 
+    let badges: [String] = ["feedback", "iOS", "bug", "feedback", "iOS", "bug", "feedback", "feedback", "iOS", "bug", "feedback"]
+    
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         configure()
@@ -37,7 +39,7 @@ extension BadgesCollectionView: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return Int.random(in: 4...11)
     }
     
     func collectionView(
@@ -46,6 +48,13 @@ extension BadgesCollectionView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: BadgeCell.self),
             for: indexPath) as! BadgeCell
+        cell.configureLabel(badges[indexPath.item])
+        cell.background.backgroundColor = UIColor(
+            red: CGFloat.random(in: 0...1),
+            green: CGFloat.random(in: 0...1),
+            blue: CGFloat.random(in: 0...1),
+            alpha: 1)
+        cell.roundCorner(cornerRadius: 8.0)
         return cell
     }
 }
@@ -55,6 +64,36 @@ extension BadgesCollectionView: UICollectionViewDelegateFlowLayout {
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: 20)
+        let text = badges[indexPath.item]
+        let estimatedSize = self.estimatedSize(text: text, font: .systemFont(ofSize: 17.0))
+        let width = estimatedSize.width + BadgeCell.horizontalPadding
+        let height = estimatedSize.height + BadgeCell.verticalPadding
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8.0
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8.0
+    }
+    
+    private func estimatedSize(text: String, font: UIFont) -> CGRect {
+        let size = CGSize(width: 200, height: 200)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        let estimatedSize = NSString(string: text)
+            .boundingRect(
+                with: size,
+                options: options,
+                attributes: [NSAttributedString.Key.font: font],
+                context: nil)
+        return estimatedSize
     }
 }
