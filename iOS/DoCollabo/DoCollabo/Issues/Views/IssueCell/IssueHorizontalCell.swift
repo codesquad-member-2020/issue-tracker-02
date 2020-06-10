@@ -14,8 +14,6 @@ final class IssueHorizontalCell: UICollectionViewCell {
     
     private var contentsStackView: UIStackView!
     private var titleLabel: IssueHorizontalTitleLabel!
-    private var milestoneView: UIView!
-    private var badgesCollectionView: BadgesCollectionView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,8 +37,8 @@ final class IssueHorizontalCell: UICollectionViewCell {
         }
         
         if let issueLabels = issueLabels {
-            let collectionView = BadgesCollectionView()
-            collectionView.badges = issueLabels
+            let collectionView = IssueLabelsCollectionView()
+            collectionView.labels = issueLabels
             collectionView.fillSuperview()
             contentsStackView.addArrangedSubview(collectionView)
             collectionView.heightAnchor.constraint(equalToConstant: 36).isActive = true

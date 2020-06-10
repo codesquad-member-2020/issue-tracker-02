@@ -18,9 +18,9 @@
 		30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC784E248F94C4004BA3B6 /* NetworkError.swift */; };
 		30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */; };
 		30AC7854248FBC85004BA3B6 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC7853248FBC85004BA3B6 /* NibView.swift */; };
-		30E22EDE2490A61200EC0FD8 /* BadgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EDC2490A61200EC0FD8 /* BadgeCell.swift */; };
-		30E22EDF2490A61200EC0FD8 /* BadgeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E22EDD2490A61200EC0FD8 /* BadgeCell.xib */; };
-		30E22EE22490B09200EC0FD8 /* BadgesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EE12490B09200EC0FD8 /* BadgesCollectionView.swift */; };
+		30E22EDE2490A61200EC0FD8 /* IssueLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EDC2490A61200EC0FD8 /* IssueLabelCell.swift */; };
+		30E22EDF2490A61200EC0FD8 /* IssueLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E22EDD2490A61200EC0FD8 /* IssueLabelCell.xib */; };
+		30E22EE22490B09200EC0FD8 /* IssueLabelsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EE12490B09200EC0FD8 /* IssueLabelsCollectionView.swift */; };
 		3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861B005248FC582006FD89E /* IssuesCollectionView.swift */; };
 		3861B00B248FC654006FD89E /* IssueHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861B009248FC654006FD89E /* IssueHorizontalCell.swift */; };
 		386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F98248E291100ED3A5A /* IssuesViewController.swift */; };
@@ -52,9 +52,9 @@
 		30AC784E248F94C4004BA3B6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 		30AC7853248FBC85004BA3B6 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
-		30E22EDC2490A61200EC0FD8 /* BadgeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCell.swift; sourceTree = "<group>"; };
-		30E22EDD2490A61200EC0FD8 /* BadgeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BadgeCell.xib; sourceTree = "<group>"; };
-		30E22EE12490B09200EC0FD8 /* BadgesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesCollectionView.swift; sourceTree = "<group>"; };
+		30E22EDC2490A61200EC0FD8 /* IssueLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueLabelCell.swift; sourceTree = "<group>"; };
+		30E22EDD2490A61200EC0FD8 /* IssueLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueLabelCell.xib; sourceTree = "<group>"; };
+		30E22EE12490B09200EC0FD8 /* IssueLabelsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueLabelsCollectionView.swift; sourceTree = "<group>"; };
 		3861B005248FC582006FD89E /* IssuesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionView.swift; sourceTree = "<group>"; };
 		3861B009248FC654006FD89E /* IssueHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalCell.swift; sourceTree = "<group>"; };
 		386B8F98248E291100ED3A5A /* IssuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewController.swift; sourceTree = "<group>"; };
@@ -165,8 +165,8 @@
 		30E22EE02490B01400EC0FD8 /* BadgeCell */ = {
 			isa = PBXGroup;
 			children = (
-				30E22EDC2490A61200EC0FD8 /* BadgeCell.swift */,
-				30E22EDD2490A61200EC0FD8 /* BadgeCell.xib */,
+				30E22EDC2490A61200EC0FD8 /* IssueLabelCell.swift */,
+				30E22EDD2490A61200EC0FD8 /* IssueLabelCell.xib */,
 			);
 			path = BadgeCell;
 			sourceTree = "<group>";
@@ -240,7 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				3861B005248FC582006FD89E /* IssuesCollectionView.swift */,
-				30E22EE12490B09200EC0FD8 /* BadgesCollectionView.swift */,
+				30E22EE12490B09200EC0FD8 /* IssueLabelsCollectionView.swift */,
 			);
 			path = CollectionViews;
 			sourceTree = "<group>";
@@ -318,7 +318,7 @@
 				30789C11248E1E46001D0415 /* Assets.xcassets in Resources */,
 				38D3643F248FA96E00884972 /* TitleHeaderView.xib in Resources */,
 				30789C0F248E1E3F001D0415 /* Main.storyboard in Resources */,
-				30E22EDF2490A61200EC0FD8 /* BadgeCell.xib in Resources */,
+				30E22EDF2490A61200EC0FD8 /* IssueLabelCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +341,7 @@
 				38F0FB49248E2D870080FBBD /* Colors.swift in Sources */,
 				38879C582490E48600EE84D7 /* UIView+Shadow.swift in Sources */,
 				30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */,
-				30E22EE22490B09200EC0FD8 /* BadgesCollectionView.swift in Sources */,
+				30E22EE22490B09200EC0FD8 /* IssueLabelsCollectionView.swift in Sources */,
 				3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */,
 				30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */,
 				386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */,
@@ -352,7 +352,7 @@
 				3861B00B248FC654006FD89E /* IssueHorizontalCell.swift in Sources */,
 				30789C1D248E3A37001D0415 /* LeadingImageButton.swift in Sources */,
 				30AC7854248FBC85004BA3B6 /* NibView.swift in Sources */,
-				30E22EDE2490A61200EC0FD8 /* BadgeCell.swift in Sources */,
+				30E22EDE2490A61200EC0FD8 /* IssueLabelCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

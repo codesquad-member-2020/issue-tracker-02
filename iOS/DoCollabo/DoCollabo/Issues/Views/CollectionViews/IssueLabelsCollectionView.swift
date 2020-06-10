@@ -1,5 +1,5 @@
 //
-//  BadgesCollectionView.swift
+//  IssueLabelsCollectionView.swift
 //  DoCollabo
 //
 //  Created by delma on 2020/06/10.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class BadgesCollectionView: UICollectionView {
+final class IssueLabelsCollectionView: UICollectionView {
 
-    var badges: [String] = []
+    var labels: [String] = []
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: LeftAlignedCollectionViewFlowLayout())
@@ -34,45 +34,45 @@ final class BadgesCollectionView: UICollectionView {
     }
     
     private func registerCollectionViewCell() {
-        let nib = UINib(nibName: String(describing: BadgeCell.self), bundle: nil)
-        register(nib, forCellWithReuseIdentifier: String(describing: BadgeCell.self))
+        let nib = UINib(nibName: String(describing: IssueLabelCell.self), bundle: nil)
+        register(nib, forCellWithReuseIdentifier: String(describing: IssueLabelCell.self))
     }
 }
 
-extension BadgesCollectionView: UICollectionViewDataSource {
+extension IssueLabelsCollectionView: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
-        return badges.count
+        return labels.count
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: BadgeCell.self),
-            for: indexPath) as! BadgeCell
+            withReuseIdentifier: String(describing: IssueLabelCell.self),
+            for: indexPath) as! IssueLabelCell
         let randomColor = UIColor(
             red: CGFloat.random(in: 0...1),
             green: CGFloat.random(in: 0...1),
             blue: CGFloat.random(in: 0...1),
             alpha: 1)
-        cell.configureLabel(text: badges[indexPath.item], color: randomColor)
+        cell.configureLabel(text: labels[indexPath.item], color: randomColor)
         return cell
     }
 }
 
-extension BadgesCollectionView: UICollectionViewDelegateFlowLayout {
+extension IssueLabelsCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = badges[indexPath.item]
+        let text = labels[indexPath.item]
         let estimatedSize = self.estimatedSize(
             text: text,
-            font: .systemFont(ofSize: BadgeCell.titleFontSize))
-        let width = estimatedSize.width + BadgeCell.horizontalPadding
-        let height = estimatedSize.height + BadgeCell.verticalPadding
+            font: .systemFont(ofSize: IssueLabelCell.titleFontSize))
+        let width = estimatedSize.width + IssueLabelCell.horizontalPadding
+        let height = estimatedSize.height + IssueLabelCell.verticalPadding
         return CGSize(width: width, height: height)
     }
     

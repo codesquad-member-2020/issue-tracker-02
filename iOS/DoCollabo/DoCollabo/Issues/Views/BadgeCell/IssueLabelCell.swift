@@ -1,5 +1,5 @@
 //
-//  LabelCollectionViewCell.swift
+//  IssueLabelCell.swift
 //  DoCollabo
 //
 //  Created by delma on 2020/06/10.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-final class BadgeCell: UICollectionViewCell {
+final class IssueLabelCell: UICollectionViewCell {
 
     static let horizontalPadding: CGFloat = 18.0
     static let verticalPadding: CGFloat = 10.0
     static let titleFontSize: CGFloat = 14.0
     
-    @IBOutlet weak var badgeBackgroundView: UIView!
+    @IBOutlet weak var labelBackgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
@@ -26,6 +26,6 @@ final class BadgeCell: UICollectionViewCell {
     
     func configureLabel(text: String, color: UIColor) {
         titleLabel.text = text
-        badgeBackgroundView.backgroundColor = color
+        labelBackgroundView.backgroundColor = color
     }
 }
