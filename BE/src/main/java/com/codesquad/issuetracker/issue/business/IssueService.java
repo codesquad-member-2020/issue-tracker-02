@@ -5,6 +5,7 @@ import com.codesquad.issuetracker.issue.data.Issue;
 import com.codesquad.issuetracker.issue.data.IssueRepository;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
 import java.util.List;
+import java.util.NoSuchElementException;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,18 @@ public class IssueService {
     return issueRepository.findAllByUserIdEquals(user.getUserId());
   }
 
+  public Issue getIssue(User user, Long issueId) {
+    return issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
+  }
+
   @Transactional
   public Issue create(User user, IssueQuery query) {
     return issueRepository.save(Issue.of(user, query));
+  }
+
+  @Transactional
+  public void delete(User user, Long issueId) {
+    Issue findIssue = issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
+    issueRepository.delete(findIssue);
   }
 }

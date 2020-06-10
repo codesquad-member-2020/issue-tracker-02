@@ -10,7 +10,9 @@ import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +34,14 @@ public class IssueController {
     return issueService.getIssues(user);
   }
 
+  @ApiOperation(value = "특정 Issue 를 가져옵니다")
+  @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
+  @GetMapping("{issueId}")
+  public Issue getIssue(@PathVariable Long issueId, HttpServletRequest request) {
+    User user = jwtUtil.parseUser(request.getHeader("Authorization"));
+    return issueService.getIssue(user, issueId);
+  }
+
   @ApiOperation(value = "Issue 를 추가합니다")
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @PostMapping
@@ -39,5 +49,13 @@ public class IssueController {
     User user = jwtUtil.parseUser(request.getHeader("Authorization"));
 
     return issueService.create(user, query);
+  }
+
+  @ApiOperation(value = "Issue 를 삭제합니다")
+  @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
+  @DeleteMapping("{issueId}")
+  public void delete(@PathVariable Long issueId, HttpServletRequest request) {
+    User user = jwtUtil.parseUser(request.getHeader("Authorization"));
+    issueService.delete(user, issueId);
   }
 }
