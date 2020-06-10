@@ -12,30 +12,26 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+@RequiredArgsConstructor
 @Component
 public class JwtUtil {
 
   private final JwtProperty jwtProperty;
 
-  public JwtUtil(JwtProperty jwtProperty) {
-    this.jwtProperty = jwtProperty;
-  }
-
-  public String create(Map<String, ?> claims) {
+  public String create(Map<String, Object> claims) {
     Instant issuedAt = Instant.now().truncatedTo(ChronoUnit.SECONDS);
     Instant expiration = issuedAt
         .plus(jwtProperty.getExpiredMinute(), ChronoUnit.MINUTES);
-    JwtBuilder jwt = Jwts.builder()
+    JwtBuilder jwtBuilder = Jwts.builder()
         .setHeaderParam("typ", "JWT")
         .setIssuedAt(Date.from(issuedAt))
-        .setExpiration(Date.from(expiration));
-    for (String key : claims.keySet()) {
-      jwt.claim(key, claims.get(key));
-    }
+        .setExpiration(Date.from(expiration))
+        .setClaims(claims);
 
-    return jwt.signWith(SignatureAlgorithm.HS256, generateKey()).compact();
+    return jwtBuilder.signWith(SignatureAlgorithm.HS256, generateKey()).compact();
   }
 
   private byte[] generateKey() {
