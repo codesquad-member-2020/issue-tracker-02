@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BadgeCell: UICollectionViewCell {
+final class BadgeCell: UICollectionViewCell {
 
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var label: UILabel!
@@ -16,13 +16,4 @@ class BadgeCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
-    func changeBackground(_ color: UIColor) {
-        background.backgroundColor = color
-    }
-    
-    func configureLabel(_ text: String) {
-        
-    }
-
 }
