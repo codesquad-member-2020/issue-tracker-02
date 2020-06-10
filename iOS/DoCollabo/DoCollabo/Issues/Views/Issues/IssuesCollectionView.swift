@@ -67,7 +67,6 @@ extension IssuesCollectionView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: IssueHorizontalCell.self),
             for: indexPath) as! IssueHorizontalCell
-        
         cell.widthAnchor.constraint(
             equalToConstant: collectionView.frame.width * 0.8).isActive = true
         let issue = issuesStub[indexPath.item]

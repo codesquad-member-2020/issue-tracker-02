@@ -21,7 +21,7 @@ final class IssueLabelCell: UICollectionViewCell {
         super.awakeFromNib()
         
         titleLabel.font = .systemFont(ofSize: Self.titleFontSize, weight: .semibold)
-        roundCorner(cornerRadius: 8.0)
+        roundCorner(cornerRadius: 6.0)
     }
     
     func configureLabel(text: String, color: UIColor) {

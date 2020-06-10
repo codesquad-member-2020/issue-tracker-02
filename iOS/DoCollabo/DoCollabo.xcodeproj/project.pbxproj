@@ -162,25 +162,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		30E22EE02490B01400EC0FD8 /* BadgeCell */ = {
-			isa = PBXGroup;
-			children = (
-				30E22EDC2490A61200EC0FD8 /* IssueLabelCell.swift */,
-				30E22EDD2490A61200EC0FD8 /* IssueLabelCell.xib */,
-			);
-			path = BadgeCell;
-			sourceTree = "<group>";
-		};
-		3861B00D248FD843006FD89E /* IssueCell */ = {
-			isa = PBXGroup;
-			children = (
-				3861B009248FC654006FD89E /* IssueHorizontalCell.swift */,
-				38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */,
-				38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */,
-			);
-			path = IssueCell;
-			sourceTree = "<group>";
-		};
 		386B8F96248E28D800ED3A5A /* Issues */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,13 +196,33 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		38D09C1924915A4C00A3B937 /* Issues */ = {
+			isa = PBXGroup;
+			children = (
+				3861B005248FC582006FD89E /* IssuesCollectionView.swift */,
+				3861B009248FC654006FD89E /* IssueHorizontalCell.swift */,
+				38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */,
+				38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */,
+			);
+			path = Issues;
+			sourceTree = "<group>";
+		};
+		38D09C1A24915A5300A3B937 /* IssueLabels */ = {
+			isa = PBXGroup;
+			children = (
+				30E22EE12490B09200EC0FD8 /* IssueLabelsCollectionView.swift */,
+				30E22EDC2490A61200EC0FD8 /* IssueLabelCell.swift */,
+				30E22EDD2490A61200EC0FD8 /* IssueLabelCell.xib */,
+			);
+			path = IssueLabels;
+			sourceTree = "<group>";
+		};
 		38D3643B248FA93500884972 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				38E101D12490FDD00036A74A /* CollectionViews */,
+				38D09C1924915A4C00A3B937 /* Issues */,
+				38D09C1A24915A5300A3B937 /* IssueLabels */,
 				38E101D02490FDBE0036A74A /* Layouts */,
-				3861B00D248FD843006FD89E /* IssueCell */,
-				30E22EE02490B01400EC0FD8 /* BadgeCell */,
 				38D3643C248FA96300884972 /* TitleHeaderView.swift */,
 				38D3643E248FA96E00884972 /* TitleHeaderView.xib */,
 			);
@@ -234,15 +235,6 @@
 				38879C542490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = Layouts;
-			sourceTree = "<group>";
-		};
-		38E101D12490FDD00036A74A /* CollectionViews */ = {
-			isa = PBXGroup;
-			children = (
-				3861B005248FC582006FD89E /* IssuesCollectionView.swift */,
-				30E22EE12490B09200EC0FD8 /* IssueLabelsCollectionView.swift */,
-			);
-			path = CollectionViews;
 			sourceTree = "<group>";
 		};
 		38F0FB47248E2D5F0080FBBD /* Extensions */ = {
