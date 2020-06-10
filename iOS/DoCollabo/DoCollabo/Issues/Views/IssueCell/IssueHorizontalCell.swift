@@ -8,10 +8,13 @@
 
 import UIKit
 
-class IssueHorizontalCell: UICollectionViewCell {
+final class IssueHorizontalCell: UICollectionViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var milestoneView: UIView!
+    @IBOutlet weak var badgesCollectionView: UICollectionView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 }
