@@ -243,10 +243,10 @@
 			isa = PBXGroup;
 			children = (
 				38F0FB48248E2D870080FBBD /* Colors.swift */,
+				385A50D024915E66004BE8DB /* UIColor+Hex.swift */,
 				30789C1E248E3FC1001D0415 /* UIView+Border.swift */,
 				38879C572490E48600EE84D7 /* UIView+Shadow.swift */,
 				38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */,
-				385A50D024915E66004BE8DB /* UIColor+Hex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
