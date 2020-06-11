@@ -114,7 +114,7 @@ extension IssuesViewController {
     
     private func showViews() {
         UIView.animate(
-            withDuration: 0.8,
+            withDuration: 0.7,
             delay: 0,
             usingSpringWithDamping: 1,
             initialSpringVelocity: 1,
@@ -127,12 +127,20 @@ extension IssuesViewController {
         })
         UIView.animate(
             withDuration: 1,
-            delay: 0.3,
+            delay: 0.2,
             usingSpringWithDamping: 1,
             initialSpringVelocity: 1,
             options: .curveEaseOut,
             animations: {
                 self.titleHeaderView.alpha = 1
+        })
+        UIView.animate(
+            withDuration: 1,
+            delay: 0.4,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
                 self.issuesCollectionView.alpha = 1
         })
     }
