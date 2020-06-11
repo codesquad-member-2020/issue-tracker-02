@@ -24,8 +24,9 @@ final class IssueLabelCell: UICollectionViewCell {
         roundCorner(cornerRadius: 6.0)
     }
     
-    func configureLabel(text: String, color: UIColor) {
+    func configureLabel(text: String, hexString: String) {
         titleLabel.text = text
+        let color = UIColor(hexString: hexString)
         titleLabel.textColor = color.isDark() ? .white : .black
         labelBackgroundView.backgroundColor = color
     }

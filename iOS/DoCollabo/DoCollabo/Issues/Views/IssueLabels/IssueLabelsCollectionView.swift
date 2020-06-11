@@ -52,12 +52,7 @@ extension IssueLabelsCollectionView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: IssueLabelCell.self),
             for: indexPath) as! IssueLabelCell
-        let randomColor = UIColor(
-            red: CGFloat.random(in: 0...1),
-            green: CGFloat.random(in: 0...1),
-            blue: CGFloat.random(in: 0...1),
-            alpha: 1)
-        cell.configureLabel(text: labels[indexPath.item], color: randomColor)
+        cell.configureLabel(text: labels[indexPath.item], hexString: "#aa1faf")
         return cell
     }
 }
