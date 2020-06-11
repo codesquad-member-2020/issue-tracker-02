@@ -11,12 +11,12 @@ import AuthenticationServices
 
 final class SignInViewController: UIViewController {
 
-    private var networkManager: NetworkManager!
+    private var networkManager: OAuthNetworkManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        networkManager = NetworkManager()
+        networkManager = OAuthNetworkManager()
     }
 }
 
