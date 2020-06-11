@@ -27,6 +27,7 @@ final class IssuesViewController: UIViewController {
 
         fakeConfigureToken()
         configureCollectionViewDelegate()
+        configureCollectionViewDataSource()
         configureUseCase()
     }
     
@@ -34,6 +35,13 @@ final class IssuesViewController: UIViewController {
         super.viewDidAppear(animated)
         checkToken()
         titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
+    }
+    
+    private func configureCollectionViewDataSource() {
+        dataSource = IssuesCollectionViewDataSource(changedHandler: { (_) in
+            self.issuesCollectionView.reloadData()
+        })
+        issuesCollectionView.dataSource = dataSource
     }
     
     private func configureUseCase() {
@@ -68,8 +76,7 @@ final class IssuesViewController: UIViewController {
         issuesUseCase.getResources(request: request, dataType: [Issue].self) { (result) in
             switch result {
             case .success(let issues):
-//                dataSource
-                break
+                self.dataSource.updateIssues(issues)
             case .failure(let error):
                 self.presentErrorAlert(error: error)
             }

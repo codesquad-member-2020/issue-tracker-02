@@ -26,9 +26,11 @@ final class IssuesCollectionViewDataSource: NSObject, UICollectionViewDataSource
     func updateNotify(handler: @escaping ([Issue]) -> Void) {
         self.changedHandler = handler
     }
-}
-
-extension IssuesCollectionViewDataSource {
+    
+    func updateIssues(_ issues: [Issue]) {
+        self.issues = issues
+    }
+    
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {

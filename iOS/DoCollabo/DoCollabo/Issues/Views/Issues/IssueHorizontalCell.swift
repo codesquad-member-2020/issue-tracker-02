@@ -26,22 +26,22 @@ final class IssueHorizontalCell: UICollectionViewCell {
     }
     
     func configureCell(with issue: Issue) {
-//        titleLabel.text = title
-//
-//        if let milestone = milestone {
-//            let label = UILabel()
-//            label.text = milestone
-//            label.translatesAutoresizingMaskIntoConstraints = false
-//            label.heightAnchor.constraint(equalToConstant: 32).isActive = true
-//            contentsStackView.addArrangedSubview(label)
-//        }
-//
-//        if let issueLabels = issueLabels {
-//            let collectionView = IssueLabelsCollectionView()
-//            collectionView.labels = issueLabels
-//            contentsStackView.addArrangedSubview(collectionView)
-//            collectionView.heightAnchor.constraint(equalToConstant: 36).isActive = true
-//        }
+        titleLabel.text = issue.title
+
+        if let milestone = issue.labels.first?.title {
+            let label = UILabel()
+            label.text = milestone
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.heightAnchor.constraint(equalToConstant: 32).isActive = true
+            contentsStackView.addArrangedSubview(label)
+        }
+
+        if issue.labels.count > 0 {
+            let collectionView = IssueLabelsCollectionView()
+            collectionView.updateLabels(issue.labels)
+            contentsStackView.addArrangedSubview(collectionView)
+            collectionView.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        }
     }
     
     private func configure() {
@@ -67,7 +67,8 @@ final class IssueHorizontalCell: UICollectionViewCell {
             leadingAnchor: leadingAnchor,
             bottomAnchor: bottomAnchor,
             trailingAnchor: trailingAnchor,
-            padding: .init(top: 12, left: 16, bottom: 12, right: 16))
+            padding: .init(top: 12, left: 16, bottom: 12, right: 16),
+            size: .init(width: UIScreen.main.bounds.width * 0.8, height: 0))
     }
     
     override func prepareForReuse() {

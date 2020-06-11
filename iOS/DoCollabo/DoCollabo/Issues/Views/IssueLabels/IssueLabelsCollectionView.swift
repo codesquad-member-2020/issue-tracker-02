@@ -10,7 +10,7 @@ import UIKit
 
 final class IssueLabelsCollectionView: UICollectionView {
 
-    var labels: [String] = []
+    private var labels: [IssueLabel] = []
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: LeftAlignedCollectionViewFlowLayout())
@@ -20,6 +20,10 @@ final class IssueLabelsCollectionView: UICollectionView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configure()
+    }
+    
+    func updateLabels(_ labels: [IssueLabel]) {
+        self.labels = labels
     }
     
     private func configure() {
@@ -52,7 +56,7 @@ extension IssueLabelsCollectionView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: IssueLabelCell.self),
             for: indexPath) as! IssueLabelCell
-        cell.configureLabel(text: labels[indexPath.item], hexString: "#aa1faf")
+        cell.configureLabel(with: labels[indexPath.item])
         return cell
     }
 }
@@ -62,7 +66,7 @@ extension IssueLabelsCollectionView: UICollectionViewDelegateFlowLayout {
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = labels[indexPath.item]
+        let text = labels[indexPath.item].title
         let estimatedSize = self.estimatedSize(
             text: text,
             font: .systemFont(ofSize: IssueLabelCell.titleFontSize))
