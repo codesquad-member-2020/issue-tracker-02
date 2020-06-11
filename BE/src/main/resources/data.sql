@@ -1,4 +1,4 @@
-INSERT INTO issue (close, user_id, title, content, created_at, update_time_at)
+INSERT INTO issue (close, user_id, title, description, created_at, update_time_at)
 VALUES (FALSE, 'anonymous', 'anonymous 1', 'anonymous contents1\nanonymous contents1\nanonymous contents1', NOW(),
         NOW()),
        (FALSE, 'anonymous', 'anonymous 2', 'anonymous contents2\nanonymous contents2\nanonymous contents2', NOW(),
@@ -32,7 +32,7 @@ VALUES (FALSE, 'anonymous', 'anonymous 1', 'anonymous contents1\nanonymous conte
         NOW(), NOW())
 ;
 
-INSERT INTO label (title, content, color)
+INSERT INTO label (title, description, color)
 VALUES ('BE', 'BE label', '037a3b'),
        ('FE', 'FE label', 'e206d7'),
        ('iOS', 'iOS label', '6ac4e8'),

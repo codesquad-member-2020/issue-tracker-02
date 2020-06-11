@@ -7,6 +7,6 @@ import lombok.Getter;
 public class LabelQuery {
 
   private String title;
-  private String content;
+  private String description;
   private String color;
 }

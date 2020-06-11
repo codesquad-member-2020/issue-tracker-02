@@ -31,7 +31,7 @@ public class Issue {
   private Boolean close;
   private String userId;
   private String title;
-  private String content;
+  private String description;
 
   @CreationTimestamp
   private LocalDateTime createdAt;
@@ -45,13 +45,13 @@ public class Issue {
 
 
   @Builder
-  private Issue(Long id, Boolean close, String userId, String title, String content,
+  private Issue(Long id, Boolean close, String userId, String title, String description,
       LocalDateTime createdAt, LocalDateTime updateTimeAt, List<Label> labels) {
     this.id = id;
     this.close = close;
     this.userId = userId;
     this.title = title;
-    this.content = content;
+    this.description = description;
     this.createdAt = createdAt;
     this.updateTimeAt = updateTimeAt;
     this.labels = labels;
@@ -61,7 +61,7 @@ public class Issue {
     return Issue.builder()
         .userId(user.getUserId())
         .title(query.getTitle())
-        .content(query.getContent())
+        .description(query.getDescription())
         .labels(query.getLabels())
         .build();
   }
