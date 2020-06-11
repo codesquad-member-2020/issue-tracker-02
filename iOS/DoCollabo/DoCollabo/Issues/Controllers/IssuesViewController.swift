@@ -18,6 +18,7 @@ final class IssuesViewController: UIViewController {
         }
     }
     @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var issuesUseCase: UseCase!
     private var dataSource: IssuesCollectionViewDataSource!
@@ -29,6 +30,7 @@ final class IssuesViewController: UIViewController {
         configureCollectionViewDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
+        hideViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,6 +42,7 @@ final class IssuesViewController: UIViewController {
     private func configureCollectionViewDataSource() {
         dataSource = IssuesCollectionViewDataSource(changedHandler: { (_) in
             self.issuesCollectionView.reloadData()
+            self.showViews()
         })
         issuesCollectionView.dataSource = dataSource
     }
@@ -95,6 +98,43 @@ final class IssuesViewController: UIViewController {
             return
         }
         self.present(alertController, animated: true)
+    }
+}
+
+// MARK:- Loading UI
+
+extension IssuesViewController {
+    private func hideViews() {
+        titleHeaderBackgroundView.alpha = 0
+        titleHeaderView.alpha = 0
+        issuesCollectionView.alpha = 0
+        activityIndicator.alpha = 1
+        activityIndicator.startAnimating()
+    }
+    
+    private func showViews() {
+        UIView.animate(
+            withDuration: 0.8,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.titleHeaderBackgroundView.alpha = 1
+                self.activityIndicator.alpha = 0
+        }, completion: { _ in
+            self.activityIndicator.stopAnimating()
+        })
+        UIView.animate(
+            withDuration: 1,
+            delay: 0.3,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.titleHeaderView.alpha = 1
+                self.issuesCollectionView.alpha = 1
+        })
     }
 }
 
