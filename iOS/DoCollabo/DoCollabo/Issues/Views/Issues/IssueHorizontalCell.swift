@@ -25,23 +25,23 @@ final class IssueHorizontalCell: UICollectionViewCell {
         configure()
     }
     
-    func configureCell(title: String, milestone: String? = nil, issueLabels: [String]? = nil) {
-        titleLabel.text = title
-        
-        if let milestone = milestone {
-            let label = UILabel()
-            label.text = milestone
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.heightAnchor.constraint(equalToConstant: 32).isActive = true
-            contentsStackView.addArrangedSubview(label)
-        }
-        
-        if let issueLabels = issueLabels {
-            let collectionView = IssueLabelsCollectionView()
-            collectionView.labels = issueLabels
-            contentsStackView.addArrangedSubview(collectionView)
-            collectionView.heightAnchor.constraint(equalToConstant: 36).isActive = true
-        }
+    func configureCell(with issue: Issue) {
+//        titleLabel.text = title
+//
+//        if let milestone = milestone {
+//            let label = UILabel()
+//            label.text = milestone
+//            label.translatesAutoresizingMaskIntoConstraints = false
+//            label.heightAnchor.constraint(equalToConstant: 32).isActive = true
+//            contentsStackView.addArrangedSubview(label)
+//        }
+//
+//        if let issueLabels = issueLabels {
+//            let collectionView = IssueLabelsCollectionView()
+//            collectionView.labels = issueLabels
+//            contentsStackView.addArrangedSubview(collectionView)
+//            collectionView.heightAnchor.constraint(equalToConstant: 36).isActive = true
+//        }
     }
     
     private func configure() {
