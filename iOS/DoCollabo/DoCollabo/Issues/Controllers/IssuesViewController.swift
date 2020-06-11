@@ -98,10 +98,6 @@ final class IssuesViewController: UIViewController {
     }
 }
 
-extension String {
-    static let jwtToken: String = "jwtToken"
-}
-
 // MARK:- UICollectionViewDelegateFlowLayout
 
 extension IssuesViewController: UICollectionViewDelegateFlowLayout {
