@@ -10,15 +10,26 @@ import UIKit
 
 final class IssuesViewController: UIViewController {
 
+    @IBOutlet weak var titleHeaderBackgroundView: UIView!
+    @IBOutlet weak var titleHeaderView: TitleHeaderView! {
+        didSet {
+            titleHeaderView.configureTitle("이슈")
+        }
+    }
+    
+    @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         fakeConfigureToken()
+        configureCollectionViewDelegate()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkToken()
+        titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
     }
     
     private func fakeConfigureToken() {
@@ -46,4 +57,19 @@ final class IssuesViewController: UIViewController {
 
 extension String {
     static let jwtToken: String = "jwtToken"
+}
+
+// MARK:- UICollectionViewDelegateFlowLayout
+
+extension IssuesViewController: UICollectionViewDelegateFlowLayout {
+    private func configureCollectionViewDelegate() {
+        issuesCollectionView.delegate = self
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 12.0
+    }
 }
