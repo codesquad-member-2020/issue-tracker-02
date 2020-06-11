@@ -11,6 +11,12 @@ import UIKit
 final class IssuesViewController: UIViewController {
 
     @IBOutlet weak var titleHeaderBackgroundView: UIView!
+    @IBOutlet weak var titleHeaderView: TitleHeaderView! {
+        didSet {
+            titleHeaderView.configureTitle("이슈")
+        }
+    }
+    
     @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
     
     override func viewDidLoad() {

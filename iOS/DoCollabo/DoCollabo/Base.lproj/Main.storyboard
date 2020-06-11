@@ -69,6 +69,7 @@
                     <connections>
                         <outlet property="issuesCollectionView" destination="A8O-zc-ada" id="ea6-Mf-Xkh"/>
                         <outlet property="titleHeaderBackgroundView" destination="QHS-ei-5er" id="Had-li-EhF"/>
+                        <outlet property="titleHeaderView" destination="4S6-US-nCZ" id="gAR-FK-ius"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
