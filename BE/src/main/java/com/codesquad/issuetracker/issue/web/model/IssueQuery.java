@@ -9,6 +9,6 @@ import lombok.Getter;
 public class IssueQuery {
 
   private String title;
-  private String content;
+  private String description;
   private List<Label> labels;
 }

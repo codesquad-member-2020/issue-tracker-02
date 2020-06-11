@@ -19,21 +19,21 @@ public class Label {
   private Long id;
 
   private String title;
-  private String content;
+  private String description;
   private String color;
 
   @Builder
-  private Label(Long id, String title, String content, String color) {
+  private Label(Long id, String title, String description, String color) {
     this.id = id;
     this.title = title;
-    this.content = content;
+    this.description = description;
     this.color = color;
   }
 
   public static Label of(LabelQuery labelQuery) {
     return Label.builder()
         .title(labelQuery.getTitle())
-        .content(labelQuery.getContent())
+        .description(labelQuery.getDescription())
         .color(labelQuery.getColor())
         .build();
   }

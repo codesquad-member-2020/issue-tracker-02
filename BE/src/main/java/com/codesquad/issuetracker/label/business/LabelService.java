@@ -5,7 +5,6 @@ import com.codesquad.issuetracker.label.data.LabelRepository;
 import com.codesquad.issuetracker.label.web.model.LabelQuery;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,8 +15,8 @@ public class LabelService {
 
   private final LabelRepository labelRepository;
 
-  public List<String> getLabels() {
-    return labelRepository.findAll().stream().map(Label::getTitle).collect(Collectors.toList());
+  public List<Label> getLabels() {
+    return labelRepository.findAll();
   }
 
   public Label getLabel(Long labelId) {
