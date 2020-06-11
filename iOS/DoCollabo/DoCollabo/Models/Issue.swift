@@ -14,18 +14,7 @@ struct Issue: Codable {
     var title: String
     var description: String
     var createdAt: String
-    var updatedAt: String
+    var updateTimeAt: String
     var userId: String
     var labels: [IssueLabel]
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case close
-        case title
-        case description = "content"
-        case createdAt
-        case updatedAt
-        case userId
-        case labels
-    }
 }
