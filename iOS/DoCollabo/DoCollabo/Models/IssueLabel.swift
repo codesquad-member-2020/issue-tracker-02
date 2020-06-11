@@ -18,6 +18,6 @@ struct IssueLabel: Codable {
         case id
         case title
         case color
-        case description = "content"
+        case description
     }
 }

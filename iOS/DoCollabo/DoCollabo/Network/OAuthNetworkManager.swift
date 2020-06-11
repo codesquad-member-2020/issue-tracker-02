@@ -41,3 +41,7 @@ final class OAuthNetworkManager {
         completion(token)
     }
 }
+
+extension String {
+    static let jwtToken: String = "jwtToken"
+}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 final class IssuesViewController: UIViewController {
 
@@ -16,20 +17,38 @@ final class IssuesViewController: UIViewController {
             titleHeaderView.configureTitle("이슈")
         }
     }
-    
     @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    private var issuesUseCase: UseCase!
+    private var dataSource: IssuesCollectionViewDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         fakeConfigureToken()
         configureCollectionViewDelegate()
+        configureCollectionViewDataSource()
+        configureUseCase()
+        hideViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkToken()
         titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
+    }
+    
+    private func configureCollectionViewDataSource() {
+        dataSource = IssuesCollectionViewDataSource(changedHandler: { (_) in
+            self.issuesCollectionView.reloadData()
+            self.showViews()
+        })
+        issuesCollectionView.dataSource = dataSource
+    }
+    
+    private func configureUseCase() {
+        issuesUseCase = UseCase(networkDispatcher: AF)
     }
     
     private func fakeConfigureToken() {
@@ -42,6 +61,7 @@ final class IssuesViewController: UIViewController {
             presentSignIn()
             return
         }
+        fetchIssues()
     }
     
     private func presentSignIn() {
@@ -53,10 +73,77 @@ final class IssuesViewController: UIViewController {
         singInViewController.modalPresentationStyle = .fullScreen
         present(singInViewController, animated: true, completion: nil)
     }
+    
+    private func fetchIssues() {
+        let request = FetchIssuesRequest().asURLRequest()
+        issuesUseCase.getResources(request: request, dataType: [Issue].self) { (result) in
+            switch result {
+            case .success(let issues):
+                self.dataSource.updateIssues(issues)
+            case .failure(let error):
+                self.presentErrorAlert(error: error)
+            }
+        }
+    }
+    
+    private func presentErrorAlert(error: Error) {
+        let alertController = ErrorAlertController(
+            title: nil,
+            message: error.localizedDescription,
+            preferredStyle: .alert)
+        alertController.configure(actionTitle: "재요청") { (_) in
+            self.fetchIssues()
+        }
+        alertController.configure(actionTitle: "확인") { (_) in
+            return
+        }
+        self.present(alertController, animated: true)
+    }
 }
 
-extension String {
-    static let jwtToken: String = "jwtToken"
+// MARK:- Loading UI
+
+extension IssuesViewController {
+    private func hideViews() {
+        titleHeaderBackgroundView.alpha = 0
+        titleHeaderView.alpha = 0
+        issuesCollectionView.alpha = 0
+        activityIndicator.alpha = 1
+        activityIndicator.startAnimating()
+    }
+    
+    private func showViews() {
+        UIView.animate(
+            withDuration: 0.7,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.titleHeaderBackgroundView.alpha = 1
+                self.activityIndicator.alpha = 0
+        }, completion: { _ in
+            self.activityIndicator.stopAnimating()
+        })
+        UIView.animate(
+            withDuration: 1,
+            delay: 0.2,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.titleHeaderView.alpha = 1
+        })
+        UIView.animate(
+            withDuration: 1,
+            delay: 0.4,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.issuesCollectionView.alpha = 1
+        })
+    }
 }
 
 // MARK:- UICollectionViewDelegateFlowLayout
