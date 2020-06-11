@@ -1,5 +1,5 @@
 INSERT INTO issue (close, user_id, title, description, created_at, update_time_at)
-VALUES (FALSE, 'anonymous', 'anonymous 1', 'anonymous contents1\nanonymous contents1\nanonymous contents1', NOW(),
+VALUES (TRUE, 'anonymous', 'anonymous 1', 'anonymous contents1\nanonymous contents1\nanonymous contents1', NOW(),
         NOW()),
        (FALSE, 'anonymous', 'anonymous 2', 'anonymous contents2\nanonymous contents2\nanonymous contents2', NOW(),
         NOW()),
@@ -10,7 +10,7 @@ VALUES (FALSE, 'anonymous', 'anonymous 1', 'anonymous contents1\nanonymous conte
 
        (FALSE, 'delmaSong', 'delmaSong 1', 'delmaSong contents1\ndelmaSong contents1\ndelmaSong contents1', NOW(),
         NOW()),
-       (FALSE, 'delmaSong', 'delmaSong 2', 'delmaSong contents2\ndelmaSong contents2\ndelmaSong contents2', NOW(),
+       (TRUE, 'delmaSong', 'delmaSong 2', 'delmaSong contents2\ndelmaSong contents2\ndelmaSong contents2', NOW(),
         NOW()),
        (FALSE, 'delmaSong', 'delmaSong 2', 'delmaSong contents3\ndelmaSong contents3\ndelmaSong contents3', NOW(),
         NOW()),
@@ -19,16 +19,16 @@ VALUES (FALSE, 'anonymous', 'anonymous 1', 'anonymous contents1\nanonymous conte
 
        (FALSE, 'Hyune-c', 'Hyune-c 1', 'Hyune-c contents1\nHyune-c contents1\nHyune-c contents1', NOW(), NOW()),
        (FALSE, 'Hyune-c', 'Hyune-c 2', 'Hyune-c contents2\nHyune-c contents2\nHyune-c contents2', NOW(), NOW()),
-       (FALSE, 'Hyune-c', 'Hyune-c 2', 'Hyune-c contents3\nHyune-c contents3\nHyune-c contents3', NOW(), NOW()),
+       (TRUE, 'Hyune-c', 'Hyune-c 2', 'Hyune-c contents3\nHyune-c contents3\nHyune-c contents3', NOW(), NOW()),
        (FALSE, 'Hyune-c', 'Hyune-c 3', 'Hyune-c contents4\nHyune-c contents4\nHyune-c contents4', NOW(), NOW()),
 
        (FALSE, 'corykim0829', 'corykim0829 1', 'corykim0829 contents1\ncorykim0829 contents1\ncorykim0829 contents1',
         NOW(), NOW()),
-       (FALSE, 'corykim0829', 'corykim0829 2', 'corykim0829 contents2\ncorykim0829 contents2\ncorykim0829 contents2',
+       (TRUE, 'corykim0829', 'corykim0829 2', 'corykim0829 contents2\ncorykim0829 contents2\ncorykim0829 contents2',
         NOW(), NOW()),
        (FALSE, 'corykim0829', 'corykim0829 2', 'corykim0829 contents3\ncorykim0829 contents3\ncorykim0829 contents3',
         NOW(), NOW()),
-       (FALSE, 'corykim0829', 'corykim0829 3', 'corykim0829 contents4\ncorykim0829 contents4\ncorykim0829 contents4',
+       (TRUE, 'corykim0829', 'corykim0829 3', 'corykim0829 contents4\ncorykim0829 contents4\ncorykim0829 contents4',
         NOW(), NOW())
 ;
 
@@ -51,4 +51,25 @@ VALUES (5, 1),
        (13, 1),
        (14, 2),
        (15, 3)
+;
+
+INSERT INTO milestone (title, description, due_date)
+VALUES ('1차 목표', '1차 목표 상세 설명\n스켈레톤 코드 구성', '2020-06-12'),
+       ('2차 목표', '2차 목표 상세 설명\n내부 기능 구성', '2020-06-19'),
+       ('3차 목표', '3차 목표 상세 설명\n시연하기', '2020-06-26')
+;
+
+INSERT INTO milestone_issues (mile_stone_id, issues_id)
+VALUES (1, 1),
+       (1, 5),
+       (1, 9),
+       (1, 13),
+       (2, 2),
+       (2, 6),
+       (2, 10),
+       (2, 14),
+       (3, 3),
+       (3, 7),
+       (3, 11),
+       (3, 15)
 ;
