@@ -29,7 +29,7 @@ public class LabelController {
   @ApiOperation(value = "Label 들을 가져옵니다")
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @GetMapping
-  public List<String> getIssues(HttpServletRequest request) {
+  public List<Label> getLabels(HttpServletRequest request) {
     User user = jwtUtil.parseUser(request.getHeader("Authorization"));
     return labelService.getLabels();
   }
@@ -37,7 +37,7 @@ public class LabelController {
   @ApiOperation(value = "특정 Label 를 가져옵니다")
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @GetMapping("{labelId}")
-  public Label getIssue(@PathVariable Long labelId, HttpServletRequest request) {
+  public Label getLabel(@PathVariable Long labelId, HttpServletRequest request) {
     User user = jwtUtil.parseUser(request.getHeader("Authorization"));
     return labelService.getLabel(labelId);
   }
