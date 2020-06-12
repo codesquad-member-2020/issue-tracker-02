@@ -11,7 +11,7 @@ class LabelTest {
 
   @DisplayName("LabelQuery 객체로 Label 객체를 만듭니다")
   @Test
-  void check_Input_BookingCommand() {
+  void makeLabelByLabelQuery() {
     // given
     LabelQuery labelQuery = LabelQuery.of("created label", "created label description", "5319e7");
 
