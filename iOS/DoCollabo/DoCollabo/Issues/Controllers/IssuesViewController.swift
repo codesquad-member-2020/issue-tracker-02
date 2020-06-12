@@ -21,6 +21,7 @@ final class IssuesViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var titleHeaderBackgroundViewTopAnchor: NSLayoutConstraint!
     @IBOutlet weak var titleHeaderBackgroundViewHeightAnchor: NSLayoutConstraint!
+    @IBOutlet weak var titleHeaderViewTopAnchor: NSLayoutConstraint!
     @IBOutlet weak var titleHeaderViewHeightAnchor: NSLayoutConstraint!
     
     private var issuesUseCase: UseCase!

@@ -82,6 +82,7 @@
                         <outlet property="titleHeaderBackgroundViewTopAnchor" destination="YUD-6r-XHH" id="tOs-BV-H0p"/>
                         <outlet property="titleHeaderView" destination="4S6-US-nCZ" id="gAR-FK-ius"/>
                         <outlet property="titleHeaderViewHeightAnchor" destination="mMr-bD-8v0" id="XqD-t1-c3C"/>
+                        <outlet property="titleHeaderViewTopAnchor" destination="HmP-HD-RqN" id="vf4-BZ-Lla"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

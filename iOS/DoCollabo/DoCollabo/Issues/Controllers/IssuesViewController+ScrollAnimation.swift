@@ -32,9 +32,9 @@ extension IssuesViewController: UIScrollViewDelegate {
             let heightOffset = TitleHeaderView.stretchedHeight - currentHeaderViewHeight
             let progressRatio = (heightOffset / headerViewDiff)
             if progressRatio >= 0.5 {
-                UIView.animate(withDuration: 0.1) {
+                UIView.animateCurveEaseOut(withDuration: 0.1, animations: {
                     self.titleHeaderView.hugged()
-                }
+                })
             } else {
                 titleHeaderView.titleLabel.alpha = 1.0 - progressRatio
                 titleHeaderView.smallTitleLabel.alpha = progressRatio
@@ -44,9 +44,9 @@ extension IssuesViewController: UIScrollViewDelegate {
             let heightOffset = currentHeaderViewHeight - TitleHeaderView.huggedHeight
             let progressRatio = (heightOffset / headerViewDiff)
             if progressRatio >= 0.5 {
-                UIView.animate(withDuration: 0.1) {
+                UIView.animateCurveEaseOut(withDuration: 0.1, animations: {
                     self.titleHeaderView.stretched()
-                }
+                })
             } else {
                 titleHeaderView.titleLabel.alpha = progressRatio
                 titleHeaderView.smallTitleLabel.alpha = 1.0 - progressRatio
@@ -69,17 +69,17 @@ extension IssuesViewController: UIScrollViewDelegate {
         if diffOffsetRatio < 0.5 {
             titleHeaderViewHeightAnchor.constant = TitleHeaderView.huggedHeight
             titleHeaderBackgroundViewHeightAnchor.constant = TitleHeaderBackgroundView.huggedHeight
-            UIView.animate(withDuration: 0.5) {
+            UIView.animateCurveEaseOut(withDuration: 0.5, animations: {
                 self.titleHeaderView.hugged()
                 self.view.layoutIfNeeded()
-            }
+            })
         } else {
             titleHeaderViewHeightAnchor.constant = TitleHeaderView.stretchedHeight
             titleHeaderBackgroundViewHeightAnchor.constant = TitleHeaderBackgroundView.stretchedHeight
-            UIView.animate(withDuration: 0.5) {
+            UIView.animateCurveEaseOut(withDuration: 0.5, animations: {
                 self.titleHeaderView.stretched()
                 self.view.layoutIfNeeded()
-            }
+            })
         }
     }
 }
