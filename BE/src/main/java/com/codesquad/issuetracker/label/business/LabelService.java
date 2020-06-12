@@ -25,7 +25,7 @@ public class LabelService {
 
   @Transactional
   public Label create(LabelQuery query) {
-    return labelRepository.save(Label.of(query));
+    return labelRepository.save(Label.from(query));
   }
 
   @Transactional
