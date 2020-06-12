@@ -11,6 +11,11 @@
 		3020A0A92493479200483727 /* LabelsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0A82493479200483727 /* LabelsCollectionView.swift */; };
 		3020A0AC249347F000483727 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0AA249347F000483727 /* LabelCell.swift */; };
 		3020A0AD249347F000483727 /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3020A0AB249347F000483727 /* LabelCell.xib */; };
+		3020A0B024936FB200483727 /* LabelsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0AF24936FB200483727 /* LabelsCollectionViewDataSource.swift */; };
+		3020A0B32493723E00483727 /* FetchLabelsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0B22493723E00483727 /* FetchLabelsRequest.swift */; };
+		3020A0B52493736500483727 /* AddLabelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0B42493736500483727 /* AddLabelRequest.swift */; };
+		3020A0B72493739B00483727 /* FetchLabelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0B62493739B00483727 /* FetchLabelRequest.swift */; };
+		3020A0B9249373F500483727 /* DeleteLabelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0B8249373F500483727 /* DeleteLabelRequest.swift */; };
 		3040B87F24923F8400A780D5 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040B87E24923F8400A780D5 /* ViewModelBinding.swift */; };
 		3040B8822492403600A780D5 /* IssuesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040B8812492403600A780D5 /* IssuesCollectionViewDataSource.swift */; };
 		30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C07248E1E3F001D0415 /* AppDelegate.swift */; };
@@ -60,6 +65,11 @@
 		3020A0A82493479200483727 /* LabelsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsCollectionView.swift; sourceTree = "<group>"; };
 		3020A0AA249347F000483727 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
 		3020A0AB249347F000483727 /* LabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
+		3020A0AF24936FB200483727 /* LabelsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		3020A0B22493723E00483727 /* FetchLabelsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLabelsRequest.swift; sourceTree = "<group>"; };
+		3020A0B42493736500483727 /* AddLabelRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLabelRequest.swift; sourceTree = "<group>"; };
+		3020A0B62493739B00483727 /* FetchLabelRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLabelRequest.swift; sourceTree = "<group>"; };
+		3020A0B8249373F500483727 /* DeleteLabelRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLabelRequest.swift; sourceTree = "<group>"; };
 		3040B87E24923F8400A780D5 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
 		3040B8812492403600A780D5 /* IssuesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		30789C04248E1E3F001D0415 /* DoCollabo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoCollabo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +130,7 @@
 		3020A0A224933AE700483727 /* Labels */ = {
 			isa = PBXGroup;
 			children = (
+				3020A0AE24936F9600483727 /* DataSources */,
 				3020A0A324933AF500483727 /* ViewControllers */,
 				3020A0A62493475B00483727 /* Views */,
 			);
@@ -142,6 +153,25 @@
 				3020A0AB249347F000483727 /* LabelCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3020A0AE24936F9600483727 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				3020A0AF24936FB200483727 /* LabelsCollectionViewDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		3020A0B12493722900483727 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				3020A0B22493723E00483727 /* FetchLabelsRequest.swift */,
+				3020A0B42493736500483727 /* AddLabelRequest.swift */,
+				3020A0B62493739B00483727 /* FetchLabelRequest.swift */,
+				3020A0B8249373F500483727 /* DeleteLabelRequest.swift */,
+			);
+			path = Labels;
 			sourceTree = "<group>";
 		};
 		3040B87D24923F6400A780D5 /* ViewModels */ = {
@@ -249,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				30E22EE42491064A00EC0FD8 /* Request.swift */,
+				3020A0B12493722900483727 /* Labels */,
 				30E22EF124910C5200EC0FD8 /* Issue */,
 			);
 			path = Request;
@@ -456,6 +487,7 @@
 				30789C1F248E3FC1001D0415 /* UIView+Border.swift in Sources */,
 				38D3643D248FA96300884972 /* TitleHeaderView.swift in Sources */,
 				386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */,
+				3020A0B52493736500483727 /* AddLabelRequest.swift in Sources */,
 				30E22EEA2491093100EC0FD8 /* NetworkDispatcher.swift in Sources */,
 				30E22EEE249109EC00EC0FD8 /* FetchIssuesRequest.swift in Sources */,
 				38F0FB5E248E73690080FBBD /* OAuthNetworkManager.swift in Sources */,
@@ -463,6 +495,7 @@
 				30E22EF324910D8700EC0FD8 /* FetchIssueRequest.swift in Sources */,
 				30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */,
 				38BDFA2E24913128008E901D /* IssueHorizontalTitleLabel.swift in Sources */,
+				3020A0B72493739B00483727 /* FetchLabelRequest.swift in Sources */,
 				38BDFA2A24912E79008E901D /* IssueHorizontalContentsStackView.swift in Sources */,
 				38F0FB49248E2D870080FBBD /* Colors.swift in Sources */,
 				38879C582490E48600EE84D7 /* UIView+Shadow.swift in Sources */,
@@ -470,13 +503,16 @@
 				30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */,
 				30E22EE22490B09200EC0FD8 /* IssueLabelsCollectionView.swift in Sources */,
 				3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */,
+				3020A0B024936FB200483727 /* LabelsCollectionViewDataSource.swift in Sources */,
 				30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */,
 				386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */,
+				3020A0B32493723E00483727 /* FetchLabelsRequest.swift in Sources */,
 				30E22EEC2491098200EC0FD8 /* Session+NetworkDispatcher.swift in Sources */,
 				3020A0A92493479200483727 /* LabelsCollectionView.swift in Sources */,
 				30E22EFD2491101A00EC0FD8 /* IssueLabel.swift in Sources */,
 				3040B87F24923F8400A780D5 /* ViewModelBinding.swift in Sources */,
 				3020A0AC249347F000483727 /* LabelCell.swift in Sources */,
+				3020A0B9249373F500483727 /* DeleteLabelRequest.swift in Sources */,
 				30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */,
 				38879C552490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */,
