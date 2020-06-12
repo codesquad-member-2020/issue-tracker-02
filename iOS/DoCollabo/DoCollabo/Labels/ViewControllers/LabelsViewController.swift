@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LabelsViewController: UIViewController {
     
@@ -14,8 +15,8 @@ class LabelsViewController: UIViewController {
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var labelsCollectionView: LabelsCollectionView!
     
-    let label: IssueLabel = IssueLabel(id: 1, title: "feat", color: "11aaff", description: "label descriptionlabel descriptionlabel descriptionlabel descriptionlabel descriptionlabel descriptionlabel descriptionlabel descriptionlabel description")
-    lazy var labels: [IssueLabel] = [label, label, label, label, label, label, label, label, label]
+    private var labelsUseCase: UseCase!
+    private var dataSource: LabelsCollectionViewDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,30 +24,58 @@ class LabelsViewController: UIViewController {
     }
     
     private func configure() {
-        labelsCollectionView.dataSource = self
         titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
         titleHeaderView.configureTitle("레이블")
-        collectionViewConfigure()
+        configureCollectionView()
+        configureCollectionViewDataSource()
+        configureUseCase()
     }
     
-    private func collectionViewConfigure() {
+    private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: labelsCollectionView.frame.width * 0.9, height: self.view.frame.height / 8)
+        layout.itemSize = CGSize(
+            width: labelsCollectionView.frame.width * 0.9,
+            height: self.view.frame.height / 8)
         layout.scrollDirection = .vertical
         labelsCollectionView.collectionViewLayout = layout
         labelsCollectionView.showsVerticalScrollIndicator = false
     }
-}
-
-extension LabelsViewController: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return labels.count
+    private func configureCollectionViewDataSource() {
+        dataSource = LabelsCollectionViewDataSource( changedHandler: { (_) in
+            self.labelsCollectionView.reloadData()
+        })
+        labelsCollectionView.dataSource = dataSource
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: LabelCell.self), for: indexPath) as! LabelCell
-        cell.configureCell(with: labels[indexPath.item])
-        return cell
+    private func configureUseCase() {
+        labelsUseCase = UseCase(networkDispatcher: AF)
+        fetchLabels()
+    }
+    
+    private func fetchLabels() {
+        let request = FetchLabelsRequest().asURLRequest()
+        labelsUseCase.getResources(request: request, dataType: [IssueLabel].self) { result in
+            switch result {
+            case .success(let labels):
+                self.dataSource.updateLabels(labels)
+            case .failure(let error):
+                self.presentErrorAlert(error: error)
+            }
+        }
+    }
+    
+    private func presentErrorAlert(error: Error) {
+        let alertController = ErrorAlertController(
+            title: nil,
+            message: error.localizedDescription,
+            preferredStyle: .alert)
+        alertController.configure(actionTitle: "재요청") { (_) in
+            self.fetchLabels()
+        }
+        alertController.configure(actionTitle: "확인") { (_) in
+            return
+        }
+        self.present(alertController, animated: true)
     }
 }
