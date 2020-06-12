@@ -70,6 +70,6 @@ ex) 카드 추가 (라벨 BE, 프로젝트 추가)
 
 ## Documents
 
-- [API Document]()
+- [Swagger](http://52.79.81.75:8080/swagger-ui.html)
 - [iOS Feature Requirements](https://docs.google.com/spreadsheets/d/1PS3qxyUZ9dthyNLMbDasInC9mER7WPdZ7khVixbp6ng/edit#gid=0)
 - [Design Guide](https://github.com/codesquad-member-2020/issue-tracker-02/wiki/Design-Guide-Document)
