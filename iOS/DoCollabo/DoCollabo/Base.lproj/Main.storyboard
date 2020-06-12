@@ -18,18 +18,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHS-ei-5er">
-                                <rect key="frame" x="10.5" y="44" width="393" height="275.5"/>
+                                <rect key="frame" x="10.5" y="44" width="393" height="240"/>
                                 <color key="backgroundColor" name="key.navy"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="QHS-ei-5er" secondAttribute="height" multiplier="5:3.5" id="ZdY-Gq-gRc"/>
+                                    <constraint firstAttribute="height" constant="240" id="dqc-th-NxY"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4S6-US-nCZ" customClass="TitleHeaderView" customModule="DoCollabo" customModuleProvider="target">
-                                <rect key="frame" x="10.5" y="44" width="393" height="151.5"/>
+                                <rect key="frame" x="10.5" y="44" width="393" height="144"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="mMr-bD-8v0"/>
+                                </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="A8O-zc-ada" customClass="IssuesCollectionView" customModule="DoCollabo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="203.5" width="414" height="609.5"/>
+                                <rect key="frame" x="0.0" y="196" width="414" height="617"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tTw-9I-mle">
                                     <size key="itemSize" width="128" height="128"/>
@@ -60,7 +63,6 @@
                             <constraint firstItem="7rp-jf-7jW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QiE-ON-sSo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="A8O-zc-ada" secondAttribute="bottom" id="WUv-XL-hAO"/>
                             <constraint firstItem="QHS-ei-5er" firstAttribute="trailing" secondItem="4S6-US-nCZ" secondAttribute="trailing" id="X4Y-ev-Rf3"/>
-                            <constraint firstItem="4S6-US-nCZ" firstAttribute="height" secondItem="QHS-ei-5er" secondAttribute="height" multiplier="0.55" id="Y1G-LL-0zA"/>
                             <constraint firstItem="QHS-ei-5er" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YUD-6r-XHH"/>
                             <constraint firstItem="7rp-jf-7jW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Yda-xW-ryu"/>
                             <constraint firstItem="A8O-zc-ada" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cny-F8-Ga8"/>
@@ -76,7 +78,10 @@
                         <outlet property="activityIndicator" destination="7rp-jf-7jW" id="BiU-W8-l4z"/>
                         <outlet property="issuesCollectionView" destination="A8O-zc-ada" id="ea6-Mf-Xkh"/>
                         <outlet property="titleHeaderBackgroundView" destination="QHS-ei-5er" id="Had-li-EhF"/>
+                        <outlet property="titleHeaderBackgroundViewHeightAnchor" destination="dqc-th-NxY" id="wPg-iI-Rbc"/>
+                        <outlet property="titleHeaderBackgroundViewTopAnchor" destination="YUD-6r-XHH" id="tOs-BV-H0p"/>
                         <outlet property="titleHeaderView" destination="4S6-US-nCZ" id="gAR-FK-ius"/>
+                        <outlet property="titleHeaderViewHeightAnchor" destination="mMr-bD-8v0" id="XqD-t1-c3C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

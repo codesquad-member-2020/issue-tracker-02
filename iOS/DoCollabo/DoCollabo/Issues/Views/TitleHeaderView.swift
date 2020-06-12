@@ -10,6 +10,9 @@ import UIKit
 
 @IBDesignable
 final class TitleHeaderView: UIView {
+    
+    static let stretchedHeight: CGFloat = 144.0
+    static let huggedHeight: CGFloat = 100.0
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var backgroundView: UIView!
@@ -26,6 +29,25 @@ final class TitleHeaderView: UIView {
         configure()
     }
     
+    func stretched() {
+        titleLabel.alpha = 1
+        smallTitleLabel.alpha = 0
+    }
+    
+    func hugged() {
+        titleLabel.alpha = 0
+        smallTitleLabel.alpha = 1
+    }
+    
+    func configureTitle(_ text: String) {
+        titleLabel.text = text
+        smallTitleLabel.text = text
+    }
+}
+
+// MARK:- Configuration
+
+extension TitleHeaderView {
     private func configure() {
         configureNib()
         configureUI()
@@ -33,7 +55,7 @@ final class TitleHeaderView: UIView {
     
     private func configureUI() {
         backgroundView.roundCorner(cornerRadius: 16.0)
-        smallTitleLabel.isHidden = true
+        smallTitleLabel.alpha = 0
     }
     
     private func configureNib() {
@@ -42,10 +64,5 @@ final class TitleHeaderView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    }
-    
-    func configureTitle(_ text: String) {
-        titleLabel.text = text
-        smallTitleLabel.text = text
     }
 }
