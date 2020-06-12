@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3020A0A524933B0D00483727 /* LabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0A424933B0D00483727 /* LabelsViewController.swift */; };
 		3040B87F24923F8400A780D5 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040B87E24923F8400A780D5 /* ViewModelBinding.swift */; };
 		3040B8822492403600A780D5 /* IssuesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040B8812492403600A780D5 /* IssuesCollectionViewDataSource.swift */; };
 		30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C07248E1E3F001D0415 /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3020A0A424933B0D00483727 /* LabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
 		3040B87E24923F8400A780D5 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
 		3040B8812492403600A780D5 /* IssuesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		30789C04248E1E3F001D0415 /* DoCollabo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoCollabo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3020A0A224933AE700483727 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				3020A0A324933AF500483727 /* ViewControllers */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		3020A0A324933AF500483727 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3020A0A424933B0D00483727 /* LabelsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		3040B87D24923F6400A780D5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +162,7 @@
 		30789C06248E1E3F001D0415 /* DoCollabo */ = {
 			isa = PBXGroup;
 			children = (
+				3020A0A224933AE700483727 /* Labels */,
 				3040B87D24923F6400A780D5 /* ViewModels */,
 				30E22EF924910F8E00EC0FD8 /* Models */,
 				30789C20248E430F001D0415 /* Network */,
@@ -415,6 +434,7 @@
 			files = (
 				38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */,
 				38BDFA2C24912F21008E901D /* UIView+AutoLayout.swift in Sources */,
+				3020A0A524933B0D00483727 /* LabelsViewController.swift in Sources */,
 				30789C1F248E3FC1001D0415 /* UIView+Border.swift in Sources */,
 				38D3643D248FA96300884972 /* TitleHeaderView.swift in Sources */,
 				386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */,
