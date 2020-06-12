@@ -21,12 +21,13 @@ class LabelsCollectionView: UICollectionView {
     }
     
     private func configure() {
-        
+        registerCollectionViewCell()
+        showsVerticalScrollIndicator = false
     }
     
     private func registerCollectionViewCell() {
         register(
-            LabelCell.self,
+            UINib(nibName: String(describing: LabelCell.self), bundle: nil),
             forCellWithReuseIdentifier: String(describing: LabelCell.self))
     }
 }

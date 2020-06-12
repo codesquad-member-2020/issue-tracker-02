@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="LabelCell" customModule="DoCollabo" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LabelCell" id="gTV-IL-0wX" customClass="LabelCell" customModule="DoCollabo" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="353" height="108"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -20,10 +20,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="353" height="108"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MsW-Ig-kr9">
-                                <rect key="frame" x="12" y="12" width="56" height="27"/>
+                                <rect key="frame" x="16" y="12" width="64" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQX-dr-gJz">
-                                        <rect key="frame" x="4" y="2" width="48" height="23"/>
+                                        <rect key="frame" x="8" y="4" width="48" height="23"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -31,14 +31,14 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="qQX-dr-gJz" firstAttribute="leading" secondItem="MsW-Ig-kr9" secondAttribute="leading" constant="4" id="4Is-MV-Kpn"/>
-                                    <constraint firstItem="qQX-dr-gJz" firstAttribute="top" secondItem="MsW-Ig-kr9" secondAttribute="top" constant="2" id="BeY-44-Ilu"/>
-                                    <constraint firstAttribute="trailing" secondItem="qQX-dr-gJz" secondAttribute="trailing" constant="4" id="Xxb-SI-0Hg"/>
-                                    <constraint firstAttribute="bottom" secondItem="qQX-dr-gJz" secondAttribute="bottom" constant="2" id="dCx-Ct-DCQ"/>
+                                    <constraint firstItem="qQX-dr-gJz" firstAttribute="leading" secondItem="MsW-Ig-kr9" secondAttribute="leading" constant="8" id="4Is-MV-Kpn"/>
+                                    <constraint firstItem="qQX-dr-gJz" firstAttribute="top" secondItem="MsW-Ig-kr9" secondAttribute="top" constant="4" id="BeY-44-Ilu"/>
+                                    <constraint firstAttribute="trailing" secondItem="qQX-dr-gJz" secondAttribute="trailing" constant="8" id="Xxb-SI-0Hg"/>
+                                    <constraint firstAttribute="bottom" secondItem="qQX-dr-gJz" secondAttribute="bottom" constant="4" id="dCx-Ct-DCQ"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAD-J5-xo5">
-                                <rect key="frame" x="12" y="47" width="329" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAD-J5-xo5">
+                                <rect key="frame" x="16" y="51" width="325" height="37"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                             <constraint firstItem="bAD-J5-xo5" firstAttribute="leading" secondItem="MsW-Ig-kr9" secondAttribute="leading" id="UJo-1s-DjO"/>
                             <constraint firstItem="MsW-Ig-kr9" firstAttribute="top" secondItem="j8s-eF-QZB" secondAttribute="top" constant="12" id="VS2-ZB-reB"/>
                             <constraint firstAttribute="trailing" secondItem="bAD-J5-xo5" secondAttribute="trailing" constant="12" id="hoK-pS-hyq"/>
-                            <constraint firstItem="MsW-Ig-kr9" firstAttribute="leading" secondItem="j8s-eF-QZB" secondAttribute="leading" constant="12" id="nCG-4a-Qr8"/>
+                            <constraint firstItem="MsW-Ig-kr9" firstAttribute="leading" secondItem="j8s-eF-QZB" secondAttribute="leading" constant="16" id="nCG-4a-Qr8"/>
                         </constraints>
                     </view>
                 </subviews>

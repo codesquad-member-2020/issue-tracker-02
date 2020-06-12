@@ -10,7 +10,6 @@ import UIKit
 
 class LabelCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleBackground: UIView!
@@ -22,24 +21,20 @@ class LabelCell: UICollectionViewCell {
     }
     
     private func configure() {
-        configureNib()
+        configureUI()
     }
     
     private func configureUI() {
-        backgroundView?.roundCorner(cornerRadius: 12.0)
+        drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
+        background.roundCorner(cornerRadius: 12.0)
+        titleBackground.roundCorner(cornerRadius: 8.0)
     }
     
-    private func configureNib() {
-        let bundle = Bundle(for: Self.self)
-        bundle.loadNibNamed(String(describing: Self.self), owner: self, options: nil)
-        addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    }
-    
-    func configureCell(_ issueLabel: IssueLabel) {
-        titleLabel.text = issueLabel.title
-        titleBackground.backgroundColor = UIColor(hexString: issueLabel.color)
-        descriptionLabel.text = issueLabel.description
+    func configureCell(with label: IssueLabel) {
+        titleLabel.text = label.title
+        let color = UIColor(hexString: label.color)
+        titleLabel.textColor = color.isDark() ? .white : .black
+        titleBackground.backgroundColor = color
+        descriptionLabel.text = label.description
     }
 }
