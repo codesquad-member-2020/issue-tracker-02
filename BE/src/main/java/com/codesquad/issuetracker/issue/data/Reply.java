@@ -24,7 +24,7 @@ public class Reply {
   private Long id;
 
   private String userId;
-  private String content;
+  private String contents;
 
   @ElementCollection(fetch = FetchType.EAGER)
   @Enumerated(EnumType.STRING)

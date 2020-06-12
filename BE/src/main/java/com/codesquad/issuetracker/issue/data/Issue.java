@@ -39,7 +39,7 @@ public class Issue {
   private List<Label> labels = new ArrayList<>();
 
   @OneToMany
-  @JoinColumn(name = "reply_id")
+  @JoinColumn(name = "issue_id")
   private List<Reply> replies = new ArrayList<>();
 
   @CreationTimestamp
