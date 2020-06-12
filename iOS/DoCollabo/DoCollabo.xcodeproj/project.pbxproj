@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3020A0A524933B0D00483727 /* LabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0A424933B0D00483727 /* LabelsViewController.swift */; };
+		3020A0A92493479200483727 /* LabelsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0A82493479200483727 /* LabelsCollectionView.swift */; };
+		3020A0AC249347F000483727 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0AA249347F000483727 /* LabelCell.swift */; };
+		3020A0AD249347F000483727 /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3020A0AB249347F000483727 /* LabelCell.xib */; };
 		3040B87F24923F8400A780D5 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040B87E24923F8400A780D5 /* ViewModelBinding.swift */; };
 		3040B8822492403600A780D5 /* IssuesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040B8812492403600A780D5 /* IssuesCollectionViewDataSource.swift */; };
 		30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C07248E1E3F001D0415 /* AppDelegate.swift */; };
@@ -54,6 +57,9 @@
 
 /* Begin PBXFileReference section */
 		3020A0A424933B0D00483727 /* LabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
+		3020A0A82493479200483727 /* LabelsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsCollectionView.swift; sourceTree = "<group>"; };
+		3020A0AA249347F000483727 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
+		3020A0AB249347F000483727 /* LabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
 		3040B87E24923F8400A780D5 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
 		3040B8812492403600A780D5 /* IssuesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		30789C04248E1E3F001D0415 /* DoCollabo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoCollabo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				3020A0A324933AF500483727 /* ViewControllers */,
+				3020A0A62493475B00483727 /* Views */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -125,6 +132,16 @@
 				3020A0A424933B0D00483727 /* LabelsViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3020A0A62493475B00483727 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3020A0A82493479200483727 /* LabelsCollectionView.swift */,
+				3020A0AA249347F000483727 /* LabelCell.swift */,
+				3020A0AB249347F000483727 /* LabelCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3040B87D24923F6400A780D5 /* ViewModels */ = {
@@ -422,6 +439,7 @@
 				38D3643F248FA96E00884972 /* TitleHeaderView.xib in Resources */,
 				30789C0F248E1E3F001D0415 /* Main.storyboard in Resources */,
 				30E22EDF2490A61200EC0FD8 /* IssueLabelCell.xib in Resources */,
+				3020A0AD249347F000483727 /* LabelCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,8 +473,10 @@
 				30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */,
 				386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */,
 				30E22EEC2491098200EC0FD8 /* Session+NetworkDispatcher.swift in Sources */,
+				3020A0A92493479200483727 /* LabelsCollectionView.swift in Sources */,
 				30E22EFD2491101A00EC0FD8 /* IssueLabel.swift in Sources */,
 				3040B87F24923F8400A780D5 /* ViewModelBinding.swift in Sources */,
+				3020A0AC249347F000483727 /* LabelCell.swift in Sources */,
 				30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */,
 				38879C552490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */,
