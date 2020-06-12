@@ -19,47 +19,37 @@ extension IssuesViewController: UIScrollViewDelegate {
             if currentHeaderViewHeight > TitleHeaderView.huggedHeight {
                 let backgroundOffsetY = offsetY * (backgroundViewDiff / headerViewDiff)
                 titleHeaderBackgroundViewHeightAnchor.constant -= backgroundOffsetY
-            } else if currentHeaderViewHeight <= TitleHeaderView.huggedHeight {
-                guard currentHeaderViewHeight >= TitleHeaderView.huggedHeight else { return }
-                titleHeaderBackgroundViewHeightAnchor.constant = TitleHeaderBackgroundView.huggedHeight
             }
         } else if offsetY < 0 {
             if currentHeaderViewHeight < TitleHeaderView.stretchedHeight {
                 let backgroundOffsetY = offsetY * (backgroundViewDiff / headerViewDiff)
                 titleHeaderBackgroundViewHeightAnchor.constant -= backgroundOffsetY
-            } else if currentHeaderViewHeight >= TitleHeaderView.stretchedHeight {
-                guard currentHeaderViewHeight <= TitleHeaderView.stretchedHeight else { return }
-                titleHeaderBackgroundViewHeightAnchor.constant = TitleHeaderBackgroundView.stretchedHeight
             }
         }
         
-        if offsetY > 0 {
-            if currentHeaderViewHeight > TitleHeaderView.huggedHeight {
-                titleHeaderViewHeightAnchor.constant -= offsetY
-                let heightOffset = TitleHeaderView.stretchedHeight - currentHeaderViewHeight
-                let alpha = (heightOffset / headerViewDiff)
-                titleHeaderView.titleLabel.alpha = 1.0 - alpha
-                titleHeaderView.smallTitleLabel.alpha = alpha
-            } else if currentHeaderViewHeight <= TitleHeaderView.huggedHeight {
-                titleHeaderView.hugged()
-                titleHeaderViewHeightAnchor.constant = TitleHeaderView.huggedHeight
+        if offsetY > 0 && currentHeaderViewHeight > TitleHeaderView.huggedHeight {
+            titleHeaderViewHeightAnchor.constant -= offsetY
+            let heightOffset = TitleHeaderView.stretchedHeight - currentHeaderViewHeight
+            let progressRatio = (heightOffset / headerViewDiff)
+            if progressRatio >= 0.5 {
                 UIView.animate(withDuration: 0.1) {
-                    self.view.layoutIfNeeded()
+                    self.titleHeaderView.hugged()
                 }
+            } else {
+                titleHeaderView.titleLabel.alpha = 1.0 - progressRatio
+                titleHeaderView.smallTitleLabel.alpha = progressRatio
             }
-        } else if offsetY < 0 {
-            if currentHeaderViewHeight < TitleHeaderView.stretchedHeight {
-                titleHeaderViewHeightAnchor.constant -= offsetY
-                let heightOffset = currentHeaderViewHeight - TitleHeaderView.huggedHeight
-                let alpha = (heightOffset / headerViewDiff)
-                titleHeaderView.titleLabel.alpha = alpha
-                titleHeaderView.smallTitleLabel.alpha = 1.0 - alpha
-            } else if currentHeaderViewHeight >= TitleHeaderView.stretchedHeight {
-                titleHeaderView.stretched()
-                titleHeaderViewHeightAnchor.constant = TitleHeaderView.stretchedHeight
+        } else if offsetY < 0 && currentHeaderViewHeight < TitleHeaderView.stretchedHeight {
+            titleHeaderViewHeightAnchor.constant -= offsetY
+            let heightOffset = currentHeaderViewHeight - TitleHeaderView.huggedHeight
+            let progressRatio = (heightOffset / headerViewDiff)
+            if progressRatio >= 0.5 {
                 UIView.animate(withDuration: 0.1) {
-                    self.view.layoutIfNeeded()
+                    self.titleHeaderView.stretched()
                 }
+            } else {
+                titleHeaderView.titleLabel.alpha = progressRatio
+                titleHeaderView.smallTitleLabel.alpha = 1.0 - progressRatio
             }
         }
     }
