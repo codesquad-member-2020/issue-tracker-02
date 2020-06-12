@@ -11,7 +11,7 @@ import Alamofire
 
 final class IssuesViewController: UIViewController {
 
-    @IBOutlet weak var titleHeaderBackgroundView: UIView!
+    @IBOutlet weak var titleHeaderBackgroundView: TitleHeaderBackgroundView!
     @IBOutlet weak var titleHeaderView: TitleHeaderView! {
         didSet {
             titleHeaderView.configureTitle("이슈")
@@ -39,7 +39,6 @@ final class IssuesViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkToken()
-        titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
     }
     
     private func configureCollectionViewDataSource() {
