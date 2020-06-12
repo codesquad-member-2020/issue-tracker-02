@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,25 +34,30 @@ public class Issue {
   private String title;
   private String description;
 
+  @ManyToMany
+  @JoinColumn(name = "label_id")
+  private List<Label> labels = new ArrayList<>();
+
+  @OneToMany
+  @JoinColumn(name = "issue_id")
+  private List<Reply> replies = new ArrayList<>();
+
   @CreationTimestamp
   private LocalDateTime createdAt;
 
   @UpdateTimestamp
   private LocalDateTime updateTimeAt;
 
-  @ManyToMany
-  @JoinColumn(name = "label_id")
-  private List<Label> labels = new ArrayList<>();
-
-
   @Builder
   private Issue(Long id, Boolean close, String userId, String title, String description,
-      LocalDateTime createdAt, LocalDateTime updateTimeAt, List<Label> labels) {
+      List<Reply> replies, LocalDateTime createdAt, LocalDateTime updateTimeAt,
+      List<Label> labels) {
     this.id = id;
     this.close = close;
     this.userId = userId;
     this.title = title;
     this.description = description;
+    this.replies = replies;
     this.createdAt = createdAt;
     this.updateTimeAt = updateTimeAt;
     this.labels = labels;

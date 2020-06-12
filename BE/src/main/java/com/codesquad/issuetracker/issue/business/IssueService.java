@@ -17,17 +17,11 @@ public class IssueService {
   private final IssueRepository issueRepository;
 
   public List<Issue> getIssues(User user) {
-    return issueRepository.findAllByUserIdEquals(user.getUserId());
+    return issueRepository.findAll();
   }
 
   public Issue getIssue(User user, Long issueId) {
-    Issue findIssue = issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
-
-    if (!findIssue.isSameUser(user)) {
-      throw new RuntimeException("다른 유저의 Issue 입니다");
-    }
-
-    return findIssue;
+    return issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
   }
 
   @Transactional

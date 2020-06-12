@@ -73,3 +73,15 @@ VALUES (1, 1),
        (3, 11),
        (3, 15)
 ;
+
+INSERT INTO reply (user_id, contents, created_at, issue_id)
+VALUES ('Hyune-c', 'Hyune-c reply 1\nline2', NOW(), 5),
+       ('Hyune-c', 'Hyune-c reply 1\nline2', NOW(), 9),
+       ('Hyune-c', 'Hyune-c reply 1\nline2', NOW(), 13),
+       ('delmaSong', 'delmaSong reply 1\nline2', NOW(), 6),
+       ('delmaSong', 'delmaSong reply 1\nline2', NOW(), 10),
+       ('delmaSong', 'delmaSong reply 1\nline2', NOW(), 14),
+       ('corykim0829', 'corykim0829 reply 1\nline2', NOW(), 7),
+       ('corykim0829', 'corykim0829 reply 1\nline2', NOW(), 11),
+       ('corykim0829', 'corykim0829 reply 1\nline2', NOW(), 15)
+;
