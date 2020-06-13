@@ -3,7 +3,7 @@ package com.codesquad.issuetracker.milestone.web;
 import com.codesquad.issuetracker.auth.data.User;
 import com.codesquad.issuetracker.milestone.business.MileStoneService;
 import com.codesquad.issuetracker.milestone.data.MileStone;
-import com.codesquad.issuetracker.milestone.web.model.GetMileStonesView;
+import com.codesquad.issuetracker.milestone.web.model.MileStoneView;
 import com.codesquad.issuetracker.milestone.web.model.MileStoneQuery;
 import com.codesquad.issuetracker.util.JwtUtil;
 import io.swagger.annotations.ApiImplicitParam;
@@ -30,7 +30,7 @@ public class MileStoneController {
   @ApiOperation(value = "MileStone 들을 가져옵니다")
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @GetMapping
-  public List<GetMileStonesView> getMileStones(HttpServletRequest request) {
+  public List<MileStoneView> getMileStones(HttpServletRequest request) {
     User user = jwtUtil.parseUser(request.getHeader("Authorization"));
     return mileStoneService.getMileStones();
   }
