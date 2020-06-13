@@ -18,6 +18,8 @@
 		3020A0B9249373F500483727 /* DeleteLabelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0B8249373F500483727 /* DeleteLabelRequest.swift */; };
 		3040B87F24923F8400A780D5 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040B87E24923F8400A780D5 /* ViewModelBinding.swift */; };
 		3040B8822492403600A780D5 /* IssuesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040B8812492403600A780D5 /* IssuesCollectionViewDataSource.swift */; };
+		30413569249511BF000AB1E9 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30413568249511BF000AB1E9 /* AddView.swift */; };
+		3041356B249511CC000AB1E9 /* AddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3041356A249511CC000AB1E9 /* AddView.xib */; };
 		30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C07248E1E3F001D0415 /* AppDelegate.swift */; };
 		30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C09248E1E3F001D0415 /* SceneDelegate.swift */; };
 		30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C0B248E1E3F001D0415 /* TabBarViewController.swift */; };
@@ -75,6 +77,8 @@
 		3020A0B8249373F500483727 /* DeleteLabelRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLabelRequest.swift; sourceTree = "<group>"; };
 		3040B87E24923F8400A780D5 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
 		3040B8812492403600A780D5 /* IssuesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		30413568249511BF000AB1E9 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		3041356A249511CC000AB1E9 /* AddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddView.xib; sourceTree = "<group>"; };
 		30789C04248E1E3F001D0415 /* DoCollabo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoCollabo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30789C07248E1E3F001D0415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30789C09248E1E3F001D0415 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +200,15 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		3041356224951018000AB1E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				30413568249511BF000AB1E9 /* AddView.swift */,
+				3041356A249511CC000AB1E9 /* AddView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		30789BFB248E1E3F001D0415 = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +228,7 @@
 		30789C06248E1E3F001D0415 /* DoCollabo */ = {
 			isa = PBXGroup;
 			children = (
+				3041356224951018000AB1E9 /* Views */,
 				3020A0A224933AE700483727 /* Labels */,
 				3040B87D24923F6400A780D5 /* ViewModels */,
 				30E22EF924910F8E00EC0FD8 /* Models */,
@@ -479,6 +493,7 @@
 				38D3643F248FA96E00884972 /* TitleHeaderView.xib in Resources */,
 				30789C0F248E1E3F001D0415 /* Main.storyboard in Resources */,
 				30E22EDF2490A61200EC0FD8 /* IssueLabelCell.xib in Resources */,
+				3041356B249511CC000AB1E9 /* AddView.xib in Resources */,
 				3020A0AD249347F000483727 /* LabelCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,6 +549,7 @@
 				30E22EF524910E3D00EC0FD8 /* DeleteIssueRequest.swift in Sources */,
 				38F0FB62248FA23F0080FBBD /* EndPoint.swift in Sources */,
 				3861B00B248FC654006FD89E /* IssueHorizontalCell.swift in Sources */,
+				30413569249511BF000AB1E9 /* AddView.swift in Sources */,
 				30789C1D248E3A37001D0415 /* LeadingImageButton.swift in Sources */,
 				30E22EDE2490A61200EC0FD8 /* IssueLabelCell.swift in Sources */,
 				30E22EF024910BDA00EC0FD8 /* AddIssueRequest.swift in Sources */,
