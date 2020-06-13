@@ -44,7 +44,7 @@ public class MileStone {
     this.issues = issues;
   }
 
-  public static MileStone of(MileStoneQuery mileStoneQuery) {
+  public static MileStone from(MileStoneQuery mileStoneQuery) {
     return MileStone.builder()
         .title(mileStoneQuery.getTitle())
         .description(mileStoneQuery.getDescription())

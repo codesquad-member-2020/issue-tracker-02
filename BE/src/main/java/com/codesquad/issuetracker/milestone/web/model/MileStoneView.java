@@ -9,8 +9,9 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class GetMileStonesView {
+public class MileStoneView {
 
+  private final Long id;
   private final String title;
   private final String description;
   private final LocalDate dueDate;
@@ -18,8 +19,10 @@ public class GetMileStonesView {
   private final Long closeIssueCount;
 
   @Builder
-  private GetMileStonesView(String title, String description, LocalDate dueDate, Long issueCount,
+  private MileStoneView(Long id, String title, String description, LocalDate dueDate,
+      Long issueCount,
       Long closeIssueCount) {
+    this.id = id;
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
@@ -27,9 +30,10 @@ public class GetMileStonesView {
     this.closeIssueCount = closeIssueCount;
   }
 
-  public static GetMileStonesView of(MileStone findMileStone) {
+  public static MileStoneView from(MileStone findMileStone) {
     List<Issue> issues = findMileStone.getIssues();
-    return GetMileStonesView.builder()
+    return MileStoneView.builder()
+        .id(findMileStone.getId())
         .title(findMileStone.getTitle())
         .description(findMileStone.getDescription())
         .dueDate(findMileStone.getDueDate())
