@@ -38,7 +38,7 @@ public class MileStoneTest {
 
     @DisplayName("MileStoneQuery 로 MileStone 을 만듭니다")
     @Test
-    void makeMileStoneByMileStoneQuery() {
+    public void makeMileStoneByMileStoneQuery() {
       // given
 
       // when
@@ -71,22 +71,10 @@ public class MileStoneTest {
           .of("1차 목표", "1차 목표 상세 설명\n스켈레톤 코드 구성", LocalDate.now().plusDays(7), new ArrayList<>());
     }
 
-    @DisplayName("모든 MileStone 을 가져옵니다")
-    @Test
-    void getMileStones() {
-      // given
-
-      // when
-      List<MileStoneView> findMileStoneViews = mileStoneService.getMileStones();
-
-      // then
-      assertThat(findMileStoneViews.size()).isEqualTo(3); // MileStone 의 초기 값은 3개 입니다
-    }
-
     @DisplayName("MileStone 을 추가합니다")
     @Transactional
     @Test
-    void create() {
+    public void create() {
       // given
 
       // when
@@ -99,23 +87,10 @@ public class MileStoneTest {
           .isEqualTo(savedMileStone.getId());
     }
 
-    @DisplayName("특정 MileStone 을 가져옵니다")
-    @Test
-    void getMileStone() {
-      // given
-      MileStone savedMileStone = mileStoneService.create(sampleMileStoneQuery);
-
-      // when
-      MileStone findMileStone = mileStoneService.getMileStone(savedMileStone.getId());
-
-      // then
-      assertThat(findMileStone).isEqualTo(savedMileStone);
-    }
-
     @DisplayName("MileStone 을 삭제합니다")
     @Transactional
     @Test
-    void delete() {
+    public void delete() {
       // given
       MileStone savedMileStone = mileStoneService.create(sampleMileStoneQuery);
       Optional<MileStone> findOptionalMileStone = mileStoneRepository
@@ -132,6 +107,37 @@ public class MileStoneTest {
       assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> {
         deletedOptionalMileStone.orElseThrow(NoSuchElementException::new);
       });
+    }
+
+    @Nested
+    @DisplayName("MileStone 을 가져옵니다")
+    @Transactional
+    @SpringBootTest
+    public class GetTest {
+
+      @DisplayName("모든")
+      @Test
+      public void getMileStones() {
+        // given
+
+        // when
+        List<MileStoneView> findMileStoneViews = mileStoneService.getMileStones();
+
+        // then
+        assertThat(findMileStoneViews.size()).isEqualTo(3); // MileStone 의 초기 값은 3개 입니다
+      }
+
+      @DisplayName("특정")
+      @Test
+      public void getMileStone() {
+        // given
+
+        // when
+        MileStone findMileStone = mileStoneService.getMileStone(1L);
+
+        // then
+        assertThat(findMileStone).isNotNull();
+      }
     }
   }
 }

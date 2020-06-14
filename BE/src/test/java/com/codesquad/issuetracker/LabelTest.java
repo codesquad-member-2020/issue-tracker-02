@@ -62,22 +62,10 @@ public class LabelTest {
       sampleLabel = Label.from(sampleLabelQuery);
     }
 
-    @DisplayName("모든 Label 을 가져옵니다")
-    @Test
-    void getLabels() {
-      // given
-
-      // when
-      List<Label> labels = labelService.getLabels();
-
-      // then
-      assertThat(labels.size()).isEqualTo(6); // label 의 초기 값은 6개 입니다
-    }
-
     @DisplayName("Label 을 추가합니다")
     @Transactional
     @Test
-    void create() {
+    public void create() {
       // given
 
       // when
@@ -89,23 +77,10 @@ public class LabelTest {
           .isEqualTo(savedLabel.getId());
     }
 
-    @DisplayName("특정 Label 을 가져옵니다")
-    @Test
-    void getLabel() {
-      // given
-      Label savedLabel = labelRepository.save(sampleLabel);
-
-      // when
-      Label findLabel = labelService.getLabel(savedLabel.getId());
-
-      // then
-      assertThat(findLabel).isEqualTo(savedLabel);
-    }
-
     @DisplayName("Label 을 삭제합니다")
     @Transactional
     @Test
-    void delete() {
+    public void delete() {
       // given
       Label savedLabel = labelRepository.save(sampleLabel);
       Optional<Label> findOptionalLabel = labelRepository.findById(savedLabel.getId());
@@ -120,6 +95,35 @@ public class LabelTest {
       assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> {
         deletedOptionalLabel.orElseThrow(NoSuchElementException::new);
       });
+    }
+
+    @Nested
+    @DisplayName("Label 을 가져옵니다")
+    public class GetTest {
+
+      @DisplayName("모든")
+      @Test
+      public void getLabels() {
+        // given
+
+        // when
+        List<Label> labels = labelService.getLabels();
+
+        // then
+        assertThat(labels.size()).isEqualTo(6); // label 의 초기 값은 6개 입니다
+      }
+
+      @DisplayName("특정")
+      @Test
+      public void getLabel() {
+        // given
+
+        // when
+        Label findLabel = labelService.getLabel(1L);
+
+        // then
+        assertThat(findLabel).isNotNull();
+      }
     }
   }
 }
