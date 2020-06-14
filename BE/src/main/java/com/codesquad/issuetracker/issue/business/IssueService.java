@@ -33,8 +33,9 @@ public class IssueService {
 
   @Transactional
   public Issue create(User user, IssueQuery query) {
-    LinkedHashSet<Label> labels = query.getIdOfLabels().stream().map(
-        id -> labelRepository.findById(id).orElseThrow(NoSuchElementException::new))
+    LinkedHashSet<Label> labels = query.getIdOfLabels().stream()
+        .map(id -> labelRepository.findById(id)
+            .orElseThrow(() -> new NoSuchElementException(ErrorMessage.NOT_EXIST_LABEL)))
         .collect(Collectors.toCollection(LinkedHashSet::new));
 
     return issueRepository.save(Issue.from(user, query, labels));

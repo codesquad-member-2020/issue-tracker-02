@@ -1,6 +1,7 @@
 package com.codesquad.issuetracker.exception;
 
 import com.codesquad.issuetracker.exception.reponse.ExceptionResponse;
+import java.util.NoSuchElementException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -16,8 +17,14 @@ public class CustomAdvice {
   }
 
   @ExceptionHandler(NotAllowedException.class)
-  @ResponseStatus(HttpStatus.FORBIDDEN)
+  @ResponseStatus(HttpStatus.CONFLICT)
   public ExceptionResponse handleNotAllowedException(NotAllowedException e) {
+    return new ExceptionResponse(e.getClass().toString(), e.getMessage());
+  }
+
+  @ExceptionHandler(NoSuchElementException.class)
+  @ResponseStatus(HttpStatus.CONFLICT)
+  public ExceptionResponse handleNoSuchElementException(NoSuchElementException e) {
     return new ExceptionResponse(e.getClass().toString(), e.getMessage());
   }
 }
