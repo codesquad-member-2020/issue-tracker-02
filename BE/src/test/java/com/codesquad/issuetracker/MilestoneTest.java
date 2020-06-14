@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import com.codesquad.issuetracker.milestone.business.MileStoneService;
-import com.codesquad.issuetracker.milestone.data.MileStone;
+import com.codesquad.issuetracker.milestone.data.Milestone;
 import com.codesquad.issuetracker.milestone.data.MileStoneRepository;
 import com.codesquad.issuetracker.milestone.web.model.MileStoneQuery;
 import com.codesquad.issuetracker.milestone.web.model.MileStoneView;
@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @DisplayName("MileStone")
-public class MileStoneTest {
+public class MilestoneTest {
 
   private MileStoneQuery sampleMileStoneQuery;
 
@@ -42,7 +42,7 @@ public class MileStoneTest {
       // given
 
       // when
-      MileStone mileStone = MileStone.from(sampleMileStoneQuery);
+      Milestone mileStone = Milestone.from(sampleMileStoneQuery);
 
       // then
       assertThat(mileStone.getId()).isNull();
@@ -78,13 +78,13 @@ public class MileStoneTest {
       // given
 
       // when
-      MileStone savedMileStone = mileStoneService.create(sampleMileStoneQuery);
+      Milestone savedMilestone = mileStoneService.create(sampleMileStoneQuery);
 
       // then
-      Optional<MileStone> findOptionalMileStone = mileStoneRepository
-          .findById(savedMileStone.getId());
+      Optional<Milestone> findOptionalMileStone = mileStoneRepository
+          .findById(savedMilestone.getId());
       assertThat(findOptionalMileStone.orElseThrow(NoSuchElementException::new).getId())
-          .isEqualTo(savedMileStone.getId());
+          .isEqualTo(savedMilestone.getId());
     }
 
     @DisplayName("MileStone 을 삭제합니다")
@@ -92,18 +92,18 @@ public class MileStoneTest {
     @Test
     public void delete() {
       // given
-      MileStone savedMileStone = mileStoneService.create(sampleMileStoneQuery);
-      Optional<MileStone> findOptionalMileStone = mileStoneRepository
-          .findById(savedMileStone.getId());
+      Milestone savedMilestone = mileStoneService.create(sampleMileStoneQuery);
+      Optional<Milestone> findOptionalMileStone = mileStoneRepository
+          .findById(savedMilestone.getId());
       assertThat(findOptionalMileStone.orElseThrow(NoSuchElementException::new).getId())
-          .isEqualTo(savedMileStone.getId());
+          .isEqualTo(savedMilestone.getId());
 
       // when
-      mileStoneService.delete(savedMileStone.getId());
+      mileStoneService.delete(savedMilestone.getId());
 
       // then
-      Optional<MileStone> deletedOptionalMileStone = mileStoneRepository
-          .findById(savedMileStone.getId());
+      Optional<Milestone> deletedOptionalMileStone = mileStoneRepository
+          .findById(savedMilestone.getId());
       assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> {
         deletedOptionalMileStone.orElseThrow(NoSuchElementException::new);
       });
@@ -133,10 +133,10 @@ public class MileStoneTest {
         // given
 
         // when
-        MileStone findMileStone = mileStoneService.getMileStone(1L);
+        Milestone findMilestone = mileStoneService.getMileStone(1L);
 
         // then
-        assertThat(findMileStone).isNotNull();
+        assertThat(findMilestone).isNotNull();
       }
     }
   }
