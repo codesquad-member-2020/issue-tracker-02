@@ -160,7 +160,8 @@ public class IssueTest {
 
         // when
         assertThatExceptionOfType(NoSuchElementException.class)
-            .isThrownBy(() -> issueService.create(sampleUser, sampleIssueQuery));
+            .isThrownBy(() -> issueService.create(sampleUser, sampleIssueQuery))
+            .withMessage(ErrorMessage.NOT_EXIST_LABEL);
 
         // then
       }
