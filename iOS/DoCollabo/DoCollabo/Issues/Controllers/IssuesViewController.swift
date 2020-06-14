@@ -167,7 +167,7 @@ extension IssuesViewController: UICollectionViewDelegateFlowLayout {
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.frame.width * 0.85
+        let width = view.frame.width * 0.9
         let estimatedHeight: CGFloat = 300.0
         let estimatedSizeCell = IssueHorizontalCell(
             frame: CGRect(x: 0, y: 0, width: width, height: estimatedHeight))
