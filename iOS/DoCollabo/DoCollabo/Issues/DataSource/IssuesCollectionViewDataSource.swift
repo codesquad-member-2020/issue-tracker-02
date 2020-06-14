@@ -23,7 +23,7 @@ final class IssuesCollectionViewDataSource: NSObject, UICollectionViewDataSource
         self.changedHandler = changedHandler
     }
     
-    func issueForIndexPath(at indexPath: IndexPath, handler: (Issue) -> Void) {
+    func referIssue(at indexPath: IndexPath, handler: (Issue) -> Void) {
         let issue = issues[indexPath.item]
         handler(issue)
     }

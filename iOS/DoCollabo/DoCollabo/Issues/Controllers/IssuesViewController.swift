@@ -171,7 +171,7 @@ extension IssuesViewController: UICollectionViewDelegateFlowLayout {
         let estimatedHeight: CGFloat = 300.0
         let estimatedSizeCell = IssueHorizontalCell(
             frame: CGRect(x: 0, y: 0, width: width, height: estimatedHeight))
-        dataSource.issueForIndexPath(at: indexPath) { (issue) in
+        dataSource.referIssue(at: indexPath) { (issue) in
             estimatedSizeCell.configureCell(with: issue)
         }
         estimatedSizeCell.layoutIfNeeded()
