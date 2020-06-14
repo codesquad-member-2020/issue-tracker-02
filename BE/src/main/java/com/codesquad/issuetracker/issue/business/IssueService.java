@@ -1,6 +1,8 @@
 package com.codesquad.issuetracker.issue.business;
 
 import com.codesquad.issuetracker.auth.data.User;
+import com.codesquad.issuetracker.exception.ErrorMessage;
+import com.codesquad.issuetracker.exception.NotAllowedException;
 import com.codesquad.issuetracker.issue.data.Issue;
 import com.codesquad.issuetracker.issue.data.IssueRepository;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
@@ -43,7 +45,7 @@ public class IssueService {
     Issue findIssue = issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
 
     if (!findIssue.isSameUser(user)) {
-      throw new RuntimeException("다른 유저의 Issue 입니다");
+      throw new NotAllowedException(ErrorMessage.ANOTHER_USER_ISSUE);
     }
 
     issueRepository.delete(findIssue);
