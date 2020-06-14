@@ -29,10 +29,8 @@ final class IssueLabelsCollectionView: UICollectionView {
     private func configure() {
         backgroundColor = .white
         registerCollectionViewCell()
-        isScrollEnabled = true
+        isScrollEnabled = false
         showsHorizontalScrollIndicator = false
-        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        layout.scrollDirection = .horizontal
         dataSource = self
         delegate = self
     }
