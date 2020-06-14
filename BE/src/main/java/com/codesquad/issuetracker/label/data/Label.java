@@ -6,12 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
 public class Label {
 
@@ -23,12 +27,10 @@ public class Label {
   private String description;
   private String color;
 
-  @Builder
-  private Label(Long id, String title, String description, String color) {
-    this.id = id;
-    this.title = title;
-    this.description = description;
-    this.color = color;
+  public static Label of(Long id) {
+    return Label.builder()
+        .id(id)
+        .build();
   }
 
   public static Label from(LabelQuery labelQuery) {
