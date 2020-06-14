@@ -57,8 +57,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
         titleLabel = IssueHorizontalTitleLabel()
         contentsStackView = IssueHorizontalContentsStackView(arrangedSubviews: [titleLabel])
         
-        roundCorner(cornerRadius: 12.0)
-        drawBorder(color: .lightGray, width: 0.3)
+        roundCorner(cornerRadius: 8.0)
         drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
     }
     

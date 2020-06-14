@@ -13,6 +13,7 @@ final class IssueLabelCell: UICollectionViewCell {
     static let horizontalPadding: CGFloat = 18.0
     static let verticalPadding: CGFloat = 10.0
     static let titleFontSize: CGFloat = 14.0
+    static let cornerRadius: CGFloat = 6.0
     
     @IBOutlet weak var labelBackgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,7 +22,7 @@ final class IssueLabelCell: UICollectionViewCell {
         super.awakeFromNib()
         
         titleLabel.font = .systemFont(ofSize: Self.titleFontSize, weight: .semibold)
-        roundCorner(cornerRadius: 6.0)
+        roundCorner(cornerRadius: Self.cornerRadius)
     }
     
     func configureLabel(with label: IssueLabel) {
