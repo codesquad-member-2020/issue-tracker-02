@@ -5,7 +5,10 @@ import com.codesquad.issuetracker.issue.web.model.IssueQuery;
 import com.codesquad.issuetracker.label.data.Label;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +17,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +26,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Getter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
 public class Issue {
 
@@ -36,7 +43,7 @@ public class Issue {
 
   @ManyToMany
   @JoinColumn(name = "label_id")
-  private List<Label> labels = new ArrayList<>();
+  private Set<Label> labels = new LinkedHashSet<>();
 
   @OneToMany
   @JoinColumn(name = "issue_id")
@@ -48,27 +55,21 @@ public class Issue {
   @UpdateTimestamp
   private LocalDateTime updateTimeAt;
 
-  @Builder
-  private Issue(Long id, Boolean close, String userId, String title, String description,
-      List<Reply> replies, LocalDateTime createdAt, LocalDateTime updateTimeAt,
-      List<Label> labels) {
-    this.id = id;
-    this.close = close;
-    this.userId = userId;
-    this.title = title;
-    this.description = description;
-    this.replies = replies;
-    this.createdAt = createdAt;
-    this.updateTimeAt = updateTimeAt;
-    this.labels = labels;
-  }
-
-  public static Issue of(User user, IssueQuery query) {
+  public static Issue from(User user, IssueQuery query) {
     return Issue.builder()
         .userId(user.getUserId())
         .title(query.getTitle())
         .description(query.getDescription())
-        .labels(query.getLabels())
+        .labels(query.getIdOfLabels().stream().map(Label::of).collect(Collectors.toSet()))
+        .build();
+  }
+
+  public static Issue from(User user, IssueQuery query, LinkedHashSet<Label> labels) {
+    return Issue.builder()
+        .userId(user.getUserId())
+        .title(query.getTitle())
+        .description(query.getDescription())
+        .labels(labels)
         .build();
   }
 

@@ -29,17 +29,15 @@ public class IssueController {
   @ApiOperation(value = "Issue 들을 가져옵니다")
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @GetMapping
-  public List<Issue> getIssues(HttpServletRequest request) {
-    User user = jwtUtil.parseUser(request.getHeader("Authorization"));
-    return issueService.getIssues(user);
+  public List<Issue> getIssues() {
+    return issueService.getIssues();
   }
 
   @ApiOperation(value = "특정 Issue 를 가져옵니다")
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @GetMapping("{issueId}")
-  public Issue getIssue(@PathVariable Long issueId, HttpServletRequest request) {
-    User user = jwtUtil.parseUser(request.getHeader("Authorization"));
-    return issueService.getIssue(user, issueId);
+  public Issue getIssue(@PathVariable Long issueId) {
+    return issueService.getIssue(issueId);
   }
 
   @ApiOperation(value = "Issue 를 추가합니다")

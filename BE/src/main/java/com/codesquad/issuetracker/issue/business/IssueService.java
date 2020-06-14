@@ -4,8 +4,12 @@ import com.codesquad.issuetracker.auth.data.User;
 import com.codesquad.issuetracker.issue.data.Issue;
 import com.codesquad.issuetracker.issue.data.IssueRepository;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
+import com.codesquad.issuetracker.label.data.Label;
+import com.codesquad.issuetracker.label.data.LabelRepository;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,18 +19,23 @@ import org.springframework.stereotype.Service;
 public class IssueService {
 
   private final IssueRepository issueRepository;
+  private final LabelRepository labelRepository;
 
-  public List<Issue> getIssues(User user) {
+  public List<Issue> getIssues() {
     return issueRepository.findAll();
   }
 
-  public Issue getIssue(User user, Long issueId) {
+  public Issue getIssue(Long issueId) {
     return issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
   }
 
   @Transactional
   public Issue create(User user, IssueQuery query) {
-    return issueRepository.save(Issue.of(user, query));
+    LinkedHashSet<Label> labels = query.getIdOfLabels().stream().map(
+        id -> labelRepository.findById(id).orElseThrow(NoSuchElementException::new))
+        .collect(Collectors.toCollection(LinkedHashSet::new));
+
+    return issueRepository.save(Issue.from(user, query, labels));
   }
 
   @Transactional
