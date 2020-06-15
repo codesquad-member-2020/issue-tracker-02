@@ -67,6 +67,7 @@ extension LabelsViewController {
     private func configureUI() {
         titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
         titleHeaderView.configureTitle("레이블")
+        labelsCollectionView.alpha = 0
     }
     
     private func configureCollectionView() {
@@ -82,8 +83,15 @@ extension LabelsViewController {
     private func configureCollectionViewDataSource() {
         dataSource = LabelsCollectionViewDataSource( changedHandler: { (_) in
             self.labelsCollectionView.reloadData()
+            self.appearCollectionView()
         })
         labelsCollectionView.dataSource = dataSource
+    }
+    
+    private func appearCollectionView() {
+        UIView.animateCurveEaseOut(withDuration: 0.5, animations: {
+            self.labelsCollectionView.alpha = 1.0
+        }, completion: nil)
     }
     
     private func configureUseCase() {

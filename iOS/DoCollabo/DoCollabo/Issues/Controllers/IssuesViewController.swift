@@ -162,9 +162,9 @@ extension IssuesViewController {
                 self.titleHeaderView.alpha = 1
         })
         UIView.animate(
-            withDuration: 1,
+            withDuration: 0.5,
             delay: 0.4,
-            usingSpringWithDamping: 1,
+            usingSpringWithDamping: 1.1,
             initialSpringVelocity: 1,
             options: .curveEaseOut,
             animations: {
