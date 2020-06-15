@@ -41,9 +41,9 @@ public class IssueService {
             .orElseThrow(() -> new NoSuchElementException(ErrorMessage.NOT_EXIST_LABEL)))
         .collect(Collectors.toCollection(LinkedHashSet::new));
     Issue issue = Issue.from(user, query, labels);
-    Issue findIssue = issueRepository.save(issue);
+    Issue savedIssue = issueRepository.save(issue);
 
-    return IssueView.from(findIssue);
+    return IssueView.from(savedIssue);
   }
 
   @Transactional

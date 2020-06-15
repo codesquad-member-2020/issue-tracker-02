@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -40,11 +41,11 @@ public class Issue {
   private String description;
 
   @Builder.Default
-  @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
   private Set<IssueLabelRelation> issueLabelRelations = new LinkedHashSet<>();
 
   @Builder.Default
-  @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
   private Set<IssueMilestoneRelation> issueMilestoneRelations = new HashSet<>();
 
   @CreationTimestamp
