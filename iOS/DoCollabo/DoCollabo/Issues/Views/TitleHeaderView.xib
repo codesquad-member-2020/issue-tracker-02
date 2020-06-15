@@ -44,6 +44,9 @@
                             <state key="normal" image="plus.circle.fill" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="semibold"/>
                             </state>
+                            <connections>
+                                <action selector="pressAddButton:" destination="-1" eventType="touchUpInside" id="1Hb-Zt-Zv7"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" name="key.navy"/>

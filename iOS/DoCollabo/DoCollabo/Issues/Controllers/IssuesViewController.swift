@@ -34,6 +34,7 @@ final class IssuesViewController: UIViewController {
         configureCollectionViewDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
+        configureObservers()
         hideViews()
     }
     
@@ -52,6 +53,21 @@ final class IssuesViewController: UIViewController {
     
     private func configureUseCase() {
         issuesUseCase = UseCase(networkDispatcher: AF)
+    }
+    
+    private func configureObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(presentAddView), name: .add, object: nil)
+    }
+    
+    @objc private func presentAddView() {
+        guard let addViewController = storyboard?.instantiateViewController(
+            identifier: String(describing: AddViewController.self))
+        else {
+            return
+        }
+        addViewController.modalPresentationStyle = .overCurrentContext
+        addViewController.modalTransitionStyle = .crossDissolve
+        present(addViewController, animated: true, completion: nil)
     }
     
     private func fakeConfigureToken() {

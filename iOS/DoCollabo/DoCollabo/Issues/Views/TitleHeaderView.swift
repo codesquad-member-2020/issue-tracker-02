@@ -43,6 +43,10 @@ final class TitleHeaderView: UIView {
         titleLabel.text = text
         smallTitleLabel.text = text
     }
+    
+    @IBAction func pressAddButton(_ sender: UIButton) {
+        NotificationCenter.default.post(name: .add, object: nil)
+    }
 }
 
 // MARK:- Configuration
@@ -65,4 +69,8 @@ extension TitleHeaderView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
+}
+
+extension Notification.Name {
+    static let add = Notification.Name("add")
 }
