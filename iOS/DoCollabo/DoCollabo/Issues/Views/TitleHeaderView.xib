@@ -36,12 +36,14 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3E-28-q6e">
-                            <rect key="frame" x="380" y="12" width="22" height="22"/>
+                            <rect key="frame" x="372.5" y="12" width="29.5" height="29.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="E3E-28-q6e" secondAttribute="height" multiplier="1:1" id="Joa-WN-7wO"/>
                             </constraints>
                             <color key="tintColor" name="key.yellow"/>
-                            <state key="normal" image="plus.circle.fill" catalog="system"/>
+                            <state key="normal" image="plus.circle.fill" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="semibold"/>
+                            </state>
                         </button>
                     </subviews>
                     <color key="backgroundColor" name="key.navy"/>
