@@ -9,7 +9,7 @@
 import UIKit
 
 final class LabelsCollectionViewDataSource: NSObject, UICollectionViewDataSource, ViewModelBinding {
- 
+    
     typealias Key = [IssueLabel]
     private var changedHandler: handler
     private var labels: [IssueLabel] = [] {

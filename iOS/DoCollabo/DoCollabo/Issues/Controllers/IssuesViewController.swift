@@ -31,6 +31,7 @@ final class IssuesViewController: UIViewController {
         super.viewDidLoad()
 
         fakeConfigureToken()
+        configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {

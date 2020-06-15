@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabelsCollectionView: UICollectionView {
+final class LabelsCollectionView: UICollectionView {
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)

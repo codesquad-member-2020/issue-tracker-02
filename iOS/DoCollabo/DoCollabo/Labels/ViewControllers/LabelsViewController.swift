@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class LabelsViewController: UIViewController {
+final class LabelsViewController: UIViewController {
     
     @IBOutlet weak var titleHeaderBackgroundView: UIView!
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
@@ -73,7 +73,7 @@ extension LabelsViewController {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(
             width: labelsCollectionView.frame.width * 0.9,
-            height: self.view.frame.height / 8)
+            height: LabelCell.height)
         layout.scrollDirection = .vertical
         labelsCollectionView.collectionViewLayout = layout
         labelsCollectionView.showsVerticalScrollIndicator = false
