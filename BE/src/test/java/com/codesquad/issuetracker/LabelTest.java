@@ -70,6 +70,7 @@ public class LabelTest {
       labelService.delete(sampleId);
 
       // then
+      labelRepository.findAll();
       Optional<Label> deletedOptionalLabel = labelRepository.findById(sampleId);
       assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> {
         deletedOptionalLabel.orElseThrow(NoSuchElementException::new);
