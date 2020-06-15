@@ -6,6 +6,7 @@ import com.codesquad.issuetracker.exception.NotAllowedException;
 import com.codesquad.issuetracker.issue.data.Issue;
 import com.codesquad.issuetracker.issue.data.IssueRepository;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
+import com.codesquad.issuetracker.issue.web.model.IssueView;
 import com.codesquad.issuetracker.label.data.Label;
 import com.codesquad.issuetracker.label.data.LabelRepository;
 import java.util.LinkedHashSet;
@@ -23,22 +24,26 @@ public class IssueService {
   private final IssueRepository issueRepository;
   private final LabelRepository labelRepository;
 
-  public List<Issue> getIssues() {
-    return issueRepository.findAll();
+  public List<IssueView> getIssues() {
+    List<Issue> issues = issueRepository.findAll();
+    return IssueView.toList(issues);
   }
 
-  public Issue getIssue(Long issueId) {
-    return issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
+  public IssueView getIssue(Long issueId) {
+    Issue findIssue = issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
+    return IssueView.from(findIssue);
   }
 
   @Transactional
-  public Issue create(User user, IssueQuery query) {
+  public IssueView create(User user, IssueQuery query) {
     LinkedHashSet<Label> labels = query.getIdOfLabels().stream()
         .map(id -> labelRepository.findById(id)
             .orElseThrow(() -> new NoSuchElementException(ErrorMessage.NOT_EXIST_LABEL)))
         .collect(Collectors.toCollection(LinkedHashSet::new));
+    Issue issue = Issue.from(user, query, labels);
+    Issue findIssue = issueRepository.save(issue);
 
-    return issueRepository.save(Issue.from(user, query, labels));
+    return IssueView.from(findIssue);
   }
 
   @Transactional
