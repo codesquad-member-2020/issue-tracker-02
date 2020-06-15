@@ -19,6 +19,8 @@
 		302D13ED24978381001582DD /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302D13EC24978381001582DD /* AddViewController.swift */; };
 		3040B87F24923F8400A780D5 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040B87E24923F8400A780D5 /* ViewModelBinding.swift */; };
 		3040B8822492403600A780D5 /* IssuesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040B8812492403600A780D5 /* IssuesCollectionViewDataSource.swift */; };
+		3073525D2497907F00730D53 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3073525C2497907F00730D53 /* ColorPickerView.swift */; };
+		3073525F2497909300730D53 /* ColorPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3073525E2497909300730D53 /* ColorPickerView.xib */; };
 		30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C07248E1E3F001D0415 /* AppDelegate.swift */; };
 		30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C09248E1E3F001D0415 /* SceneDelegate.swift */; };
 		30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C0B248E1E3F001D0415 /* TabBarViewController.swift */; };
@@ -77,6 +79,8 @@
 		302D13EC24978381001582DD /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		3040B87E24923F8400A780D5 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
 		3040B8812492403600A780D5 /* IssuesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		3073525C2497907F00730D53 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		3073525E2497909300730D53 /* ColorPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPickerView.xib; sourceTree = "<group>"; };
 		30789C04248E1E3F001D0415 /* DoCollabo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoCollabo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30789C07248E1E3F001D0415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30789C09248E1E3F001D0415 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				302D13EC24978381001582DD /* AddViewController.swift */,
+				3073525C2497907F00730D53 /* ColorPickerView.swift */,
+				3073525E2497909300730D53 /* ColorPickerView.xib */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -490,6 +496,7 @@
 				38D3643F248FA96E00884972 /* TitleHeaderView.xib in Resources */,
 				30789C0F248E1E3F001D0415 /* Main.storyboard in Resources */,
 				30E22EDF2490A61200EC0FD8 /* IssueLabelCell.xib in Resources */,
+				3073525F2497909300730D53 /* ColorPickerView.xib in Resources */,
 				3020A0AD249347F000483727 /* LabelCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +518,7 @@
 				30E22EEA2491093100EC0FD8 /* NetworkDispatcher.swift in Sources */,
 				30E22EEE249109EC00EC0FD8 /* FetchIssuesRequest.swift in Sources */,
 				38F0FB5E248E73690080FBBD /* OAuthNetworkManager.swift in Sources */,
+				3073525D2497907F00730D53 /* ColorPickerView.swift in Sources */,
 				3040B8822492403600A780D5 /* IssuesCollectionViewDataSource.swift in Sources */,
 				30E22EF324910D8700EC0FD8 /* FetchIssueRequest.swift in Sources */,
 				30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */,
