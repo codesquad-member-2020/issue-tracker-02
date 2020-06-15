@@ -9,11 +9,12 @@
 import UIKit
 import Alamofire
 
-class LabelsViewController: UIViewController {
+final class LabelsViewController: UIViewController {
     
     @IBOutlet weak var titleHeaderBackgroundView: UIView!
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var labelsCollectionView: LabelsCollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var labelsUseCase: UseCase!
     private var dataSource: LabelsCollectionViewDataSource!
@@ -24,36 +25,14 @@ class LabelsViewController: UIViewController {
     }
     
     private func configure() {
-        titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
-        titleHeaderView.configureTitle("레이블")
+        configureUI()
         configureCollectionView()
         configureCollectionViewDataSource()
         configureUseCase()
     }
     
-    private func configureCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(
-            width: labelsCollectionView.frame.width * 0.9,
-            height: self.view.frame.height / 8)
-        layout.scrollDirection = .vertical
-        labelsCollectionView.collectionViewLayout = layout
-        labelsCollectionView.showsVerticalScrollIndicator = false
-    }
-    
-    private func configureCollectionViewDataSource() {
-        dataSource = LabelsCollectionViewDataSource( changedHandler: { (_) in
-            self.labelsCollectionView.reloadData()
-        })
-        labelsCollectionView.dataSource = dataSource
-    }
-    
-    private func configureUseCase() {
-        labelsUseCase = UseCase(networkDispatcher: AF)
-        fetchLabels()
-    }
-    
     private func fetchLabels() {
+        startActivityIndicator()
         let request = FetchLabelsRequest().asURLRequest()
         labelsUseCase.getResources(request: request, dataType: [IssueLabel].self) { result in
             switch result {
@@ -64,7 +43,30 @@ class LabelsViewController: UIViewController {
             }
         }
     }
+}
+
+// MARK:- Activity Indicator
+
+extension LabelsViewController {
+    private func startActivityIndicator() {
+        activityIndicator.alpha = 1
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
     
+    private func stopActivityIndicator() {
+        UIView.animateCurveEaseOut(withDuration: 0.5, animations: {
+            self.activityIndicator.alpha = 0
+        }) { (_) in
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+        }
+    }
+}
+
+// MARK:- Error Alert
+
+extension LabelsViewController {
     private func presentErrorAlert(error: Error) {
         let alertController = ErrorAlertController(
             title: nil,
@@ -77,5 +79,44 @@ class LabelsViewController: UIViewController {
             return
         }
         self.present(alertController, animated: true)
+    }
+}
+
+// MARK:- Configuration
+
+extension LabelsViewController {
+    private func configureUI() {
+        titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
+        titleHeaderView.configureTitle("레이블")
+        labelsCollectionView.alpha = 0
+    }
+    
+    private func configureCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(
+            width: labelsCollectionView.frame.width * 0.9,
+            height: LabelCell.height)
+        layout.scrollDirection = .vertical
+        labelsCollectionView.collectionViewLayout = layout
+    }
+    
+    private func configureCollectionViewDataSource() {
+        dataSource = LabelsCollectionViewDataSource( changedHandler: { (_) in
+            self.labelsCollectionView.reloadData()
+            self.stopActivityIndicator()
+            self.appearCollectionView()
+        })
+        labelsCollectionView.dataSource = dataSource
+    }
+    
+    private func appearCollectionView() {
+        UIView.animateCurveEaseOut(withDuration: 0.5, animations: {
+            self.labelsCollectionView.alpha = 1.0
+        }, completion: nil)
+    }
+    
+    private func configureUseCase() {
+        labelsUseCase = UseCase(networkDispatcher: AF)
+        fetchLabels()
     }
 }

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class LabelCell: UICollectionViewCell {
+final class LabelCell: UICollectionViewCell {
+    
+    static let height: CGFloat = 84.0
     
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var titleLabel: UILabel!
