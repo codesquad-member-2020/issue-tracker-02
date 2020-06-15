@@ -31,10 +31,6 @@ final class IssuesViewController: UIViewController {
         super.viewDidLoad()
 
         fakeConfigureToken()
-        configureCollectionViewDelegate()
-        configureCollectionViewDataSource()
-        configureUseCase()
-        hideViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,16 +38,11 @@ final class IssuesViewController: UIViewController {
         checkToken()
     }
     
-    private func configureCollectionViewDataSource() {
-        dataSource = IssuesCollectionViewDataSource(changedHandler: { (_) in
-            self.issuesCollectionView.reloadData()
-            self.showViews()
-        })
-        issuesCollectionView.dataSource = dataSource
-    }
-    
-    private func configureUseCase() {
-        issuesUseCase = UseCase(networkDispatcher: AF)
+    private func configure() {
+        configureCollectionViewDelegate()
+        configureCollectionViewDataSource()
+        configureUseCase()
+        hideViews()
     }
     
     private func fakeConfigureToken() {
@@ -88,7 +79,11 @@ final class IssuesViewController: UIViewController {
             }
         }
     }
-    
+}
+
+// MARK:- Error Alert
+
+extension IssuesViewController {
     private func presentErrorAlert(error: Error) {
         let alertController = ErrorAlertController(
             title: nil,
@@ -101,6 +96,34 @@ final class IssuesViewController: UIViewController {
             return
         }
         self.present(alertController, animated: true)
+    }
+}
+
+// MARK:- UICollectionViewDelegateFlowLayout
+
+extension IssuesViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 12.0
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = view.frame.width * 0.9
+        let estimatedHeight: CGFloat = 300.0
+        let estimatedSizeCell = IssueHorizontalCell(
+            frame: CGRect(x: 0, y: 0, width: width, height: estimatedHeight))
+        dataSource.referIssue(at: indexPath) { (issue) in
+            estimatedSizeCell.configureCell(with: issue)
+        }
+        estimatedSizeCell.layoutIfNeeded()
+        let estimatedSize = estimatedSizeCell.systemLayoutSizeFitting(
+            CGSize(width: width, height: estimatedHeight))
+        return CGSize(width: width, height: estimatedSize.height)
     }
 }
 
@@ -149,34 +172,22 @@ extension IssuesViewController {
     }
 }
 
-// MARK:- UICollectionViewDelegateFlowLayout
+// MARK:- Configuration
 
-extension IssuesViewController: UICollectionViewDelegateFlowLayout {
+extension IssuesViewController {
     private func configureCollectionViewDelegate() {
         issuesCollectionView.delegate = self
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 12.0
+    private func configureCollectionViewDataSource() {
+        dataSource = IssuesCollectionViewDataSource(changedHandler: { (_) in
+            self.issuesCollectionView.reloadData()
+            self.showViews()
+        })
+        issuesCollectionView.dataSource = dataSource
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.frame.width * 0.9
-        let estimatedHeight: CGFloat = 300.0
-        let estimatedSizeCell = IssueHorizontalCell(
-            frame: CGRect(x: 0, y: 0, width: width, height: estimatedHeight))
-        dataSource.referIssue(at: indexPath) { (issue) in
-            estimatedSizeCell.configureCell(with: issue)
-        }
-        estimatedSizeCell.layoutIfNeeded()
-        let estimatedSize = estimatedSizeCell.systemLayoutSizeFitting(
-            CGSize(width: width, height: estimatedHeight))
-        return CGSize(width: width, height: estimatedSize.height)
+    private func configureUseCase() {
+        issuesUseCase = UseCase(networkDispatcher: AF)
     }
 }
