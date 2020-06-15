@@ -14,6 +14,7 @@ final class LabelsViewController: UIViewController {
     @IBOutlet weak var titleHeaderBackgroundView: UIView!
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var labelsCollectionView: LabelsCollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var labelsUseCase: UseCase!
     private var dataSource: LabelsCollectionViewDataSource!
@@ -31,6 +32,7 @@ final class LabelsViewController: UIViewController {
     }
     
     private func fetchLabels() {
+        startActivityIndicator()
         let request = FetchLabelsRequest().asURLRequest()
         labelsUseCase.getResources(request: request, dataType: [IssueLabel].self) { result in
             switch result {
@@ -39,6 +41,25 @@ final class LabelsViewController: UIViewController {
             case .failure(let error):
                 self.presentErrorAlert(error: error)
             }
+        }
+    }
+}
+
+// MARK:- Activity Indicator
+
+extension LabelsViewController {
+    private func startActivityIndicator() {
+        activityIndicator.alpha = 1
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    private func stopActivityIndicator() {
+        UIView.animateCurveEaseOut(withDuration: 0.5, animations: {
+            self.activityIndicator.alpha = 0
+        }) { (_) in
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
         }
     }
 }
@@ -83,6 +104,7 @@ extension LabelsViewController {
     private func configureCollectionViewDataSource() {
         dataSource = LabelsCollectionViewDataSource( changedHandler: { (_) in
             self.labelsCollectionView.reloadData()
+            self.stopActivityIndicator()
             self.appearCollectionView()
         })
         labelsCollectionView.dataSource = dataSource
