@@ -25,8 +25,8 @@ public class IssueService {
   private final LabelRepository labelRepository;
 
   public List<IssueView> getIssues() {
-    List<Issue> issues = issueRepository.findAll();
-    return IssueView.toList(issues);
+    List<Issue> findIssues = issueRepository.findAll();
+    return IssueView.toList(findIssues);
   }
 
   public IssueView getIssue(Long issueId) {
