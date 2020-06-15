@@ -10,7 +10,7 @@ import UIKit
 
 final class IssueHorizontalTitleLabel: UILabel {
     
-    private let titleFontSize: CGFloat = 20.0
+    private let titleFontSize: CGFloat = 18.0
 
     override init(frame: CGRect) {
         super.init(frame: frame)

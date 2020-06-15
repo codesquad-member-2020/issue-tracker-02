@@ -23,6 +23,11 @@ final class IssuesCollectionViewDataSource: NSObject, UICollectionViewDataSource
         self.changedHandler = changedHandler
     }
     
+    func referIssue(at indexPath: IndexPath, handler: (Issue) -> Void) {
+        let issue = issues[indexPath.item]
+        handler(issue)
+    }
+    
     func updateNotify(handler: @escaping ([Issue]) -> Void) {
         self.changedHandler = handler
     }

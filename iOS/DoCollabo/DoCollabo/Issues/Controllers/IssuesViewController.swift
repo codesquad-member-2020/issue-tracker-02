@@ -162,4 +162,21 @@ extension IssuesViewController: UICollectionViewDelegateFlowLayout {
         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 12.0
     }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = view.frame.width * 0.9
+        let estimatedHeight: CGFloat = 300.0
+        let estimatedSizeCell = IssueHorizontalCell(
+            frame: CGRect(x: 0, y: 0, width: width, height: estimatedHeight))
+        dataSource.referIssue(at: indexPath) { (issue) in
+            estimatedSizeCell.configureCell(with: issue)
+        }
+        estimatedSizeCell.layoutIfNeeded()
+        let estimatedSize = estimatedSizeCell.systemLayoutSizeFitting(
+            CGSize(width: width, height: estimatedHeight))
+        return CGSize(width: width, height: estimatedSize.height)
+    }
 }
