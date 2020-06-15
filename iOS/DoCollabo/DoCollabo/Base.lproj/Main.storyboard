@@ -127,14 +127,13 @@
                                                 <rect key="frame" x="0.0" y="70" width="265" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvt-Ct-L84">
-                                                        <rect key="frame" x="0.0" y="0.0" width="265" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="29.5" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="설명을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Eu-4F-SG2">
-                                                        <rect key="frame" x="41.5" y="0.0" width="179.5" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <rect key="frame" x="41.5" y="0.0" width="223.5" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -147,24 +146,20 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="P2x-Gf-IZB">
-                                        <rect key="frame" x="201.5" y="238" width="96.5" height="32"/>
+                                        <rect key="frame" x="235" y="238" width="63" height="32"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvE-KI-CE5">
-                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="32"/>
-                                                <color key="tintColor" name="key.yellow"/>
-                                                <state key="normal" image="arrow.counterclockwise.circle.fill" catalog="system">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="semibold"/>
-                                                </state>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTf-t5-BdH">
-                                                <rect key="frame" x="33.5" y="0.0" width="29.5" height="32"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="32"/>
                                                 <color key="tintColor" name="key.red"/>
                                                 <state key="normal" image="xmark.circle.fill" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="semibold"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="pressCancelButton:" destination="vfl-JJ-Boc" eventType="touchUpInside" id="pjh-bQ-teV"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdn-7y-dum">
-                                                <rect key="frame" x="67" y="0.0" width="29.5" height="32"/>
+                                                <rect key="frame" x="33.5" y="0.0" width="29.5" height="32"/>
                                                 <color key="tintColor" name="key.navy"/>
                                                 <state key="normal" image="arrow.up.circle.fill" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="semibold"/>
@@ -172,6 +167,13 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvE-KI-CE5">
+                                        <rect key="frame" x="33" y="238" width="29.5" height="32"/>
+                                        <color key="tintColor" name="key.yellow"/>
+                                        <state key="normal" image="arrow.counterclockwise.circle.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="semibold"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -179,9 +181,11 @@
                                     <constraint firstItem="P2x-Gf-IZB" firstAttribute="trailing" secondItem="e6H-wp-iDH" secondAttribute="trailing" id="5Lk-Fl-TK2"/>
                                     <constraint firstItem="sSL-Hz-L6I" firstAttribute="height" secondItem="BMn-MP-yWs" secondAttribute="height" multiplier="0.65" id="7CK-no-lEW"/>
                                     <constraint firstItem="P2x-Gf-IZB" firstAttribute="top" secondItem="sSL-Hz-L6I" secondAttribute="bottom" constant="16" id="Ah4-lb-P0q"/>
+                                    <constraint firstItem="CvE-KI-CE5" firstAttribute="leading" secondItem="sSL-Hz-L6I" secondAttribute="leading" id="NTM-aG-e2T"/>
                                     <constraint firstItem="sSL-Hz-L6I" firstAttribute="width" secondItem="BMn-MP-yWs" secondAttribute="width" multiplier="0.8" id="UKI-Oa-Gja"/>
                                     <constraint firstAttribute="bottom" secondItem="P2x-Gf-IZB" secondAttribute="bottom" constant="22" id="Wao-4g-dFj"/>
                                     <constraint firstItem="sSL-Hz-L6I" firstAttribute="centerX" secondItem="BMn-MP-yWs" secondAttribute="centerX" id="oR7-oh-DPM"/>
+                                    <constraint firstItem="CvE-KI-CE5" firstAttribute="centerY" secondItem="P2x-Gf-IZB" secondAttribute="centerY" id="olA-av-v1R"/>
                                 </constraints>
                             </view>
                         </subviews>

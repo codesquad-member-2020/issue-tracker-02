@@ -28,4 +28,9 @@ class AddViewController: UIViewController {
     private func configureUI() {
         contentsView.roundCorner(cornerRadius: 12.0)
     }
+    
+    @IBAction func pressCancelButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
