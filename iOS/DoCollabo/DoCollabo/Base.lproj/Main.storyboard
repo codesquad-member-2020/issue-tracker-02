@@ -202,6 +202,7 @@
                         <viewLayoutGuide key="safeArea" id="jDj-Rt-uxu"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="t24-Bx-SPh" id="HQG-Uz-4GO"/>
                         <outlet property="contentsStackView" destination="sSL-Hz-L6I" id="rkz-JK-YqJ"/>
                         <outlet property="contentsView" destination="BMn-MP-yWs" id="AgE-pk-lCc"/>
                         <outlet property="descriptionTextField" destination="tvt-Ct-L84" id="t41-h7-6Fs"/>

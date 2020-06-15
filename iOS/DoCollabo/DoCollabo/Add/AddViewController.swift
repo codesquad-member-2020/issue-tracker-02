@@ -15,6 +15,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UILabel!
     @IBOutlet weak var emptyView: UIView!
+    @IBOutlet weak var backgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +24,24 @@ class AddViewController: UIViewController {
     
     private func configure() {
         configureUI()
+        configureBackgroundView()
     }
     
     private func configureUI() {
         contentsView.roundCorner(cornerRadius: 12.0)
     }
     
-    @IBAction func pressCancelButton(_ sender: UIButton) {
+    private func configureBackgroundView() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissView))
+        backgroundView.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc private func dismissView() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func pressCancelButton(_ sender: UIButton) {
+        dismissView()
     }
     
 }
