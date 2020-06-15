@@ -22,8 +22,8 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
 @Entity
 public class Label {
 
@@ -35,6 +35,7 @@ public class Label {
   private String description;
   private String color;
 
+  @Builder.Default
   @JsonInclude(Include.NON_NULL)
   @OneToMany(mappedBy = "label", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
   private List<IssueLabelRelation> issueLabelRelations = new ArrayList<>();
@@ -60,25 +61,5 @@ public class Label {
         .description(labelQuery.getDescription())
         .color(labelQuery.getColor())
         .build();
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof Label)) {
-      return false;
-    }
-    Label label = (Label) o;
-    return Objects.equals(getId(), label.getId()) &&
-        Objects.equals(getTitle(), label.getTitle()) &&
-        Objects.equals(getDescription(), label.getDescription()) &&
-        Objects.equals(getColor(), label.getColor());
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(getId(), getTitle(), getDescription(), getColor());
   }
 }
