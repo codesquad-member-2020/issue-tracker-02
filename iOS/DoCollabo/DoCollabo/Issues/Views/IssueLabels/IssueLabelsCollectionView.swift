@@ -27,7 +27,7 @@ final class IssueLabelsCollectionView: UICollectionView {
     }
     
     private func configure() {
-        backgroundColor = .white
+        backgroundColor = .tertiarySystemBackground
         registerCollectionViewCell()
         isScrollEnabled = false
         showsHorizontalScrollIndicator = false

@@ -52,7 +52,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
     }
     
     private func configureUI() {
-        backgroundColor = .white
+        backgroundColor = .tertiarySystemBackground
         
         titleLabel = IssueHorizontalTitleLabel()
         contentsStackView = IssueHorizontalContentsStackView(arrangedSubviews: [titleLabel])
