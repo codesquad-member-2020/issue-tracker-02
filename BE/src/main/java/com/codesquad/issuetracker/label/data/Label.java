@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,7 @@ public class Label {
   private String color;
 
   @JsonInclude(Include.NON_NULL)
-  @OneToMany(mappedBy = "label", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "label", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
   private List<IssueLabelRelation> issueLabelRelations = new ArrayList<>();
 
   public static Label of(Long id) {
