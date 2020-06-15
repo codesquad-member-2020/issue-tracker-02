@@ -7,6 +7,7 @@ import com.codesquad.issuetracker.label.business.LabelService;
 import com.codesquad.issuetracker.label.data.Label;
 import com.codesquad.issuetracker.label.data.LabelRepository;
 import com.codesquad.issuetracker.label.web.model.LabelQuery;
+import com.codesquad.issuetracker.label.web.model.LabelView;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -21,30 +22,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @DisplayName("Label")
 public class LabelTest {
 
-  private Label sampleLabel;
-  private LabelQuery sampleLabelQuery;
-
-  @Nested
-  @DisplayName("POJO")
-  public class PojoTest {
-
-    @DisplayName("LabelQuery 로 Label 을 만듭니다")
-    @Test
-    void makeLabelByLabelQuery() {
-      // given
-      LabelQuery labelQuery = LabelQuery.of("created label", "created label description", "5319e7");
-
-      // when
-      Label label = Label.from(labelQuery);
-
-      // then
-      assertThat(label.getId()).isNull();
-      assertThat(label.getTitle()).isEqualTo(labelQuery.getTitle());
-      assertThat(label.getDescription()).isEqualTo(labelQuery.getDescription());
-      assertThat(label.getColor()).isEqualTo(labelQuery.getColor());
-    }
-  }
-
   @Nested
   @DisplayName("Integration")
   @SpringBootTest
@@ -56,10 +33,15 @@ public class LabelTest {
     @Autowired
     private LabelRepository labelRepository;
 
+    private LabelQuery sampleLabelQuery;
+
     @BeforeEach
     private void beforeEach() {
-      sampleLabelQuery = LabelQuery.of("created label", "created label description", "5319e7");
-      sampleLabel = Label.from(sampleLabelQuery);
+      sampleLabelQuery = LabelQuery.builder()
+          .title("created label")
+          .description("created label description")
+          .color("5319e7")
+          .build();
     }
 
     @DisplayName("Label 을 추가합니다")
@@ -69,7 +51,7 @@ public class LabelTest {
       // given
 
       // when
-      Label savedLabel = labelService.create(sampleLabelQuery);
+      LabelView savedLabel = labelService.create(sampleLabelQuery);
 
       // then
       Optional<Label> findOptionalLabel = labelRepository.findById(savedLabel.getId());
@@ -82,16 +64,13 @@ public class LabelTest {
     @Test
     public void delete() {
       // given
-      Label savedLabel = labelRepository.save(sampleLabel);
-      Optional<Label> findOptionalLabel = labelRepository.findById(savedLabel.getId());
-      assertThat(findOptionalLabel.orElseThrow(NoSuchElementException::new).getId())
-          .isEqualTo(savedLabel.getId());
+      Long sampleId = 2L;
 
       // when
-      labelService.delete(savedLabel.getId());
+      labelService.delete(sampleId);
 
       // then
-      Optional<Label> deletedOptionalLabel = labelRepository.findById(savedLabel.getId());
+      Optional<Label> deletedOptionalLabel = labelRepository.findById(sampleId);
       assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> {
         deletedOptionalLabel.orElseThrow(NoSuchElementException::new);
       });
@@ -107,7 +86,7 @@ public class LabelTest {
         // given
 
         // when
-        List<Label> labels = labelService.getLabels();
+        List<LabelView> labels = labelService.getLabels();
 
         // then
         assertThat(labels.size()).isEqualTo(6); // label 의 초기 값은 6개 입니다
@@ -119,7 +98,7 @@ public class LabelTest {
         // given
 
         // when
-        Label findLabel = labelService.getLabel(1L);
+        LabelView findLabel = labelService.getLabel(1L);
 
         // then
         assertThat(findLabel).isNotNull();
