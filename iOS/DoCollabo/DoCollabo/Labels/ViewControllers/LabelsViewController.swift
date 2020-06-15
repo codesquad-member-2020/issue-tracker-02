@@ -98,7 +98,6 @@ extension LabelsViewController {
             height: LabelCell.height)
         layout.scrollDirection = .vertical
         labelsCollectionView.collectionViewLayout = layout
-        labelsCollectionView.showsVerticalScrollIndicator = false
     }
     
     private func configureCollectionViewDataSource() {

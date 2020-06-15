@@ -22,7 +22,6 @@ final class LabelsCollectionView: UICollectionView {
     
     private func configure() {
         registerCollectionViewCell()
-        showsVerticalScrollIndicator = false
     }
     
     private func registerCollectionViewCell() {
