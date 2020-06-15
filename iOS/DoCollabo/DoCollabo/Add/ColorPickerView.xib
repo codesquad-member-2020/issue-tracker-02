@@ -12,7 +12,11 @@
             <connections>
                 <outlet property="colorView" destination="Dpl-DM-4QQ" id="R8A-k7-WHa"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="piO-BV-Gly"/>
+<<<<<<< Updated upstream
                 <outlet property="hexColor" destination="nlv-oj-WWj" id="7cg-th-Qnf"/>
+=======
+                <outlet property="hexColorLabel" destination="nlv-oj-WWj" id="7cg-th-Qnf"/>
+>>>>>>> Stashed changes
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

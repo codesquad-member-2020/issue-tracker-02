@@ -11,7 +11,11 @@ import UIKit
 class ColorPickerView: UIView {
     
     @IBOutlet var contentView: UIView!
+<<<<<<< Updated upstream
     @IBOutlet weak var hexColor: UILabel!
+=======
+    @IBOutlet weak var hexColorLabel: UILabel!
+>>>>>>> Stashed changes
     @IBOutlet weak var colorView: UIView!
     
     
@@ -38,4 +42,11 @@ class ColorPickerView: UIView {
     
     @IBAction func pickRandomeColor(_ sender: UIButton) {
     }
+<<<<<<< Updated upstream
+=======
+    
+    func changeHexColorLabel(_ text: String) {
+        
+    }
+>>>>>>> Stashed changes
 }
