@@ -11,4 +11,6 @@ import Alamofire
 
 struct LabelsUseCase: UseCase {
     var networkDispatcher: NetworkDispatcher = AF
+    
+    
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 final class LabelsViewController: UIViewController {
     
     @IBOutlet weak var titleHeaderBackgroundView: UIView!
@@ -32,7 +33,7 @@ final class LabelsViewController: UIViewController {
     
     private func fetchLabels() {
         startActivityIndicator()
-        let request = FetchLabelsRequest().asURLRequest()
+        let request = LabelsRequest().asURLRequest()
         labelsUseCase.getResources(request: request, dataType: [IssueLabel].self) { result in
             switch result {
             case .success(let labels):

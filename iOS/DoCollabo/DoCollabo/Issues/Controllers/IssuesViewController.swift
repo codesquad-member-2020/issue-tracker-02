@@ -69,7 +69,7 @@ final class IssuesViewController: UIViewController {
     }
     
     private func fetchIssues() {
-        let request = FetchIssuesRequest().asURLRequest()
+        let request = IssuesRequest().asURLRequest()
         issuesUseCase.getResources(request: request, dataType: [Issue].self) { (result) in
             switch result {
             case .success(let issues):
