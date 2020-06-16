@@ -1,6 +1,6 @@
-package com.codesquad.issuetracker.issue.data;
+package com.codesquad.issuetracker.issue.data.relation;
 
-import com.codesquad.issuetracker.milestone.data.Milestone;
+import com.codesquad.issuetracker.issue.data.Issue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @Entity
-public class IssueMilestoneRelation {
+public class IssueLabelRelation {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,14 +28,12 @@ public class IssueMilestoneRelation {
   @JoinColumn(name = "issue_id")
   private Issue issue;
 
-  @ManyToOne
-  @JoinColumn(name = "milestone_id")
-  private Milestone milestone;
+  private Long labelId;
 
-  public static IssueMilestoneRelation of(Issue issue, Milestone milestone) {
-    return IssueMilestoneRelation.builder()
+  public static IssueLabelRelation of(Issue issue, Long labelId) {
+    return IssueLabelRelation.builder()
         .issue(issue)
-        .milestone(milestone)
+        .labelId(labelId)
         .build();
   }
 }
