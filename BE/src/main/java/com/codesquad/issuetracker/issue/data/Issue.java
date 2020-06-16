@@ -4,13 +4,11 @@ import com.codesquad.issuetracker.auth.data.User;
 import com.codesquad.issuetracker.issue.data.relation.IssueLabelRelation;
 import com.codesquad.issuetracker.issue.data.relation.IssueMilestoneRelation;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
-import com.codesquad.issuetracker.label.data.Label;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -43,11 +41,11 @@ public class Issue {
   private String description;
 
   @Builder.Default
-  @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER, orphanRemoval = true)
   private Set<IssueLabelRelation> issueLabelRelations = new LinkedHashSet<>();
 
   @Builder.Default
-  @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER, orphanRemoval = true)
   private Set<IssueMilestoneRelation> issueMilestoneRelations = new HashSet<>();
 
   @CreationTimestamp
@@ -64,22 +62,6 @@ public class Issue {
         .build();
   }
 
-  public static Issue from(User user, IssueQuery query, LinkedHashSet<Label> labels) {
-    Issue issue = Issue.builder()
-        .userId(user.getUserId())
-        .title(query.getTitle())
-        .description(query.getDescription())
-        .build();
-
-    LinkedHashSet<Long> idOfLabels = labels.stream().map(Label::getId)
-        .collect(Collectors.toCollection(LinkedHashSet::new));
-    issue.issueLabelRelations = idOfLabels.stream()
-        .map(id -> IssueLabelRelation.of(issue, id))
-        .collect(Collectors.toSet());
-
-    return issue;
-  }
-
   public Boolean isSameUser(User user) {
     return userId.equals(user.getUserId());
   }
@@ -94,5 +76,13 @@ public class Issue {
     return issueMilestoneRelations.stream()
         .map(IssueMilestoneRelation::getMilestoneId)
         .collect(Collectors.toSet());
+  }
+
+  public void addAllLabel(Set<IssueLabelRelation> issueLabelRelations) {
+    this.issueLabelRelations.addAll(issueLabelRelations);
+  }
+
+  public void addAllMilestone(Set<IssueMilestoneRelation> issueMilestoneRelations) {
+    this.issueMilestoneRelations.addAll(issueMilestoneRelations);
   }
 }
