@@ -14,6 +14,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
     
     private var contentsStackView: UIStackView!
     private var titleLabel: IssueHorizontalTitleLabel!
+    private var descriptionLabel: IssueHorizontalDescriptionLabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,6 +45,11 @@ final class IssueHorizontalCell: UICollectionViewCell {
             let contentHeight = collectionView.contentSize.height
             collectionView.heightAnchor.constraint(equalToConstant: contentHeight).isActive = true
         }
+        
+        if issue.description != "" {
+            descriptionLabel.configureDescriptionLabel(with: issue)
+            contentsStackView.addArrangedSubview(descriptionLabel)
+        }
     }
     
     private func configure() {
@@ -55,6 +61,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
         backgroundColor = .tertiarySystemBackground
         
         titleLabel = IssueHorizontalTitleLabel()
+        descriptionLabel = IssueHorizontalDescriptionLabel()
         contentsStackView = IssueHorizontalContentsStackView(arrangedSubviews: [titleLabel])
         
         roundCorner(cornerRadius: 8.0)

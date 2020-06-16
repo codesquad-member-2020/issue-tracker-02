@@ -22,7 +22,7 @@ final class IssueHorizontalContentsStackView: UIStackView {
     
     private func configure() {
         axis = .vertical
-        spacing = 4
+        spacing = 8
         distribution = .fill
     }
 }
