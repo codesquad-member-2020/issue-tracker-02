@@ -27,7 +27,7 @@ extension SignInViewController {
         networkManager.authenticateWithGithub(viewController: self) { result in
             switch result {
             case .success(let token):
-                UserDefaults.standard.set(token, forKey: .jwtToken)
+                UserDefaults.standard.set(token, forKey: OAuthNetworkManager.jwtToken)
                 self.dismiss(animated: true, completion: nil)
             case .failure(let error):
                 self.presentErrorAlert(error: error)
@@ -37,7 +37,7 @@ extension SignInViewController {
     
     @IBAction func signInWithAppleButtonDidTap(_ sender: LeadingImageButton) {
         networkManager.authenticateWithApple { (token) in
-            UserDefaults.standard.set(token, forKey: .jwtToken)
+            UserDefaults.standard.set(token, forKey: OAuthNetworkManager.jwtToken)
             self.dismiss(animated: true, completion: nil)
         }
     }

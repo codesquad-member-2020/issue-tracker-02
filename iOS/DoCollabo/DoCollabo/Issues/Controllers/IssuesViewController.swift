@@ -29,7 +29,6 @@ final class IssuesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fakeConfigureToken()
         configure()
     }
     
@@ -45,12 +44,8 @@ final class IssuesViewController: UIViewController {
         hideViews()
     }
     
-    private func fakeConfigureToken() {
-        UserDefaults.standard.removeObject(forKey: .jwtToken)
-    }
-    
     private func checkToken() {
-        guard let token = UserDefaults.standard.object(forKey: .jwtToken) as? String
+        guard let token = UserDefaults.standard.object(forKey: OAuthNetworkManager.jwtToken) as? String
         else {
             presentSignIn()
             return
