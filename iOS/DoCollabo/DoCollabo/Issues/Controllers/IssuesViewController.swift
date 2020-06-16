@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 final class IssuesViewController: UIViewController {
 
@@ -30,7 +29,6 @@ final class IssuesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fakeConfigureToken()
         configure()
     }
     
@@ -46,12 +44,8 @@ final class IssuesViewController: UIViewController {
         hideViews()
     }
     
-    private func fakeConfigureToken() {
-        UserDefaults.standard.removeObject(forKey: .jwtToken)
-    }
-    
     private func checkToken() {
-        guard let token = UserDefaults.standard.object(forKey: .jwtToken) as? String
+        guard let token = UserDefaults.standard.object(forKey: OAuthNetworkManager.jwtToken) as? String
         else {
             presentSignIn()
             return
@@ -70,7 +64,7 @@ final class IssuesViewController: UIViewController {
     }
     
     private func fetchIssues() {
-        let request = FetchIssuesRequest().asURLRequest()
+        let request = IssuesRequest().asURLRequest()
         issuesUseCase.getResources(request: request, dataType: [Issue].self) { (result) in
             switch result {
             case .success(let issues):
@@ -189,6 +183,6 @@ extension IssuesViewController {
     }
     
     private func configureUseCase() {
-        issuesUseCase = UseCase(networkDispatcher: AF)
+        issuesUseCase = IssuesUseCase()
     }
 }

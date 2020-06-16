@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+
 
 final class LabelsViewController: UIViewController {
     
@@ -33,7 +33,7 @@ final class LabelsViewController: UIViewController {
     
     private func fetchLabels() {
         startActivityIndicator()
-        let request = FetchLabelsRequest().asURLRequest()
+        let request = LabelsRequest().asURLRequest()
         labelsUseCase.getResources(request: request, dataType: [IssueLabel].self) { result in
             switch result {
             case .success(let labels):
@@ -116,7 +116,7 @@ extension LabelsViewController {
     }
     
     private func configureUseCase() {
-        labelsUseCase = UseCase(networkDispatcher: AF)
+        labelsUseCase = LabelsUseCase()
         fetchLabels()
     }
 }
