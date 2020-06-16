@@ -64,7 +64,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
         descriptionLabel = IssueHorizontalDescriptionLabel()
         contentsStackView = IssueHorizontalContentsStackView(arrangedSubviews: [titleLabel])
         
-        roundCorner(cornerRadius: 8.0)
+        roundCorner(cornerRadius: 16.0)
         drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
     }
     
@@ -75,7 +75,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
             leadingAnchor: leadingAnchor,
             bottomAnchor: bottomAnchor,
             trailingAnchor: trailingAnchor,
-            padding: .init(top: 12, left: 16, bottom: 12, right: 16))
+            padding: .init(top: 16, left: 16, bottom: 16, right: 16))
     }
     
     override func prepareForReuse() {
