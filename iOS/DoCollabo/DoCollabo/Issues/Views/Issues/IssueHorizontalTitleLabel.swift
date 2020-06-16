@@ -22,6 +22,10 @@ final class IssueHorizontalTitleLabel: UILabel {
         configure()
     }
     
+    func configureTitleLabel(with issue: Issue) {
+        text = "#\(issue.id) \(issue.title)"
+    }
+    
     private func configure() {
         configureUI()
     }
@@ -29,5 +33,6 @@ final class IssueHorizontalTitleLabel: UILabel {
     private func configureUI() {
         text = "Title"
         font = .systemFont(ofSize: titleFontSize, weight: .bold)
+        numberOfLines = 1
     }
 }

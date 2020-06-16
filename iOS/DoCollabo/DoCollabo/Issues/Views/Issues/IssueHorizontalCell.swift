@@ -26,7 +26,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
     }
     
     func configureCell(with issue: Issue) {
-        titleLabel.text = issue.title
+        titleLabel.configureTitleLabel(with: issue)
 
         if let milestone = issue.labels.first?.title {
             let label = UILabel()
