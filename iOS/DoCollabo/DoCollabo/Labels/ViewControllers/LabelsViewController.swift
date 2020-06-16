@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 final class LabelsViewController: UIViewController {
     
@@ -116,7 +115,7 @@ extension LabelsViewController {
     }
     
     private func configureUseCase() {
-        labelsUseCase = UseCase(networkDispatcher: AF)
+        labelsUseCase = LabelsUseCase()
         fetchLabels()
     }
 }

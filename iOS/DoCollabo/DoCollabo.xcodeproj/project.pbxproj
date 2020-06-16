@@ -61,6 +61,8 @@
 		38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */; };
 		38F0FB5E248E73690080FBBD /* OAuthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5D248E73690080FBBD /* OAuthNetworkManager.swift */; };
 		38F0FB62248FA23F0080FBBD /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB61248FA23F0080FBBD /* EndPoint.swift */; };
+		38F1C3912498D57000378398 /* IssuesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1C3902498D57000378398 /* IssuesUseCase.swift */; };
+		38F1C3932498D58F00378398 /* LabelsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1C3922498D58F00378398 /* LabelsUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +121,8 @@
 		38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthURLStub.swift; sourceTree = "<group>"; };
 		38F0FB5D248E73690080FBBD /* OAuthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthNetworkManager.swift; sourceTree = "<group>"; };
 		38F0FB61248FA23F0080FBBD /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		38F1C3902498D57000378398 /* IssuesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesUseCase.swift; sourceTree = "<group>"; };
+		38F1C3922498D58F00378398 /* LabelsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +310,8 @@
 			isa = PBXGroup;
 			children = (
 				30E22EF724910EF800EC0FD8 /* UseCase.swift */,
+				38F1C3902498D57000378398 /* IssuesUseCase.swift */,
+				38F1C3922498D58F00378398 /* LabelsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -509,7 +515,9 @@
 				38F0FB49248E2D870080FBBD /* Colors.swift in Sources */,
 				38879C582490E48600EE84D7 /* UIView+Shadow.swift in Sources */,
 				30E22EF824910EF800EC0FD8 /* UseCase.swift in Sources */,
+				38F1C3912498D57000378398 /* IssuesUseCase.swift in Sources */,
 				3825A8A1249339700021D512 /* IssuesViewController+ScrollAnimation.swift in Sources */,
+				38F1C3932498D58F00378398 /* LabelsUseCase.swift in Sources */,
 				30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */,
 				30E22EE22490B09200EC0FD8 /* IssueLabelsCollectionView.swift in Sources */,
 				3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */,

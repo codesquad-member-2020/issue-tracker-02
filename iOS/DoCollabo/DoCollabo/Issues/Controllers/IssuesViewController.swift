@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 final class IssuesViewController: UIViewController {
 
@@ -189,6 +188,6 @@ extension IssuesViewController {
     }
     
     private func configureUseCase() {
-        issuesUseCase = UseCase(networkDispatcher: AF)
+        issuesUseCase = IssuesUseCase()
     }
 }
