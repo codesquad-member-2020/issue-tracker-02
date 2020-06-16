@@ -11,11 +11,7 @@ import UIKit
 final class IssuesViewController: UIViewController {
 
     @IBOutlet weak var titleHeaderBackgroundView: TitleHeaderBackgroundView!
-    @IBOutlet weak var titleHeaderView: TitleHeaderView! {
-        didSet {
-            titleHeaderView.configureTitle("이슈")
-        }
-    }
+    @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var titleHeaderBackgroundViewTopAnchor: NSLayoutConstraint!
@@ -38,6 +34,7 @@ final class IssuesViewController: UIViewController {
     }
     
     private func configure() {
+        titleHeaderView.configureTitle("이슈")
         configureCollectionViewDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
