@@ -26,21 +26,6 @@ public class Label {
   private String description;
   private String color;
 
-  public static Label of(Long id) {
-    return Label.builder()
-        .id(id)
-        .build();
-  }
-
-  public static Label extractMainInform(Label label) {
-    return Label.builder()
-        .id(label.getId())
-        .title(label.getTitle())
-        .description(label.getDescription())
-        .color(label.getColor())
-        .build();
-  }
-
   public static Label from(LabelQuery labelQuery) {
     return Label.builder()
         .title(labelQuery.getTitle())

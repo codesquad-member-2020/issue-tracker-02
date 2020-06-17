@@ -1,5 +1,7 @@
 package com.codesquad.issuetracker.label.business;
 
+import com.codesquad.issuetracker.exception.ErrorMessage;
+import com.codesquad.issuetracker.issue.data.relation.IssueLabelRelationRepository;
 import com.codesquad.issuetracker.label.data.Label;
 import com.codesquad.issuetracker.label.data.LabelRepository;
 import com.codesquad.issuetracker.label.web.model.LabelQuery;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 public class LabelService {
 
   private final LabelRepository labelRepository;
+  private final IssueLabelRelationRepository issueLabelRelationRepository;
 
   public List<LabelView> getLabels() {
     List<Label> findLabels = labelRepository.findAll();
@@ -34,7 +37,9 @@ public class LabelService {
 
   @Transactional
   public void delete(Long labelId) {
-    Label findLabel = labelRepository.findById(labelId).orElseThrow(NoSuchElementException::new);
+    Label findLabel = labelRepository.findById(labelId)
+        .orElseThrow(() -> new NoSuchElementException(ErrorMessage.NOT_EXIST_LABEL));
+    issueLabelRelationRepository.deleteAllByLabelId(findLabel.getId());
     labelRepository.delete(findLabel);
   }
 }
