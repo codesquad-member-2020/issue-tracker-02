@@ -1,8 +1,11 @@
 package com.codesquad.issuetracker.label.business;
 
+import com.codesquad.issuetracker.exception.ErrorMessage;
+import com.codesquad.issuetracker.issue.data.relation.IssueLabelRelationRepository;
 import com.codesquad.issuetracker.label.data.Label;
 import com.codesquad.issuetracker.label.data.LabelRepository;
 import com.codesquad.issuetracker.label.web.model.LabelQuery;
+import com.codesquad.issuetracker.label.web.model.LabelView;
 import java.util.List;
 import java.util.NoSuchElementException;
 import javax.transaction.Transactional;
@@ -14,23 +17,29 @@ import org.springframework.stereotype.Service;
 public class LabelService {
 
   private final LabelRepository labelRepository;
+  private final IssueLabelRelationRepository issueLabelRelationRepository;
 
-  public List<Label> getLabels() {
-    return labelRepository.findAll();
+  public List<LabelView> getLabels() {
+    List<Label> findLabels = labelRepository.findAll();
+    return LabelView.toList(findLabels);
   }
 
-  public Label getLabel(Long labelId) {
-    return labelRepository.findById(labelId).orElseThrow(NoSuchElementException::new);
+  public LabelView getLabel(Long labelId) {
+    Label findLabel = labelRepository.findById(labelId).orElseThrow(NoSuchElementException::new);
+    return LabelView.from(findLabel);
   }
 
   @Transactional
-  public Label create(LabelQuery query) {
-    return labelRepository.save(Label.from(query));
+  public LabelView create(LabelQuery query) {
+    Label savedLabel = labelRepository.save(Label.from(query));
+    return LabelView.from(savedLabel);
   }
 
   @Transactional
   public void delete(Long labelId) {
-    Label findLabel = labelRepository.findById(labelId).orElseThrow(NoSuchElementException::new);
+    Label findLabel = labelRepository.findById(labelId)
+        .orElseThrow(() -> new NoSuchElementException(ErrorMessage.NOT_EXIST_LABEL));
+    issueLabelRelationRepository.deleteAllByLabelId(findLabel.getId());
     labelRepository.delete(findLabel);
   }
 }

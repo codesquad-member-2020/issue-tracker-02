@@ -2,8 +2,8 @@ package com.codesquad.issuetracker.issue.web;
 
 import com.codesquad.issuetracker.auth.data.User;
 import com.codesquad.issuetracker.issue.business.IssueService;
-import com.codesquad.issuetracker.issue.data.Issue;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
+import com.codesquad.issuetracker.issue.web.model.IssueView;
 import com.codesquad.issuetracker.util.JwtUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -29,23 +29,21 @@ public class IssueController {
   @ApiOperation(value = "Issue 들을 가져옵니다")
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @GetMapping
-  public List<Issue> getIssues(HttpServletRequest request) {
-    User user = jwtUtil.parseUser(request.getHeader("Authorization"));
-    return issueService.getIssues(user);
+  public List<IssueView> getIssues() {
+    return issueService.getIssues();
   }
 
   @ApiOperation(value = "특정 Issue 를 가져옵니다")
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @GetMapping("{issueId}")
-  public Issue getIssue(@PathVariable Long issueId, HttpServletRequest request) {
-    User user = jwtUtil.parseUser(request.getHeader("Authorization"));
-    return issueService.getIssue(user, issueId);
+  public IssueView getIssue(@PathVariable Long issueId) {
+    return issueService.getIssue(issueId);
   }
 
   @ApiOperation(value = "Issue 를 추가합니다")
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @PostMapping
-  public Issue create(@RequestBody IssueQuery query, HttpServletRequest request) {
+  public IssueView create(@RequestBody IssueQuery query, HttpServletRequest request) {
     User user = jwtUtil.parseUser(request.getHeader("Authorization"));
     return issueService.create(user, query);
   }
