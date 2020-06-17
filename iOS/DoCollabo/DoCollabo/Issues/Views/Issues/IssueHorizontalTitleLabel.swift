@@ -10,7 +10,7 @@ import UIKit
 
 final class IssueHorizontalTitleLabel: UILabel {
     
-    private let titleFontSize: CGFloat = 18.0
+    private let titleFontSize: CGFloat = 17.0
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,7 +32,7 @@ final class IssueHorizontalTitleLabel: UILabel {
 
     private func configureUI() {
         text = "Title"
-        font = .systemFont(ofSize: titleFontSize, weight: .bold)
+        font = .systemFont(ofSize: titleFontSize, weight: .semibold)
         numberOfLines = 1
     }
 }
