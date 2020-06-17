@@ -14,13 +14,16 @@ final class IssuesViewController: UIViewController {
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    private var issuesUseCase: UseCase!
+    private var dataSource: IssuesCollectionViewDataSource!
+    
+    // for scroll animation
     @IBOutlet weak var titleHeaderBackgroundViewTopAnchor: NSLayoutConstraint!
     @IBOutlet weak var titleHeaderBackgroundViewHeightAnchor: NSLayoutConstraint!
     @IBOutlet weak var titleHeaderViewTopAnchor: NSLayoutConstraint!
     @IBOutlet weak var titleHeaderViewHeightAnchor: NSLayoutConstraint!
-    
-    private var issuesUseCase: UseCase!
-    private var dataSource: IssuesCollectionViewDataSource!
+    var previousOffsetY: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
