@@ -27,15 +27,6 @@ public class Milestone {
   private String description;
   private LocalDate dueDate;
 
-  public static Milestone extractMainInform(Milestone milestone) {
-    return Milestone.builder()
-        .id(milestone.getId())
-        .title(milestone.getTitle())
-        .description(milestone.getDescription())
-        .dueDate(milestone.getDueDate())
-        .build();
-  }
-
   public static Milestone from(MilestoneQuery mileStoneQuery) {
     return Milestone.builder()
         .title(mileStoneQuery.getTitle())

@@ -1,6 +1,7 @@
 package com.codesquad.issuetracker.milestone.business;
 
 import com.codesquad.issuetracker.exception.ErrorMessage;
+import com.codesquad.issuetracker.issue.data.relation.IssueMilestoneRelationRepository;
 import com.codesquad.issuetracker.milestone.data.Milestone;
 import com.codesquad.issuetracker.milestone.data.MilestoneRepository;
 import com.codesquad.issuetracker.milestone.web.model.MilestoneQuery;
@@ -17,9 +18,11 @@ import org.springframework.stereotype.Service;
 public class MilestoneService {
 
   private final MilestoneRepository mileStoneRepository;
+  private final IssueMilestoneRelationRepository issueMilestoneRelationRepository;
 
   public List<MilestoneView> getMileStones() {
-    return mileStoneRepository.findAll().stream()
+    List<Milestone> milestones = mileStoneRepository.findAll();
+    return milestones.stream()
         .map(MilestoneView::from)
         .collect(Collectors.toList());
   }
@@ -37,13 +40,10 @@ public class MilestoneService {
   }
 
   @Transactional
-  public void delete(Long labelId) {
-    Milestone findMilestone = mileStoneRepository.findById(labelId)
+  public void delete(Long milestoneId) {
+    Milestone findMilestone = mileStoneRepository.findById(milestoneId)
         .orElseThrow(() -> new NoSuchElementException(ErrorMessage.NOT_EXIST_MILESTONE));
-
-    Milestone deletedMilestone = Milestone.extractMainInform(findMilestone);
-    mileStoneRepository.save(deletedMilestone);
-    mileStoneRepository.delete(deletedMilestone);
-    System.out.println();
+    issueMilestoneRelationRepository.deleteAllByMilestoneId(findMilestone.getId());
+    mileStoneRepository.delete(findMilestone);
   }
 }
