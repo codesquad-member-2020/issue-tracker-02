@@ -56,6 +56,16 @@ extension IssuesViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        scrollDidEnd(offsetY: offsetY)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        scrollDidEnd(offsetY: offsetY)
+    }
+    
+    func scrollDidEnd(offsetY: CGFloat) {
         let currentHeaderViewHeight = titleHeaderViewHeightAnchor.constant
 
         guard currentHeaderViewHeight != TitleHeaderView.huggedHeight ||
@@ -64,7 +74,6 @@ extension IssuesViewController: UIScrollViewDelegate {
             return
         }
         
-        let offsetY = scrollView.contentOffset.y
         let offsetYDiff = previousOffsetY - offsetY
         let newHeight = titleHeaderViewHeightAnchor.constant + offsetYDiff
         let offsetProgress = (newHeight - TitleHeaderView.huggedHeight) / (TitleHeaderView.stretchedHeight - TitleHeaderView.huggedHeight)
