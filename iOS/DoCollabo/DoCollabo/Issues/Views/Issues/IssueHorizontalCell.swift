@@ -14,6 +14,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
     
     private var contentsStackView: UIStackView!
     private var titleLabel: IssueHorizontalTitleLabel!
+    private var milestoneView: IssueHorizontalMilestoneContainerView!
     private var descriptionLabel: IssueHorizontalDescriptionLabel!
     
     override init(frame: CGRect) {
@@ -30,11 +31,8 @@ final class IssueHorizontalCell: UICollectionViewCell {
         titleLabel.configureTitleLabel(with: issue)
 
         if let milestone = issue.labels.first?.title {
-            let label = UILabel()
-            label.text = milestone
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.heightAnchor.constraint(equalToConstant: 32).isActive = true
-            contentsStackView.addArrangedSubview(label)
+            milestoneView.configureMilestoneLabel(with: issue)
+            contentsStackView.addArrangedSubview(milestoneView)
         }
 
         if issue.labels.count > 0 {
@@ -61,6 +59,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
         backgroundColor = .tertiarySystemBackground
         
         titleLabel = IssueHorizontalTitleLabel()
+        milestoneView = IssueHorizontalMilestoneContainerView()
         descriptionLabel = IssueHorizontalDescriptionLabel()
         contentsStackView = IssueHorizontalContentsStackView(arrangedSubviews: [titleLabel])
         
