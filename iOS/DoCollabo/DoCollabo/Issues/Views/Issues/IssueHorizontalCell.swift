@@ -16,6 +16,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
     private var titleLabel: IssueHorizontalTitleLabel!
     private var milestoneView: IssueHorizontalMilestoneContainerView!
     private var descriptionLabel: IssueHorizontalDescriptionLabel!
+    private var trailingStackView: IssueHorizontalTrailingStackView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,6 +49,8 @@ final class IssueHorizontalCell: UICollectionViewCell {
             descriptionLabel.configureDescriptionLabel(with: issue)
             contentsStackView.addArrangedSubview(descriptionLabel)
         }
+        
+        trailingStackView.configureTrailingStackView(with: issue)
     }
     
     private func configure() {
@@ -61,6 +64,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
         titleLabel = IssueHorizontalTitleLabel()
         milestoneView = IssueHorizontalMilestoneContainerView()
         descriptionLabel = IssueHorizontalDescriptionLabel()
+        trailingStackView = IssueHorizontalTrailingStackView()
         contentsStackView = IssueHorizontalContentsStackView(arrangedSubviews: [titleLabel])
         
         roundCorner(cornerRadius: 16.0)
@@ -69,12 +73,20 @@ final class IssueHorizontalCell: UICollectionViewCell {
     
     private func configureLayout() {
         addSubview(contentsStackView)
+        addSubview(trailingStackView)
         contentsStackView.constraints(
             topAnchor: topAnchor,
             leadingAnchor: leadingAnchor,
             bottomAnchor: bottomAnchor,
+            trailingAnchor: trailingStackView.leadingAnchor,
+            padding: .init(top: 16, left: 16, bottom: 16, right: 8))
+        trailingStackView.constraints(
+            topAnchor: topAnchor,
+            leadingAnchor: contentsStackView.trailingAnchor,
+            bottomAnchor: nil,
             trailingAnchor: trailingAnchor,
-            padding: .init(top: 16, left: 16, bottom: 16, right: 16))
+            padding: .init(top: 16, left: 8, bottom: 16, right: 12),
+            size: .init(width: IssueHorizontalTrailingStackView.width, height: 0))
     }
     
     override func prepareForReuse() {
@@ -84,5 +96,9 @@ final class IssueHorizontalCell: UICollectionViewCell {
         }
         titleLabel.text = "Title"
         contentsStackView.addArrangedSubview(titleLabel)
+        trailingStackView.subviews.forEach { (subview) in
+            contentsStackView.removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
     }
 }
