@@ -1,8 +1,8 @@
 package com.codesquad.issuetracker;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import com.codesquad.issuetracker.issue.data.relation.IssueLabelRelationRepository;
 import com.codesquad.issuetracker.label.business.LabelService;
 import com.codesquad.issuetracker.label.data.Label;
 import com.codesquad.issuetracker.label.data.LabelRepository;
@@ -32,6 +32,9 @@ public class LabelTest {
 
     @Autowired
     private LabelRepository labelRepository;
+
+    @Autowired
+    private IssueLabelRelationRepository issueLabelRelationRepository;
 
     private LabelQuery sampleLabelQuery;
 
@@ -70,11 +73,8 @@ public class LabelTest {
       labelService.delete(sampleId);
 
       // then
-      labelRepository.findAll();
-      Optional<Label> deletedOptionalLabel = labelRepository.findById(sampleId);
-      assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> {
-        deletedOptionalLabel.orElseThrow(NoSuchElementException::new);
-      });
+      assertThat(labelRepository.findById(sampleId).isPresent()).isFalse();
+      assertThat(issueLabelRelationRepository.countAllByLabelIdIs(sampleId)).isEqualTo(0);
     }
 
     @Nested

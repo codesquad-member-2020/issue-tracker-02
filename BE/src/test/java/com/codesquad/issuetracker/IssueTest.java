@@ -9,6 +9,8 @@ import com.codesquad.issuetracker.exception.NotAllowedException;
 import com.codesquad.issuetracker.issue.business.IssueService;
 import com.codesquad.issuetracker.issue.data.Issue;
 import com.codesquad.issuetracker.issue.data.IssueRepository;
+import com.codesquad.issuetracker.issue.data.relation.IssueLabelRelationRepository;
+import com.codesquad.issuetracker.issue.data.relation.IssueMilestoneRelationRepository;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
 import com.codesquad.issuetracker.issue.web.model.IssueView;
 import com.google.common.primitives.Longs;
@@ -34,6 +36,12 @@ public class IssueTest {
 
     @Autowired
     private IssueService issueService;
+
+    @Autowired
+    private IssueLabelRelationRepository issueLabelRelationRepository;
+
+    @Autowired
+    private IssueMilestoneRelationRepository issueMilestoneRelationRepository;
 
     @Nested
     @DisplayName("Issue 를 가져옵니다")
@@ -65,7 +73,7 @@ public class IssueTest {
     }
 
     @Nested
-    @DisplayName("Issue 를 추가합니다")
+    @DisplayName("IssueQuery 로 Issue 를 추가합니다")
     @Transactional
     @SpringBootTest
     public class CreateTest {
@@ -85,67 +93,133 @@ public class IssueTest {
             .build();
       }
 
-      @DisplayName("Label 이 없는 IssueQuery 로")
-      @Test
-      public void createWithNoLabel() {
-        // given
-        sampleIssueQuery = IssueQuery.builder()
-            .title("Hyune-c 1")
-            .description("Hyune-c contents1\\nHyune-c contents1\\nHyune-c contents1")
-            .build();
+      @Nested
+      @DisplayName("Label 과")
+      @Transactional
+      @SpringBootTest
+      public class WithLabelTest {
 
-        // when
-        IssueView savedIssue = issueService.create(sampleUser, sampleIssueQuery);
+        @DisplayName("Milestone 없이")
+        @Test
+        public void withOutMilestone() {
+          // given
+          LinkedHashSet<Long> idOfLabels = new LinkedHashSet<>(Longs.asList(4, 5, 1));
+          sampleIssueQuery = IssueQuery.builder()
+              .title("Hyune-c 1")
+              .description("Hyune-c contents1\\nHyune-c contents1\\nHyune-c contents1")
+              .idOfLabels(idOfLabels)
+              .build();
 
-        // then
-        Optional<Issue> findOptionalIssue = issueRepository.findById(savedIssue.getId());
-        Issue findIssue = findOptionalIssue.orElseThrow(NoSuchElementException::new);
+          // when
+          IssueView savedIssue = issueService.create(sampleUser, sampleIssueQuery);
 
-        assertThat(findIssue.getId())
-            .isEqualTo(savedIssue.getId());
+          // then
+          Optional<Issue> findOptionalIssue = issueRepository.findById(savedIssue.getId());
+          Issue findIssue = findOptionalIssue.orElseThrow(NoSuchElementException::new);
+
+          assertThat(findIssue.getId())
+              .isEqualTo(savedIssue.getId());
+          assertThat(issueLabelRelationRepository.countAllByIssueIs(findIssue))
+              .isEqualTo(idOfLabels.size());
+        }
       }
 
-      @DisplayName("존재하는 Label id 를 가지고 있는 IssueQuery 로")
-      @Test
-      public void createWithLabel() {
-        // given
-        LinkedHashSet<Long> idOfLabels = new LinkedHashSet<>(Longs.asList(4, 5, 1));
-        sampleIssueQuery = IssueQuery.builder()
-            .title("Hyune-c 1")
-            .description("Hyune-c contents1\\nHyune-c contents1\\nHyune-c contents1")
-            .idOfLabels(idOfLabels)
-            .build();
+      @Nested
+      @DisplayName("존재하지 않는 Label 과")
+      @Transactional
+      @SpringBootTest
+      public class WithNotExistLabelTest {
 
-        // when
-        IssueView savedIssue = issueService.create(sampleUser, sampleIssueQuery);
+        @DisplayName("Milestone 없이")
+        @Test
+        public void withOutMilestone() {
+          // given
+          LinkedHashSet<Long> idOfLabels = new LinkedHashSet<>(Longs.asList(4, 15, 1));
+          sampleIssueQuery = IssueQuery.builder()
+              .title("Hyune-c 1")
+              .description("Hyune-c contents1\\nHyune-c contents1\\nHyune-c contents1")
+              .idOfLabels(idOfLabels)
+              .build();
 
-        // then
-        Optional<Issue> findOptionalIssue = issueRepository.findById(savedIssue.getId());
-        Issue findIssue = findOptionalIssue.orElseThrow(NoSuchElementException::new);
+          // when
+          assertThatExceptionOfType(NoSuchElementException.class)
+              .isThrownBy(() -> issueService.create(sampleUser, sampleIssueQuery))
+              .withMessage(ErrorMessage.NOT_EXIST_LABEL);
 
-        assertThat(findIssue.getId())
-            .isEqualTo(savedIssue.getId());
-        assertThat(findIssue.getIssueLabelRelations().size())
-            .isEqualTo(idOfLabels.size());
+          // then
+        }
       }
 
-      @DisplayName("존재하지 않는 Label id 를 가지고 있는 IssueQuery 로")
-      @Test
-      public void createWithWrongLabel() {
-        // given
-        LinkedHashSet<Long> idOfLabels = new LinkedHashSet<>(Longs.asList(4, 15, 1));
-        sampleIssueQuery = IssueQuery.builder()
-            .title("Hyune-c 1")
-            .description("Hyune-c contents1\\nHyune-c contents1\\nHyune-c contents1")
-            .idOfLabels(idOfLabels)
-            .build();
+      @Nested
+      @DisplayName("Label 없이")
+      @Transactional
+      @SpringBootTest
+      public class WithOutLabelTest {
 
-        // when
-        assertThatExceptionOfType(NoSuchElementException.class)
-            .isThrownBy(() -> issueService.create(sampleUser, sampleIssueQuery))
-            .withMessage(ErrorMessage.NOT_EXIST_LABEL);
+        @DisplayName("Milestone 없이")
+        @Test
+        public void withOutMilestone() {
+          // given
+          sampleIssueQuery = IssueQuery.builder()
+              .title("Hyune-c 1")
+              .description("Hyune-c contents1\\nHyune-c contents1\\nHyune-c contents1")
+              .build();
 
-        // then
+          // when
+          IssueView savedIssue = issueService.create(sampleUser, sampleIssueQuery);
+
+          // then
+          Issue validateIssue = issueRepository.findById(savedIssue.getId())
+              .orElseThrow(NoSuchElementException::new);
+
+          assertThat(validateIssue.getId())
+              .isEqualTo(savedIssue.getId());
+          assertThat(validateIssue.getIssueLabelRelations().size())
+              .isEqualTo(0);
+        }
+
+        @DisplayName("Milestone 있이")
+        @Test
+        public void WithMileStone() {
+          // given
+          LinkedHashSet<Long> idOfMilestone = new LinkedHashSet<>(Longs.asList(2, 1));
+          sampleIssueQuery = IssueQuery.builder()
+              .title("Hyune-c 1")
+              .description("Hyune-c contents1\\nHyune-c contents1\\nHyune-c contents1")
+              .idOfMilestones(idOfMilestone)
+              .build();
+
+          // when
+          IssueView savedIssue = issueService.create(sampleUser, sampleIssueQuery);
+
+          // then
+          Issue validateIssue = issueRepository.findById(savedIssue.getId())
+              .orElseThrow(NoSuchElementException::new);
+
+          assertThat(validateIssue.getId())
+              .isEqualTo(savedIssue.getId());
+          assertThat(issueMilestoneRelationRepository.countAllByIssueIs(validateIssue))
+              .isEqualTo(idOfMilestone.size());
+        }
+
+        @DisplayName("존재하지 않는 Milestone 으로")
+        @Test
+        public void WithNotExistMilestone() {
+          // given
+          LinkedHashSet<Long> idOfMilestone = new LinkedHashSet<>(Longs.asList(99, 105));
+          sampleIssueQuery = IssueQuery.builder()
+              .title("Hyune-c 1")
+              .description("Hyune-c contents1\\nHyune-c contents1\\nHyune-c contents1")
+              .idOfMilestones(idOfMilestone)
+              .build();
+
+          // when
+          assertThatExceptionOfType(NoSuchElementException.class)
+              .isThrownBy(() -> issueService.create(sampleUser, sampleIssueQuery))
+              .withMessage(ErrorMessage.NOT_EXIST_MILESTONE);
+
+          // then
+        }
       }
     }
 
@@ -172,16 +246,14 @@ public class IssueTest {
       @Test
       void deleteOwnIssue() {
         // given
+        Long sampleId = 9L;
 
         // when
-        issueService.delete(sampleUser, 9L);
+        issueService.delete(sampleUser, sampleId);
 
         // then
-        Optional<Issue> deletedOptionalIssue = issueRepository.findById(9L);
-
-        assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> {
-          deletedOptionalIssue.orElseThrow(NoSuchElementException::new);
-        });
+        assertThat(issueRepository.findById(sampleId).isPresent()).isFalse();
+        assertThat(issueLabelRelationRepository.countAllByLabelIdIs(sampleId)).isEqualTo(0);
       }
 
       @DisplayName("다른 User 의")
@@ -195,6 +267,8 @@ public class IssueTest {
         }).withMessage(ErrorMessage.ANOTHER_USER_ISSUE);
 
         // then
+
+        issueRepository.findAll();
       }
     }
   }
