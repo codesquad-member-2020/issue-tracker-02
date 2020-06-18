@@ -1,0 +1,6 @@
+framework module Pods_DoCollabo {
+  umbrella header "Pods-DoCollabo-umbrella.h"
+
+  export *
+  module * { export * }
+}
