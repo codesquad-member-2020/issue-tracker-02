@@ -18,51 +18,12 @@ class PopUpViewController: UIViewController {
         return view
     }()
     
-    private let contentsView: UIView = {
+    let contentsView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.roundCorner(cornerRadius: 16.0)
         return view
-    }()
-    
-    private let resetButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("초기화", for: .normal)
-        button.setTitleColor(UIColor(named: "key.navy"), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        return button
-    }()
-    
-    private let cancelButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
-        button.tintColor = UIColor(named: "key.red")
-        button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .semibold, scale: .large), forImageIn: .normal)
-        return button
-    }()
-    
-    private let submitButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "arrow.up.circle.fill"), for: .normal)
-        button.tintColor = UIColor(named: "key.navy")
-        button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .semibold, scale: .large), forImageIn: .normal)
-        return button
-    }()
-    
-    lazy var buttonStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.alignment = .center
-        stackView.distribution = .fillEqually
-        stackView.axis = .horizontal
-        stackView.spacing = 4
-        stackView.addArrangedSubview(cancelButton)
-        stackView.addArrangedSubview(submitButton)
-        return stackView
     }()
     
     override func viewDidLoad() {
@@ -78,34 +39,25 @@ class PopUpViewController: UIViewController {
     private func configure() {
         self.view.backgroundColor = .clear
         configureSubViews()
-        configureLayout()
-        configureBackgroundView()
+        configureLayout()        
     }
     
     private func configureSubViews() {
-        self.view.addSubview(backgroundView)
-        self.view.addSubview(contentsView)
-//        self.view.addSubview(resetButton)
-//        self.view.addSubview(buttonStackView)
+        view.addSubview(backgroundView)
+        view.addSubview(contentsView)
     }
     
     private func configureLayout() {
         let layouts = [
-            backgroundView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            contentsView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            contentsView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            contentsView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8),
-            contentsView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.4),
-//
-//            resetButton.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor, constant: 12),
-//            resetButton.centerYAnchor.constraint(equalTo: buttonStackView.centerYAnchor),
-//
-//            buttonStackView.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor, constant: -12),
-//            buttonStackView.bottomAnchor.constraint(equalTo: contentsView.bottomAnchor, constant: -24)
+            contentsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            contentsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            contentsView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+            contentsView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.35)
         ]
         layouts.forEach { $0.isActive = true }
     }
@@ -117,6 +69,5 @@ class PopUpViewController: UIViewController {
     
     @objc private func dismissView() {
         dismiss(animated: true, completion: nil)
-    }
-    
+    }   
 }
