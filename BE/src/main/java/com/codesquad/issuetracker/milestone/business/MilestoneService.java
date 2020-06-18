@@ -1,6 +1,8 @@
 package com.codesquad.issuetracker.milestone.business;
 
 import com.codesquad.issuetracker.exception.ErrorMessage;
+import com.codesquad.issuetracker.issue.data.Issue;
+import com.codesquad.issuetracker.issue.data.relation.IssueMilestoneRelation;
 import com.codesquad.issuetracker.issue.data.relation.IssueMilestoneRelationRepository;
 import com.codesquad.issuetracker.milestone.data.Milestone;
 import com.codesquad.issuetracker.milestone.data.MilestoneRepository;
@@ -20,23 +22,29 @@ public class MilestoneService {
   private final MilestoneRepository mileStoneRepository;
   private final IssueMilestoneRelationRepository issueMilestoneRelationRepository;
 
+  private List<Issue> extractIssues(Milestone milestone) {
+    return issueMilestoneRelationRepository.findAllByMilestoneId(milestone.getId()).stream()
+        .map(IssueMilestoneRelation::getIssue)
+        .collect(Collectors.toList());
+  }
+
   public List<MilestoneView> getMileStones() {
     List<Milestone> milestones = mileStoneRepository.findAll();
     return milestones.stream()
-        .map(MilestoneView::from)
+        .map(milestone -> MilestoneView.from(milestone, extractIssues(milestone)))
         .collect(Collectors.toList());
   }
 
   public MilestoneView getMileStone(Long labelId) {
     Milestone findMilestone = mileStoneRepository.findById(labelId)
         .orElseThrow(() -> new NoSuchElementException(ErrorMessage.NOT_EXIST_MILESTONE));
-    return MilestoneView.from(findMilestone);
+    return MilestoneView.from(findMilestone, extractIssues(findMilestone));
   }
 
   @Transactional
   public MilestoneView create(MilestoneQuery query) {
     Milestone savedMilestone = mileStoneRepository.save(Milestone.from(query));
-    return MilestoneView.from(savedMilestone);
+    return MilestoneView.from(savedMilestone, extractIssues(savedMilestone));
   }
 
   @Transactional

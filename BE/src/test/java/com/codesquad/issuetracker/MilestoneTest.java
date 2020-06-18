@@ -97,10 +97,10 @@ public class MilestoneTest {
 
         // then
         assertThat(findMilestone).isNotNull();
-//        assertThat(findMilestone.getIssueCount()).isGreaterThanOrEqualTo(0);
-//        assertThat(findMilestone.getCloseIssueCount())
-//            .isGreaterThanOrEqualTo(0)
-//            .isLessThanOrEqualTo(findMilestone.getIssueCount());
+        assertThat(findMilestone.getIssueCount()).isGreaterThanOrEqualTo(0);
+        assertThat(findMilestone.getCloseIssueCount())
+            .isGreaterThanOrEqualTo(0)
+            .isLessThanOrEqualTo(findMilestone.getIssueCount());
       }
     }
   }
