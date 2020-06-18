@@ -23,7 +23,6 @@ final class IssuesViewController: UIViewController {
     @IBOutlet weak var titleHeaderBackgroundViewHeightAnchor: NSLayoutConstraint!
     @IBOutlet weak var titleHeaderViewTopAnchor: NSLayoutConstraint!
     @IBOutlet weak var titleHeaderViewHeightAnchor: NSLayoutConstraint!
-    var previousOffsetY: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()

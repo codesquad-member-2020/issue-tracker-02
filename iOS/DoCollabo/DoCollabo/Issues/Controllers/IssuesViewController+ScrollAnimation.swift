@@ -15,12 +15,11 @@ extension IssuesViewController: UIScrollViewDelegate {
         let headerBGStretchedHeight = TitleHeaderBackgroundView.stretchedHeight
         
         let offsetY = scrollView.contentOffset.y
-        let offsetYDiff = previousOffsetY - offsetY
-        let newHeight = titleHeaderViewHeightAnchor.constant + offsetYDiff
+        let newHeight = titleHeaderViewHeightAnchor.constant - offsetY
         
         // change height of header view and header background view
         titleHeaderViewHeightAnchor.constant = newHeight
-        let backgroundOffsetDiff = headerBGStretchedHeight * offsetYDiff / headerStretchedHeight
+        let backgroundOffsetDiff = headerBGStretchedHeight * (-offsetY) / headerStretchedHeight
         let backgroundNewHeight = titleHeaderBackgroundViewHeightAnchor.constant + backgroundOffsetDiff
         titleHeaderBackgroundViewHeightAnchor.constant = backgroundNewHeight
         
@@ -48,7 +47,8 @@ extension IssuesViewController: UIScrollViewDelegate {
         
         if titleHeaderViewHeightAnchor.constant > headerHuggedHeight &&
             titleHeaderViewHeightAnchor.constant < headerStretchedHeight {
-            let offsetProgress = (newHeight - headerHuggedHeight) / (headerStretchedHeight - headerHuggedHeight)
+            let offsetProgress = (newHeight - headerHuggedHeight) /
+                (headerStretchedHeight - headerHuggedHeight)
             titleHeaderView.titleLabel.alpha = offsetProgress
             titleHeaderView.smallTitleLabel.alpha = 1.0 - offsetProgress
         }
@@ -73,9 +73,9 @@ extension IssuesViewController: UIScrollViewDelegate {
             return
         }
         
-        let offsetYDiff = previousOffsetY - offsetY
-        let newHeight = titleHeaderViewHeightAnchor.constant + offsetYDiff
-        let offsetProgress = (newHeight - TitleHeaderView.huggedHeight) / (TitleHeaderView.stretchedHeight - TitleHeaderView.huggedHeight)
+        let newHeight = titleHeaderViewHeightAnchor.constant - offsetY
+        let offsetProgress = (newHeight - TitleHeaderView.huggedHeight) /
+            (TitleHeaderView.stretchedHeight - TitleHeaderView.huggedHeight)
         
         if offsetProgress < 0.5 {
             titleHeaderViewHeightAnchor.constant = TitleHeaderView.huggedHeight
