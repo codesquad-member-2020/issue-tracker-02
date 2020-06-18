@@ -34,12 +34,9 @@ public class Label {
         .build();
   }
 
-  public static Label from(Long labelId, LabelQuery labelQuery) {
-    return Label.builder()
-        .id(labelId)
-        .title(labelQuery.getTitle())
-        .description(labelQuery.getDescription())
-        .color(labelQuery.getColor())
-        .build();
+  public void update(LabelQuery labelQuery){
+    title = labelQuery.getTitle();
+    description = labelQuery.getDescription();
+    color = labelQuery.getColor();
   }
 }

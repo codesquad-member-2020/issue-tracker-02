@@ -46,10 +46,10 @@ public class LabelService {
 
   @Transactional
   public LabelView put(Long labelId, LabelQuery query) {
-    Label findLabel = labelRepository.findById(labelId)
+    Label label = labelRepository.findById(labelId)
         .orElseThrow(() -> new EntityNotFoundException(ErrorMessage.NOT_EXIST_LABEL));
-    Label updatedLabel = labelRepository
-        .save(Label.from(findLabel.getId(), query));
-    return LabelView.from(updatedLabel);
+    label.update(query);
+
+    return LabelView.from(label);
   }
 }

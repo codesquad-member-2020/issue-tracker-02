@@ -35,12 +35,9 @@ public class Milestone {
         .build();
   }
 
-  public static Milestone from(Long id, MilestoneQuery mileStoneQuery) {
-    return Milestone.builder()
-        .id(id)
-        .title(mileStoneQuery.getTitle())
-        .description(mileStoneQuery.getDescription())
-        .dueDate(mileStoneQuery.getDueDate())
-        .build();
+  public void update(MilestoneQuery mileStoneQuery) {
+    title = mileStoneQuery.getTitle();
+    description = mileStoneQuery.getDescription();
+    dueDate = mileStoneQuery.getDueDate();
   }
 }

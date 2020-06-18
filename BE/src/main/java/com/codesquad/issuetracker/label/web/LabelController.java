@@ -29,7 +29,7 @@ public class LabelController {
   }
 
   @ApiOperation(value = "특정 Label 을 가져옵니다")
-  @GetMapping("{labelId}")
+  @GetMapping("/{labelId}")
   public LabelView getLabel(@PathVariable Long labelId) {
     return labelService.getLabel(labelId);
   }
@@ -41,13 +41,13 @@ public class LabelController {
   }
 
   @ApiOperation(value = "Label 을 삭제합니다")
-  @DeleteMapping("{labelId}")
+  @DeleteMapping("/{labelId}")
   public void delete(@PathVariable Long labelId) {
     labelService.delete(labelId);
   }
 
   @ApiOperation(value = "Label 을 수정합니다")
-  @PutMapping
+  @PutMapping("/{labelId}")
   public LabelView put(@PathVariable Long labelId, @RequestBody LabelQuery query) {
     return labelService.put(labelId, query);
   }

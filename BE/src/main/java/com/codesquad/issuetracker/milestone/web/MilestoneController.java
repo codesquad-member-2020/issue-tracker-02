@@ -29,7 +29,7 @@ public class MilestoneController {
   }
 
   @ApiOperation(value = "특정 MileStone 를 가져옵니다")
-  @GetMapping("{mileStoneId}")
+  @GetMapping("/{mileStoneId}")
   public MilestoneView getMileStone(@PathVariable Long mileStoneId) {
     return mileStoneService.getMilestone(mileStoneId);
   }
@@ -41,13 +41,13 @@ public class MilestoneController {
   }
 
   @ApiOperation(value = "MileStone 를 삭제합니다")
-  @DeleteMapping("{mileStoneId}")
+  @DeleteMapping("/{mileStoneId}")
   public void delete(@PathVariable Long mileStoneId) {
     mileStoneService.delete(mileStoneId);
   }
 
   @ApiOperation(value = "MileStone 를 수정합니다")
-  @PutMapping("{milestoneId}")
+  @PutMapping("/{milestoneId}")
   public MilestoneView put(@PathVariable Long milestoneId, @RequestBody MilestoneQuery query) {
     return mileStoneService.put(milestoneId, query);
   }

@@ -57,10 +57,10 @@ public class MilestoneService {
 
   @Transactional
   public MilestoneView put(Long milestoneId, MilestoneQuery query) {
-    Milestone findMilestone = milestoneRepository.findById(milestoneId)
+    Milestone milestone = milestoneRepository.findById(milestoneId)
         .orElseThrow(() -> new NoSuchElementException(ErrorMessage.NOT_EXIST_MILESTONE));
-    Milestone updatedMilestone = milestoneRepository
-        .save(Milestone.from(findMilestone.getId(), query));
-    return MilestoneView.from(updatedMilestone, extractIssues(updatedMilestone));
+    milestone.update(query);
+
+    return MilestoneView.from(milestone, extractIssues(milestone));
   }
 }
