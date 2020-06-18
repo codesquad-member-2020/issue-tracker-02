@@ -60,18 +60,15 @@ extension LabelsViewController: HeaderViewActionDelegate {
         popUpViewController.modalTransitionStyle = .crossDissolve
         popUpViewController.configure()
         let popUpContentView = PopUpContentView()
+        let popUpColorPickerView = PopUpColorPickerView()
+        popUpContentView.configurePlaceholderView(popUpColorPickerView)
+        popUpColorPickerView.fillSuperview()
+        popUpColorPickerView.delegate = self
         popUpViewController.configureContentView(popUpContentView)
         let buttonStackView = PopUpFooterView()
         popUpViewController.configureFooterView(buttonStackView)
         buttonStackView.delegate = self
         present(popUpViewController, animated: true, completion: nil)
-    }
-    
-    private func configureColorPickerView(at addingContentsView: PopUpContentView) {
-        let selectColorSegmentView = PopUpColorPickerView()
-        addingContentsView.configurePlaceholderView(selectColorSegmentView)
-        selectColorSegmentView.fillSuperview()
-        selectColorSegmentView.delegate = self
     }
 }
 
