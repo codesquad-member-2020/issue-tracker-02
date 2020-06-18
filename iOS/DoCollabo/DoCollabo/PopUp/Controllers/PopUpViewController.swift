@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PopUpViewControllerDelegate: class {
+    func cancelButtonDidTap()
+}
+
 class PopUpViewController: UIViewController {
     
     private var backgroundView: UIView!
@@ -15,14 +19,25 @@ class PopUpViewController: UIViewController {
     private var contentPlaceholderView: UIView!
     private var footerPlaceholderView: UIView!
     
+    weak var delegate: PopUpViewControllerDelegate?
+    
     func configureContentView(_ contentView: UIView) {
         contentPlaceholderView.addSubview(contentView)
         contentView.fillSuperview()
     }
     
-    func configureFooterView(_ footerView: UIView) {
+    func configureFooterView(_ footerView: PopUpFooterView) {
         footerPlaceholderView.addSubview(footerView)
         footerView.fillSuperview()
+        footerView.delegate = self
+    }
+}
+
+// MARK:- PopUpFooterViewActionDelegate
+
+extension PopUpViewController: PopUpFooterViewActionDelegate {
+    func cancelButtonDidTap() {
+        delegate?.cancelButtonDidTap()
     }
 }
 

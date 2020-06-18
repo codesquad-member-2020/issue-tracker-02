@@ -61,6 +61,7 @@
 		386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */; };
 		38879C552490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38879C542490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		38879C582490E48600EE84D7 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38879C572490E48600EE84D7 /* UIView+Shadow.swift */; };
+		388B27F3249B98F100F59998 /* LabelPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B27F2249B98F100F59998 /* LabelPopUpViewController.swift */; };
 		38BDFA2A24912E79008E901D /* IssueHorizontalContentsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */; };
 		38BDFA2C24912F21008E901D /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */; };
 		38BDFA2E24913128008E901D /* IssueHorizontalTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */; };
@@ -129,6 +130,7 @@
 		386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		38879C542490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		38879C572490E48600EE84D7 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		388B27F2249B98F100F59998 /* LabelPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LabelPopUpViewController.swift; path = DoCollabo/Labels/Controllers/LabelPopUpViewController.swift; sourceTree = SOURCE_ROOT; };
 		38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalContentsStackView.swift; sourceTree = "<group>"; };
 		38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalTitleLabel.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				308A9C962498FFA600DE53E4 /* PopUpViewController.swift */,
+				388B27F2249B98F100F59998 /* LabelPopUpViewController.swift */,
 				3032C672249B647C003DB8A8 /* ColorPickerViewController.swift */,
 			);
 			path = Controllers;
@@ -634,6 +637,7 @@
 				3073525D2497907F00730D53 /* PopUpColorPickerView.swift in Sources */,
 				3012917F249B198500D35B26 /* PopUpFooterView.swift in Sources */,
 				3040B8822492403600A780D5 /* IssuesCollectionViewDataSource.swift in Sources */,
+				388B27F3249B98F100F59998 /* LabelPopUpViewController.swift in Sources */,
 				30E22EF324910D8700EC0FD8 /* FetchIssueRequest.swift in Sources */,
 				30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */,
 				38BDFA2E24913128008E901D /* IssueHorizontalTitleLabel.swift in Sources */,

@@ -55,26 +55,19 @@ final class LabelsViewController: UIViewController {
 
 extension LabelsViewController: HeaderViewActionDelegate {
     func newButtonDidTap() {
-        let popUpViewController = PopUpViewController()
+        let popUpViewController = LabelPopUpViewController()
         popUpViewController.modalPresentationStyle = .overCurrentContext
         popUpViewController.modalTransitionStyle = .crossDissolve
         popUpViewController.configure()
-        let popUpContentView = PopUpContentView()
-        let popUpColorPickerView = PopUpColorPickerView()
-        popUpContentView.configurePlaceholderView(popUpColorPickerView)
-        popUpColorPickerView.fillSuperview()
-        popUpColorPickerView.delegate = self
-        popUpViewController.configureContentView(popUpContentView)
-        let buttonStackView = PopUpFooterView()
-        popUpViewController.configureFooterView(buttonStackView)
-        buttonStackView.delegate = self
+        popUpViewController.configureLabelPopupViewController()
+        popUpViewController.delegate = self
         present(popUpViewController, animated: true, completion: nil)
     }
 }
 
 // MARK:- ButtonStackActionDelegate
 
-extension LabelsViewController: PopUpFooterViewActionDelegate {
+extension LabelsViewController: PopUpViewControllerDelegate {
     func cancelButtonDidTap() {
         dismiss(animated: true, completion: nil)
     }
@@ -87,7 +80,6 @@ extension LabelsViewController: ColorPickerActionDelegate {
         let colorPickerViewController = ColorPickerViewController()
         colorPickerViewController.modalPresentationStyle = .overCurrentContext
         colorPickerViewController.modalTransitionStyle = .crossDissolve
-        
         present(colorPickerViewController, animated: true, completion: nil)
     }
 }
