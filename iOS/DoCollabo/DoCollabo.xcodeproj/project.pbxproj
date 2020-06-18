@@ -164,18 +164,18 @@
 			isa = PBXGroup;
 			children = (
 				3020A0AE24936F9600483727 /* DataSources */,
-				3020A0A324933AF500483727 /* ViewControllers */,
+				3020A0A324933AF500483727 /* Controllers */,
 				3020A0A62493475B00483727 /* Views */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
 		};
-		3020A0A324933AF500483727 /* ViewControllers */ = {
+		3020A0A324933AF500483727 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				3020A0A424933B0D00483727 /* LabelsViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		3020A0A62493475B00483727 /* Views */ = {
@@ -210,14 +210,9 @@
 		302D13EB24978367001582DD /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
-				308A9C962498FFA600DE53E4 /* PopUpViewController.swift */,
-				3073525C2497907F00730D53 /* SelectColorSegmentView.swift */,
-				3073525E2497909300730D53 /* SelectColorSegmentView.xib */,
-				308A9C98249900FE00DE53E4 /* AddingContentsView.xib */,
-				308A9C9A2499010B00DE53E4 /* AddingContentsView.swift */,
-				3012917C249B197600D35B26 /* ButtonStackView.xib */,
-				3012917E249B198500D35B26 /* ButtonStackView.swift */,
-				3032C672249B647C003DB8A8 /* ColorPickerViewController.swift */,
+				38123757249B9281003603BF /* Delegates */,
+				38123755249B9224003603BF /* Controllers */,
+				38123756249B922A003603BF /* Views */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -315,8 +310,6 @@
 			isa = PBXGroup;
 			children = (
 				308A9C9D249A340500DE53E4 /* HeaderViewActionDelegate.swift */,
-				3012917A249B11E600D35B26 /* ColorPickerActionDelegate.swift */,
-				3032C670249B3D61003DB8A8 /* ButtonStackActionDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -373,6 +366,37 @@
 				30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		38123755249B9224003603BF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				308A9C962498FFA600DE53E4 /* PopUpViewController.swift */,
+				3032C672249B647C003DB8A8 /* ColorPickerViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		38123756249B922A003603BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3073525C2497907F00730D53 /* SelectColorSegmentView.swift */,
+				3073525E2497909300730D53 /* SelectColorSegmentView.xib */,
+				308A9C9A2499010B00DE53E4 /* AddingContentsView.swift */,
+				308A9C98249900FE00DE53E4 /* AddingContentsView.xib */,
+				3012917E249B198500D35B26 /* ButtonStackView.swift */,
+				3012917C249B197600D35B26 /* ButtonStackView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		38123757249B9281003603BF /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				3012917A249B11E600D35B26 /* ColorPickerActionDelegate.swift */,
+				3032C670249B3D61003DB8A8 /* ButtonStackActionDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		386B8F96248E28D800ED3A5A /* Issues */ = {
