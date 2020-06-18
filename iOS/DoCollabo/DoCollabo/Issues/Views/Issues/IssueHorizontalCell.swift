@@ -15,6 +15,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
     private var contentsStackView: UIStackView!
     private var titleLabel: IssueHorizontalTitleLabel!
     private var milestoneView: IssueHorizontalMilestoneContainerView!
+    private var issueLabelsViewController: IssueLabelsViewController!
     private var descriptionLabel: IssueHorizontalDescriptionLabel!
     private var trailingStackView: IssueHorizontalTrailingStackView!
     
@@ -37,12 +38,11 @@ final class IssueHorizontalCell: UICollectionViewCell {
         }
 
         if issue.labels.count > 0 {
-            let collectionView = IssueLabelsCollectionView()
-            collectionView.updateLabels(issue.labels)
-            contentsStackView.addArrangedSubview(collectionView)
+            issueLabelsViewController.updateLabels(issue.labels)
+            issueLabelsViewController.reloadCollectionView()
+            contentsStackView.addArrangedSubview(issueLabelsViewController.view)
             layoutIfNeeded()
-            let contentHeight = collectionView.contentSize.height
-            collectionView.heightAnchor.constraint(equalToConstant: contentHeight).isActive = true
+            issueLabelsViewController.view.heightAnchor.constraint(equalToConstant: issueLabelsViewController.contentHeight).isActive = true
         }
         
         if issue.description != "" {
@@ -63,6 +63,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
         
         titleLabel = IssueHorizontalTitleLabel()
         milestoneView = IssueHorizontalMilestoneContainerView()
+        issueLabelsViewController = IssueLabelsViewController()
         descriptionLabel = IssueHorizontalDescriptionLabel()
         trailingStackView = IssueHorizontalTrailingStackView()
         contentsStackView = IssueHorizontalContentsStackView(arrangedSubviews: [titleLabel])
