@@ -8,6 +8,7 @@ import com.codesquad.issuetracker.label.web.model.LabelQuery;
 import com.codesquad.issuetracker.label.web.model.LabelView;
 import java.util.List;
 import java.util.NoSuchElementException;
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,14 @@ public class LabelService {
         .orElseThrow(() -> new NoSuchElementException(ErrorMessage.NOT_EXIST_LABEL));
     issueLabelRelationRepository.deleteAllByLabelId(findLabel.getId());
     labelRepository.delete(findLabel);
+  }
+
+  @Transactional
+  public LabelView put(Long labelId, LabelQuery query) {
+    Label findLabel = labelRepository.findById(labelId)
+        .orElseThrow(() -> new EntityNotFoundException(ErrorMessage.NOT_EXIST_LABEL));
+    Label updatedLabel = labelRepository
+        .save(Label.from(findLabel.getId(), query));
+    return LabelView.from(updatedLabel);
   }
 }

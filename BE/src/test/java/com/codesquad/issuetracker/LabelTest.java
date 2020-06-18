@@ -1,16 +1,22 @@
 package com.codesquad.issuetracker;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import com.codesquad.issuetracker.exception.ErrorMessage;
 import com.codesquad.issuetracker.issue.data.relation.IssueLabelRelationRepository;
 import com.codesquad.issuetracker.label.business.LabelService;
 import com.codesquad.issuetracker.label.data.Label;
 import com.codesquad.issuetracker.label.data.LabelRepository;
 import com.codesquad.issuetracker.label.web.model.LabelQuery;
 import com.codesquad.issuetracker.label.web.model.LabelView;
+import com.codesquad.issuetracker.milestone.data.Milestone;
+import com.codesquad.issuetracker.milestone.web.model.MilestoneQuery;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -41,8 +47,8 @@ public class LabelTest {
     @BeforeEach
     private void beforeEach() {
       sampleLabelQuery = LabelQuery.builder()
-          .title("created label")
-          .description("created label description")
+          .title("sample label")
+          .description("sample description")
           .color("5319e7")
           .build();
     }
@@ -103,6 +109,51 @@ public class LabelTest {
 
         // then
         assertThat(findLabel).isNotNull();
+      }
+    }
+
+    @Nested
+    @DisplayName("Label 을 수정합니다")
+    @SpringBootTest
+    public class PutTest {
+
+      private Long sampleId;
+
+      @DisplayName("존재하지 않는")
+      @Test
+      public void notExist() {
+        // given
+        sampleId = 99L;
+
+        // when
+        assertThatExceptionOfType(EntityNotFoundException.class).isThrownBy(() -> {
+          labelService.put(99L, null);
+        }).withMessage(ErrorMessage.NOT_EXIST_LABEL);
+
+        // then
+      }
+
+      @DisplayName("존재하는")
+      @Test
+      public void exist() {
+        // given
+        sampleId = 1L;
+        sampleLabelQuery = LabelQuery.builder()
+            .title("sample label")
+            .description("sample description")
+            .color("5319e7")
+            .build();
+
+        // when
+        labelService.put(sampleId, sampleLabelQuery);
+
+        // then
+        Label findLabel = labelRepository.findById(sampleId)
+            .orElseThrow(EntityNotFoundException::new);
+        assertThat(findLabel.getId()).isEqualTo(sampleId);
+        assertThat(findLabel.getTitle()).isEqualTo(sampleLabelQuery.getTitle());
+        assertThat(findLabel.getDescription()).isEqualTo(sampleLabelQuery.getDescription());
+        assertThat(findLabel.getColor()).isEqualTo(sampleLabelQuery.getColor());
       }
     }
   }

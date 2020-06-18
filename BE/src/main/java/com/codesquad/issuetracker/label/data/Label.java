@@ -33,4 +33,13 @@ public class Label {
         .color(labelQuery.getColor())
         .build();
   }
+
+  public static Label from(Long labelId, LabelQuery labelQuery) {
+    return Label.builder()
+        .id(labelId)
+        .title(labelQuery.getTitle())
+        .description(labelQuery.getDescription())
+        .color(labelQuery.getColor())
+        .build();
+  }
 }
