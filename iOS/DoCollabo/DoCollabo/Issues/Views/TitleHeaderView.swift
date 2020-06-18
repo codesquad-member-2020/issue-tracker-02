@@ -12,7 +12,7 @@ import UIKit
 final class TitleHeaderView: UIView {
     
     static let stretchedHeight: CGFloat = 144.0
-    static let huggedHeight: CGFloat = 100.0
+    static let huggedHeight: CGFloat = 68.0
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var backgroundView: UIView!
