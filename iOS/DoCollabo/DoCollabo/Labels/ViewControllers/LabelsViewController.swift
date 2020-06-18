@@ -58,31 +58,13 @@ extension LabelsViewController: HeaderViewActionDelegate {
         let popUpViewController = PopUpViewController()
         popUpViewController.modalPresentationStyle = .overCurrentContext
         popUpViewController.modalTransitionStyle = .crossDissolve
-        configureAddingContentsView(at: popUpViewController)
-        present(popUpViewController, animated: true, completion: nil)
-    }
-    
-    private func configureAddingContentsView(at popUpViewController: PopUpViewController) {
+        popUpViewController.configure()
         let addingContentsView = AddingContentsView()
-        configureColorPickerView(at: addingContentsView)
-        
-        popUpViewController.add(addingContentsView) { superView in
-            addingContentsView.translatesAutoresizingMaskIntoConstraints = false
-            addingContentsView.topAnchor.constraint(equalTo: superView.topAnchor, constant: 24).isActive = true
-            addingContentsView.centerXAnchor.constraint(equalTo: superView.centerXAnchor).isActive = true
-            addingContentsView.widthAnchor.constraint(equalTo: superView.widthAnchor, multiplier: 0.8).isActive = true
-            addingContentsView.heightAnchor.constraint(equalTo: superView.heightAnchor, multiplier: 0.5).isActive = true
-        
-        }
+        popUpViewController.configureContentView(addingContentsView)
         let buttonStackView = ButtonStackView()
-        popUpViewController.add(buttonStackView) { superView in
-            buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-           buttonStackView.centerXAnchor.constraint(equalTo: superView.centerXAnchor).isActive = true
-           buttonStackView.widthAnchor.constraint(equalTo: superView.widthAnchor, multiplier: 0.8).isActive = true
-            buttonStackView.heightAnchor.constraint(equalTo: superView.heightAnchor, multiplier: 0.15).isActive = true
-            buttonStackView.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: -24).isActive = true
-        }
+        popUpViewController.configureFooterView(buttonStackView)
         buttonStackView.delegate = self
+        present(popUpViewController, animated: true, completion: nil)
     }
     
     private func configureColorPickerView(at addingContentsView: AddingContentsView) {

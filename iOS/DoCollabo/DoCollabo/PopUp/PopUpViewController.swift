@@ -10,64 +10,77 @@ import UIKit
 
 class PopUpViewController: UIViewController {
     
-    private let backgroundView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black
-        view.alpha = 0.5
-        return view
-    }()
+    private var backgroundView: UIView!
+    private var frameView: UIView!
+    private var contentPlaceholderView: UIView!
+    private var footerPlaceholderView: UIView!
     
-    let contentsView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
-        view.roundCorner(cornerRadius: 16.0)
-        return view
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configure()
+    func configureContentView(_ contentView: UIView) {
+        contentPlaceholderView.addSubview(contentView)
+        contentView.fillSuperview()
     }
     
-    func add(_ view: UIView, handler: (UIView) -> Void) {
-        contentsView.addSubview(view)
-        handler(contentsView)
+    func configureFooterView(_ footerView: UIView) {
+        footerPlaceholderView.addSubview(footerView)
+        footerView.fillSuperview()
     }
-    
-    private func configure() {
+}
+
+// MARK:- Configuration
+
+extension PopUpViewController {
+    func configure() {
         self.view.backgroundColor = .clear
+        configureUI()
         configureSubViews()
-        configureLayout()        
+        configureLayout()
+        configureTapGestureRecognizer()
+    }
+    
+    private func configureUI() {
+        contentPlaceholderView = UIView()
+        footerPlaceholderView = UIView()
+        backgroundView = UIView()
+        backgroundView.backgroundColor = .black
+        backgroundView.alpha = 0.5
+        frameView = UIView()
+        frameView.backgroundColor = .white
+        frameView.roundCorner(cornerRadius: 16.0)
     }
     
     private func configureSubViews() {
         view.addSubview(backgroundView)
-        view.addSubview(contentsView)
+        view.addSubview(frameView)
+        frameView.addSubview(contentPlaceholderView)
+        frameView.addSubview(footerPlaceholderView)
     }
     
     private func configureLayout() {
-        let layouts = [
-            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            contentsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            contentsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            contentsView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
-            contentsView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.35)
-        ]
-        layouts.forEach { $0.isActive = true }
+        backgroundView.fillSuperview()
+        frameView.centerInSuperview()
+        let sidePadding: CGFloat = 24.0
+        frameView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        frameView.heightAnchor.constraint(equalTo: frameView.widthAnchor, multiplier: 1.1).isActive = true
+        contentPlaceholderView.translatesAutoresizingMaskIntoConstraints = false
+        footerPlaceholderView.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentPlaceholderView.topAnchor.constraint(equalTo: frameView.topAnchor, constant: 24).isActive = true
+        contentPlaceholderView.leadingAnchor.constraint(equalTo: frameView.leadingAnchor, constant: sidePadding).isActive = true
+        contentPlaceholderView.trailingAnchor.constraint(equalTo: frameView.trailingAnchor, constant: -sidePadding).isActive = true
+        contentPlaceholderView.bottomAnchor.constraint(equalTo: footerPlaceholderView.topAnchor, constant: -24).isActive = true
+        
+        footerPlaceholderView.heightAnchor.constraint(equalTo: frameView.heightAnchor, multiplier: 0.2).isActive = true
+        footerPlaceholderView.bottomAnchor.constraint(equalTo: frameView.bottomAnchor, constant: -24).isActive = true
+        footerPlaceholderView.leadingAnchor.constraint(equalTo: contentPlaceholderView.leadingAnchor).isActive = true
+        footerPlaceholderView.trailingAnchor.constraint(equalTo: contentPlaceholderView.trailingAnchor).isActive = true
     }
     
-    private func configureBackgroundView() {
+    private func configureTapGestureRecognizer() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissView))
         backgroundView.addGestureRecognizer(tapRecognizer)
     }
     
     @objc private func dismissView() {
         dismiss(animated: true, completion: nil)
-    }   
+    }
 }

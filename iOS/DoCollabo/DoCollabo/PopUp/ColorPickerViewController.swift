@@ -9,7 +9,7 @@
 import UIKit
 import Colorful
 
-final class ColorPickerViewController: PopUpViewController {
+final class ColorPickerViewController: UIViewController {
     
     private let palette: ColorPicker = {
          let picker = ColorPicker()
@@ -25,21 +25,9 @@ final class ColorPickerViewController: PopUpViewController {
     
     private func configure() {
         configureSubViews()
-        configureLayout()
     }
     
     private func configureSubViews() {
         view.addSubview(palette)
-    }
-    
-    private func configureLayout() {
-        let layout = [
-            
-            palette.centerXAnchor.constraint(equalTo: contentsView.centerXAnchor),
-            palette.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor, constant: 12),
-            palette.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor, constant: -12),
-            palette.heightAnchor.constraint(equalTo: contentsView.heightAnchor, multiplier: 0.6)
-        ]
-        layout.forEach { $0.isActive = true }
     }
 }
