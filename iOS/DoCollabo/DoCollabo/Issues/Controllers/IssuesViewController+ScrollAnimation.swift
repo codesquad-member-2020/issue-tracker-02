@@ -10,7 +10,6 @@ import UIKit
 
 extension IssuesViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         let headerStretchedHeight = TitleHeaderView.stretchedHeight
         let headerHuggedHeight = TitleHeaderView.huggedHeight
         let headerBGStretchedHeight = TitleHeaderBackgroundView.stretchedHeight
