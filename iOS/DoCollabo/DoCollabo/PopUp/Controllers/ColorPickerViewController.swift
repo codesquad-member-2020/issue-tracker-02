@@ -9,25 +9,24 @@
 import UIKit
 import Colorful
 
-final class ColorPickerViewController: UIViewController {
+final class ColorPickerViewController: PopUpViewController {
     
-    private let palette: ColorPicker = {
-         let picker = ColorPicker()
-          picker.translatesAutoresizingMaskIntoConstraints = false
-          picker.set(color: UIColor(displayP3Red: 1.0, green: 1.0, blue: 0, alpha: 1), colorSpace: .sRGB)
-          return picker
-      }()
+    private var palette: ColorPicker!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func configurePalette() {
         configure()
+        palette = ColorPicker()
+        palette.translatesAutoresizingMaskIntoConstraints = false
+        palette.set(
+            color: UIColor(displayP3Red: 1.0, green: 1.0, blue: 0, alpha: 1),
+            colorSpace: .sRGB)
+        configureContentView(palette)
+        configureSecondLevelBackgroundView()
     }
-    
-    private func configure() {
-        configureSubViews()
-    }
-    
-    private func configureSubViews() {
-        view.addSubview(palette)
+}
+
+extension ColorPickerViewController {
+    override func cancelButtonDidTap() {
+        dismiss(animated: false, completion: nil)
     }
 }

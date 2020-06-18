@@ -25,11 +25,15 @@ class PopUpViewController: UIViewController {
         contentPlaceholderView.addSubview(contentView)
         contentView.fillSuperview()
     }
+    
+    func configureSecondLevelBackgroundView() {
+        backgroundView.alpha = 0
+    }
 }
 
-// MARK:- PopUpFooterViewActionDelegate
+// MARK:- PopUpFooterViewActio@objc nDelegate
 
-extension PopUpViewController: PopUpFooterViewActionDelegate {
+@objc extension PopUpViewController: PopUpFooterViewActionDelegate {
     func cancelButtonDidTap() {
         delegate?.cancelButtonDidTap()
     }

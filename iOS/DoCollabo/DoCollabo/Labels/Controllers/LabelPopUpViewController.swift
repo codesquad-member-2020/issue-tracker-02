@@ -28,8 +28,13 @@ final class LabelPopUpViewController: PopUpViewController {
     }
 }
 
+// MARK:- ColorPickerActionDelegate
+
 extension LabelPopUpViewController: ColorPickerActionDelegate {
     func colorPickerButtonDidTap() {
-        
+        let colorPickerViewController = ColorPickerViewController()
+        colorPickerViewController.modalPresentationStyle = .overCurrentContext
+        colorPickerViewController.configurePalette()
+        present(colorPickerViewController, animated: false, completion: nil)
     }
 }

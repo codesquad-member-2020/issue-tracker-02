@@ -68,17 +68,6 @@ extension LabelsViewController: PopUpViewControllerDelegate {
     }
 }
 
-// MARK:- ColorPickerActionDelegate
-
-extension LabelsViewController: ColorPickerActionDelegate {
-    func colorPickerButtonDidTap() {
-        let colorPickerViewController = ColorPickerViewController()
-        colorPickerViewController.modalPresentationStyle = .overCurrentContext
-        colorPickerViewController.modalTransitionStyle = .crossDissolve
-        present(colorPickerViewController, animated: true, completion: nil)
-    }
-}
-
 // MARK:- Configuration
 
 extension LabelsViewController {
