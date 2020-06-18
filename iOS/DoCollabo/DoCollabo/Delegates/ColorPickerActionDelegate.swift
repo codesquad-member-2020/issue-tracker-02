@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+protocol ColorPickerActionDelegate {
+    func tappedColorPicker()
+}

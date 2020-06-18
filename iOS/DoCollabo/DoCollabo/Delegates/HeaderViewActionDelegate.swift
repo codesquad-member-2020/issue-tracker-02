@@ -1,5 +1,5 @@
 //
-//  PassSelectedActionDelegate.swift
+//  HeaderViewActionDelegate.swift
 //  DoCollabo
 //
 //  Created by delma on 2020/06/17.
@@ -9,5 +9,5 @@
 import Foundation
 
 protocol HeaderViewActionDelegate {
-    func presentAddView()
+    func tappedAddView()
 }
