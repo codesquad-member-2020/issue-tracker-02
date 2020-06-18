@@ -7,13 +7,14 @@
 //
 
 import UIKit
-import Colorful
 
-class SelectColorSegmentView: UIView {
+final class SelectColorSegmentView: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var hexColorLabel: UILabel!
     @IBOutlet weak var colorPickerButton: UIButton!
+    
+    var delegate: ColorPickerActionDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,10 +41,6 @@ class SelectColorSegmentView: UIView {
     }
     
     @IBAction func pressColorPickerButton(_ sender: UIButton) {
-        NotificationCenter.default.post(name: .showColorPicker, object: nil)
+        delegate?.tappedColorPicker()
     }
-}
-
-extension Notification.Name {
-    static let showColorPicker = Notification.Name("showColorPicker")
 }
