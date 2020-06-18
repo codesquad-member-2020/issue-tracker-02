@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,21 +28,27 @@ public class LabelController {
     return labelService.getLabels();
   }
 
-  @ApiOperation(value = "특정 Label 를 가져옵니다")
-  @GetMapping("{labelId}")
+  @ApiOperation(value = "특정 Label 을 가져옵니다")
+  @GetMapping("/{labelId}")
   public LabelView getLabel(@PathVariable Long labelId) {
     return labelService.getLabel(labelId);
   }
 
-  @ApiOperation(value = "Label 를 추가합니다")
+  @ApiOperation(value = "Label 을 추가합니다")
   @PostMapping
   public LabelView create(@RequestBody LabelQuery query) {
     return labelService.create(query);
   }
 
-  @ApiOperation(value = "Label 를 삭제합니다")
-  @DeleteMapping("{labelId}")
+  @ApiOperation(value = "Label 을 삭제합니다")
+  @DeleteMapping("/{labelId}")
   public void delete(@PathVariable Long labelId) {
     labelService.delete(labelId);
+  }
+
+  @ApiOperation(value = "Label 을 수정합니다")
+  @PutMapping("/{labelId}")
+  public LabelView put(@PathVariable Long labelId, @RequestBody LabelQuery query) {
+    return labelService.put(labelId, query);
   }
 }

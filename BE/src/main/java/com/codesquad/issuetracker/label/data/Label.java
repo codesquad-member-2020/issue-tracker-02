@@ -33,4 +33,10 @@ public class Label {
         .color(labelQuery.getColor())
         .build();
   }
+
+  public void update(LabelQuery labelQuery){
+    title = labelQuery.getTitle();
+    description = labelQuery.getDescription();
+    color = labelQuery.getColor();
+  }
 }

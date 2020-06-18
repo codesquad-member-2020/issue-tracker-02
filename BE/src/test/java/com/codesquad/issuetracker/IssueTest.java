@@ -9,15 +9,20 @@ import com.codesquad.issuetracker.exception.NotAllowedException;
 import com.codesquad.issuetracker.issue.business.IssueService;
 import com.codesquad.issuetracker.issue.data.Issue;
 import com.codesquad.issuetracker.issue.data.IssueRepository;
+import com.codesquad.issuetracker.issue.data.relation.IssueLabelRelation;
 import com.codesquad.issuetracker.issue.data.relation.IssueLabelRelationRepository;
 import com.codesquad.issuetracker.issue.data.relation.IssueMilestoneRelationRepository;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
 import com.codesquad.issuetracker.issue.web.model.IssueView;
+import com.codesquad.issuetracker.issue.web.model.PatchIssueQuery;
+import com.codesquad.issuetracker.issue.web.model.PutIssueQuery;
 import com.google.common.primitives.Longs;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -28,6 +33,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @DisplayName("Issue")
 public class IssueTest {
+
+  private Long sampleId;
+  private User sampleUser;
+  private IssueQuery sampleIssueQuery;
 
   @Nested
   @DisplayName("Integration")
@@ -80,9 +89,6 @@ public class IssueTest {
 
       @Autowired
       private IssueRepository issueRepository;
-
-      private User sampleUser;
-      private IssueQuery sampleIssueQuery;
 
       @BeforeEach
       private void beforeEach() {
@@ -232,8 +238,6 @@ public class IssueTest {
       @Autowired
       private IssueRepository issueRepository;
 
-      private User sampleUser;
-
       @BeforeEach
       private void beforeEach() {
         sampleUser = User.builder()
@@ -246,10 +250,10 @@ public class IssueTest {
       @Test
       void deleteOwnIssue() {
         // given
-        Long sampleId = 9L;
+        sampleId = 9L;
 
         // when
-        issueService.delete(sampleUser, sampleId);
+        issueService.delete(sampleId, sampleUser);
 
         // then
         assertThat(issueRepository.findById(sampleId).isPresent()).isFalse();
@@ -260,15 +264,203 @@ public class IssueTest {
       @Test
       void deleteOtherIssue() {
         // given
+        sampleId = 1L;
 
         // when
         assertThatExceptionOfType(NotAllowedException.class).isThrownBy(() -> {
-          issueService.delete(sampleUser, 1L);
+          issueService.delete(sampleId, sampleUser);
         }).withMessage(ErrorMessage.ANOTHER_USER_ISSUE);
 
         // then
+      }
+    }
 
-        issueRepository.findAll();
+    @Nested
+    @DisplayName("Issue 를 전체 수정합니다")
+    @Transactional
+    @SpringBootTest
+    public class PutTest {
+
+      @Autowired
+      private IssueRepository issueRepository;
+
+      private PutIssueQuery samplePutIssueQuery;
+
+      @BeforeEach
+      private void beforeEach() {
+        sampleUser = User.builder()
+            .nodeId("MDQ6VXNlcjU1NzIyMTg2")
+            .userId("Hyune-c")
+            .avatarUrl("https://avatars1.githubusercontent.com/u/55722186?v=4").build();
+
+        samplePutIssueQuery = PutIssueQuery.builder()
+            .title("수정된 Hyune-c 1")
+            .description("수정된 Hyune-c contents1\\nHyune-c contents1\\nHyune-c contents1")
+            .build();
+      }
+
+      @DisplayName("존재하지 않는")
+      @Test
+      public void notExist() {
+        // given
+        sampleId = 99L;
+
+        // when
+        assertThatExceptionOfType(EntityNotFoundException.class).isThrownBy(() -> {
+          issueService.put(sampleId, sampleUser, samplePutIssueQuery);
+        });
+
+        // then
+      }
+
+      @DisplayName("존재하는")
+      public class ExistTest {
+
+        @DisplayName("다른 User 의")
+        @Test
+        void notOwn() {
+          // given
+          sampleId = 1L;
+
+          // when
+          assertThatExceptionOfType(NotAllowedException.class).isThrownBy(() -> {
+            issueService.put(sampleId, sampleUser, samplePutIssueQuery);
+          }).withMessage(ErrorMessage.ANOTHER_USER_ISSUE);
+
+          // then
+        }
+
+        @DisplayName("맞는 User 의")
+        @Test
+        void own() {
+          // given
+          sampleId = 9L;
+
+          // when
+          issueService.put(sampleId, sampleUser, samplePutIssueQuery);
+
+          // then
+          Issue findIssue = issueRepository.findById(sampleId)
+              .orElseThrow(EntityNotFoundException::new);
+          assertThat(findIssue.getId()).isEqualTo(sampleId);
+          assertThat(findIssue.getTitle()).isEqualTo(samplePutIssueQuery.getTitle());
+          assertThat(findIssue.getDescription()).isEqualTo(samplePutIssueQuery.getDescription());
+        }
+      }
+    }
+
+    @Nested
+    @DisplayName("Issue 를 일부 수정합니다")
+    public class PatchTest {
+
+      @Nested
+      @DisplayName("존재하는")
+      @Transactional
+      @SpringBootTest
+      public class ExistTest {
+
+        @Autowired
+        private IssueRepository issueRepository;
+
+        private PatchIssueQuery samplePatchIssueQuery;
+
+        @DisplayName("Close 합니다")
+        @Test
+        void close() {
+          // given
+          sampleId = 2L;
+          samplePatchIssueQuery = PatchIssueQuery.builder()
+              .close(true)
+              .build();
+
+          // when
+          issueService.patch(sampleId, samplePatchIssueQuery);
+
+          // then
+          Issue findIssue = issueRepository.findById(sampleId)
+              .orElseThrow(EntityNotFoundException::new);
+          assertThat(findIssue.getId())
+              .isEqualTo(sampleId);
+          assertThat(findIssue.getClose())
+              .isTrue();
+        }
+
+        @DisplayName("Open 합니다")
+        @Test
+        void open() {
+          // given
+          sampleId = 1L;
+          samplePatchIssueQuery = PatchIssueQuery.builder()
+              .close(false)
+              .build();
+
+          // when
+          issueService.patch(sampleId, samplePatchIssueQuery);
+
+          // then
+          Issue findIssue = issueRepository.findById(sampleId)
+              .orElseThrow(EntityNotFoundException::new);
+          assertThat(findIssue.getId()).isEqualTo(sampleId);
+          assertThat(findIssue.getClose())
+              .isFalse();
+        }
+
+        @DisplayName("Label 을 추가합니다")
+        @Test
+        void attachLabel() {
+          // given
+          sampleId = 5L;
+          Long sampleLabelId = 4L;
+          samplePatchIssueQuery = PatchIssueQuery.builder()
+              .attachLabel(sampleLabelId)
+              .build();
+
+          // when
+          issueService.patch(sampleId, samplePatchIssueQuery);
+
+          // then
+          Issue findIssue = issueRepository.findById(sampleId)
+              .orElseThrow(EntityNotFoundException::new);
+          assertThat(findIssue.getId())
+              .isEqualTo(sampleId);
+          List<Long> idOfLabels = issueLabelRelationRepository
+              .findAllByIssue(findIssue)
+              .stream()
+              .map(IssueLabelRelation::getLabelId)
+              .collect(Collectors.toList());
+          assertThat(idOfLabels)
+              .contains(sampleLabelId)
+              .hasSize(4);
+        }
+
+        @DisplayName("Label 을 제거합니다")
+        @Test
+        void detachLabel() {
+          // given
+          sampleId = 5L;
+          Long sampleLabelId = 1L;
+
+          samplePatchIssueQuery = PatchIssueQuery.builder()
+              .detachLabel(sampleLabelId)
+              .build();
+
+          // when
+          issueService.patch(sampleId, samplePatchIssueQuery);
+
+          // then
+          Issue findIssue = issueRepository.findById(sampleId)
+              .orElseThrow(EntityNotFoundException::new);
+          assertThat(findIssue.getId())
+              .isEqualTo(sampleId);
+          List<Long> idOfLabels = issueLabelRelationRepository
+              .findAllByIssue(findIssue)
+              .stream()
+              .map(IssueLabelRelation::getLabelId)
+              .collect(Collectors.toList());
+          assertThat(idOfLabels)
+              .doesNotContain(sampleLabelId)
+              .hasSize(2);
+        }
       }
     }
   }

@@ -2,6 +2,7 @@ package com.codesquad.issuetracker.issue.data.relation;
 
 import com.codesquad.issuetracker.issue.data.Issue;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IssueMilestoneRelationRepository extends
@@ -14,4 +15,6 @@ public interface IssueMilestoneRelationRepository extends
   void deleteAllByMilestoneId(Long milestoneId);
 
   List<IssueMilestoneRelation> findAllByMilestoneId(Long milestoneId);
+
+  Optional<IssueMilestoneRelation> findByIssueAndMilestoneId(Issue issue, Long milestoneId);
 }

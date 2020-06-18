@@ -34,4 +34,10 @@ public class Milestone {
         .dueDate(mileStoneQuery.getDueDate())
         .build();
   }
+
+  public void update(MilestoneQuery mileStoneQuery) {
+    title = mileStoneQuery.getTitle();
+    description = mileStoneQuery.getDescription();
+    dueDate = mileStoneQuery.getDueDate();
+  }
 }

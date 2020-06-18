@@ -11,6 +11,8 @@ import com.codesquad.issuetracker.issue.data.relation.IssueMilestoneRelation;
 import com.codesquad.issuetracker.issue.data.relation.IssueMilestoneRelationRepository;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
 import com.codesquad.issuetracker.issue.web.model.IssueView;
+import com.codesquad.issuetracker.issue.web.model.PatchIssueQuery;
+import com.codesquad.issuetracker.issue.web.model.PutIssueQuery;
 import com.codesquad.issuetracker.label.data.Label;
 import com.codesquad.issuetracker.label.data.LabelRepository;
 import com.codesquad.issuetracker.milestone.data.Milestone;
@@ -18,8 +20,10 @@ import com.codesquad.issuetracker.milestone.data.MilestoneRepository;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,11 +40,11 @@ public class IssueService {
   private final IssueMilestoneRelationRepository issueMilestoneRelationRepository;
 
   private LinkedHashSet<Label> extractLabels(Issue issue) {
-    return new LinkedHashSet<>(labelRepository.findAllById(issue.idOfLabels()));
+    return new LinkedHashSet<>(labelRepository.findAllById(issue.getIdOfLabels()));
   }
 
   private LinkedHashSet<Milestone> extractMilestones(Issue issue) {
-    return new LinkedHashSet<>(milestoneRepository.findAllById(issue.idOfMilestones()));
+    return new LinkedHashSet<>(milestoneRepository.findAllById(issue.getIdOfMilestones()));
   }
 
   private Boolean isValidLabelIds(Set<Long> idOfLabels) {
@@ -77,20 +81,17 @@ public class IssueService {
     }
 
     Issue issue = Issue.from(user, query);
-    Issue savedIssue = issueRepository.save(issue);
-    savedIssue.addAllLabel(idOfLabels.stream()
-        .map(labelId -> issueLabelRelationRepository.save(IssueLabelRelation.of(issue, labelId)))
-        .collect(Collectors.toSet()));
-    savedIssue.addAllMilestone(idOfMilestones.stream()
-        .map(milestoneId -> issueMilestoneRelationRepository
-            .save(IssueMilestoneRelation.of(issue, milestoneId)))
-        .collect(Collectors.toSet()));
+    issueRepository.save(issue);
+    idOfLabels.forEach(
+        labelId -> issueLabelRelationRepository.save(IssueLabelRelation.of(issue, labelId)));
+    idOfMilestones.forEach(milestoneId -> issueMilestoneRelationRepository
+        .save(IssueMilestoneRelation.of(issue, milestoneId)));
 
-    return IssueView.from(savedIssue, extractLabels(savedIssue), extractMilestones(savedIssue));
+    return IssueView.from(issue, extractLabels(issue), extractMilestones(issue));
   }
 
   @Transactional
-  public void delete(User user, Long issueId) {
+  public void delete(Long issueId, User user) {
     Issue findIssue = issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
 
     if (!findIssue.isSameUser(user)) {
@@ -98,5 +99,48 @@ public class IssueService {
     }
 
     issueRepository.delete(findIssue);
+  }
+
+  @Transactional
+  public IssueView put(Long issueId, User user, PutIssueQuery query) {
+    Issue issue = issueRepository.findById(issueId).orElseThrow(EntityNotFoundException::new);
+
+    if (!issue.isSameUser(user)) {
+      throw new NotAllowedException(ErrorMessage.ANOTHER_USER_ISSUE);
+    }
+
+    issue.update(query);
+
+    return IssueView.from(issue, extractLabels(issue), extractMilestones(issue));
+  }
+
+  @Transactional
+  public void patch(Long issueId, PatchIssueQuery query) {
+    Issue issue = issueRepository.findById(issueId).orElseThrow(EntityNotFoundException::new);
+
+    issue.updateStatus(query.getClose());
+
+    if (Objects.nonNull(query.getAttachLabel())) {
+      issueLabelRelationRepository.save(IssueLabelRelation.of(issue, query.getAttachLabel()));
+    }
+
+    if (Objects.nonNull(query.getDetachLabel())) {
+      IssueLabelRelation deletedRelation = issueLabelRelationRepository
+          .findByIssueAndLabelId(issue, query.getDetachLabel())
+          .orElseThrow(EntityNotFoundException::new);
+      issueLabelRelationRepository.delete(deletedRelation);
+    }
+
+    if (Objects.nonNull(query.getAttachMilestone())) {
+      issueMilestoneRelationRepository
+          .save(IssueMilestoneRelation.of(issue, query.getAttachMilestone()));
+    }
+
+    if (Objects.nonNull(query.getDetachMilestone())) {
+      IssueMilestoneRelation deletedRelation = issueMilestoneRelationRepository
+          .findByIssueAndMilestoneId(issue, query.getDetachMilestone())
+          .orElseThrow(EntityNotFoundException::new);
+      issueMilestoneRelationRepository.delete(deletedRelation);
+    }
   }
 }

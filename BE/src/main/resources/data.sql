@@ -43,6 +43,8 @@ VALUES ('BE', 'BE label', '037a3b'),
 
 INSERT INTO issue_label_relation (issue_id, label_id)
 VALUES (5, 1),
+       (5, 2),
+       (5, 3),
        (6, 2),
        (7, 3),
        (9, 1),
