@@ -21,6 +21,11 @@ final class IssueLabelsViewController: UIViewController {
         configure()
     }
     
+    func reloadCollectionView() {
+        guard collectionView != nil else { return }
+        collectionView.reloadData()
+    }
+    
     func updateLabels(_ labels: [IssueLabel]) {
         self.labels = labels
     }

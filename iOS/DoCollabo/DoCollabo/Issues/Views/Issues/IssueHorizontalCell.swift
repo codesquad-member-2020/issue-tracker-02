@@ -39,6 +39,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
 
         if issue.labels.count > 0 {
             issueLabelsViewController.updateLabels(issue.labels)
+            issueLabelsViewController.reloadCollectionView()
             contentsStackView.addArrangedSubview(issueLabelsViewController.view)
             layoutIfNeeded()
             issueLabelsViewController.view.heightAnchor.constraint(equalToConstant: issueLabelsViewController.contentHeight).isActive = true
