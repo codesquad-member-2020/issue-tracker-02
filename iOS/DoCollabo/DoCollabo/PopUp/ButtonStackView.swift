@@ -12,6 +12,8 @@ class ButtonStackView: UIView {
     
     @IBOutlet var contentView: UIView!
     
+    var delegate: ButtonStackActionDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -33,6 +35,7 @@ class ButtonStackView: UIView {
     }
     
     @IBAction func tapCancelButton(_ sender: UIButton) {
+        delegate?.close()
     }
     
     @IBAction func tapSubmitButton(_ sender: UIButton) {
