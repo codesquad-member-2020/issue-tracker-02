@@ -14,6 +14,7 @@ final class LabelsViewController: UIViewController {
     @IBOutlet weak var titleHeaderBackgroundView: UIView!
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var labelsCollectionView: LabelsCollectionView!
+    private var popUpViewController: LabelPopUpViewController!
     
     private var labelsUseCase: UseCase!
     private var dataSource: LabelsCollectionViewDataSource!
@@ -55,12 +56,6 @@ final class LabelsViewController: UIViewController {
 
 extension LabelsViewController: HeaderViewActionDelegate {
     func newButtonDidTap() {
-        let popUpViewController = LabelPopUpViewController()
-        popUpViewController.modalPresentationStyle = .overCurrentContext
-        popUpViewController.modalTransitionStyle = .crossDissolve
-        popUpViewController.configure()
-        popUpViewController.configureLabelPopupViewController()
-        popUpViewController.delegate = self
         present(popUpViewController, animated: true, completion: nil)
     }
 }
@@ -89,9 +84,18 @@ extension LabelsViewController: ColorPickerActionDelegate {
 extension LabelsViewController {
     private func configure() {
         configureHeaderView()
+        configurePopUpView()
         configureCollectionView()
         configureCollectionViewDataSource()
         configureUseCase()
+    }
+    
+    private func configurePopUpView() {
+        popUpViewController = LabelPopUpViewController()
+        popUpViewController.modalPresentationStyle = .overCurrentContext
+        popUpViewController.modalTransitionStyle = .crossDissolve
+        popUpViewController.configureLabelPopupViewController()
+        popUpViewController.delegate = self
     }
     
     private func configureHeaderView() {

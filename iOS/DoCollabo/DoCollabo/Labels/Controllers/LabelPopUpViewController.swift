@@ -10,15 +10,21 @@ import UIKit
 
 final class LabelPopUpViewController: PopUpViewController {
     
+    private var popUpContentView: PopUpContentView!
+    private var popUpColorPickerView: PopUpColorPickerView!
+    
     func configureLabelPopupViewController() {
-        let popUpContentView = PopUpContentView()
-        let popUpColorPickerView = PopUpColorPickerView()
+        configure()
+        configureUI()
         popUpContentView.configurePlaceholderView(popUpColorPickerView)
         popUpColorPickerView.fillSuperview()
         popUpColorPickerView.delegate = self
         configureContentView(popUpContentView)
-        let popUpFooterView = PopUpFooterView()
-        configureFooterView(popUpFooterView)
+    }
+    
+    private func configureUI() {
+        popUpContentView = PopUpContentView()
+        popUpColorPickerView = PopUpColorPickerView()
     }
 }
 
