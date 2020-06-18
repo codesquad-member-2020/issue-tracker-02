@@ -9,8 +9,8 @@
 import UIKit
 import Alamofire
 
-class LabelsViewController: UIViewController {
-    
+final class LabelsViewController: UIViewController, HeaderViewActionDelegate {
+
     @IBOutlet weak var titleHeaderBackgroundView: UIView!
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var labelsCollectionView: LabelsCollectionView!
@@ -26,6 +26,7 @@ class LabelsViewController: UIViewController {
     private func configure() {
         titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
         titleHeaderView.configureTitle("레이블")
+        titleHeaderView.delegate = self
         configureCollectionView()
         configureCollectionViewDataSource()
         configureUseCase()
@@ -53,6 +54,44 @@ class LabelsViewController: UIViewController {
         fetchLabels()
     }
     
+    func tappedAddView() {
+        guard let popUpViewController = self.storyboard?.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else { return }
+        popUpViewController.modalPresentationStyle = .overCurrentContext
+        popUpViewController.modalTransitionStyle = .crossDissolve
+        configureAddingContentsView(at: popUpViewController)
+        present(popUpViewController, animated: true, completion: nil)
+    }
+    
+    private func configureAddingContentsView(at popUpViewController: PopUpViewController) {
+        let addingContentsView = AddingContentsView()
+        configureColorPickerView(at: addingContentsView)
+        
+        popUpViewController.add(addingContentsView) { superView in
+            addingContentsView.translatesAutoresizingMaskIntoConstraints = false
+            addingContentsView.topAnchor.constraint(equalTo: superView.topAnchor, constant: 24).isActive = true
+            addingContentsView.centerXAnchor.constraint(equalTo: superView.centerXAnchor).isActive = true
+            addingContentsView.widthAnchor.constraint(equalTo: superView.widthAnchor, multiplier: 0.8).isActive = true
+            addingContentsView.heightAnchor.constraint(equalTo: superView.heightAnchor, multiplier: 0.5).isActive = true
+        
+        }
+        let buttonStackView = ButtonStackView()
+        popUpViewController.add(buttonStackView) { superView in
+            buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+           buttonStackView.centerXAnchor.constraint(equalTo: superView.centerXAnchor).isActive = true
+           buttonStackView.widthAnchor.constraint(equalTo: superView.widthAnchor, multiplier: 0.8).isActive = true
+            buttonStackView.heightAnchor.constraint(equalTo: superView.heightAnchor, multiplier: 0.15).isActive = true
+            buttonStackView.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: -24).isActive = true
+        }
+        buttonStackView.delegate = self
+    }
+    
+    private func configureColorPickerView(at addingContentsView: AddingContentsView) {
+        let selectColorSegmentView = SelectColorSegmentView()
+        addingContentsView.add(selectColorSegmentView)
+        selectColorSegmentView.fillSuperview()
+        selectColorSegmentView.delegate = self
+    }
+    
     private func fetchLabels() {
         let request = FetchLabelsRequest().asURLRequest()
         labelsUseCase.getResources(request: request, dataType: [IssueLabel].self) { result in
@@ -77,5 +116,21 @@ class LabelsViewController: UIViewController {
             return
         }
         self.present(alertController, animated: true)
+    }
+}
+
+extension LabelsViewController: ButtonStackActionDelegate {
+    func close() {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension LabelsViewController: ColorPickerActionDelegate {
+    func tappedColorPicker() {
+        let colorPickerViewController = ColorPickerViewController()
+        colorPickerViewController.modalPresentationStyle = .overCurrentContext
+        colorPickerViewController.modalTransitionStyle = .crossDissolve
+        
+        present(colorPickerViewController, animated: true, completion: nil)
     }
 }
