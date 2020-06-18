@@ -23,7 +23,7 @@ final class PopUpContentView: UIView {
         configure()
     }
     
-    func add(_ view: UIView) {
+    func configurePlaceholderView(_ view: UIView) {
         placeholderView.addSubview(view)
     }
     

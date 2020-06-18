@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopUpFooterView" customModule="DoCollabo" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="iN0-l3-epB" id="Ksl-cs-sZX"/>
+                <outlet property="frameView" destination="iN0-l3-epB" id="Ksl-cs-sZX"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

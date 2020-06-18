@@ -14,9 +14,9 @@ protocol PopUpFooterViewActionDelegate: class {
 
 final class PopUpFooterView: UIView {
     
-    @IBOutlet var contentView: UIView!
+    @IBOutlet var frameView: UIView!
     
-    var delegate: PopUpFooterViewActionDelegate?
+    weak var delegate: PopUpFooterViewActionDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,9 +30,9 @@ final class PopUpFooterView: UIView {
     
     private func configure() {
         Bundle.main.loadNibNamed(String(describing: Self.self), owner: self, options: nil)
-        addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        addSubview(frameView)
+        frameView.frame = self.bounds
+        frameView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
     @IBAction func tapResetButton(_ sender: UIButton) {

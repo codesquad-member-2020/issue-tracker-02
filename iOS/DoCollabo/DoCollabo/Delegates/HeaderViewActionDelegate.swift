@@ -9,5 +9,5 @@
 import Foundation
 
 protocol HeaderViewActionDelegate {
-    func tappedAddView()
+    func newButtonDidTap()
 }

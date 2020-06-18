@@ -54,7 +54,7 @@ final class LabelsViewController: UIViewController {
 // MARK:- HeaderViewActionDelegate
 
 extension LabelsViewController: HeaderViewActionDelegate {
-    func tappedAddView() {
+    func newButtonDidTap() {
         let popUpViewController = PopUpViewController()
         popUpViewController.modalPresentationStyle = .overCurrentContext
         popUpViewController.modalTransitionStyle = .crossDissolve
@@ -68,8 +68,8 @@ extension LabelsViewController: HeaderViewActionDelegate {
     }
     
     private func configureColorPickerView(at addingContentsView: PopUpContentView) {
-        let selectColorSegmentView = SelectColorSegmentView()
-        addingContentsView.add(selectColorSegmentView)
+        let selectColorSegmentView = PopUpColorPickerView()
+        addingContentsView.configurePlaceholderView(selectColorSegmentView)
         selectColorSegmentView.fillSuperview()
         selectColorSegmentView.delegate = self
     }
@@ -86,7 +86,7 @@ extension LabelsViewController: PopUpFooterViewActionDelegate {
 // MARK:- ColorPickerActionDelegate
 
 extension LabelsViewController: ColorPickerActionDelegate {
-    func tappedColorPicker() {
+    func colorPickerButtonDidTap() {
         let colorPickerViewController = ColorPickerViewController()
         colorPickerViewController.modalPresentationStyle = .overCurrentContext
         colorPickerViewController.modalTransitionStyle = .crossDissolve

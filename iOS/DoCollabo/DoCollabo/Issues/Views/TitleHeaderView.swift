@@ -47,7 +47,7 @@ final class TitleHeaderView: UIView {
     }
     
     @IBAction func pressAddButton(_ sender: UIButton) {
-        delegate?.tappedAddView()
+        delegate?.newButtonDidTap()
     }
 }
 

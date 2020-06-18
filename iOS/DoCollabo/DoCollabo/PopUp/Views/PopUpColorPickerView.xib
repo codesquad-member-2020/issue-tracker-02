@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -8,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectColorSegmentView" customModule="DoCollabo" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopUpColorPickerView" customModule="DoCollabo" customModuleProvider="target">
             <connections>
                 <outlet property="colorPickerButton" destination="OhY-Am-kQo" id="Rdi-8E-kwV"/>
-                <outlet property="contentView" destination="iN0-l3-epB" id="piO-BV-Gly"/>
+                <outlet property="frameView" destination="iN0-l3-epB" id="piO-BV-Gly"/>
                 <outlet property="hexColorLabel" destination="nlv-oj-WWj" id="7cg-th-Qnf"/>
             </connections>
         </placeholder>
@@ -39,7 +38,7 @@
                         <constraint firstAttribute="width" secondItem="OhY-Am-kQo" secondAttribute="height" multiplier="2:1" id="QFG-w6-gVg"/>
                     </constraints>
                     <connections>
-                        <action selector="pressColorPickerButton:" destination="-1" eventType="touchUpInside" id="dPy-I1-cWr"/>
+                        <action selector="colorPickerButtonDidTap:" destination="-1" eventType="touchUpInside" id="dPy-I1-cWr"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPq-dQ-4Sg">

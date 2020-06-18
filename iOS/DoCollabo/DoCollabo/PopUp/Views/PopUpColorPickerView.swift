@@ -8,13 +8,17 @@
 
 import UIKit
 
-final class SelectColorSegmentView: UIView {
+protocol ColorPickerActionDelegate: class {
+    func colorPickerButtonDidTap()
+}
+
+final class PopUpColorPickerView: UIView {
     
-    @IBOutlet var contentView: UIView!
+    @IBOutlet var frameView: UIView!
     @IBOutlet weak var hexColorLabel: UILabel!
     @IBOutlet weak var colorPickerButton: UIButton!
     
-    var delegate: ColorPickerActionDelegate?
+    weak var delegate: ColorPickerActionDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,9 +31,9 @@ final class SelectColorSegmentView: UIView {
     }
     
     private func configure() {
-        Bundle.main.loadNibNamed("SelectColorSegmentView", owner: self, options: nil)
-        addSubview(contentView)
-        contentView.frame = self.bounds
+        Bundle.main.loadNibNamed(String(describing: Self.self), owner: self, options: nil)
+        addSubview(frameView)
+        frameView.frame = self.bounds
         configureUI()
     }
     
@@ -40,7 +44,7 @@ final class SelectColorSegmentView: UIView {
     @IBAction func pickRandomeColor(_ sender: UIButton) {
     }
     
-    @IBAction func pressColorPickerButton(_ sender: UIButton) {
-        delegate?.tappedColorPicker()
+    @IBAction func colorPickerButtonDidTap(_ sender: UIButton) {
+        delegate?.colorPickerButtonDidTap()
     }
 }
