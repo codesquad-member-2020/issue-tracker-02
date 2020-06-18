@@ -30,7 +30,7 @@ final class IssuesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        fakeConfigureToken()
+        fakeConfigureToken()
         configureCollectionViewDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
