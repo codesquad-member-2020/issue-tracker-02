@@ -13,6 +13,8 @@ final class TitleHeaderView: UIView {
     
     static let stretchedHeight: CGFloat = 144.0
     static let huggedHeight: CGFloat = 100.0
+    
+    var delegate: HeaderViewActionDelegate?
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var backgroundView: UIView!
@@ -45,7 +47,7 @@ final class TitleHeaderView: UIView {
     }
     
     @IBAction func pressAddButton(_ sender: UIButton) {
-        NotificationCenter.default.post(name: .add, object: nil)
+        delegate?.tappedAddView()
     }
 }
 
@@ -55,6 +57,7 @@ extension TitleHeaderView {
     private func configure() {
         configureNib()
         configureUI()
+        
     }
     
     private func configureUI() {
@@ -69,8 +72,4 @@ extension TitleHeaderView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
-}
-
-extension Notification.Name {
-    static let add = Notification.Name("add")
 }
