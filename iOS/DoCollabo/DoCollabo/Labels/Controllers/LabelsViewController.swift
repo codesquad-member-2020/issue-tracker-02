@@ -59,15 +59,15 @@ extension LabelsViewController: HeaderViewActionDelegate {
         popUpViewController.modalPresentationStyle = .overCurrentContext
         popUpViewController.modalTransitionStyle = .crossDissolve
         popUpViewController.configure()
-        let addingContentsView = AddingContentsView()
-        popUpViewController.configureContentView(addingContentsView)
-        let buttonStackView = ButtonStackView()
+        let popUpContentView = PopUpContentView()
+        popUpViewController.configureContentView(popUpContentView)
+        let buttonStackView = PopUpFooterView()
         popUpViewController.configureFooterView(buttonStackView)
         buttonStackView.delegate = self
         present(popUpViewController, animated: true, completion: nil)
     }
     
-    private func configureColorPickerView(at addingContentsView: AddingContentsView) {
+    private func configureColorPickerView(at addingContentsView: PopUpContentView) {
         let selectColorSegmentView = SelectColorSegmentView()
         addingContentsView.add(selectColorSegmentView)
         selectColorSegmentView.fillSuperview()
@@ -77,8 +77,8 @@ extension LabelsViewController: HeaderViewActionDelegate {
 
 // MARK:- ButtonStackActionDelegate
 
-extension LabelsViewController: ButtonStackActionDelegate {
-    func close() {
+extension LabelsViewController: PopUpFooterViewActionDelegate {
+    func cancelButtonDidTap() {
         dismiss(animated: true, completion: nil)
     }
 }

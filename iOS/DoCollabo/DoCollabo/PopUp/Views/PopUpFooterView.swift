@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ButtonStackView: UIView {
+protocol PopUpFooterViewActionDelegate: class {
+    func cancelButtonDidTap()
+}
+
+final class PopUpFooterView: UIView {
     
     @IBOutlet var contentView: UIView!
     
-    var delegate: ButtonStackActionDelegate?
+    var delegate: PopUpFooterViewActionDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,20 +29,19 @@ class ButtonStackView: UIView {
     }
     
     private func configure() {
-           Bundle.main.loadNibNamed("ButtonStackView", owner: self, options: nil)
-           addSubview(contentView)
-           contentView.frame = self.bounds
-           contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        Bundle.main.loadNibNamed(String(describing: Self.self), owner: self, options: nil)
+        addSubview(contentView)
+        contentView.frame = self.bounds
+        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
     @IBAction func tapResetButton(_ sender: UIButton) {
     }
     
-    @IBAction func tapCancelButton(_ sender: UIButton) {
-        delegate?.close()
+    @IBAction func cancelButtonDidTap(_ sender: UIButton) {
+        delegate?.cancelButtonDidTap()
     }
     
     @IBAction func tapSubmitButton(_ sender: UIButton) {
     }
-    
 }

@@ -8,10 +8,10 @@
 
 import UIKit
 
-class AddingContentsView: UIView {
+final class PopUpContentView: UIView {
     
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var emptyView: UIView!
+    @IBOutlet weak var frameView: UIView!
+    @IBOutlet weak var placeholderView: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,13 +24,13 @@ class AddingContentsView: UIView {
     }
     
     func add(_ view: UIView) {
-        emptyView.addSubview(view)
+        placeholderView.addSubview(view)
     }
     
     private func configure() {
-        Bundle.main.loadNibNamed("AddingContentsView", owner: self, options: nil)
-        addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        Bundle.main.loadNibNamed(String(describing: Self.self), owner: self, options: nil)
+        addSubview(frameView)
+        frameView.frame = self.bounds
+        frameView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 }
