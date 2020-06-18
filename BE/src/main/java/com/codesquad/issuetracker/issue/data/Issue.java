@@ -4,6 +4,7 @@ import com.codesquad.issuetracker.auth.data.User;
 import com.codesquad.issuetracker.issue.data.relation.IssueLabelRelation;
 import com.codesquad.issuetracker.issue.data.relation.IssueMilestoneRelation;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
+import com.codesquad.issuetracker.issue.web.model.PutIssueQuery;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -60,6 +61,11 @@ public class Issue {
         .title(query.getTitle())
         .description(query.getDescription())
         .build();
+  }
+
+  public void update(PutIssueQuery query) {
+    title = query.getTitle();
+    description = query.getDescription();
   }
 
   public Boolean isSameUser(User user) {

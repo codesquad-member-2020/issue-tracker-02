@@ -11,6 +11,7 @@ import com.codesquad.issuetracker.issue.data.relation.IssueMilestoneRelation;
 import com.codesquad.issuetracker.issue.data.relation.IssueMilestoneRelationRepository;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
 import com.codesquad.issuetracker.issue.web.model.IssueView;
+import com.codesquad.issuetracker.issue.web.model.PutIssueQuery;
 import com.codesquad.issuetracker.label.data.Label;
 import com.codesquad.issuetracker.label.data.LabelRepository;
 import com.codesquad.issuetracker.milestone.data.Milestone;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.stream.Collectors;
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -90,7 +92,7 @@ public class IssueService {
   }
 
   @Transactional
-  public void delete(User user, Long issueId) {
+  public void delete(Long issueId, User user) {
     Issue findIssue = issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
 
     if (!findIssue.isSameUser(user)) {
@@ -98,5 +100,18 @@ public class IssueService {
     }
 
     issueRepository.delete(findIssue);
+  }
+
+  @Transactional
+  public IssueView put(Long issueId, User user, PutIssueQuery query) {
+    Issue issue = issueRepository.findById(issueId).orElseThrow(EntityNotFoundException::new);
+
+    if (!issue.isSameUser(user)) {
+      throw new NotAllowedException(ErrorMessage.ANOTHER_USER_ISSUE);
+    }
+
+    issue.update(query);
+
+    return IssueView.from(issue, extractLabels(issue), extractMilestones(issue));
   }
 }

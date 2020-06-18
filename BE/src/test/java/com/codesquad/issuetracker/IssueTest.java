@@ -13,11 +13,13 @@ import com.codesquad.issuetracker.issue.data.relation.IssueLabelRelationReposito
 import com.codesquad.issuetracker.issue.data.relation.IssueMilestoneRelationRepository;
 import com.codesquad.issuetracker.issue.web.model.IssueQuery;
 import com.codesquad.issuetracker.issue.web.model.IssueView;
+import com.codesquad.issuetracker.issue.web.model.PutIssueQuery;
 import com.google.common.primitives.Longs;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -28,6 +30,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @DisplayName("Issue")
 public class IssueTest {
+
+  private Long sampleId;
+  private User sampleUser;
+  private IssueQuery sampleIssueQuery;
 
   @Nested
   @DisplayName("Integration")
@@ -80,9 +86,6 @@ public class IssueTest {
 
       @Autowired
       private IssueRepository issueRepository;
-
-      private User sampleUser;
-      private IssueQuery sampleIssueQuery;
 
       @BeforeEach
       private void beforeEach() {
@@ -232,8 +235,6 @@ public class IssueTest {
       @Autowired
       private IssueRepository issueRepository;
 
-      private User sampleUser;
-
       @BeforeEach
       private void beforeEach() {
         sampleUser = User.builder()
@@ -246,10 +247,10 @@ public class IssueTest {
       @Test
       void deleteOwnIssue() {
         // given
-        Long sampleId = 9L;
+        sampleId = 9L;
 
         // when
-        issueService.delete(sampleUser, sampleId);
+        issueService.delete(sampleId, sampleUser);
 
         // then
         assertThat(issueRepository.findById(sampleId).isPresent()).isFalse();
@@ -260,15 +261,88 @@ public class IssueTest {
       @Test
       void deleteOtherIssue() {
         // given
+        sampleId = 1L;
 
         // when
         assertThatExceptionOfType(NotAllowedException.class).isThrownBy(() -> {
-          issueService.delete(sampleUser, 1L);
+          issueService.delete(sampleId, sampleUser);
         }).withMessage(ErrorMessage.ANOTHER_USER_ISSUE);
 
         // then
+      }
+    }
 
-        issueRepository.findAll();
+    @Nested
+    @DisplayName("Issue 를 수정합니다")
+    @Transactional
+    @SpringBootTest
+    public class PutTest {
+
+      @Autowired
+      private IssueRepository issueRepository;
+
+      private PutIssueQuery samplePutIssueQuery;
+
+      @BeforeEach
+      private void beforeEach() {
+        sampleUser = User.builder()
+            .nodeId("MDQ6VXNlcjU1NzIyMTg2")
+            .userId("Hyune-c")
+            .avatarUrl("https://avatars1.githubusercontent.com/u/55722186?v=4").build();
+
+        samplePutIssueQuery = PutIssueQuery.builder()
+            .title("수정된 Hyune-c 1")
+            .description("수정된 Hyune-c contents1\\nHyune-c contents1\\nHyune-c contents1")
+            .build();
+      }
+
+      @DisplayName("존재하지 않는")
+      @Test
+      public void notExist() {
+        // given
+        sampleId = 99L;
+
+        // when
+        assertThatExceptionOfType(EntityNotFoundException.class).isThrownBy(() -> {
+          issueService.put(sampleId, sampleUser, samplePutIssueQuery);
+        });
+
+        // then
+      }
+
+      @DisplayName("존재하는")
+      public class ExistTest {
+
+        @DisplayName("다른 User 의")
+        @Test
+        void notOwn() {
+          // given
+          sampleId = 1L;
+
+          // when
+          assertThatExceptionOfType(NotAllowedException.class).isThrownBy(() -> {
+            issueService.put(sampleId, sampleUser, samplePutIssueQuery);
+          }).withMessage(ErrorMessage.ANOTHER_USER_ISSUE);
+
+          // then
+        }
+
+        @DisplayName("맞는 User 의")
+        @Test
+        void own() {
+          // given
+          sampleId = 9L;
+
+          // when
+          issueService.put(sampleId, sampleUser, samplePutIssueQuery);
+
+          // then
+          Issue findIssue = issueRepository.findById(sampleId)
+              .orElseThrow(EntityNotFoundException::new);
+          assertThat(findIssue.getId()).isEqualTo(sampleId);
+          assertThat(findIssue.getTitle()).isEqualTo(samplePutIssueQuery.getTitle());
+          assertThat(findIssue.getDescription()).isEqualTo(samplePutIssueQuery.getDescription());
+        }
       }
     }
   }
