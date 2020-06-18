@@ -8,6 +8,7 @@ import com.codesquad.issuetracker.issue.web.model.PutIssueQuery;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import javax.persistence.Entity;
@@ -68,27 +69,25 @@ public class Issue {
     description = query.getDescription();
   }
 
+  public void updateStatus(Boolean status) {
+    if (Objects.nonNull(status)) {
+      close = status;
+    }
+  }
+
   public Boolean isSameUser(User user) {
     return userId.equals(user.getUserId());
   }
 
-  public Set<Long> idOfLabels() {
+  public Set<Long> getIdOfLabels() {
     return issueLabelRelations.stream()
         .map(IssueLabelRelation::getLabelId)
         .collect(Collectors.toSet());
   }
 
-  public Set<Long> idOfMilestones() {
+  public Set<Long> getIdOfMilestones() {
     return issueMilestoneRelations.stream()
         .map(IssueMilestoneRelation::getMilestoneId)
         .collect(Collectors.toSet());
-  }
-
-  public void addAllLabel(Set<IssueLabelRelation> issueLabelRelations) {
-    this.issueLabelRelations.addAll(issueLabelRelations);
-  }
-
-  public void addAllMilestone(Set<IssueMilestoneRelation> issueMilestoneRelations) {
-    this.issueMilestoneRelations.addAll(issueMilestoneRelations);
   }
 }
