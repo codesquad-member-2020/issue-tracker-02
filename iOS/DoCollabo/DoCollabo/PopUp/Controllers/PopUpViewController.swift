@@ -10,6 +10,7 @@ import UIKit
 
 protocol PopUpViewControllerDelegate: class {
     func cancelButtonDidTap()
+    func submitButtonDidTap(title: String, description: String?)
 }
 
 class PopUpViewController: UIViewController {
@@ -45,6 +46,16 @@ class PopUpViewController: UIViewController {
     func resetButtonDidTap() {
         contentView.reset()
     }
+    
+    func submitButtonDidTap() {
+        let newFeature = contentView.submit()
+        guard newFeature.title != "", let title = newFeature.title else {
+            presentTitleEmptyAlert()
+            return
+        }
+         popUpViewControllerDelegate?.submitButtonDidTap(title: title, description: newFeature.description)
+    }
+    
 }
 
 // MARK:- Configuration
@@ -108,5 +119,16 @@ extension PopUpViewController {
     
     @objc private func dismissView() {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK:- Show Alert
+
+extension PopUpViewController {
+    private func presentTitleEmptyAlert() {
+        let alert = UIAlertController(title: "알림", message: "제목을 반드시 작성해주세요.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in }
+        alert.addAction(ok)
+        present(alert, animated: true)
     }
 }

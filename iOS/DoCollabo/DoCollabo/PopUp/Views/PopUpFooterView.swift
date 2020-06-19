@@ -11,6 +11,7 @@ import UIKit
 protocol PopUpFooterViewActionDelegate: class {
     func cancelButtonDidTap()
     func resetButtonDidTap()
+    func submitButtonDidTap()
 }
 
 final class PopUpFooterView: UIView {
@@ -45,5 +46,6 @@ final class PopUpFooterView: UIView {
     }
     
     @IBAction func tapSubmitButton(_ sender: UIButton) {
+        delegate?.submitButtonDidTap()
     }
 }

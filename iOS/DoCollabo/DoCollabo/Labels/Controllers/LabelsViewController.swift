@@ -66,6 +66,11 @@ extension LabelsViewController: PopUpViewControllerDelegate {
     func cancelButtonDidTap() {
         dismiss(animated: true, completion: nil)
     }
+    
+    func submitButtonDidTap(title: String, description: String?) {
+        dismiss(animated: true, completion: nil)
+        //TODO: - 정보 담아서 네트워크로 라벨 추가 요청
+    }
 }
 
 // MARK:- Configuration

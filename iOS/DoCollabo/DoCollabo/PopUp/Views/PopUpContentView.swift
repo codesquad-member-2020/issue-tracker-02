@@ -25,6 +25,10 @@ final class PopUpContentView: UIView {
         configure()
     }
     
+    func submit() -> (title: String?, description: String?) {
+        return (titleTextField.text, descriptionTextField.text)
+    }
+    
     func reset() {
         titleTextField.text = ""
         descriptionTextField.text = ""
