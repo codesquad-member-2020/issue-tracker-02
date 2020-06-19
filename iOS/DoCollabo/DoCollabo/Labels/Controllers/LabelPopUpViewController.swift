@@ -36,4 +36,10 @@ extension LabelPopUpViewController: ColorPickerActionDelegate {
         colorPickerViewController.configurePalette()
         present(colorPickerViewController, animated: false, completion: nil)
     }
+    
+    func randomButtonDidTap() -> (color: UIColor, hexString: String) {
+        let randomColor = UIColor(displayP3Red: CGFloat.random(in: 0...1.0), green: CGFloat.random(in: 0...1.0), blue: CGFloat.random(in: 0...1.0), alpha: 1)
+        let hexString = randomColor.hexString
+        return (randomColor, hexString)
+    }
 }

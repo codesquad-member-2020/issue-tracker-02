@@ -10,6 +10,7 @@ import UIKit
 
 protocol ColorPickerActionDelegate: class {
     func colorPickerButtonDidTap()
+    func randomButtonDidTap() -> (color: UIColor, hexString: String)
 }
 
 final class PopUpColorPickerView: UIView {
@@ -42,6 +43,9 @@ final class PopUpColorPickerView: UIView {
     }
     
     @IBAction func pickRandomeColor(_ sender: UIButton) {
+        let colorInfo = delegate?.randomButtonDidTap()
+        hexColorLabel.text = colorInfo?.hexString
+        colorPickerButton.backgroundColor = colorInfo?.color
     }
     
     @IBAction func colorPickerButtonDidTap(_ sender: UIButton) {
