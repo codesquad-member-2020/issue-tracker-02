@@ -16,13 +16,13 @@ class PopUpViewController: UIViewController {
     
     private var backgroundView: UIView!
     private var frameView: UIView!
-    private var contentPlaceholderView: UIView!
+    private var contentView: PopUpContentView!
     private var footerView: PopUpFooterView!
     
-    weak var delegate: PopUpViewControllerDelegate?
+    weak var popUpViewControllerDelegate: PopUpViewControllerDelegate?
     
     func configureContentView(_ contentView: UIView) {
-        contentPlaceholderView.addSubview(contentView)
+        contentView.addSubview(contentView)
         contentView.fillSuperview()
     }
     
@@ -31,11 +31,15 @@ class PopUpViewController: UIViewController {
     }
 }
 
-// MARK:- PopUpFooterViewActio@objc nDelegate
+// MARK:- PopUpFooterViewAction
 
 @objc extension PopUpViewController: PopUpFooterViewActionDelegate {
     func cancelButtonDidTap() {
-        delegate?.cancelButtonDidTap()
+        popUpViewControllerDelegate?.cancelButtonDidTap()
+    }
+    
+    func resetButtonDidTap() {
+        contentView.resetButtonDidTap()
     }
 }
 
@@ -52,7 +56,7 @@ extension PopUpViewController {
     }
     
     private func configureUI() {
-        contentPlaceholderView = UIView()
+        contentView = PopUpContentView()
         footerView = PopUpFooterView()
         backgroundView = UIView()
         backgroundView.backgroundColor = .black
@@ -69,7 +73,7 @@ extension PopUpViewController {
     private func configureSubViews() {
         view.addSubview(backgroundView)
         view.addSubview(frameView)
-        frameView.addSubview(contentPlaceholderView)
+        frameView.addSubview(contentView)
         frameView.addSubview(footerView)
     }
     
@@ -79,18 +83,18 @@ extension PopUpViewController {
         let sidePadding: CGFloat = 24.0
         frameView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         frameView.heightAnchor.constraint(equalTo: frameView.widthAnchor, multiplier: 1.1).isActive = true
-        contentPlaceholderView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         footerView.translatesAutoresizingMaskIntoConstraints = false
         
-        contentPlaceholderView.topAnchor.constraint(equalTo: frameView.topAnchor, constant: 24).isActive = true
-        contentPlaceholderView.leadingAnchor.constraint(equalTo: frameView.leadingAnchor, constant: sidePadding).isActive = true
-        contentPlaceholderView.trailingAnchor.constraint(equalTo: frameView.trailingAnchor, constant: -sidePadding).isActive = true
-        contentPlaceholderView.bottomAnchor.constraint(equalTo: footerView.topAnchor, constant: -24).isActive = true
+        contentView.topAnchor.constraint(equalTo: frameView.topAnchor, constant: 24).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: frameView.leadingAnchor, constant: sidePadding).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: frameView.trailingAnchor, constant: -sidePadding).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: footerView.topAnchor, constant: -24).isActive = true
         
         footerView.heightAnchor.constraint(equalTo: frameView.heightAnchor, multiplier: 0.2).isActive = true
         footerView.bottomAnchor.constraint(equalTo: frameView.bottomAnchor, constant: -24).isActive = true
-        footerView.leadingAnchor.constraint(equalTo: contentPlaceholderView.leadingAnchor).isActive = true
-        footerView.trailingAnchor.constraint(equalTo: contentPlaceholderView.trailingAnchor).isActive = true
+        footerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        footerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
     }
     
     private func configureTapGestureRecognizer() {

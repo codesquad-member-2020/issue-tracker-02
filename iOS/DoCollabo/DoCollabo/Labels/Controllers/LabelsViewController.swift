@@ -84,7 +84,7 @@ extension LabelsViewController {
         popUpViewController.modalPresentationStyle = .overCurrentContext
         popUpViewController.modalTransitionStyle = .crossDissolve
         popUpViewController.configureLabelPopupViewController()
-        popUpViewController.delegate = self
+        popUpViewController.popUpViewControllerDelegate = self
     }
     
     private func configureHeaderView() {

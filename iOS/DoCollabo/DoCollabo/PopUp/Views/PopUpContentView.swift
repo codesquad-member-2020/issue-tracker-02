@@ -12,6 +12,8 @@ final class PopUpContentView: UIView {
     
     @IBOutlet weak var frameView: UIView!
     @IBOutlet weak var placeholderView: UIView!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,6 +23,11 @@ final class PopUpContentView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configure()
+    }
+    
+    func resetButtonDidTap() {
+        titleTextField.text = ""
+        descriptionTextField.text = ""
     }
     
     func configurePlaceholderView(_ view: UIView) {
