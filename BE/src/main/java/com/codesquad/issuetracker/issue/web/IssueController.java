@@ -6,6 +6,7 @@ import com.codesquad.issuetracker.issue.web.model.IssueQuery;
 import com.codesquad.issuetracker.issue.web.model.IssueView;
 import com.codesquad.issuetracker.issue.web.model.PatchIssueQuery;
 import com.codesquad.issuetracker.issue.web.model.PutIssueQuery;
+import com.codesquad.issuetracker.issue.web.model.SearchIssueQuery;
 import com.codesquad.issuetracker.util.JwtUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -32,8 +33,8 @@ public class IssueController {
   @ApiOperation(value = "Issue 들을 가져옵니다")
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @GetMapping
-  public List<IssueView> getIssues() {
-    return issueService.getIssues();
+  public List<IssueView> getIssues(SearchIssueQuery searchIssueQuery) {
+    return issueService.getIssues(searchIssueQuery);
   }
 
   @ApiOperation(value = "특정 Issue 를 가져옵니다")
