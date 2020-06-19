@@ -28,7 +28,8 @@ extension UIColor {
         self.init(red:red, green:green, blue:blue, alpha:alpha)
     }
     
-    func toHex() -> String {
+    // HexString of UIColor
+    var hexString: String {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0

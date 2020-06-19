@@ -15,13 +15,13 @@ final class HexColorTests: XCTestCase {
     private let whiteColor: UIColor = UIColor.white
 
     func testColorToHexString() {
-        let hexString = whiteColor.toHex()
+        let hexString = whiteColor.hexString
         XCTAssertTrue(hexString == whiteHexString)
     }
     
     func testHextStringToColor() {
         let color = UIColor(hexString: whiteHexString)
-        XCTAssertTrue(color.toHex() == whiteColor.toHex())
+        XCTAssertTrue(color.hexString == whiteColor.hexString)
     }
     
     func testColorDarkness() {
