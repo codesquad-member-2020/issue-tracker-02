@@ -25,7 +25,7 @@ final class PopUpContentView: UIView {
         configure()
     }
     
-    func resetButtonDidTap() {
+    func reset() {
         titleTextField.text = ""
         descriptionTextField.text = ""
     }

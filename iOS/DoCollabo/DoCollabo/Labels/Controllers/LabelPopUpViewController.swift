@@ -16,10 +16,9 @@ final class LabelPopUpViewController: PopUpViewController {
     func configureLabelPopupViewController() {
         configure()
         configureUI()
-        popUpContentView.configurePlaceholderView(popUpColorPickerView)
+        configureSegmentView(popUpColorPickerView)
         popUpColorPickerView.fillSuperview()
         popUpColorPickerView.delegate = self
-        configureContentView(popUpContentView)
     }
     
     private func configureUI() {

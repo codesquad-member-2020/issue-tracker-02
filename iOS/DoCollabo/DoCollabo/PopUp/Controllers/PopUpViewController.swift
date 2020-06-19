@@ -21,13 +21,17 @@ class PopUpViewController: UIViewController {
     
     weak var popUpViewControllerDelegate: PopUpViewControllerDelegate?
     
-    func configureContentView(_ contentView: UIView) {
-        contentView.addSubview(contentView)
-        contentView.fillSuperview()
+    func configureContentView(_ otherView: UIView) {
+        contentView.addSubview(otherView)
+        otherView.fillSuperview()
     }
     
     func configureSecondLevelBackgroundView() {
         backgroundView.alpha = 0
+    }
+    
+    func configureSegmentView(_ view: UIView) {
+        contentView.configurePlaceholderView(view)
     }
 }
 
@@ -39,7 +43,7 @@ class PopUpViewController: UIViewController {
     }
     
     func resetButtonDidTap() {
-        contentView.resetButtonDidTap()
+        contentView.reset()
     }
 }
 
