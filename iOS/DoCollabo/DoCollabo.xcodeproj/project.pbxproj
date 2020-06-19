@@ -47,6 +47,8 @@
 		385A50D124915E66004BE8DB /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385A50D024915E66004BE8DB /* UIColor+Hex.swift */; };
 		3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861B005248FC582006FD89E /* IssuesCollectionView.swift */; };
 		3861B00B248FC654006FD89E /* IssueHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861B009248FC654006FD89E /* IssueHorizontalCell.swift */; };
+		3868A1E5249C5F2100B9982E /* HexColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3868A1E4249C5F2100B9982E /* HexColorTests.swift */; };
+		3868A1E6249C606C00B9982E /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385A50D024915E66004BE8DB /* UIColor+Hex.swift */; };
 		386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F98248E291100ED3A5A /* IssuesViewController.swift */; };
 		386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */; };
 		38879C552490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38879C542490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift */; };
@@ -64,6 +66,16 @@
 		38F1C3932498D58F00378398 /* LabelsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1C3922498D58F00378398 /* LabelsUseCase.swift */; };
 		38F1C3952498D80300378398 /* LabelsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1C3942498D80300378398 /* LabelsRequest.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3868A1DF249C5E7400B9982E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 30789BFC248E1E3F001D0415 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30789C03248E1E3F001D0415;
+			remoteInfo = DoCollabo;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3020A0A424933B0D00483727 /* LabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +119,9 @@
 		385A50D024915E66004BE8DB /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		3861B005248FC582006FD89E /* IssuesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionView.swift; sourceTree = "<group>"; };
 		3861B009248FC654006FD89E /* IssueHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalCell.swift; sourceTree = "<group>"; };
+		3868A1DA249C5E7400B9982E /* DoCollaboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoCollaboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3868A1DE249C5E7400B9982E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3868A1E4249C5F2100B9982E /* HexColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColorTests.swift; sourceTree = "<group>"; };
 		386B8F98248E291100ED3A5A /* IssuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewController.swift; sourceTree = "<group>"; };
 		386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		38879C542490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -131,6 +146,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				30E22EE8249106A300EC0FD8 /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3868A1D7249C5E7400B9982E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				30789C06248E1E3F001D0415 /* DoCollabo */,
+				3868A1DB249C5E7400B9982E /* DoCollaboTests */,
 				30789C05248E1E3F001D0415 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -201,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				30789C04248E1E3F001D0415 /* DoCollabo.app */,
+				3868A1DA249C5E7400B9982E /* DoCollaboTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -301,6 +325,15 @@
 				30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3868A1DB249C5E7400B9982E /* DoCollaboTests */ = {
+			isa = PBXGroup;
+			children = (
+				3868A1E4249C5F2100B9982E /* HexColorTests.swift */,
+				3868A1DE249C5E7400B9982E /* Info.plist */,
+			);
+			path = DoCollaboTests;
 			sourceTree = "<group>";
 		};
 		386B8F96248E28D800ED3A5A /* Issues */ = {
@@ -423,18 +456,40 @@
 			productReference = 30789C04248E1E3F001D0415 /* DoCollabo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3868A1D9249C5E7400B9982E /* DoCollaboTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3868A1E3249C5E7400B9982E /* Build configuration list for PBXNativeTarget "DoCollaboTests" */;
+			buildPhases = (
+				3868A1D6249C5E7400B9982E /* Sources */,
+				3868A1D7249C5E7400B9982E /* Frameworks */,
+				3868A1D8249C5E7400B9982E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3868A1E0249C5E7400B9982E /* PBXTargetDependency */,
+			);
+			name = DoCollaboTests;
+			productName = DoCollaboTests;
+			productReference = 3868A1DA249C5E7400B9982E /* DoCollaboTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		30789BFC248E1E3F001D0415 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = delma;
 				TargetAttributes = {
 					30789C03248E1E3F001D0415 = {
 						CreatedOnToolsVersion = 11.4.1;
+					};
+					3868A1D9249C5E7400B9982E = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 30789C03248E1E3F001D0415;
 					};
 				};
 			};
@@ -455,6 +510,7 @@
 			projectRoot = "";
 			targets = (
 				30789C03248E1E3F001D0415 /* DoCollabo */,
+				3868A1D9249C5E7400B9982E /* DoCollaboTests */,
 			);
 		};
 /* End PBXProject section */
@@ -470,6 +526,13 @@
 				30789C0F248E1E3F001D0415 /* Main.storyboard in Resources */,
 				30E22EDF2490A61200EC0FD8 /* IssueLabelCell.xib in Resources */,
 				3020A0AD249347F000483727 /* LabelCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3868A1D8249C5E7400B9982E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,7 +595,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3868A1D6249C5E7400B9982E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3868A1E6249C606C00B9982E /* UIColor+Hex.swift in Sources */,
+				3868A1E5249C5F2100B9982E /* HexColorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3868A1E0249C5E7400B9982E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30789C03248E1E3F001D0415 /* DoCollabo */;
+			targetProxy = 3868A1DF249C5E7400B9982E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		30789C0D248E1E3F001D0415 /* Main.storyboard */ = {
@@ -704,6 +784,48 @@
 			};
 			name = Release;
 		};
+		3868A1E1249C5E7400B9982E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = DoCollaboTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.codesquad.DoCollaboTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoCollabo.app/DoCollabo";
+			};
+			name = Debug;
+		};
+		3868A1E2249C5E7400B9982E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = DoCollaboTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.codesquad.DoCollaboTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoCollabo.app/DoCollabo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -721,6 +843,15 @@
 			buildConfigurations = (
 				30789C19248E1E46001D0415 /* Debug */,
 				30789C1A248E1E46001D0415 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3868A1E3249C5E7400B9982E /* Build configuration list for PBXNativeTarget "DoCollaboTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3868A1E1249C5E7400B9982E /* Debug */,
+				3868A1E2249C5E7400B9982E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
