@@ -14,13 +14,12 @@ final class ColorPickerViewController: PopUpViewController {
     private var palette: ColorPicker!
     
     func configurePalette() {
-        let randomRange = CGFloat.random(in: 0...1.0)
         configure()
         palette = ColorPicker()
         palette.backgroundColor = .white
         palette.translatesAutoresizingMaskIntoConstraints = false
         palette.set(
-            color: UIColor(displayP3Red: randomRange, green: randomRange, blue: randomRange, alpha: 1),
+            color: UIColor(displayP3Red: CGFloat.random(in: 0...1.0), green: CGFloat.random(in: 0...1.0), blue: CGFloat.random(in: 0...1.0), alpha: 1),
             colorSpace: .sRGB)
         configureContentView(palette)
         configureSecondLevelBackgroundView()
