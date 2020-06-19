@@ -24,10 +24,23 @@ final class HexColorTests: XCTestCase {
         XCTAssertTrue(color.hexString == whiteColor.hexString)
     }
     
-    func testColorDarkness() {
-        let darkColor = UIColor(displayP3Red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
-        XCTAssertTrue(darkColor.isDark)
-        let lightColor = UIColor(displayP3Red: 0.5, green: 0.6, blue: 0.5, alpha: 1)
-        XCTAssertTrue(lightColor.isDark != true)
+    func testDarkColor() {
+        let darkColors = [
+            UIColor(displayP3Red: 0.4, green: 0.4, blue: 0.4, alpha: 1),
+            UIColor(displayP3Red: 0.5, green: 0.4, blue: 0.5, alpha: 1),
+            UIColor(displayP3Red: 0.6, green: 0.3, blue: 0.4, alpha: 1)]
+        darkColors.forEach {
+            XCTAssertTrue($0.isDark)
+        }
+    }
+    
+    func testLightColor() {
+        let lightColors = [
+            UIColor(displayP3Red: 0.5, green: 0.6, blue: 0.5, alpha: 1),
+            UIColor(displayP3Red: 0.7, green: 0.5, blue: 0.5, alpha: 1),
+            UIColor(displayP3Red: 0.8, green: 0.4, blue: 0.4, alpha: 1)]
+        lightColors.forEach {
+            XCTAssertTrue($0.isDark != true)
+        }
     }
 }
