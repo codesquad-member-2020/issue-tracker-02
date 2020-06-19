@@ -1,0 +1,50 @@
+//
+//  SelectColorSegmentView.swift
+//  DoCollabo
+//
+//  Created by delma on 2020/06/15.
+//  Copyright © 2020 delma. All rights reserved.
+//
+
+import UIKit
+
+protocol ColorPickerActionDelegate: class {
+    func colorPickerButtonDidTap()
+}
+
+final class PopUpColorPickerView: UIView {
+    
+    @IBOutlet var frameView: UIView!
+    @IBOutlet weak var hexColorLabel: UILabel!
+    @IBOutlet weak var colorPickerButton: UIButton!
+    
+    weak var delegate: ColorPickerActionDelegate?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        configure()
+    }
+    
+    private func configure() {
+        Bundle.main.loadNibNamed(String(describing: Self.self), owner: self, options: nil)
+        addSubview(frameView)
+        frameView.frame = self.bounds
+        configureUI()
+    }
+    
+    private func configureUI() {
+        colorPickerButton.roundCorner(cornerRadius: 12.0)
+    }
+    
+    @IBAction func pickRandomeColor(_ sender: UIButton) {
+    }
+    
+    @IBAction func colorPickerButtonDidTap(_ sender: UIButton) {
+        delegate?.colorPickerButtonDidTap()
+    }
+}

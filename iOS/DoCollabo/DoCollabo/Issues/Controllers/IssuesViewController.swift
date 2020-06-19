@@ -26,7 +26,6 @@ final class IssuesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configure()
     }
     
@@ -58,7 +57,8 @@ final class IssuesViewController: UIViewController {
         else {
             return
         }
-        singInViewController.modalPresentationStyle = .fullScreen
+        singInViewController.modalPresentationStyle = .currentContext
+        singInViewController.modalTransitionStyle = .crossDissolve
         present(singInViewController, animated: true, completion: nil)
     }
     

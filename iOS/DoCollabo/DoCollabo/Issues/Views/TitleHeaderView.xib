@@ -35,12 +35,27 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3E-28-q6e">
+                            <rect key="frame" x="372.5" y="12" width="29.5" height="29.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="E3E-28-q6e" secondAttribute="height" multiplier="1:1" id="Joa-WN-7wO"/>
+                            </constraints>
+                            <color key="tintColor" name="key.yellow"/>
+                            <state key="normal" image="plus.circle.fill" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="semibold"/>
+                            </state>
+                            <connections>
+                                <action selector="pressAddButton:" destination="-1" eventType="touchUpInside" id="1Hb-Zt-Zv7"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" name="key.navy"/>
                     <constraints>
                         <constraint firstItem="TAe-45-RYa" firstAttribute="top" secondItem="ehg-ev-cjs" secondAttribute="top" constant="20" id="RXg-8O-M62"/>
                         <constraint firstItem="TAe-45-RYa" firstAttribute="centerX" secondItem="ehg-ev-cjs" secondAttribute="centerX" id="YCF-cS-LLi"/>
                         <constraint firstItem="7CZ-o7-xGD" firstAttribute="top" secondItem="ehg-ev-cjs" secondAttribute="top" constant="44" id="cd6-ru-EUm"/>
+                        <constraint firstAttribute="trailing" secondItem="E3E-28-q6e" secondAttribute="trailing" constant="12" id="oEO-au-LP4"/>
+                        <constraint firstItem="E3E-28-q6e" firstAttribute="top" secondItem="TAe-45-RYa" secondAttribute="top" id="rWW-SH-NRr"/>
                         <constraint firstItem="7CZ-o7-xGD" firstAttribute="leading" secondItem="ehg-ev-cjs" secondAttribute="leading" constant="20" id="yUL-h7-ag4"/>
                     </constraints>
                 </view>
@@ -57,8 +72,12 @@
         </view>
     </objects>
     <resources>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="key.navy">
             <color red="0.20399999618530273" green="0.37999999523162842" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="key.yellow">
+            <color red="0.94900000095367432" green="0.66699999570846558" blue="0.32199999690055847" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
