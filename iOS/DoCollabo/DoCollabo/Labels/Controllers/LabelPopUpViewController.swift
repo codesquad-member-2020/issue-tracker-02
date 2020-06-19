@@ -41,7 +41,7 @@ extension LabelPopUpViewController: ColorPickerActionDelegate {
     func colorPickerButtonDidTap() {
         let colorPickerViewController = ColorPickerViewController()
         colorPickerViewController.modalPresentationStyle = .overCurrentContext
-        colorPickerViewController.configurePalette()
+        colorPickerViewController.configureColorPickerView()
         present(colorPickerViewController, animated: false, completion: nil)
     }
     

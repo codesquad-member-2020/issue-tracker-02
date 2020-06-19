@@ -119,6 +119,10 @@ extension PopUpViewController {
     @objc private func dismissView() {
         dismiss(animated: true, completion: nil)
     }
+    
+    func hideSecondaryButton() {
+        footerView.hideSecondaryButton()
+    }
 }
 
 // MARK:- Show Alert

@@ -13,8 +13,13 @@ final class ColorPickerViewController: PopUpViewController {
     
     private var palette: ColorPicker!
     
-    func configurePalette() {
+    func configureColorPickerView() {
         configure()
+        configurePalette()
+        hideSecondaryButton()
+    }
+    
+    func configurePalette() {
         palette = ColorPicker()
         palette.backgroundColor = .white
         palette.translatesAutoresizingMaskIntoConstraints = false
