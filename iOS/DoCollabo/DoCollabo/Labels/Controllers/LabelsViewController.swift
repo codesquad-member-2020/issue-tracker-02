@@ -102,17 +102,15 @@ extension LabelsViewController: PopUpViewControllerDelegate {
 
 extension LabelsViewController {
     private func configure() {
+        configureUI()
         configureHeaderView()
         configurePopUpView()
-        configureUI()
         configureCollectionView()
         configureCollectionViewDataSource()
         configureUseCase()
     }
 
     private func configureUI() {
-        titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
-        titleHeaderView.configureTitle("레이블")
         labelsCollectionView.alpha = 0
     }
 
