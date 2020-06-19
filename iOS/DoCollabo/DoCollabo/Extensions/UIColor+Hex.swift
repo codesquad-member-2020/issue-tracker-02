@@ -43,7 +43,8 @@ extension UIColor {
         return hexString
     }
     
-    func isDark() -> Bool {
+    /// Darkness standard of UIColor
+    var isDark: Bool {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
