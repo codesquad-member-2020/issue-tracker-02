@@ -10,6 +10,8 @@ import Foundation
 import AuthenticationServices
 
 final class OAuthNetworkManager {
+    
+    static let jwtToken: String = "jwtToken"
     private var session: ASWebAuthenticationSession?
     
     func authenticateWithGithub(
