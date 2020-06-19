@@ -7,13 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3012917D249B197600D35B26 /* PopUpFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3012917C249B197600D35B26 /* PopUpFooterView.xib */; };
+		3012917F249B198500D35B26 /* PopUpFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3012917E249B198500D35B26 /* PopUpFooterView.swift */; };
+		301A8D56249CA10C00732A5D /* LabelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A8D55249CA10C00732A5D /* LabelRequest.swift */; };
+		301A8D58249CA17700732A5D /* IssueUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A8D57249CA17700732A5D /* IssueUseCase.swift */; };
+		301A8D5A249CA18F00732A5D /* LabelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A8D59249CA18F00732A5D /* LabelUseCase.swift */; };
 		3020A0A524933B0D00483727 /* LabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0A424933B0D00483727 /* LabelsViewController.swift */; };
 		3020A0A92493479200483727 /* LabelsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0A82493479200483727 /* LabelsCollectionView.swift */; };
 		3020A0AC249347F000483727 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0AA249347F000483727 /* LabelCell.swift */; };
 		3020A0AD249347F000483727 /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3020A0AB249347F000483727 /* LabelCell.xib */; };
 		3020A0B024936FB200483727 /* LabelsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0AF24936FB200483727 /* LabelsCollectionViewDataSource.swift */; };
+		3032C673249B647C003DB8A8 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032C672249B647C003DB8A8 /* ColorPickerViewController.swift */; };
 		3040B87F24923F8400A780D5 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040B87E24923F8400A780D5 /* ViewModelBinding.swift */; };
 		3040B8822492403600A780D5 /* IssuesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040B8812492403600A780D5 /* IssuesCollectionViewDataSource.swift */; };
+		3073525D2497907F00730D53 /* PopUpColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3073525C2497907F00730D53 /* PopUpColorPickerView.swift */; };
+		3073525F2497909300730D53 /* PopUpColorPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3073525E2497909300730D53 /* PopUpColorPickerView.xib */; };
 		30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C07248E1E3F001D0415 /* AppDelegate.swift */; };
 		30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C09248E1E3F001D0415 /* SceneDelegate.swift */; };
 		30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C0B248E1E3F001D0415 /* TabBarViewController.swift */; };
@@ -22,6 +30,10 @@
 		30789C14248E1E46001D0415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30789C12248E1E46001D0415 /* LaunchScreen.storyboard */; };
 		30789C1D248E3A37001D0415 /* LeadingImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C1C248E3A37001D0415 /* LeadingImageButton.swift */; };
 		30789C1F248E3FC1001D0415 /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789C1E248E3FC1001D0415 /* UIView+Border.swift */; };
+		308A9C972498FFA600DE53E4 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308A9C962498FFA600DE53E4 /* PopUpViewController.swift */; };
+		308A9C99249900FE00DE53E4 /* PopUpContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 308A9C98249900FE00DE53E4 /* PopUpContentView.xib */; };
+		308A9C9B2499010B00DE53E4 /* PopUpContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308A9C9A2499010B00DE53E4 /* PopUpContentView.swift */; };
+		308A9C9E249A340500DE53E4 /* HeaderViewActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308A9C9D249A340500DE53E4 /* HeaderViewActionDelegate.swift */; };
 		30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC784E248F94C4004BA3B6 /* NetworkError.swift */; };
 		30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */; };
 		30E22EDE2490A61200EC0FD8 /* IssueLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EDC2490A61200EC0FD8 /* IssueLabelCell.swift */; };
@@ -53,6 +65,7 @@
 		386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */; };
 		38879C552490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38879C542490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		38879C582490E48600EE84D7 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38879C572490E48600EE84D7 /* UIView+Shadow.swift */; };
+		388B27F3249B98F100F59998 /* LabelPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B27F2249B98F100F59998 /* LabelPopUpViewController.swift */; };
 		38BDFA2A24912E79008E901D /* IssueHorizontalContentsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */; };
 		38BDFA2C24912F21008E901D /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */; };
 		38BDFA2E24913128008E901D /* IssueHorizontalTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */; };
@@ -62,9 +75,7 @@
 		38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */; };
 		38F0FB5E248E73690080FBBD /* OAuthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5D248E73690080FBBD /* OAuthNetworkManager.swift */; };
 		38F0FB62248FA23F0080FBBD /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB61248FA23F0080FBBD /* EndPoint.swift */; };
-		38F1C3912498D57000378398 /* IssuesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1C3902498D57000378398 /* IssuesUseCase.swift */; };
-		38F1C3932498D58F00378398 /* LabelsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1C3922498D58F00378398 /* LabelsUseCase.swift */; };
-		38F1C3952498D80300378398 /* LabelsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1C3942498D80300378398 /* LabelsRequest.swift */; };
+		BA40E8185B7195779CAC1546 /* Pods_DoCollabo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B2FECD1DEE0B65A447E2D8 /* Pods_DoCollabo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,13 +89,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3012917C249B197600D35B26 /* PopUpFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpFooterView.xib; sourceTree = "<group>"; };
+		3012917E249B198500D35B26 /* PopUpFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpFooterView.swift; sourceTree = "<group>"; };
+		301A8D55249CA10C00732A5D /* LabelRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelRequest.swift; sourceTree = "<group>"; };
+		301A8D57249CA17700732A5D /* IssueUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueUseCase.swift; sourceTree = "<group>"; };
+		301A8D59249CA18F00732A5D /* LabelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelUseCase.swift; sourceTree = "<group>"; };
 		3020A0A424933B0D00483727 /* LabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
 		3020A0A82493479200483727 /* LabelsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsCollectionView.swift; sourceTree = "<group>"; };
 		3020A0AA249347F000483727 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
 		3020A0AB249347F000483727 /* LabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
 		3020A0AF24936FB200483727 /* LabelsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		3032C672249B647C003DB8A8 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		3040B87E24923F8400A780D5 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
 		3040B8812492403600A780D5 /* IssuesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		3073525C2497907F00730D53 /* PopUpColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpColorPickerView.swift; sourceTree = "<group>"; };
+		3073525E2497909300730D53 /* PopUpColorPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpColorPickerView.xib; sourceTree = "<group>"; };
 		30789C04248E1E3F001D0415 /* DoCollabo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoCollabo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30789C07248E1E3F001D0415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30789C09248E1E3F001D0415 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +114,10 @@
 		30789C15248E1E46001D0415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30789C1C248E3A37001D0415 /* LeadingImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadingImageButton.swift; sourceTree = "<group>"; };
 		30789C1E248E3FC1001D0415 /* UIView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
+		308A9C962498FFA600DE53E4 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		308A9C98249900FE00DE53E4 /* PopUpContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpContentView.xib; sourceTree = "<group>"; };
+		308A9C9A2499010B00DE53E4 /* PopUpContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpContentView.swift; sourceTree = "<group>"; };
+		308A9C9D249A340500DE53E4 /* HeaderViewActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewActionDelegate.swift; sourceTree = "<group>"; };
 		30AC784E248F94C4004BA3B6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 		30E22EDC2490A61200EC0FD8 /* IssueLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueLabelCell.swift; sourceTree = "<group>"; };
@@ -120,12 +143,12 @@
 		3861B005248FC582006FD89E /* IssuesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionView.swift; sourceTree = "<group>"; };
 		3861B009248FC654006FD89E /* IssueHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalCell.swift; sourceTree = "<group>"; };
 		3868A1DA249C5E7400B9982E /* DoCollaboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoCollaboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3868A1DE249C5E7400B9982E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3868A1E4249C5F2100B9982E /* HexColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColorTests.swift; sourceTree = "<group>"; };
 		386B8F98248E291100ED3A5A /* IssuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewController.swift; sourceTree = "<group>"; };
 		386B8F9C248E2B0200ED3A5A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		38879C542490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		38879C572490E48600EE84D7 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		388B27F2249B98F100F59998 /* LabelPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LabelPopUpViewController.swift; path = DoCollabo/Labels/Controllers/LabelPopUpViewController.swift; sourceTree = SOURCE_ROOT; };
 		38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalContentsStackView.swift; sourceTree = "<group>"; };
 		38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalTitleLabel.swift; sourceTree = "<group>"; };
@@ -135,9 +158,9 @@
 		38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthURLStub.swift; sourceTree = "<group>"; };
 		38F0FB5D248E73690080FBBD /* OAuthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthNetworkManager.swift; sourceTree = "<group>"; };
 		38F0FB61248FA23F0080FBBD /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
-		38F1C3902498D57000378398 /* IssuesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesUseCase.swift; sourceTree = "<group>"; };
-		38F1C3922498D58F00378398 /* LabelsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsUseCase.swift; sourceTree = "<group>"; };
-		38F1C3942498D80300378398 /* LabelsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsRequest.swift; sourceTree = "<group>"; };
+		C6B2FECD1DEE0B65A447E2D8 /* Pods_DoCollabo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoCollabo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2345F88AB29F4266CE25B2E /* Pods-DoCollabo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoCollabo.debug.xcconfig"; path = "Target Support Files/Pods-DoCollabo/Pods-DoCollabo.debug.xcconfig"; sourceTree = "<group>"; };
+		E7D138CF07A905C904456EFE /* Pods-DoCollabo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoCollabo.release.xcconfig"; path = "Target Support Files/Pods-DoCollabo/Pods-DoCollabo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30E22EE8249106A300EC0FD8 /* Alamofire in Frameworks */,
+				BA40E8185B7195779CAC1546 /* Pods_DoCollabo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,22 +183,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		301A8D54249CA0E200732A5D /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				3868A1E4249C5F2100B9982E /* HexColorTests.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		3020A0A224933AE700483727 /* Labels */ = {
 			isa = PBXGroup;
 			children = (
 				3020A0AE24936F9600483727 /* DataSources */,
-				3020A0A324933AF500483727 /* ViewControllers */,
+				3020A0A324933AF500483727 /* Controllers */,
 				3020A0A62493475B00483727 /* Views */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
 		};
-		3020A0A324933AF500483727 /* ViewControllers */ = {
+		3020A0A324933AF500483727 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				3020A0A424933B0D00483727 /* LabelsViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		3020A0A62493475B00483727 /* Views */ = {
@@ -193,6 +225,15 @@
 				3020A0AF24936FB200483727 /* LabelsCollectionViewDataSource.swift */,
 			);
 			path = DataSources;
+			sourceTree = "<group>";
+		};
+		302D13EB24978367001582DD /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				38123755249B9224003603BF /* Controllers */,
+				38123756249B922A003603BF /* Views */,
+			);
+			path = PopUp;
 			sourceTree = "<group>";
 		};
 		3040B87D24923F6400A780D5 /* ViewModels */ = {
@@ -215,8 +256,10 @@
 			isa = PBXGroup;
 			children = (
 				30789C06248E1E3F001D0415 /* DoCollabo */,
-				3868A1DB249C5E7400B9982E /* DoCollaboTests */,
 				30789C05248E1E3F001D0415 /* Products */,
+				9E52D0F24EC3FC3609C4AD4A /* Pods */,
+				6B07AFEDFC0CB206FAB7CAF1 /* Frameworks */,
+				301A8D54249CA0E200732A5D /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -232,12 +275,14 @@
 		30789C06248E1E3F001D0415 /* DoCollabo */ = {
 			isa = PBXGroup;
 			children = (
-				3020A0A224933AE700483727 /* Labels */,
+				308A9C9C249A33AB00DE53E4 /* Delegates */,
 				3040B87D24923F6400A780D5 /* ViewModels */,
 				30E22EF924910F8E00EC0FD8 /* Models */,
 				30789C20248E430F001D0415 /* Network */,
 				386B8F9A248E2AEE00ED3A5A /* SignIn */,
 				386B8F96248E28D800ED3A5A /* Issues */,
+				302D13EB24978367001582DD /* PopUp */,
+				3020A0A224933AE700483727 /* Labels */,
 				38F0FB47248E2D5F0080FBBD /* Extensions */,
 				30789C07248E1E3F001D0415 /* AppDelegate.swift */,
 				30789C09248E1E3F001D0415 /* SceneDelegate.swift */,
@@ -282,6 +327,14 @@
 			path = Stubs;
 			sourceTree = "<group>";
 		};
+		308A9C9C249A33AB00DE53E4 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				308A9C9D249A340500DE53E4 /* HeaderViewActionDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		30AC784D248F94B2004BA3B6 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,8 +355,8 @@
 			isa = PBXGroup;
 			children = (
 				30E22EE42491064A00EC0FD8 /* Request.swift */,
-				38F1C3942498D80300378398 /* LabelsRequest.swift */,
 				380425502498D8F7005059EB /* IssuesRequest.swift */,
+				301A8D55249CA10C00732A5D /* LabelRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -312,8 +365,8 @@
 			isa = PBXGroup;
 			children = (
 				30E22EF724910EF800EC0FD8 /* UseCase.swift */,
-				38F1C3902498D57000378398 /* IssuesUseCase.swift */,
-				38F1C3922498D58F00378398 /* LabelsUseCase.swift */,
+				301A8D57249CA17700732A5D /* IssueUseCase.swift */,
+				301A8D59249CA18F00732A5D /* LabelUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -327,13 +380,27 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		3868A1DB249C5E7400B9982E /* DoCollaboTests */ = {
+		38123755249B9224003603BF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3868A1E4249C5F2100B9982E /* HexColorTests.swift */,
-				3868A1DE249C5E7400B9982E /* Info.plist */,
+				308A9C962498FFA600DE53E4 /* PopUpViewController.swift */,
+				388B27F2249B98F100F59998 /* LabelPopUpViewController.swift */,
+				3032C672249B647C003DB8A8 /* ColorPickerViewController.swift */,
 			);
-			path = DoCollaboTests;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		38123756249B922A003603BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3073525C2497907F00730D53 /* PopUpColorPickerView.swift */,
+				3073525E2497909300730D53 /* PopUpColorPickerView.xib */,
+				308A9C9A2499010B00DE53E4 /* PopUpContentView.swift */,
+				308A9C98249900FE00DE53E4 /* PopUpContentView.xib */,
+				3012917E249B198500D35B26 /* PopUpFooterView.swift */,
+				3012917C249B197600D35B26 /* PopUpFooterView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		386B8F96248E28D800ED3A5A /* Issues */ = {
@@ -433,6 +500,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		6B07AFEDFC0CB206FAB7CAF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2FECD1DEE0B65A447E2D8 /* Pods_DoCollabo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9E52D0F24EC3FC3609C4AD4A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D2345F88AB29F4266CE25B2E /* Pods-DoCollabo.debug.xcconfig */,
+				E7D138CF07A905C904456EFE /* Pods-DoCollabo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -440,9 +524,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30789C18248E1E46001D0415 /* Build configuration list for PBXNativeTarget "DoCollabo" */;
 			buildPhases = (
+				2F4165F0695EE052D47F4566 /* [CP] Check Pods Manifest.lock */,
 				30789C00248E1E3F001D0415 /* Sources */,
 				30789C01248E1E3F001D0415 /* Frameworks */,
 				30789C02248E1E3F001D0415 /* Resources */,
+				C0517EAE31152EE0E021ED99 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -525,7 +611,10 @@
 				38D3643F248FA96E00884972 /* TitleHeaderView.xib in Resources */,
 				30789C0F248E1E3F001D0415 /* Main.storyboard in Resources */,
 				30E22EDF2490A61200EC0FD8 /* IssueLabelCell.xib in Resources */,
+				3073525F2497909300730D53 /* PopUpColorPickerView.xib in Resources */,
 				3020A0AD249347F000483727 /* LabelCell.xib in Resources */,
+				308A9C99249900FE00DE53E4 /* PopUpContentView.xib in Resources */,
+				3012917D249B197600D35B26 /* PopUpFooterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,33 +627,81 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2F4165F0695EE052D47F4566 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoCollabo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0517EAE31152EE0E021ED99 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoCollabo/Pods-DoCollabo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoCollabo/Pods-DoCollabo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoCollabo/Pods-DoCollabo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		30789C00248E1E3F001D0415 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38F1C3952498D80300378398 /* LabelsRequest.swift in Sources */,
 				38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */,
 				380F18A02499DFA90084CE56 /* IssueHorizontalTrailingStackView.swift in Sources */,
 				383AA0AD249B3A67007DCEBE /* IssueLabelsViewController.swift in Sources */,
 				38BDFA2C24912F21008E901D /* UIView+AutoLayout.swift in Sources */,
 				3020A0A524933B0D00483727 /* LabelsViewController.swift in Sources */,
 				30789C1F248E3FC1001D0415 /* UIView+Border.swift in Sources */,
+				301A8D5A249CA18F00732A5D /* LabelUseCase.swift in Sources */,
 				38D3643D248FA96300884972 /* TitleHeaderView.swift in Sources */,
 				386B8F99248E291100ED3A5A /* IssuesViewController.swift in Sources */,
 				30E22EEA2491093100EC0FD8 /* NetworkDispatcher.swift in Sources */,
+				308A9C972498FFA600DE53E4 /* PopUpViewController.swift in Sources */,
 				38F0FB5E248E73690080FBBD /* OAuthNetworkManager.swift in Sources */,
+				3073525D2497907F00730D53 /* PopUpColorPickerView.swift in Sources */,
+				3012917F249B198500D35B26 /* PopUpFooterView.swift in Sources */,
 				3040B8822492403600A780D5 /* IssuesCollectionViewDataSource.swift in Sources */,
+				301A8D58249CA17700732A5D /* IssueUseCase.swift in Sources */,
+				388B27F3249B98F100F59998 /* LabelPopUpViewController.swift in Sources */,
 				30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */,
+				301A8D56249CA10C00732A5D /* LabelRequest.swift in Sources */,
 				38BDFA2E24913128008E901D /* IssueHorizontalTitleLabel.swift in Sources */,
 				38BDFA2A24912E79008E901D /* IssueHorizontalContentsStackView.swift in Sources */,
+				308A9C9E249A340500DE53E4 /* HeaderViewActionDelegate.swift in Sources */,
 				38F0FB49248E2D870080FBBD /* Colors.swift in Sources */,
 				38879C582490E48600EE84D7 /* UIView+Shadow.swift in Sources */,
 				30E22EF824910EF800EC0FD8 /* UseCase.swift in Sources */,
-				38F1C3912498D57000378398 /* IssuesUseCase.swift in Sources */,
 				380425512498D8F7005059EB /* IssuesRequest.swift in Sources */,
 				3825A8A1249339700021D512 /* IssuesViewController+ScrollAnimation.swift in Sources */,
-				38F1C3932498D58F00378398 /* LabelsUseCase.swift in Sources */,
+				308A9C9B2499010B00DE53E4 /* PopUpContentView.swift in Sources */,
 				30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */,
 				30E22EE22490B09200EC0FD8 /* IssueLabelsCollectionView.swift in Sources */,
 				3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */,
@@ -580,6 +717,7 @@
 				30E22EFD2491101A00EC0FD8 /* IssueLabel.swift in Sources */,
 				3040B87F24923F8400A780D5 /* ViewModelBinding.swift in Sources */,
 				3020A0AC249347F000483727 /* LabelCell.swift in Sources */,
+				3032C673249B647C003DB8A8 /* ColorPickerViewController.swift in Sources */,
 				30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */,
 				38879C552490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */,
@@ -750,6 +888,7 @@
 		};
 		30789C19248E1E46001D0415 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2345F88AB29F4266CE25B2E /* Pods-DoCollabo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -768,6 +907,7 @@
 		};
 		30789C1A248E1E46001D0415 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7D138CF07A905C904456EFE /* Pods-DoCollabo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
