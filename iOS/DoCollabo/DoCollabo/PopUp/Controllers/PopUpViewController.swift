@@ -55,7 +55,6 @@ class PopUpViewController: UIViewController {
         }
          popUpViewControllerDelegate?.submitButtonDidTap(title: title, description: newFeature.description)
     }
-    
 }
 
 // MARK:- Configuration
