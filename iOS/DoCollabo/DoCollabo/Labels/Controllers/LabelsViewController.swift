@@ -7,26 +7,27 @@
 //
 
 import UIKit
-import Alamofire
 
 final class LabelsViewController: UIViewController {
 
     @IBOutlet weak var titleHeaderBackgroundView: UIView!
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var labelsCollectionView: LabelsCollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var popUpViewController: LabelPopUpViewController!
-    
+
     private var labelsUseCase: UseCase!
     private var dataSource: LabelsCollectionViewDataSource!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
         fetchLabels()
     }
-    
+
     private func fetchLabels() {
-        let request = FetchLabelsRequest().asURLRequest()
+        startActivityIndicator()
+        let request = LabelsRequest().asURLRequest()
         labelsUseCase.getResources(request: request, dataType: [IssueLabel].self) { result in
             switch result {
             case .success(let labels):
@@ -36,7 +37,30 @@ final class LabelsViewController: UIViewController {
             }
         }
     }
-    
+}
+
+// MARK:- Activity Indicator
+
+extension LabelsViewController {
+    private func startActivityIndicator() {
+        activityIndicator.alpha = 1
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
+
+    private func stopActivityIndicator() {
+        UIView.animateCurveEaseOut(withDuration: 0.5, animations: {
+            self.activityIndicator.alpha = 0
+        }) { (_) in
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+        }
+    }
+}
+
+// MARK:- Error Alert
+
+extension LabelsViewController {
     private func presentErrorAlert(error: Error) {
         let alertController = ErrorAlertController(
             title: nil,
@@ -66,7 +90,7 @@ extension LabelsViewController: PopUpViewControllerDelegate {
     func cancelButtonDidTap() {
         dismiss(animated: true, completion: nil)
     }
-    
+
     func submitButtonDidTap(title: String, description: String?) {
         dismiss(animated: true, completion: nil)
         //TODO: - 정보 담아서 네트워크로 라벨 추가 요청
@@ -82,8 +106,9 @@ extension LabelsViewController {
         configureCollectionView()
         configureCollectionViewDataSource()
         configureUseCase()
+        configureUI()
     }
-    
+
     private func configurePopUpView() {
         popUpViewController = LabelPopUpViewController()
         popUpViewController.modalPresentationStyle = .overCurrentContext
@@ -91,31 +116,44 @@ extension LabelsViewController {
         popUpViewController.configureLabelPopupViewController()
         popUpViewController.popUpViewControllerDelegate = self
     }
-    
+
     private func configureHeaderView() {
         titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
         titleHeaderView.configureTitle("레이블")
         titleHeaderView.delegate = self
     }
-    
+
+    private func configureUI() {
+        titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
+        titleHeaderView.configureTitle("레이블")
+        labelsCollectionView.alpha = 0
+    }
+
     private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(
             width: labelsCollectionView.frame.width * 0.9,
-            height: self.view.frame.height / 8)
+            height: LabelCell.height)
         layout.scrollDirection = .vertical
         labelsCollectionView.collectionViewLayout = layout
-        labelsCollectionView.showsVerticalScrollIndicator = false
     }
-    
+
     private func configureCollectionViewDataSource() {
         dataSource = LabelsCollectionViewDataSource( changedHandler: { (_) in
             self.labelsCollectionView.reloadData()
+            self.stopActivityIndicator()
+            self.appearCollectionView()
         })
         labelsCollectionView.dataSource = dataSource
     }
-    
+
+    private func appearCollectionView() {
+        UIView.animateCurveEaseOut(withDuration: 0.5, animations: {
+            self.labelsCollectionView.alpha = 1.0
+        }, completion: nil)
+    }
+
     private func configureUseCase() {
-        labelsUseCase = UseCase(networkDispatcher: AF)
+        labelsUseCase = LabelsUseCase()
     }
 }

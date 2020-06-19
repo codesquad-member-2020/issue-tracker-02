@@ -8,7 +8,9 @@
 
 import UIKit
 
-class LabelCell: UICollectionViewCell {
+final class LabelCell: UICollectionViewCell {
+    
+    static let height: CGFloat = 84.0
     
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,7 +28,7 @@ class LabelCell: UICollectionViewCell {
     
     private func configureUI() {
         drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
-        background.roundCorner(cornerRadius: 8.0)
+        background.roundCorner(cornerRadius: 16.0)
         titleBackground.roundCorner(cornerRadius: IssueLabelCell.cornerRadius)
         descriptionLabel.textColor = .label
         background.backgroundColor = .tertiarySystemBackground

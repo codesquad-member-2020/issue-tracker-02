@@ -10,65 +10,76 @@ import UIKit
 
 extension IssuesViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let currentHeaderViewHeight = titleHeaderViewHeightAnchor.constant
-        let headerViewDiff = TitleHeaderView.stretchedHeight - TitleHeaderView.huggedHeight
-        let backgroundViewDiff = TitleHeaderBackgroundView.stretchedHeight - TitleHeaderBackgroundView.huggedHeight
+        let headerStretchedHeight = TitleHeaderView.stretchedHeight
+        let headerHuggedHeight = TitleHeaderView.huggedHeight
+        let headerBGStretchedHeight = TitleHeaderBackgroundView.stretchedHeight
         
-        if offsetY > 0 {
-            if currentHeaderViewHeight > TitleHeaderView.huggedHeight {
-                let backgroundOffsetY = offsetY * (backgroundViewDiff / headerViewDiff)
-                titleHeaderBackgroundViewHeightAnchor.constant -= backgroundOffsetY
-            }
-        } else if offsetY < 0 {
-            if currentHeaderViewHeight < TitleHeaderView.stretchedHeight {
-                let backgroundOffsetY = offsetY * (backgroundViewDiff / headerViewDiff)
-                titleHeaderBackgroundViewHeightAnchor.constant -= backgroundOffsetY
-            }
+        let offsetY = scrollView.contentOffset.y
+        let newHeight = titleHeaderViewHeightAnchor.constant - offsetY
+        
+        // change height of header view and header background view
+        titleHeaderViewHeightAnchor.constant = newHeight
+        let backgroundOffsetDiff = headerBGStretchedHeight * (-offsetY) / headerStretchedHeight
+        let backgroundNewHeight = titleHeaderBackgroundViewHeightAnchor.constant + backgroundOffsetDiff
+        titleHeaderBackgroundViewHeightAnchor.constant = backgroundNewHeight
+        
+        if titleHeaderViewHeightAnchor.constant >= headerStretchedHeight {
+            titleHeaderViewHeightAnchor.constant = headerStretchedHeight
+            UIView.animateCurveEaseOut(withDuration: 0.2, animations: {
+                self.titleHeaderView.stretched()
+            })
         }
         
-        if offsetY > 0 && currentHeaderViewHeight > TitleHeaderView.huggedHeight {
-            titleHeaderViewHeightAnchor.constant -= offsetY
-            let heightOffset = TitleHeaderView.stretchedHeight - currentHeaderViewHeight
-            let progressRatio = (heightOffset / headerViewDiff)
-            if progressRatio >= 0.5 {
-                UIView.animateCurveEaseOut(withDuration: 0.1, animations: {
-                    self.titleHeaderView.hugged()
-                })
-            } else {
-                titleHeaderView.titleLabel.alpha = 1.0 - progressRatio
-                titleHeaderView.smallTitleLabel.alpha = progressRatio
-            }
-        } else if offsetY < 0 && currentHeaderViewHeight < TitleHeaderView.stretchedHeight {
-            titleHeaderViewHeightAnchor.constant -= offsetY
-            let heightOffset = currentHeaderViewHeight - TitleHeaderView.huggedHeight
-            let progressRatio = (heightOffset / headerViewDiff)
-            if progressRatio >= 0.5 {
-                UIView.animateCurveEaseOut(withDuration: 0.1, animations: {
-                    self.titleHeaderView.stretched()
-                })
-            } else {
-                titleHeaderView.titleLabel.alpha = progressRatio
-                titleHeaderView.smallTitleLabel.alpha = 1.0 - progressRatio
-            }
+        if titleHeaderViewHeightAnchor.constant <= headerHuggedHeight {
+            titleHeaderViewHeightAnchor.constant = headerHuggedHeight
+            UIView.animateCurveEaseOut(withDuration: 0.2, animations: {
+                self.titleHeaderView.hugged()
+            })
+        }
+        
+        if titleHeaderBackgroundViewHeightAnchor.constant >= headerBGStretchedHeight {
+            titleHeaderBackgroundViewHeightAnchor.constant = headerBGStretchedHeight
+        }
+        
+        if titleHeaderBackgroundViewHeightAnchor.constant <= headerHuggedHeight {
+            titleHeaderBackgroundViewHeightAnchor.constant = headerHuggedHeight
+        }
+        
+        if titleHeaderViewHeightAnchor.constant > headerHuggedHeight &&
+            titleHeaderViewHeightAnchor.constant < headerStretchedHeight {
+            let offsetProgress = (newHeight - headerHuggedHeight) /
+                (headerStretchedHeight - headerHuggedHeight)
+            titleHeaderView.titleLabel.alpha = offsetProgress
+            titleHeaderView.smallTitleLabel.alpha = 1.0 - offsetProgress
         }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        scrollDidEnd(offsetY: offsetY)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        scrollDidEnd(offsetY: offsetY)
+    }
+    
+    func scrollDidEnd(offsetY: CGFloat) {
         let currentHeaderViewHeight = titleHeaderViewHeightAnchor.constant
-        
+
         guard currentHeaderViewHeight != TitleHeaderView.huggedHeight ||
             currentHeaderViewHeight != TitleHeaderView.stretchedHeight
         else {
             return
         }
         
-        let maximumOfDiff = TitleHeaderView.stretchedHeight - TitleHeaderView.huggedHeight
-        let diff = currentHeaderViewHeight - TitleHeaderView.huggedHeight
-        let diffOffsetRatio = diff / maximumOfDiff
-        if diffOffsetRatio < 0.5 {
+        let newHeight = titleHeaderViewHeightAnchor.constant - offsetY
+        let offsetProgress = (newHeight - TitleHeaderView.huggedHeight) /
+            (TitleHeaderView.stretchedHeight - TitleHeaderView.huggedHeight)
+        
+        if offsetProgress < 0.5 {
             titleHeaderViewHeightAnchor.constant = TitleHeaderView.huggedHeight
-            titleHeaderBackgroundViewHeightAnchor.constant = TitleHeaderBackgroundView.huggedHeight
+            titleHeaderBackgroundViewHeightAnchor.constant = TitleHeaderView.huggedHeight
             UIView.animateCurveEaseOut(withDuration: 0.5, animations: {
                 self.titleHeaderView.hugged()
                 self.view.layoutIfNeeded()

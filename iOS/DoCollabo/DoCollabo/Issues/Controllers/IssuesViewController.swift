@@ -7,34 +7,27 @@
 //
 
 import UIKit
-import Alamofire
 
 final class IssuesViewController: UIViewController {
 
     @IBOutlet weak var titleHeaderBackgroundView: TitleHeaderBackgroundView!
-    @IBOutlet weak var titleHeaderView: TitleHeaderView! {
-        didSet {
-            titleHeaderView.configureTitle("이슈")
-        }
-    }
+    @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    private var issuesUseCase: UseCase!
+    private var dataSource: IssuesCollectionViewDataSource!
+    
+    // for scroll animation
     @IBOutlet weak var titleHeaderBackgroundViewTopAnchor: NSLayoutConstraint!
     @IBOutlet weak var titleHeaderBackgroundViewHeightAnchor: NSLayoutConstraint!
     @IBOutlet weak var titleHeaderViewTopAnchor: NSLayoutConstraint!
     @IBOutlet weak var titleHeaderViewHeightAnchor: NSLayoutConstraint!
     
-    private var issuesUseCase: UseCase!
-    private var dataSource: IssuesCollectionViewDataSource!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fakeConfigureToken()
-        configureCollectionViewDelegate()
-        configureCollectionViewDataSource()
-        configureUseCase()
-        hideViews()
+        configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,24 +35,16 @@ final class IssuesViewController: UIViewController {
         checkToken()
     }
     
-    private func configureCollectionViewDataSource() {
-        dataSource = IssuesCollectionViewDataSource(changedHandler: { (_) in
-            self.issuesCollectionView.reloadData()
-            self.showViews()
-        })
-        issuesCollectionView.dataSource = dataSource
-    }
-    
-    private func configureUseCase() {
-        issuesUseCase = UseCase(networkDispatcher: AF)
-    }
-    
-    private func fakeConfigureToken() {
-        UserDefaults.standard.removeObject(forKey: .jwtToken)
+    private func configure() {
+        titleHeaderView.configureTitle("이슈")
+        configureCollectionViewDelegate()
+        configureCollectionViewDataSource()
+        configureUseCase()
+        hideViews()
     }
     
     private func checkToken() {
-        guard let token = UserDefaults.standard.object(forKey: .jwtToken) as? String
+        guard let token = UserDefaults.standard.object(forKey: OAuthNetworkManager.jwtToken) as? String
         else {
             presentSignIn()
             return
@@ -78,7 +63,7 @@ final class IssuesViewController: UIViewController {
     }
     
     private func fetchIssues() {
-        let request = FetchIssuesRequest().asURLRequest()
+        let request = IssuesRequest().asURLRequest()
         issuesUseCase.getResources(request: request, dataType: [Issue].self) { (result) in
             switch result {
             case .success(let issues):
@@ -88,7 +73,11 @@ final class IssuesViewController: UIViewController {
             }
         }
     }
-    
+}
+
+// MARK:- Error Alert
+
+extension IssuesViewController {
     private func presentErrorAlert(error: Error) {
         let alertController = ErrorAlertController(
             title: nil,
@@ -101,6 +90,34 @@ final class IssuesViewController: UIViewController {
             return
         }
         self.present(alertController, animated: true)
+    }
+}
+
+// MARK:- UICollectionViewDelegateFlowLayout
+
+extension IssuesViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 12.0
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = view.frame.width * 0.9
+        let estimatedHeight: CGFloat = 300.0
+        let estimatedSizeCell = IssueHorizontalCell(
+            frame: CGRect(x: 0, y: 0, width: width, height: estimatedHeight))
+        dataSource.referIssue(at: indexPath) { (issue) in
+            estimatedSizeCell.configureCell(with: issue)
+        }
+        estimatedSizeCell.layoutIfNeeded()
+        let estimatedSize = estimatedSizeCell.systemLayoutSizeFitting(
+            CGSize(width: width, height: estimatedHeight))
+        return CGSize(width: width, height: estimatedSize.height)
     }
 }
 
@@ -138,9 +155,9 @@ extension IssuesViewController {
                 self.titleHeaderView.alpha = 1
         })
         UIView.animate(
-            withDuration: 1,
+            withDuration: 0.5,
             delay: 0.4,
-            usingSpringWithDamping: 1,
+            usingSpringWithDamping: 1.1,
             initialSpringVelocity: 1,
             options: .curveEaseOut,
             animations: {
@@ -149,34 +166,22 @@ extension IssuesViewController {
     }
 }
 
-// MARK:- UICollectionViewDelegateFlowLayout
+// MARK:- Configuration
 
-extension IssuesViewController: UICollectionViewDelegateFlowLayout {
+extension IssuesViewController {
     private func configureCollectionViewDelegate() {
         issuesCollectionView.delegate = self
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 12.0
+    private func configureCollectionViewDataSource() {
+        dataSource = IssuesCollectionViewDataSource(changedHandler: { (_) in
+            self.issuesCollectionView.reloadData()
+            self.showViews()
+        })
+        issuesCollectionView.dataSource = dataSource
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.frame.width * 0.9
-        let estimatedHeight: CGFloat = 300.0
-        let estimatedSizeCell = IssueHorizontalCell(
-            frame: CGRect(x: 0, y: 0, width: width, height: estimatedHeight))
-        dataSource.referIssue(at: indexPath) { (issue) in
-            estimatedSizeCell.configureCell(with: issue)
-        }
-        estimatedSizeCell.layoutIfNeeded()
-        let estimatedSize = estimatedSizeCell.systemLayoutSizeFitting(
-            CGSize(width: width, height: estimatedHeight))
-        return CGSize(width: width, height: estimatedSize.height)
+    private func configureUseCase() {
+        issuesUseCase = IssuesUseCase()
     }
 }

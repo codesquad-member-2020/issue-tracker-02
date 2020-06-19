@@ -8,13 +8,16 @@
 
 import Foundation
 
-struct UseCase {
-    var networkDispatcher: NetworkDispatcher
+protocol UseCase {
+    var networkDispatcher: NetworkDispatcher { get set }
     
-    init(networkDispatcher: NetworkDispatcher) {
-        self.networkDispatcher = networkDispatcher
-    }
-    
+    func getResources<T: Codable>(
+        request: URLRequest,
+        dataType: T.Type,
+        completion: @escaping (Result<T, Error>) -> ())
+}
+
+extension UseCase {
     func getResources<T: Codable>(
         request: URLRequest,
         dataType: T.Type,

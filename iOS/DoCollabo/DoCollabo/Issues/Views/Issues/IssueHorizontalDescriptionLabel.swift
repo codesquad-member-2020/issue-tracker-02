@@ -1,16 +1,16 @@
 //
-//  IssueHorizontalTitleLabel.swift
+//  IssueHorizontalDescriptionLabel.swift
 //  DoCollabo
 //
-//  Created by Cory Kim on 2020/06/11.
+//  Created by Cory Kim on 2020/06/16.
 //  Copyright © 2020 delma. All rights reserved.
 //
 
 import UIKit
 
-final class IssueHorizontalTitleLabel: UILabel {
-    
-    private let titleFontSize: CGFloat = 17.0
+final class IssueHorizontalDescriptionLabel: UILabel {
+
+    private let titleFontSize: CGFloat = 15.0
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,8 +22,8 @@ final class IssueHorizontalTitleLabel: UILabel {
         configure()
     }
     
-    func configureTitleLabel(with issue: Issue) {
-        text = "#\(issue.id) \(issue.title)"
+    func configureDescriptionLabel(with issue: Issue) {
+        text = issue.description
     }
     
     private func configure() {
@@ -31,8 +31,8 @@ final class IssueHorizontalTitleLabel: UILabel {
     }
 
     private func configureUI() {
-        text = "Title"
-        font = .systemFont(ofSize: titleFontSize, weight: .semibold)
-        numberOfLines = 1
+        text = "description"
+        font = .systemFont(ofSize: titleFontSize, weight: .thin)
+        numberOfLines = 2
     }
 }

@@ -27,7 +27,7 @@ extension Request {
     var headers: HTTPHeaders? { return nil }
     var bodyParams: [String : Any]? { return nil }
     func setToken() -> HTTPHeaders? {
-        guard let token = UserDefaults.standard.object(forKey: .jwtToken) as? String else { return nil }
+        guard let token = UserDefaults.standard.object(forKey: OAuthNetworkManager.jwtToken) as? String else { return nil }
         let headers: HTTPHeaders = ["Authorization": token]
         return headers
     }
