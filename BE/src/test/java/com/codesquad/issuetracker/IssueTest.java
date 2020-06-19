@@ -16,6 +16,7 @@ import com.codesquad.issuetracker.issue.web.model.IssueQuery;
 import com.codesquad.issuetracker.issue.web.model.IssueView;
 import com.codesquad.issuetracker.issue.web.model.PatchIssueQuery;
 import com.codesquad.issuetracker.issue.web.model.PutIssueQuery;
+import com.codesquad.issuetracker.issue.web.model.SearchIssueQuery;
 import com.google.common.primitives.Longs;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -58,19 +59,35 @@ public class IssueTest {
 
       @DisplayName("모든 ")
       @Test
-      public void getIssues() {
+      public void all() {
         // given
 
         // when
-        List<IssueView> findIssues = issueService.getIssues();
+        List<IssueView> findIssues = issueService.getIssues(null);
 
         // then
         assertThat(findIssues.size()).isEqualTo(16); // Issue 의 초기 값은 16개 입니다
       }
 
+      @DisplayName("Keyword 가 있는 ")
+      @Test
+      public void withKeyword() {
+        // given
+        SearchIssueQuery searchIssueQuery = SearchIssueQuery.builder()
+            .keyword("delma")
+            .build();
+
+        // when
+        List<IssueView> findIssues = issueService.getIssues(searchIssueQuery);
+
+        // then
+        assertThat(findIssues.size())
+            .isEqualTo(4);
+      }
+
       @DisplayName("특정 ")
       @Test
-      void getIssue() {
+      void specific() {
         // given
 
         // when

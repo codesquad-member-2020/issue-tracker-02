@@ -13,6 +13,7 @@ import com.codesquad.issuetracker.issue.web.model.IssueQuery;
 import com.codesquad.issuetracker.issue.web.model.IssueView;
 import com.codesquad.issuetracker.issue.web.model.PatchIssueQuery;
 import com.codesquad.issuetracker.issue.web.model.PutIssueQuery;
+import com.codesquad.issuetracker.issue.web.model.SearchIssueQuery;
 import com.codesquad.issuetracker.label.data.Label;
 import com.codesquad.issuetracker.label.data.LabelRepository;
 import com.codesquad.issuetracker.milestone.data.Milestone;
@@ -55,8 +56,16 @@ public class IssueService {
     return idOfMilestones.size() == milestoneRepository.findAllById(idOfMilestones).size();
   }
 
-  public List<IssueView> getIssues() {
-    List<Issue> findIssues = issueRepository.findAll();
+  public List<IssueView> getIssues(SearchIssueQuery searchIssueQuery) {
+    List<Issue> findIssues;
+    if (Objects.isNull(searchIssueQuery)) {
+      findIssues = issueRepository.findAll();
+    } else {
+      findIssues = issueRepository
+          .findAllByTitleContainingOrDescriptionContaining(searchIssueQuery.getKeyword(),
+              searchIssueQuery.getKeyword());
+    }
+
     return findIssues.stream()
         .map(issue -> IssueView.from(issue, extractLabels(issue), extractMilestones(issue)))
         .collect(Collectors.toList());
