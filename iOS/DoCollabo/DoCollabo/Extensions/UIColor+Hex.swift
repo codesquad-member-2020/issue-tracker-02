@@ -28,18 +28,24 @@ extension UIColor {
         self.init(red:red, green:green, blue:blue, alpha:alpha)
     }
     
-    func toHex() -> String {
+    // HexString of UIColor
+    var hexString: String {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
         var alpha: CGFloat = 0
         
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        let rgb: Int = (Int)(red * 255) << 16 | (Int)(green * 255) << 8 | (Int)(blue * 255) << 0
-        return String(format: "#%06x", rgb)
+        let hexString = String(
+            format: "#%02x%02x%02x",
+            Int(red * 255),
+            Int(green * 255),
+            Int(blue * 255))
+        return hexString
     }
     
-    func isDark() -> Bool {
+    /// Darkness standard of UIColor
+    var isDark: Bool {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
