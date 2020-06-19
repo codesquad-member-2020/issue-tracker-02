@@ -58,7 +58,7 @@ public class IssueService {
 
   public List<IssueView> getIssues(SearchIssueQuery searchIssueQuery) {
     List<Issue> findIssues;
-    if (Objects.isNull(searchIssueQuery)) {
+    if (Objects.isNull(searchIssueQuery.getKeyword())) {
       findIssues = issueRepository.findAll();
     } else {
       findIssues = issueRepository

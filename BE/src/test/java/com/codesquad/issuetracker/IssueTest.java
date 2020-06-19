@@ -61,9 +61,11 @@ public class IssueTest {
       @Test
       public void all() {
         // given
+        SearchIssueQuery searchIssueQuery = SearchIssueQuery.builder()
+            .build();
 
         // when
-        List<IssueView> findIssues = issueService.getIssues(null);
+        List<IssueView> findIssues = issueService.getIssues(searchIssueQuery);
 
         // then
         assertThat(findIssues.size()).isEqualTo(16); // Issue 의 초기 값은 16개 입니다
