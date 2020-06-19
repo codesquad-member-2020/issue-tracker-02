@@ -31,6 +31,11 @@ final class PopUpColorPickerView: UIView {
         configure()
     }
     
+    func configureColorInfo(color: UIColor?, hexString: String?) {
+        hexColorLabel.text = hexString
+        colorPickerButton.backgroundColor = color
+    }
+    
     private func configure() {
         Bundle.main.loadNibNamed(String(describing: Self.self), owner: self, options: nil)
         addSubview(frameView)
@@ -44,8 +49,7 @@ final class PopUpColorPickerView: UIView {
     
     @IBAction func pickRandomeColor(_ sender: UIButton) {
         let colorInfo = delegate?.randomButtonDidTap()
-        hexColorLabel.text = colorInfo?.hexString
-        colorPickerButton.backgroundColor = colorInfo?.color
+        configureColorInfo(color: colorInfo?.color, hexString: colorInfo?.hexString)
     }
     
     @IBAction func colorPickerButtonDidTap(_ sender: UIButton) {
