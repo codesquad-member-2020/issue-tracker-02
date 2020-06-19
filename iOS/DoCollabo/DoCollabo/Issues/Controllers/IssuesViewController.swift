@@ -26,7 +26,6 @@ final class IssuesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fakeConfigureToken()
         configure()
     }
     
@@ -41,10 +40,6 @@ final class IssuesViewController: UIViewController {
         configureCollectionViewDataSource()
         configureUseCase()
         hideViews()
-    }
-    
-    private func fakeConfigureToken() {
-        UserDefaults.standard.removeObject(forKey: OAuthNetworkManager.jwtToken)
     }
     
     private func checkToken() {
