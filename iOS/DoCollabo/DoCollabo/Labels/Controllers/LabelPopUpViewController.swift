@@ -10,8 +10,8 @@ import UIKit
 
 final class LabelPopUpViewController: PopUpViewController {
     
-    private var popUpContentView: PopUpContentView!
     private var popUpColorPickerView: PopUpColorPickerView!
+    private var selectedColor: String!
     
     func configureLabelPopupViewController() {
         configure()
@@ -22,7 +22,6 @@ final class LabelPopUpViewController: PopUpViewController {
     }
     
     private func configureUI() {
-        popUpContentView = PopUpContentView()
         popUpColorPickerView = PopUpColorPickerView()
         let randomColorInfo = configureRandomColor()
         popUpColorPickerView.configureColorInfo(color: randomColorInfo.color, hexString: randomColorInfo.hexString)
@@ -54,5 +53,17 @@ extension LabelPopUpViewController: ColorPickerActionDelegate {
 extension LabelPopUpViewController: ColorPickerDelegate {
     func pass(colorInfo: (color: UIColor, hexString: String)) {
         popUpColorPickerView.configureColorInfo(color: colorInfo.color, hexString: colorInfo.hexString)
+        selectedColor = colorInfo.hexString
+    }
+}
+
+extension LabelPopUpViewController {
+    override func submitButtonDidTap() {
+        let newFeature = contentView.submit()
+        guard newFeature.title != "", let title = newFeature.title else {
+            presentTitleEmptyAlert()
+            return
+        }
+        popUpViewControllerDelegate?.submitButtonDidTap(title: title, description: newFeature.description, additionalData: selectedColor)
     }
 }
