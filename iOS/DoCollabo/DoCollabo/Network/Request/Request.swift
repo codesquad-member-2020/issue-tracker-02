@@ -38,6 +38,8 @@ extension Request {
         guard let headersWithToken = setToken() else { return request }
         request.headers = headersWithToken
         guard let bodyParameter = bodyParams else { return request }
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.httpBody = bodyParameter
         return request
     }

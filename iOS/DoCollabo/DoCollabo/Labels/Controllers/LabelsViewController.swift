@@ -38,6 +38,19 @@ final class LabelsViewController: UIViewController {
             }
         }
     }
+    
+    private func addLabel(bodyParams: Data) {
+        let request = LabelsRequest(method: .POST, id: nil, bodyParams: bodyParams).asURLRequest()
+        labelsUseCase.getStatus(request: request) { result in
+            switch result {
+            case .success(let success):
+                break
+            case .failure(let error):
+                print("eeror")
+            }
+        }
+        
+    }
 }
 
 // MARK:- Activity Indicator
@@ -94,7 +107,13 @@ extension LabelsViewController: PopUpViewControllerDelegate {
 
     func submitButtonDidTap(title: String, description: String?, additionalData: String?) {
         dismiss(animated: true, completion: nil)
-        //TODO: - 정보 담아서 네트워크로 라벨 추가 요청
+        let label = IssueLabel(id: nil, title: title, color: additionalData!, description: description)
+        do {
+            let encodedData = try JSONEncoder().encode(label)
+            addLabel(bodyParams: encodedData)
+        } catch {
+            
+        }
     }
 }
 

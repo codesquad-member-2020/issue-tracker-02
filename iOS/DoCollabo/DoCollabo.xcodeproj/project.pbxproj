@@ -12,7 +12,6 @@
 		301A8D56249CA10C00732A5D /* LabelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A8D55249CA10C00732A5D /* LabelRequest.swift */; };
 		301A8D58249CA17700732A5D /* IssueUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A8D57249CA17700732A5D /* IssueUseCase.swift */; };
 		301A8D5A249CA18F00732A5D /* LabelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A8D59249CA18F00732A5D /* LabelUseCase.swift */; };
-		301A8D62249E577F00732A5D /* JSONTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A8D61249E577F00732A5D /* JSONTest.swift */; };
 		3020A0A524933B0D00483727 /* LabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0A424933B0D00483727 /* LabelsViewController.swift */; };
 		3020A0A92493479200483727 /* LabelsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0A82493479200483727 /* LabelsCollectionView.swift */; };
 		3020A0AC249347F000483727 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0AA249347F000483727 /* LabelCell.swift */; };
@@ -103,8 +102,6 @@
 		301A8D57249CA17700732A5D /* IssueUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueUseCase.swift; sourceTree = "<group>"; };
 		301A8D59249CA18F00732A5D /* LabelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelUseCase.swift; sourceTree = "<group>"; };
 		301A8D5F249E577F00732A5D /* JSONTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		301A8D61249E577F00732A5D /* JSONTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTest.swift; sourceTree = "<group>"; };
-		301A8D63249E577F00732A5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3020A0A424933B0D00483727 /* LabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
 		3020A0A82493479200483727 /* LabelsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsCollectionView.swift; sourceTree = "<group>"; };
 		3020A0AA249347F000483727 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
@@ -209,15 +206,6 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		301A8D60249E577F00732A5D /* JSONTest */ = {
-			isa = PBXGroup;
-			children = (
-				301A8D61249E577F00732A5D /* JSONTest.swift */,
-				301A8D63249E577F00732A5D /* Info.plist */,
-			);
-			path = JSONTest;
-			sourceTree = "<group>";
-		};
 		3020A0A224933AE700483727 /* Labels */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,7 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				30789C06248E1E3F001D0415 /* DoCollabo */,
-				301A8D60249E577F00732A5D /* JSONTest */,
 				30789C05248E1E3F001D0415 /* Products */,
 				9E52D0F24EC3FC3609C4AD4A /* Pods */,
 				6B07AFEDFC0CB206FAB7CAF1 /* Frameworks */,
@@ -733,7 +720,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				301A8D62249E577F00732A5D /* JSONTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
