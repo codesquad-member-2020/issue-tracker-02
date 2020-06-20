@@ -9,10 +9,16 @@
 import UIKit
 import Colorful
 
+protocol ColorPickerDelegate: class {
+    func pass(colorInfo: (color: UIColor, hexString: String))
+}
+
 final class ColorPickerViewController: PopUpViewController {
     
     private var palette: ColorPicker!
-    private var selectedColor: String!
+    private var selectedColorInfo: (color: UIColor, hexString: String)!
+    
+    weak var delegate: ColorPickerDelegate?
     
     func configureColorPickerView() {
         configure()
@@ -35,13 +41,13 @@ final class ColorPickerViewController: PopUpViewController {
     }
     
     private func configureSelectedColorString() {
-        selectedColor = palette.color.hexString
+        selectedColorInfo = (palette.color ,palette.color.hexString)
         palette.addTarget(self, action: #selector(self.handleColorChanged(_:)), for: .valueChanged)
         handleColorChanged(palette)
     }
     
     @objc func handleColorChanged(_ palette: ColorPicker) {
-        selectedColor = palette.color.hexString
+        selectedColorInfo = (palette.color ,palette.color.hexString)
     }
 }
 
@@ -52,5 +58,6 @@ extension ColorPickerViewController {
     
     override func submitButtonDidTap() {
         dismiss(animated: false, completion: nil)
+        delegate?.pass(colorInfo: selectedColorInfo)
     }
 }

@@ -42,10 +42,17 @@ extension LabelPopUpViewController: ColorPickerActionDelegate {
         let colorPickerViewController = ColorPickerViewController()
         colorPickerViewController.modalPresentationStyle = .overCurrentContext
         colorPickerViewController.configureColorPickerView()
+        colorPickerViewController.delegate = self
         present(colorPickerViewController, animated: false, completion: nil)
     }
     
     func randomButtonDidTap() -> (color: UIColor, hexString: String) {
         return configureRandomColor()
+    }
+}
+
+extension LabelPopUpViewController: ColorPickerDelegate {
+    func pass(colorInfo: (color: UIColor, hexString: String)) {
+        popUpColorPickerView.configureColorInfo(color: colorInfo.color, hexString: colorInfo.hexString)
     }
 }
