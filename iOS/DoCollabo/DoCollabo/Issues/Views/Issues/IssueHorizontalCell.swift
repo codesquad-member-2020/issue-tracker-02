@@ -88,7 +88,7 @@ extension IssueHorizontalCell {
             leadingAnchor: statusImageView.trailingAnchor,
             bottomAnchor: bottomAnchor,
             trailingAnchor: trailingStackView.leadingAnchor,
-            padding: .init(top: Metric.topPadding, left: 16, bottom: 16, right: 8))
+            padding: .init(top: Metric.topPadding, left: 8, bottom: 16, right: 8))
         trailingStackView.constraints(
             topAnchor: topAnchor,
             leadingAnchor: contentsStackView.trailingAnchor,

@@ -10,7 +10,7 @@ import UIKit
 
 final class IssueMoreButton: UIButton {
     
-    static let size: CGSize = CGSize(width: 24.0, height: 24.0)
+    static let size: CGSize = CGSize(width: 0.0, height: 24.0)
     
     private let image: UIImage? = UIImage(named: "issue.more")
     
