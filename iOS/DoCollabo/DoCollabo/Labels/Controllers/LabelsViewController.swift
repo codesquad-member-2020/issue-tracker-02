@@ -44,7 +44,7 @@ final class LabelsViewController: UIViewController {
         labelsUseCase.getStatus(request: request) { result in
             switch result {
             case .success(let success):
-                break
+                self.fetchLabels()
             case .failure(let error):
                 print("eeror")
             }
