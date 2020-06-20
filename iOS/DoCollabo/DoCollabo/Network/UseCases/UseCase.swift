@@ -15,6 +15,8 @@ protocol UseCase {
         request: URLRequest,
         dataType: T.Type,
         completion: @escaping (Result<T, Error>) -> ())
+    
+    func getStatus(request: URLRequest, completion: @escaping (Result<Any, NetworkError>) -> ())
 }
 
 extension UseCase {
@@ -33,6 +35,17 @@ extension UseCase {
                 completion(.success(decodedData))
             case .failure(let error):
                 completion(.failure(error))
+            }
+        }
+    }
+    
+    func getStatus(request: URLRequest, completion: @escaping (Result<Any, NetworkError>) -> ()) {
+        networkDispatcher.implement(request: request) { statusCode in
+            switch statusCode {
+            case 200...202:
+                return completion(.success(true))
+            default:
+                return completion(.failure(.BadRequest))
             }
         }
     }
