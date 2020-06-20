@@ -94,7 +94,7 @@ extension IssueHorizontalCell {
             leadingAnchor: contentsStackView.trailingAnchor,
             bottomAnchor: nil,
             trailingAnchor: trailingAnchor,
-            padding: .init(top: Metric.topPadding, left: 8, bottom: 16, right: 12),
+            padding: .init(top: Metric.topPadding - 2, left: 8, bottom: 16, right: 8),
             size: .init(width: IssueHorizontalTrailingStackView.width, height: 0))
     }
 }
