@@ -47,9 +47,6 @@
 		30E22EFB24910F9F00EC0FD8 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EFA24910F9F00EC0FD8 /* Issue.swift */; };
 		30E22EFD2491101A00EC0FD8 /* IssueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */; };
 		380425512498D8F7005059EB /* IssuesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380425502498D8F7005059EB /* IssuesRequest.swift */; };
-		380F187A249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F1879249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift */; };
-		380F187C249905760084CE56 /* IssueHorizontalMilestoneLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F187B249905760084CE56 /* IssueHorizontalMilestoneLabel.swift */; };
-		380F189E2499CE0E0084CE56 /* IssueHorizontalMilestoneContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F189D2499CE0E0084CE56 /* IssueHorizontalMilestoneContainerView.swift */; };
 		380F18A02499DFA90084CE56 /* IssueHorizontalTrailingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F189F2499DFA90084CE56 /* IssueHorizontalTrailingStackView.swift */; };
 		380F18A42499F8890084CE56 /* IssueHorizontalCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F18A32499F8890084CE56 /* IssueHorizontalCommentView.swift */; };
 		3825A8A1249339700021D512 /* IssuesViewController+ScrollAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3825A8A0249339700021D512 /* IssuesViewController+ScrollAnimation.swift */; };
@@ -131,9 +128,6 @@
 		30E22EFA24910F9F00EC0FD8 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueLabel.swift; sourceTree = "<group>"; };
 		380425502498D8F7005059EB /* IssuesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesRequest.swift; sourceTree = "<group>"; };
-		380F1879249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalDescriptionLabel.swift; sourceTree = "<group>"; };
-		380F187B249905760084CE56 /* IssueHorizontalMilestoneLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalMilestoneLabel.swift; sourceTree = "<group>"; };
-		380F189D2499CE0E0084CE56 /* IssueHorizontalMilestoneContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalMilestoneContainerView.swift; sourceTree = "<group>"; };
 		380F189F2499DFA90084CE56 /* IssueHorizontalTrailingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalTrailingStackView.swift; sourceTree = "<group>"; };
 		380F18A32499F8890084CE56 /* IssueHorizontalCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalCommentView.swift; sourceTree = "<group>"; };
 		3825A8A0249339700021D512 /* IssuesViewController+ScrollAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IssuesViewController+ScrollAnimation.swift"; sourceTree = "<group>"; };
@@ -448,10 +442,7 @@
 				3861B009248FC654006FD89E /* IssueHorizontalCell.swift */,
 				38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */,
 				38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */,
-				380F189D2499CE0E0084CE56 /* IssueHorizontalMilestoneContainerView.swift */,
-				380F187B249905760084CE56 /* IssueHorizontalMilestoneLabel.swift */,
 				3861B005248FC582006FD89E /* IssuesCollectionView.swift */,
-				380F1879249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift */,
 				380F189F2499DFA90084CE56 /* IssueHorizontalTrailingStackView.swift */,
 				380F18A32499F8890084CE56 /* IssueHorizontalCommentView.swift */,
 				38FF07DF249E1C4C00DBFB5F /* IssueStatusImageView.swift */,
@@ -709,14 +700,11 @@
 				30E22EE22490B09200EC0FD8 /* IssueLabelsCollectionView.swift in Sources */,
 				3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */,
 				380F18A42499F8890084CE56 /* IssueHorizontalCommentView.swift in Sources */,
-				380F189E2499CE0E0084CE56 /* IssueHorizontalMilestoneContainerView.swift in Sources */,
-				380F187C249905760084CE56 /* IssueHorizontalMilestoneLabel.swift in Sources */,
 				3020A0B024936FB200483727 /* LabelsCollectionViewDataSource.swift in Sources */,
 				38FF07E0249E1C4C00DBFB5F /* IssueStatusImageView.swift in Sources */,
 				30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */,
 				386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */,
 				30E22EEC2491098200EC0FD8 /* Session+NetworkDispatcher.swift in Sources */,
-				380F187A249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift in Sources */,
 				3020A0A92493479200483727 /* LabelsCollectionView.swift in Sources */,
 				30E22EFD2491101A00EC0FD8 /* IssueLabel.swift in Sources */,
 				3040B87F24923F8400A780D5 /* ViewModelBinding.swift in Sources */,

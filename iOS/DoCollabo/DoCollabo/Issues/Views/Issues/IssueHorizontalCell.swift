@@ -19,9 +19,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
     private var statusImageView: IssueStatusImageView!
     private var contentsStackView: UIStackView!
     private var titleLabel: IssueHorizontalTitleLabel!
-    private var milestoneView: IssueHorizontalMilestoneContainerView!
     private var issueLabelsViewController: IssueLabelsViewController!
-    private var descriptionLabel: IssueHorizontalDescriptionLabel!
     private var trailingStackView: IssueHorizontalTrailingStackView!
     
     override init(frame: CGRect) {
@@ -38,22 +36,12 @@ final class IssueHorizontalCell: UICollectionViewCell {
         statusImageView.configureStatusImageView(with: issue)
         titleLabel.configureTitleLabel(with: issue)
 
-        if let milestone = issue.labels.first?.title {
-            milestoneView.configureMilestoneLabel(with: issue)
-            contentsStackView.addArrangedSubview(milestoneView)
-        }
-
         if issue.labels.count > 0 {
             issueLabelsViewController.updateLabels(issue.labels)
             issueLabelsViewController.reloadCollectionView()
             contentsStackView.addArrangedSubview(issueLabelsViewController.view)
             layoutIfNeeded()
             issueLabelsViewController.view.heightAnchor.constraint(equalToConstant: issueLabelsViewController.contentHeight).isActive = true
-        }
-        
-        if issue.description != "" {
-            descriptionLabel.configureDescriptionLabel(with: issue)
-            contentsStackView.addArrangedSubview(descriptionLabel)
         }
         
         trailingStackView.configureTrailingStackView(with: issue)
@@ -85,9 +73,7 @@ extension IssueHorizontalCell {
         
         statusImageView = IssueStatusImageView()
         titleLabel = IssueHorizontalTitleLabel()
-        milestoneView = IssueHorizontalMilestoneContainerView()
         issueLabelsViewController = IssueLabelsViewController()
-        descriptionLabel = IssueHorizontalDescriptionLabel()
         trailingStackView = IssueHorizontalTrailingStackView()
         contentsStackView = IssueHorizontalContentsStackView(arrangedSubviews: [titleLabel])
         
