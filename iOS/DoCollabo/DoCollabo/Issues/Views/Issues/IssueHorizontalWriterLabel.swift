@@ -10,7 +10,7 @@ import UIKit
 
 final class IssueHorizontalWriterLabel: UILabel {
 
-    private let textFont: UIFont = .systemFont(ofSize: 15.0, weight: .regular)
+    private let textFont: UIFont = .systemFont(ofSize: 13.0, weight: .regular)
     private let descriptionTextColor: UIColor = UIColor(named: "writer.description")!
     private let userIDTextColor: UIColor = UIColor(named: "writer.userID")!
     
