@@ -25,6 +25,7 @@ final class LabelPopUpViewController: PopUpViewController {
         popUpColorPickerView = PopUpColorPickerView()
         let randomColorInfo = configureRandomColor()
         popUpColorPickerView.configureColorInfo(color: randomColorInfo.color, hexString: randomColorInfo.hexString)
+        selectedColor = randomColorInfo.hexString
     }
     
     private func configureRandomColor() -> (color: UIColor, hexString: String) {
