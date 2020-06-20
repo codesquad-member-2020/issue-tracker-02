@@ -9,7 +9,7 @@
 import UIKit
 import Colorful
 
-protocol ColorPickerDelegate: class {
+protocol ColorPickDelegate: class {
     func pass(colorInfo: (color: UIColor, hexString: String))
 }
 
@@ -18,7 +18,7 @@ final class ColorPickerViewController: PopUpViewController {
     private var palette: ColorPicker!
     private var selectedColorInfo: (color: UIColor, hexString: String)!
     
-    weak var delegate: ColorPickerDelegate?
+    weak var delegate: ColorPickDelegate?
     
     func configureColorPickerView() {
         configure()
@@ -50,6 +50,8 @@ final class ColorPickerViewController: PopUpViewController {
         selectedColorInfo = (palette.color ,palette.color.hexString)
     }
 }
+
+// MARK:- overriding
 
 extension ColorPickerViewController {
     override func cancelButtonDidTap() {
