@@ -40,7 +40,7 @@ final class IssueHorizontalTrailingStackView: UIStackView {
     
     private func configureStackView() {
         axis = .vertical
-        spacing = 4.0
+        spacing = 0.0
     }
     
     private func configureUI() {

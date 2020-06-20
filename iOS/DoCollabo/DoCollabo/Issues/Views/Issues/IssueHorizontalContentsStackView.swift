@@ -53,7 +53,7 @@ extension IssueHorizontalContentsStackView {
     
     private func configureStackView() {
         axis = .vertical
-        spacing = 8
+        spacing = 6
         distribution = .fill
     }
     
