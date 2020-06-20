@@ -75,6 +75,7 @@
 		38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */; };
 		38F0FB5E248E73690080FBBD /* OAuthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5D248E73690080FBBD /* OAuthNetworkManager.swift */; };
 		38F0FB62248FA23F0080FBBD /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB61248FA23F0080FBBD /* EndPoint.swift */; };
+		38FF07E0249E1C4C00DBFB5F /* IssueStatusImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF07DF249E1C4C00DBFB5F /* IssueStatusImageView.swift */; };
 		BA40E8185B7195779CAC1546 /* Pods_DoCollabo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B2FECD1DEE0B65A447E2D8 /* Pods_DoCollabo.framework */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +159,7 @@
 		38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthURLStub.swift; sourceTree = "<group>"; };
 		38F0FB5D248E73690080FBBD /* OAuthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthNetworkManager.swift; sourceTree = "<group>"; };
 		38F0FB61248FA23F0080FBBD /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		38FF07DF249E1C4C00DBFB5F /* IssueStatusImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueStatusImageView.swift; sourceTree = "<group>"; };
 		C6B2FECD1DEE0B65A447E2D8 /* Pods_DoCollabo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoCollabo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2345F88AB29F4266CE25B2E /* Pods-DoCollabo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoCollabo.debug.xcconfig"; path = "Target Support Files/Pods-DoCollabo/Pods-DoCollabo.debug.xcconfig"; sourceTree = "<group>"; };
 		E7D138CF07A905C904456EFE /* Pods-DoCollabo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoCollabo.release.xcconfig"; path = "Target Support Files/Pods-DoCollabo/Pods-DoCollabo.release.xcconfig"; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 				380F1879249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift */,
 				380F189F2499DFA90084CE56 /* IssueHorizontalTrailingStackView.swift */,
 				380F18A32499F8890084CE56 /* IssueHorizontalCommentView.swift */,
+				38FF07DF249E1C4C00DBFB5F /* IssueStatusImageView.swift */,
 			);
 			path = Issues;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				380F189E2499CE0E0084CE56 /* IssueHorizontalMilestoneContainerView.swift in Sources */,
 				380F187C249905760084CE56 /* IssueHorizontalMilestoneLabel.swift in Sources */,
 				3020A0B024936FB200483727 /* LabelsCollectionViewDataSource.swift in Sources */,
+				38FF07E0249E1C4C00DBFB5F /* IssueStatusImageView.swift in Sources */,
 				30789C08248E1E3F001D0415 /* AppDelegate.swift in Sources */,
 				386B8F9D248E2B0200ED3A5A /* SignInViewController.swift in Sources */,
 				30E22EEC2491098200EC0FD8 /* Session+NetworkDispatcher.swift in Sources */,
