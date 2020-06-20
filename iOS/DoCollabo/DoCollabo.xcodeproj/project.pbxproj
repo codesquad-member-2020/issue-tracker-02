@@ -74,6 +74,7 @@
 		38F0FB62248FA23F0080FBBD /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB61248FA23F0080FBBD /* EndPoint.swift */; };
 		38FF07E0249E1C4C00DBFB5F /* IssueStatusImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF07DF249E1C4C00DBFB5F /* IssueStatusImageView.swift */; };
 		38FF07E2249E20BA00DBFB5F /* IssueMoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF07E1249E20BA00DBFB5F /* IssueMoreButton.swift */; };
+		38FF07E4249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF07E3249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift */; };
 		BA40E8185B7195779CAC1546 /* Pods_DoCollabo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B2FECD1DEE0B65A447E2D8 /* Pods_DoCollabo.framework */; };
 /* End PBXBuildFile section */
 
@@ -156,6 +157,7 @@
 		38F0FB61248FA23F0080FBBD /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		38FF07DF249E1C4C00DBFB5F /* IssueStatusImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueStatusImageView.swift; sourceTree = "<group>"; };
 		38FF07E1249E20BA00DBFB5F /* IssueMoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueMoreButton.swift; sourceTree = "<group>"; };
+		38FF07E3249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalWriterLabel.swift; sourceTree = "<group>"; };
 		C6B2FECD1DEE0B65A447E2D8 /* Pods_DoCollabo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoCollabo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2345F88AB29F4266CE25B2E /* Pods-DoCollabo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoCollabo.debug.xcconfig"; path = "Target Support Files/Pods-DoCollabo/Pods-DoCollabo.debug.xcconfig"; sourceTree = "<group>"; };
 		E7D138CF07A905C904456EFE /* Pods-DoCollabo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoCollabo.release.xcconfig"; path = "Target Support Files/Pods-DoCollabo/Pods-DoCollabo.release.xcconfig"; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				3861B009248FC654006FD89E /* IssueHorizontalCell.swift */,
+				38FF07E3249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift */,
 				38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */,
 				38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */,
 				3861B005248FC582006FD89E /* IssuesCollectionView.swift */,
@@ -717,6 +720,7 @@
 				30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */,
 				38879C552490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */,
+				38FF07E4249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift in Sources */,
 				385A50D124915E66004BE8DB /* UIColor+Hex.swift in Sources */,
 				3825A8A5249356530021D512 /* UIView+Animations.swift in Sources */,
 				30E22EE52491064A00EC0FD8 /* Request.swift in Sources */,
