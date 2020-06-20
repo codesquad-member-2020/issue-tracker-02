@@ -23,7 +23,7 @@ final class IssueHorizontalTitleLabel: UILabel {
     }
     
     func configureTitleLabel(with issue: Issue) {
-        text = "#\(issue.id) \(issue.title)"
+        text = issue.title
     }
     
     private func configure() {
