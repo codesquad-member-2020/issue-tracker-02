@@ -22,6 +22,11 @@ class PopUpViewController: UIViewController {
     
     weak var popUpViewControllerDelegate: PopUpViewControllerDelegate?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        contentView.reset()
+    }
+    
     func configureContentView(_ otherView: UIView) {
         contentView.addSubview(otherView)
         otherView.fillSuperview()
