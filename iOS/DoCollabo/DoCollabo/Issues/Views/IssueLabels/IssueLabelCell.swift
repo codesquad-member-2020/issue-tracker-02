@@ -10,10 +10,10 @@ import UIKit
 
 final class IssueLabelCell: UICollectionViewCell {
 
-    static let horizontalPadding: CGFloat = 18.0
-    static let verticalPadding: CGFloat = 10.0
-    static let titleFontSize: CGFloat = 14.0
-    static let cornerRadius: CGFloat = 6.0
+    static let horizontalPadding: CGFloat = 20.0
+    static let verticalPadding: CGFloat = 8.0
+    static let titleFontSize: CGFloat = 13.0
+    static let cornerRadius: CGFloat = 12.0
     
     @IBOutlet weak var labelBackgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
