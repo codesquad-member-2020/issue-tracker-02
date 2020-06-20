@@ -13,6 +13,11 @@ final class LabelPopUpViewController: PopUpViewController {
     private var popUpColorPickerView: PopUpColorPickerView!
     private var selectedColor: String!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureRandomColor()
+    }
+    
     func configureLabelPopupViewController() {
         configure()
         configureUI()
@@ -23,12 +28,16 @@ final class LabelPopUpViewController: PopUpViewController {
     
     private func configureUI() {
         popUpColorPickerView = PopUpColorPickerView()
-        let randomColorInfo = configureRandomColor()
+        configureRandomColor()
+    }
+    
+    private func configureRandomColor() {
+        let randomColorInfo = randomColor()
         popUpColorPickerView.configureColorInfo(color: randomColorInfo.color, hexString: randomColorInfo.hexString)
         selectedColor = randomColorInfo.hexString
     }
     
-    private func configureRandomColor() -> (color: UIColor, hexString: String) {
+    private func randomColor() -> (color: UIColor, hexString: String) {
         let randomColor = UIColor(displayP3Red: CGFloat.random(in: 0...1.0), green: CGFloat.random(in: 0...1.0), blue: CGFloat.random(in: 0...1.0), alpha: 1)
         let hexString = randomColor.hexString
         return (randomColor, hexString)
@@ -47,7 +56,7 @@ extension LabelPopUpViewController: ColorPickerActionDelegate {
     }
     
     func randomButtonDidTap() -> (color: UIColor, hexString: String) {
-        return configureRandomColor()
+        return randomColor()
     }
 }
 
