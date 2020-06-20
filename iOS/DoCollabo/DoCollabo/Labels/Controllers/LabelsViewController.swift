@@ -46,7 +46,7 @@ final class LabelsViewController: UIViewController {
             case .success(let success):
                 self.fetchLabels()
             case .failure(let error):
-                print("eeror")
+                self.presentErrorAlert(error: error)
             }
         }
         
@@ -107,12 +107,16 @@ extension LabelsViewController: PopUpViewControllerDelegate {
 
     func submitButtonDidTap(title: String, description: String?, additionalData: String?) {
         dismiss(animated: true, completion: nil)
-        let label = IssueLabel(id: nil, title: title, color: additionalData!, description: description)
+        encodeLabel(title: title, description: description, color: additionalData!)
+    }
+    
+    private func encodeLabel(title: String, description: String?, color: String) {
+        let label = IssueLabel(id: nil, title: title, color: color, description: description)
         do {
             let encodedData = try JSONEncoder().encode(label)
             addLabel(bodyParams: encodedData)
         } catch {
-            
+            self.presentErrorAlert(error: NetworkError.BadRequest)
         }
     }
 }
