@@ -10,7 +10,7 @@ import UIKit
 
 final class IssueStatusImageView: UIImageView {
     
-    static let size: CGSize = CGSize(width: 24.0, height: 24.0)
+    static let size: CGSize = CGSize(width: 22.0, height: 22.0)
     
     private enum Image {
         static let open = UIImage(named: "issue.open")
