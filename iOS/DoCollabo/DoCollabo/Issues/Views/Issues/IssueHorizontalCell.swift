@@ -53,10 +53,6 @@ final class IssueHorizontalCell: UICollectionViewCell {
             subview.removeFromSuperview()
         }
         contentsStackView.addArrangedSubview(titleLabel)
-        trailingStackView.subviews.forEach { (subview) in
-            contentsStackView.removeArrangedSubview(subview)
-            subview.removeFromSuperview()
-        }
     }
 }
 
