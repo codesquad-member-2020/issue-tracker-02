@@ -64,10 +64,10 @@ extension LabelPopUpViewController: ColorPickerActionDelegate {
 
 // MARK:- ColorPickerDelegate
 
-extension LabelPopUpViewController: ColorPickDelegate {
-    func pass(colorInfo: (color: UIColor, hexString: String)) {
-        popUpColorPickerView.configureColorInfo(color: colorInfo.color, hexString: colorInfo.hexString)
-        selectedColor = colorInfo.hexString
+extension LabelPopUpViewController: ColorPickerViewControllerDelegate {
+    func SubmitButtonDidTap(color: UIColor) {
+        popUpColorPickerView.configureColorInfo(color: color, hexString: color.hexString)
+        selectedColor = color.hexString
     }
 }
 
