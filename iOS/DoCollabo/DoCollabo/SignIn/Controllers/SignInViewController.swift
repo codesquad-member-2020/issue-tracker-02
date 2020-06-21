@@ -57,6 +57,22 @@ extension SignInViewController {
     }
 }
 
+// MARK:- ASAuthorizationControllerPresentationContextProviding
+
+extension SignInViewController: ASAuthorizationControllerPresentationContextProviding {
+    func authorizationController(
+                                controller: ASAuthorizationController,
+                                didCompleteWithAuthorization authorization: ASAuthorization) {
+        guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
+            return
+        }
+        guard let token = credential.identityToken else { return }
+        guard let jwt = String(data: token, encoding: .utf8) else { return }
+        UserDefaults.standard.set(jwt, forKey: OAuthNetworkManager.jwtToken)
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
 // MARK:- ASWebAuthenticationPresentationContextProviding
 
 extension SignInViewController: ASWebAuthenticationPresentationContextProviding {
@@ -70,19 +86,5 @@ extension SignInViewController: ASWebAuthenticationPresentationContextProviding 
 extension SignInViewController: ASAuthorizationControllerDelegate {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
-    }
-}
-
-// MARK:- ASAuthorizationControllerPresentationContextProviding
-
-extension SignInViewController: ASAuthorizationControllerPresentationContextProviding {
-    func authorizationController(
-                                controller: ASAuthorizationController,
-                                didCompleteWithAuthorization authorization: ASAuthorization) {
-        guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
-            return
-        }
-        guard let token = credential.identityToken else { return }
-        guard let jwt = String(data: token, encoding: .utf8) else { return }
     }
 }
