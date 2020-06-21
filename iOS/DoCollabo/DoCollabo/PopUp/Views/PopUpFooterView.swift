@@ -32,7 +32,7 @@ final class PopUpFooterView: UIView {
         configure()
     }
     
-    func hideSecondaryButton() {
+    func hideSupplementaryButtons() {
         resetButton.isHidden = true
         cancelButton.isHidden = true
     }

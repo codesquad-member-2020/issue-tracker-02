@@ -23,7 +23,7 @@ final class ColorPickerViewController: PopUpViewController {
     func configureColorPickerView() {
         configure()
         configurePalette()
-        hideSecondaryButton()
+        hideSupplementaryButtons()
         configureSecondLevelBackgroundView()
     }
     
