@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oYW-wY-9vJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A2h-U4-Occ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -89,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Issue Add View Controller-->
         <scene sceneID="tIf-fL-iv5">
             <objects>
-                <viewController id="A2h-U4-Occ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IssueAddViewController" id="A2h-U4-Occ" customClass="IssueAddViewController" customModule="DoCollabo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GBX-aC-tXD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,7 +113,40 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wp8-Mv-qY7">
                                 <rect key="frame" x="24" y="166" width="366" height="672"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Yc-cG-g8Z">
+                                        <rect key="frame" x="20" y="28" width="326" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="az6-HM-vJq">
+                                        <rect key="frame" x="20" y="140.5" width="326" height="503.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5lT-MA-yKx">
+                                        <rect key="frame" x="18" y="81" width="330" height="32"/>
+                                        <segments>
+                                            <segment title="마크다운"/>
+                                            <segment title="미리보기"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="5lT-MA-yKx" firstAttribute="leading" secondItem="4Yc-cG-g8Z" secondAttribute="leading" id="2R8-Nq-47C"/>
+                                    <constraint firstItem="4Yc-cG-g8Z" firstAttribute="top" secondItem="Wp8-Mv-qY7" secondAttribute="top" constant="28" id="5l5-yz-sxd"/>
+                                    <constraint firstItem="az6-HM-vJq" firstAttribute="top" secondItem="5lT-MA-yKx" secondAttribute="bottom" constant="28" id="BD4-xl-4ig"/>
+                                    <constraint firstItem="az6-HM-vJq" firstAttribute="trailing" secondItem="5lT-MA-yKx" secondAttribute="trailing" id="EhB-oa-2tc"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Yc-cG-g8Z" secondAttribute="trailing" constant="20" id="SzD-DV-5QP"/>
+                                    <constraint firstAttribute="bottom" secondItem="az6-HM-vJq" secondAttribute="bottom" constant="28" id="V8D-00-ixU"/>
+                                    <constraint firstItem="5lT-MA-yKx" firstAttribute="trailing" secondItem="4Yc-cG-g8Z" secondAttribute="trailing" id="i3C-cP-6Kg"/>
+                                    <constraint firstItem="5lT-MA-yKx" firstAttribute="top" secondItem="4Yc-cG-g8Z" secondAttribute="bottom" constant="28" id="sRu-gx-t9u"/>
+                                    <constraint firstItem="az6-HM-vJq" firstAttribute="leading" secondItem="5lT-MA-yKx" secondAttribute="leading" id="viM-xg-o8y"/>
+                                    <constraint firstItem="4Yc-cG-g8Z" firstAttribute="leading" secondItem="Wp8-Mv-qY7" secondAttribute="leading" constant="20" id="vnw-8C-BNA"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -131,6 +164,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eV9-vk-1l4"/>
                     </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="Wp8-Mv-qY7" id="Ssw-pw-keC"/>
+                        <outlet property="descriptionTextView" destination="az6-HM-vJq" id="pjf-jP-Zs6"/>
+                        <outlet property="markDownSegmentedControl" destination="5lT-MA-yKx" id="poo-BC-eKN"/>
+                        <outlet property="titleHeaderView" destination="mkK-gu-7wE" id="cpN-VR-v58"/>
+                        <outlet property="titleTextField" destination="4Yc-cG-g8Z" id="Qz5-Zu-iUL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eEi-N0-I0c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
