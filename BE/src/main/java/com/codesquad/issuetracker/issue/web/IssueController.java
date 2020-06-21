@@ -48,7 +48,7 @@ public class IssueController {
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @PostMapping
   public IssueView create(@RequestBody IssueQuery query, HttpServletRequest request) {
-    User user = jwtUtil.parseUser(request.getHeader("Authorization"));
+    User user = jwtUtil.getUser(request.getHeader("Authorization"));
     return issueService.create(user, query);
   }
 
@@ -56,7 +56,7 @@ public class IssueController {
   @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
   @DeleteMapping("/{issueId}")
   public void delete(@PathVariable Long issueId, HttpServletRequest request) {
-    User user = jwtUtil.parseUser(request.getHeader("Authorization"));
+    User user = jwtUtil.getUser(request.getHeader("Authorization"));
     issueService.delete(issueId, user);
   }
 
@@ -65,7 +65,7 @@ public class IssueController {
   @PostMapping("/{issueId}")
   public IssueView put(@PathVariable Long issueId, @RequestBody PutIssueQuery query,
       HttpServletRequest request) {
-    User user = jwtUtil.parseUser(request.getHeader("Authorization"));
+    User user = jwtUtil.getUser(request.getHeader("Authorization"));
     return issueService.put(issueId, user, query);
   }
 
