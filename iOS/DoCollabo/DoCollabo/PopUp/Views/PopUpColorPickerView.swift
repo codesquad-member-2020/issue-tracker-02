@@ -10,6 +10,7 @@ import UIKit
 
 protocol ColorPickerActionDelegate: class {
     func colorPickerButtonDidTap()
+    func randomButtonDidTap() -> (color: UIColor, hexString: String)
 }
 
 final class PopUpColorPickerView: UIView {
@@ -30,6 +31,11 @@ final class PopUpColorPickerView: UIView {
         configure()
     }
     
+    func configureColorInfo(color: UIColor?, hexString: String?) {
+        hexColorLabel.text = hexString
+        colorPickerButton.backgroundColor = color
+    }
+    
     private func configure() {
         Bundle.main.loadNibNamed(String(describing: Self.self), owner: self, options: nil)
         addSubview(frameView)
@@ -42,6 +48,8 @@ final class PopUpColorPickerView: UIView {
     }
     
     @IBAction func pickRandomeColor(_ sender: UIButton) {
+        let colorInfo = delegate?.randomButtonDidTap()
+        configureColorInfo(color: colorInfo?.color, hexString: colorInfo?.hexString)
     }
     
     @IBAction func colorPickerButtonDidTap(_ sender: UIButton) {

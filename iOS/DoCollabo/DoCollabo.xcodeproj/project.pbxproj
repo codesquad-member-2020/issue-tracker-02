@@ -46,6 +46,7 @@
 		30E22EF824910EF800EC0FD8 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EF724910EF800EC0FD8 /* UseCase.swift */; };
 		30E22EFB24910F9F00EC0FD8 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EFA24910F9F00EC0FD8 /* Issue.swift */; };
 		30E22EFD2491101A00EC0FD8 /* IssueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */; };
+		30E505ED249F84BA00B98BA1 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E505EC249F84BA00B98BA1 /* UIColor+Random.swift */; };
 		380425512498D8F7005059EB /* IssuesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380425502498D8F7005059EB /* IssuesRequest.swift */; };
 		380F187A249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F1879249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift */; };
 		380F187C249905760084CE56 /* IssueHorizontalMilestoneLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F187B249905760084CE56 /* IssueHorizontalMilestoneLabel.swift */; };
@@ -79,6 +80,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		301A8D64249E577F00732A5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 30789BFC248E1E3F001D0415 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30789C03248E1E3F001D0415;
+			remoteInfo = DoCollabo;
+		};
 		3868A1DF249C5E7400B9982E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 30789BFC248E1E3F001D0415 /* Project object */;
@@ -94,6 +102,7 @@
 		301A8D55249CA10C00732A5D /* LabelRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelRequest.swift; sourceTree = "<group>"; };
 		301A8D57249CA17700732A5D /* IssueUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueUseCase.swift; sourceTree = "<group>"; };
 		301A8D59249CA18F00732A5D /* LabelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelUseCase.swift; sourceTree = "<group>"; };
+		301A8D5F249E577F00732A5D /* JSONTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3020A0A424933B0D00483727 /* LabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
 		3020A0A82493479200483727 /* LabelsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsCollectionView.swift; sourceTree = "<group>"; };
 		3020A0AA249347F000483727 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
@@ -129,6 +138,7 @@
 		30E22EF724910EF800EC0FD8 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		30E22EFA24910F9F00EC0FD8 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueLabel.swift; sourceTree = "<group>"; };
+		30E505EC249F84BA00B98BA1 /* UIColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
 		380425502498D8F7005059EB /* IssuesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesRequest.swift; sourceTree = "<group>"; };
 		380F1879249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalDescriptionLabel.swift; sourceTree = "<group>"; };
 		380F187B249905760084CE56 /* IssueHorizontalMilestoneLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalMilestoneLabel.swift; sourceTree = "<group>"; };
@@ -164,6 +174,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		301A8D5C249E577F00732A5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30789C01248E1E3F001D0415 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -268,6 +285,7 @@
 			children = (
 				30789C04248E1E3F001D0415 /* DoCollabo.app */,
 				3868A1DA249C5E7400B9982E /* DoCollaboTests.xctest */,
+				301A8D5F249E577F00732A5D /* JSONTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -492,6 +510,7 @@
 			children = (
 				38F0FB48248E2D870080FBBD /* Colors.swift */,
 				385A50D024915E66004BE8DB /* UIColor+Hex.swift */,
+				30E505EC249F84BA00B98BA1 /* UIColor+Random.swift */,
 				30789C1E248E3FC1001D0415 /* UIView+Border.swift */,
 				38879C572490E48600EE84D7 /* UIView+Shadow.swift */,
 				38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */,
@@ -520,6 +539,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		301A8D5E249E577F00732A5D /* JSONTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 301A8D68249E577F00732A5D /* Build configuration list for PBXNativeTarget "JSONTest" */;
+			buildPhases = (
+				301A8D5B249E577F00732A5D /* Sources */,
+				301A8D5C249E577F00732A5D /* Frameworks */,
+				301A8D5D249E577F00732A5D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				301A8D65249E577F00732A5D /* PBXTargetDependency */,
+			);
+			name = JSONTest;
+			productName = JSONTest;
+			productReference = 301A8D5F249E577F00732A5D /* JSONTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		30789C03248E1E3F001D0415 /* DoCollabo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30789C18248E1E46001D0415 /* Build configuration list for PBXNativeTarget "DoCollabo" */;
@@ -566,10 +603,14 @@
 		30789BFC248E1E3F001D0415 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = delma;
 				TargetAttributes = {
+					301A8D5E249E577F00732A5D = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 30789C03248E1E3F001D0415;
+					};
 					30789C03248E1E3F001D0415 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -597,11 +638,19 @@
 			targets = (
 				30789C03248E1E3F001D0415 /* DoCollabo */,
 				3868A1D9249C5E7400B9982E /* DoCollaboTests */,
+				301A8D5E249E577F00732A5D /* JSONTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		301A8D5D249E577F00732A5D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30789C02248E1E3F001D0415 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -670,6 +719,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		301A8D5B249E577F00732A5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30789C00248E1E3F001D0415 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -702,6 +758,7 @@
 				380425512498D8F7005059EB /* IssuesRequest.swift in Sources */,
 				3825A8A1249339700021D512 /* IssuesViewController+ScrollAnimation.swift in Sources */,
 				308A9C9B2499010B00DE53E4 /* PopUpContentView.swift in Sources */,
+				30E505ED249F84BA00B98BA1 /* UIColor+Random.swift in Sources */,
 				30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */,
 				30E22EE22490B09200EC0FD8 /* IssueLabelsCollectionView.swift in Sources */,
 				3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */,
@@ -745,6 +802,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		301A8D65249E577F00732A5D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30789C03248E1E3F001D0415 /* DoCollabo */;
+			targetProxy = 301A8D64249E577F00732A5D /* PBXContainerItemProxy */;
+		};
 		3868A1E0249C5E7400B9982E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 30789C03248E1E3F001D0415 /* DoCollabo */;
@@ -772,6 +834,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		301A8D66249E577F00732A5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = JSONTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.delma.JSONTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoCollabo.app/DoCollabo";
+			};
+			name = Debug;
+		};
+		301A8D67249E577F00732A5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = JSONTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.delma.JSONTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoCollabo.app/DoCollabo";
+			};
+			name = Release;
+		};
 		30789C16248E1E46001D0415 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -969,6 +1071,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		301A8D68249E577F00732A5D /* Build configuration list for PBXNativeTarget "JSONTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				301A8D66249E577F00732A5D /* Debug */,
+				301A8D67249E577F00732A5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		30789BFF248E1E3F001D0415 /* Build configuration list for PBXProject "DoCollabo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

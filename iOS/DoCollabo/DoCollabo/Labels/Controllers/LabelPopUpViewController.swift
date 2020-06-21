@@ -10,8 +10,13 @@ import UIKit
 
 final class LabelPopUpViewController: PopUpViewController {
     
-    private var popUpContentView: PopUpContentView!
     private var popUpColorPickerView: PopUpColorPickerView!
+    private var selectedColor: String!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureRandomColor()
+    }
     
     func configureLabelPopupViewController() {
         configure()
@@ -22,8 +27,20 @@ final class LabelPopUpViewController: PopUpViewController {
     }
     
     private func configureUI() {
-        popUpContentView = PopUpContentView()
         popUpColorPickerView = PopUpColorPickerView()
+        configureRandomColor()
+    }
+    
+    private func configureRandomColor() {
+        let randomColorInfo = randomColor()
+        popUpColorPickerView.configureColorInfo(color: randomColorInfo.color, hexString: randomColorInfo.hexString)
+        selectedColor = randomColorInfo.hexString
+    }
+    
+    private func randomColor() -> (color: UIColor, hexString: String) {
+        let randomColor = UIColor().random()
+        let hexString = randomColor.hexString
+        return (randomColor, hexString)
     }
 }
 
@@ -33,7 +50,36 @@ extension LabelPopUpViewController: ColorPickerActionDelegate {
     func colorPickerButtonDidTap() {
         let colorPickerViewController = ColorPickerViewController()
         colorPickerViewController.modalPresentationStyle = .overCurrentContext
-        colorPickerViewController.configurePalette()
+        colorPickerViewController.configureColorPickerView()
+        colorPickerViewController.delegate = self
         present(colorPickerViewController, animated: false, completion: nil)
+    }
+    
+    func randomButtonDidTap() -> (color: UIColor, hexString: String) {
+        let colorInfo = randomColor()
+        selectedColor = colorInfo.hexString
+        return colorInfo
+    }
+}
+
+// MARK:- ColorPickerDelegate
+
+extension LabelPopUpViewController: ColorPickerViewControllerDelegate {
+    func SubmitButtonDidTap(color: UIColor) {
+        popUpColorPickerView.configureColorInfo(color: color, hexString: color.hexString)
+        selectedColor = color.hexString
+    }
+}
+
+ // MARK: - overriding
+
+extension LabelPopUpViewController {
+    override func submitButtonDidTap() {
+        let newFeature = contentView.submit()
+        guard newFeature.title != "", let title = newFeature.title else {
+            presentTitleEmptyAlert()
+            return
+        }
+        popUpViewControllerDelegate?.submitButtonDidTap(title: title, description: newFeature.description, additionalData: selectedColor)
     }
 }

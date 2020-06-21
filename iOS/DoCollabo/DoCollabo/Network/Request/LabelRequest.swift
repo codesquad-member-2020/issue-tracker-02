@@ -11,8 +11,10 @@ import Foundation
 struct LabelsRequest: Request {
     var path: String = EndPoint.labels
     var method: HTTPMethod
-    init(method: HTTPMethod = .GET, id: String? = nil) {
+    var bodyParams: Data?
+    init(method: HTTPMethod = .GET, id: String? = nil, bodyParams: Data? = nil) {
         self.method = method
+        self.bodyParams = bodyParams
         guard let id = id else { return }
         path += "/" + id
     }

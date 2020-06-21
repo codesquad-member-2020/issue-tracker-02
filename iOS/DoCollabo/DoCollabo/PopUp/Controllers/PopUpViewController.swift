@@ -10,17 +10,22 @@ import UIKit
 
 protocol PopUpViewControllerDelegate: class {
     func cancelButtonDidTap()
-    func submitButtonDidTap(title: String, description: String?)
+    func submitButtonDidTap(title: String, description: String?, additionalData: String?)
 }
 
 class PopUpViewController: UIViewController {
     
     private var backgroundView: UIView!
     private var frameView: UIView!
-    private var contentView: PopUpContentView!
+    internal var contentView: PopUpContentView!
     private var footerView: PopUpFooterView!
     
     weak var popUpViewControllerDelegate: PopUpViewControllerDelegate?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        contentView.reset()
+    }
     
     func configureContentView(_ otherView: UIView) {
         contentView.addSubview(otherView)
@@ -53,7 +58,7 @@ class PopUpViewController: UIViewController {
             presentTitleEmptyAlert()
             return
         }
-         popUpViewControllerDelegate?.submitButtonDidTap(title: title, description: newFeature.description)
+         popUpViewControllerDelegate?.submitButtonDidTap(title: title, description: newFeature.description, additionalData: nil)
     }
 }
 
@@ -119,12 +124,16 @@ extension PopUpViewController {
     @objc private func dismissView() {
         dismiss(animated: true, completion: nil)
     }
+    
+    func hideSupplementaryButtons() {
+        footerView.hideSupplementaryButtons()
+    }
 }
 
 // MARK:- Show Alert
 
 extension PopUpViewController {
-    private func presentTitleEmptyAlert() {
+    internal func presentTitleEmptyAlert() {
         let alert = UIAlertController(title: "알림", message: "제목을 반드시 작성해주세요.", preferredStyle: .alert)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in }
         alert.addAction(ok)
