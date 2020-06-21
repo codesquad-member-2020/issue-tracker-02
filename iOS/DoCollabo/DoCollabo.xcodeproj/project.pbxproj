@@ -46,6 +46,7 @@
 		30E22EF824910EF800EC0FD8 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EF724910EF800EC0FD8 /* UseCase.swift */; };
 		30E22EFB24910F9F00EC0FD8 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EFA24910F9F00EC0FD8 /* Issue.swift */; };
 		30E22EFD2491101A00EC0FD8 /* IssueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */; };
+		30E505ED249F84BA00B98BA1 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E505EC249F84BA00B98BA1 /* UIColor+Random.swift */; };
 		380425512498D8F7005059EB /* IssuesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380425502498D8F7005059EB /* IssuesRequest.swift */; };
 		380F187A249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F1879249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift */; };
 		380F187C249905760084CE56 /* IssueHorizontalMilestoneLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F187B249905760084CE56 /* IssueHorizontalMilestoneLabel.swift */; };
@@ -137,6 +138,7 @@
 		30E22EF724910EF800EC0FD8 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		30E22EFA24910F9F00EC0FD8 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueLabel.swift; sourceTree = "<group>"; };
+		30E505EC249F84BA00B98BA1 /* UIColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
 		380425502498D8F7005059EB /* IssuesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesRequest.swift; sourceTree = "<group>"; };
 		380F1879249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalDescriptionLabel.swift; sourceTree = "<group>"; };
 		380F187B249905760084CE56 /* IssueHorizontalMilestoneLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalMilestoneLabel.swift; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 			children = (
 				38F0FB48248E2D870080FBBD /* Colors.swift */,
 				385A50D024915E66004BE8DB /* UIColor+Hex.swift */,
+				30E505EC249F84BA00B98BA1 /* UIColor+Random.swift */,
 				30789C1E248E3FC1001D0415 /* UIView+Border.swift */,
 				38879C572490E48600EE84D7 /* UIView+Shadow.swift */,
 				38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */,
@@ -755,6 +758,7 @@
 				380425512498D8F7005059EB /* IssuesRequest.swift in Sources */,
 				3825A8A1249339700021D512 /* IssuesViewController+ScrollAnimation.swift in Sources */,
 				308A9C9B2499010B00DE53E4 /* PopUpContentView.swift in Sources */,
+				30E505ED249F84BA00B98BA1 /* UIColor+Random.swift in Sources */,
 				30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */,
 				30E22EE22490B09200EC0FD8 /* IssueLabelsCollectionView.swift in Sources */,
 				3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */,

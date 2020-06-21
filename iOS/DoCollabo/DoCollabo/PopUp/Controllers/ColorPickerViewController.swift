@@ -32,9 +32,7 @@ final class ColorPickerViewController: PopUpViewController {
         palette.backgroundColor = .white
         palette.translatesAutoresizingMaskIntoConstraints = false
         palette.set(
-            color: UIColor(displayP3Red: CGFloat.random(in: 0...1.0),
-                           green: CGFloat.random(in: 0...1.0),
-                           blue: CGFloat.random(in: 0...1.0), alpha: 1),
+            color: UIColor().random(),
             colorSpace: .sRGB)
         configureContentView(palette)
         configureSelectedColorString()
