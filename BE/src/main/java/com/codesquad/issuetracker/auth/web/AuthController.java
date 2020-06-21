@@ -11,8 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,14 +31,6 @@ public class AuthController {
   public void authorization(@AuthenticationPrincipal OAuth2User principal,
       HttpServletResponse response) {
     String jwt = jwtUtil.create(ImmutableMap.of("User", User.of(principal)));
-    response.setHeader("Location", appProperty.getGithubScheme() + "?token=" + jwt);
-  }
-
-  @ApiOperation(value = "User 정보로 JWT 를 만듭니다")
-  @ResponseStatus(HttpStatus.FOUND)
-  @PostMapping("/token")
-  public void token(@RequestBody User user, HttpServletResponse response) {
-    String jwt = jwtUtil.create(ImmutableMap.of("User", user));
     response.setHeader("Location", appProperty.getGithubScheme() + "?token=" + jwt);
   }
 }
