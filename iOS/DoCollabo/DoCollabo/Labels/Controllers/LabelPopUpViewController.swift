@@ -75,11 +75,10 @@ extension LabelPopUpViewController: ColorPickerViewControllerDelegate {
 
 extension LabelPopUpViewController {
     override func submitButtonDidTap() {
-        let newFeature = contentView.submit()
-        guard newFeature.title != "", let title = newFeature.title else {
-            presentTitleEmptyAlert()
-            return
-        }
-        popUpViewControllerDelegate?.submitButtonDidTap(title: title, description: newFeature.description, additionalData: selectedColor)
+        guard let newFeature = validContents() else { return }
+        popUpViewControllerDelegate?.submitButtonDidTap(
+                                                               title: newFeature.title,
+                                                               description: newFeature.description,
+                                                               additionalData: selectedColor)
     }
 }

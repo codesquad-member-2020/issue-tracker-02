@@ -39,6 +39,23 @@ class PopUpViewController: UIViewController {
     func configureSegmentView(_ view: UIView) {
         contentView.configurePlaceholderView(view)
     }
+    
+    func validContents() -> (title: String, description: String?)? {
+        let newFeature = contentView.submit()
+        guard newFeature.title != "", let title = newFeature.title else {
+            presentTitleEmptyAlert()
+            return nil
+        }
+        guard title.count < 11 else {
+            presentOverTitleAlert()
+            return nil
+        }
+        guard let description = newFeature.description, description.count < 21 else {
+            presentOverContentsAlert()
+            return nil
+        }
+        return (title, newFeature.description)
+    }
 }
 
 // MARK:- PopUpFooterViewAction
@@ -53,12 +70,11 @@ class PopUpViewController: UIViewController {
     }
     
     func submitButtonDidTap() {
-        let newFeature = contentView.submit()
-        guard newFeature.title != "", let title = newFeature.title else {
-            presentTitleEmptyAlert()
-            return
-        }
-         popUpViewControllerDelegate?.submitButtonDidTap(title: title, description: newFeature.description, additionalData: nil)
+        guard let newFeature = validContents() else { return }
+         popUpViewControllerDelegate?.submitButtonDidTap(
+                                                        title: newFeature.title,
+                                                        description: newFeature.description,
+                                                        additionalData: nil)
     }
 }
 
@@ -135,6 +151,20 @@ extension PopUpViewController {
 extension PopUpViewController {
     internal func presentTitleEmptyAlert() {
         let alert = UIAlertController(title: "알림", message: "제목을 반드시 작성해주세요.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in }
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
+    
+    internal func presentOverTitleAlert() {
+        let alert = UIAlertController(title: "알림", message: "제목은 10자 이하로 작성해주세요.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in }
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
+    
+    internal func presentOverContentsAlert() {
+        let alert = UIAlertController(title: "알림", message: "내용은 20자 이하로 작성해주세요.", preferredStyle: .alert)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in }
         alert.addAction(ok)
         present(alert, animated: true)
