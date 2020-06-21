@@ -80,13 +80,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		301A8D64249E577F00732A5D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 30789BFC248E1E3F001D0415 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 30789C03248E1E3F001D0415;
-			remoteInfo = DoCollabo;
-		};
 		3868A1DF249C5E7400B9982E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 30789BFC248E1E3F001D0415 /* Project object */;
@@ -102,7 +95,6 @@
 		301A8D55249CA10C00732A5D /* LabelRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelRequest.swift; sourceTree = "<group>"; };
 		301A8D57249CA17700732A5D /* IssueUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueUseCase.swift; sourceTree = "<group>"; };
 		301A8D59249CA18F00732A5D /* LabelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelUseCase.swift; sourceTree = "<group>"; };
-		301A8D5F249E577F00732A5D /* JSONTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3020A0A424933B0D00483727 /* LabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
 		3020A0A82493479200483727 /* LabelsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsCollectionView.swift; sourceTree = "<group>"; };
 		3020A0AA249347F000483727 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
@@ -139,6 +131,7 @@
 		30E22EFA24910F9F00EC0FD8 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueLabel.swift; sourceTree = "<group>"; };
 		30E505EC249F84BA00B98BA1 /* UIColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
+		30E505EE249FA47500B98BA1 /* DoCollabo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoCollabo.entitlements; sourceTree = "<group>"; };
 		380425502498D8F7005059EB /* IssuesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesRequest.swift; sourceTree = "<group>"; };
 		380F1879249900B50084CE56 /* IssueHorizontalDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalDescriptionLabel.swift; sourceTree = "<group>"; };
 		380F187B249905760084CE56 /* IssueHorizontalMilestoneLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalMilestoneLabel.swift; sourceTree = "<group>"; };
@@ -174,13 +167,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		301A8D5C249E577F00732A5D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		30789C01248E1E3F001D0415 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -285,7 +271,6 @@
 			children = (
 				30789C04248E1E3F001D0415 /* DoCollabo.app */,
 				3868A1DA249C5E7400B9982E /* DoCollaboTests.xctest */,
-				301A8D5F249E577F00732A5D /* JSONTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -293,6 +278,7 @@
 		30789C06248E1E3F001D0415 /* DoCollabo */ = {
 			isa = PBXGroup;
 			children = (
+				30E505EE249FA47500B98BA1 /* DoCollabo.entitlements */,
 				308A9C9C249A33AB00DE53E4 /* Delegates */,
 				3040B87D24923F6400A780D5 /* ViewModels */,
 				30E22EF924910F8E00EC0FD8 /* Models */,
@@ -539,24 +525,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		301A8D5E249E577F00732A5D /* JSONTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 301A8D68249E577F00732A5D /* Build configuration list for PBXNativeTarget "JSONTest" */;
-			buildPhases = (
-				301A8D5B249E577F00732A5D /* Sources */,
-				301A8D5C249E577F00732A5D /* Frameworks */,
-				301A8D5D249E577F00732A5D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				301A8D65249E577F00732A5D /* PBXTargetDependency */,
-			);
-			name = JSONTest;
-			productName = JSONTest;
-			productReference = 301A8D5F249E577F00732A5D /* JSONTest.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		30789C03248E1E3F001D0415 /* DoCollabo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30789C18248E1E46001D0415 /* Build configuration list for PBXNativeTarget "DoCollabo" */;
@@ -607,10 +575,6 @@
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = delma;
 				TargetAttributes = {
-					301A8D5E249E577F00732A5D = {
-						CreatedOnToolsVersion = 11.4.1;
-						TestTargetID = 30789C03248E1E3F001D0415;
-					};
 					30789C03248E1E3F001D0415 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -638,19 +602,11 @@
 			targets = (
 				30789C03248E1E3F001D0415 /* DoCollabo */,
 				3868A1D9249C5E7400B9982E /* DoCollaboTests */,
-				301A8D5E249E577F00732A5D /* JSONTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		301A8D5D249E577F00732A5D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		30789C02248E1E3F001D0415 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -719,13 +675,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		301A8D5B249E577F00732A5D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		30789C00248E1E3F001D0415 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -802,11 +751,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		301A8D65249E577F00732A5D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 30789C03248E1E3F001D0415 /* DoCollabo */;
-			targetProxy = 301A8D64249E577F00732A5D /* PBXContainerItemProxy */;
-		};
 		3868A1E0249C5E7400B9982E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 30789C03248E1E3F001D0415 /* DoCollabo */;
@@ -834,46 +778,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		301A8D66249E577F00732A5D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
-				INFOPLIST_FILE = JSONTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.delma.JSONTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoCollabo.app/DoCollabo";
-			};
-			name = Debug;
-		};
-		301A8D67249E577F00732A5D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
-				INFOPLIST_FILE = JSONTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.delma.JSONTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoCollabo.app/DoCollabo";
-			};
-			name = Release;
-		};
 		30789C16248E1E46001D0415 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -993,6 +897,7 @@
 			baseConfigurationReference = D2345F88AB29F4266CE25B2E /* Pods-DoCollabo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DoCollabo/DoCollabo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = DoCollabo/Info.plist;
@@ -1012,6 +917,7 @@
 			baseConfigurationReference = E7D138CF07A905C904456EFE /* Pods-DoCollabo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DoCollabo/DoCollabo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = DoCollabo/Info.plist;
@@ -1071,15 +977,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		301A8D68249E577F00732A5D /* Build configuration list for PBXNativeTarget "JSONTest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				301A8D66249E577F00732A5D /* Debug */,
-				301A8D67249E577F00732A5D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		30789BFF248E1E3F001D0415 /* Build configuration list for PBXProject "DoCollabo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
