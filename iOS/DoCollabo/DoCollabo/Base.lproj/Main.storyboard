@@ -89,6 +89,53 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="tIf-fL-iv5">
+            <objects>
+                <viewController id="A2h-U4-Occ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GBX-aC-tXD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOV-Z3-zry" customClass="TitleHeaderBackgroundView" customModule="DoCollabo" customModuleProvider="target">
+                                <rect key="frame" x="10.5" y="44" width="393" height="240"/>
+                                <color key="backgroundColor" name="key.navy"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="tI8-z5-LEa"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkK-gu-7wE" customClass="TitleHeaderView" customModule="DoCollabo" customModuleProvider="target">
+                                <rect key="frame" x="10.5" y="44" width="393" height="144"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="xqe-CJ-RYG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wp8-Mv-qY7">
+                                <rect key="frame" x="24" y="166" width="366" height="672"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="eV9-vk-1l4" firstAttribute="trailing" secondItem="Wp8-Mv-qY7" secondAttribute="trailing" constant="24" id="3o4-2T-KbG"/>
+                            <constraint firstItem="eV9-vk-1l4" firstAttribute="bottom" secondItem="Wp8-Mv-qY7" secondAttribute="bottom" constant="24" id="RIP-8e-Qas"/>
+                            <constraint firstItem="bOV-Z3-zry" firstAttribute="width" secondItem="GBX-aC-tXD" secondAttribute="width" multiplier="0.95" id="Yrj-Za-Af4"/>
+                            <constraint firstItem="mkK-gu-7wE" firstAttribute="top" secondItem="eV9-vk-1l4" secondAttribute="top" id="a5z-bg-Wqf"/>
+                            <constraint firstItem="bOV-Z3-zry" firstAttribute="top" secondItem="eV9-vk-1l4" secondAttribute="top" id="ceV-Xp-ZPY"/>
+                            <constraint firstItem="Wp8-Mv-qY7" firstAttribute="top" secondItem="mkK-gu-7wE" secondAttribute="bottom" constant="-22" id="hXE-uI-cHT"/>
+                            <constraint firstItem="Wp8-Mv-qY7" firstAttribute="leading" secondItem="eV9-vk-1l4" secondAttribute="leading" constant="24" id="ivz-b7-e9A"/>
+                            <constraint firstItem="bOV-Z3-zry" firstAttribute="trailing" secondItem="mkK-gu-7wE" secondAttribute="trailing" id="qYH-mK-Wf6"/>
+                            <constraint firstItem="bOV-Z3-zry" firstAttribute="centerX" secondItem="GBX-aC-tXD" secondAttribute="centerX" id="yId-Zt-qRj"/>
+                            <constraint firstItem="bOV-Z3-zry" firstAttribute="leading" secondItem="mkK-gu-7wE" secondAttribute="leading" id="yLW-Ih-t9c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eV9-vk-1l4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eEi-N0-I0c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1953.6231884057972" y="137.94642857142856"/>
+        </scene>
         <!--Pop Up View Controller-->
         <scene sceneID="2IL-ji-tfs">
             <objects>
