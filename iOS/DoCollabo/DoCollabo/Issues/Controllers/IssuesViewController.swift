@@ -189,7 +189,11 @@ extension IssuesViewController {
     
     @objc private func moreButtonDidTap(notification: Notification) {
         guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
-        print(indexPath.item)
+        dataSource.referIssue(at: indexPath) { (issue) in
+            let moreViewController = MoreViewController()
+            moreViewController.modalPresentationStyle = .overFullScreen
+            present(moreViewController, animated: false, completion: nil)
+        }
     }
     
     private func configureCollectionViewDelegate() {
