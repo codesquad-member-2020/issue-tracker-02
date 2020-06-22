@@ -11,6 +11,7 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -49,6 +50,10 @@ public class Issue {
   @Builder.Default
   @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER, orphanRemoval = true)
   private Set<IssueMilestoneRelation> issueMilestoneRelations = new HashSet<>();
+
+  @Builder.Default
+  @ElementCollection(fetch = FetchType.EAGER)
+  private Set<Reply> replies = new HashSet<>();
 
   @CreationTimestamp
   private LocalDateTime createdAt;
