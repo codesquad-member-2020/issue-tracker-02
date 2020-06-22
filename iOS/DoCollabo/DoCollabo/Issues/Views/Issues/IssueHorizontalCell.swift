@@ -14,6 +14,10 @@ final class IssueHorizontalCell: UICollectionViewCell {
     
     private enum Metric {
         static let topPadding: CGFloat = 16.0
+        static let statusImageViewLeft: CGFloat = 12.0
+        static let interSpacingForItems: CGFloat = 8.0
+        static let contentsStackViewBottom: CGFloat = 16.0
+        static let trailingStackViewRight: CGFloat = 16.0
     }
     
     private var statusImageView: IssueStatusImageView!
@@ -81,20 +85,32 @@ extension IssueHorizontalCell {
             leadingAnchor: leadingAnchor,
             bottomAnchor: nil,
             trailingAnchor: contentsStackView.leadingAnchor,
-            padding: .init(top: Metric.topPadding, left: 12, bottom: 0, right: 8),
+            padding: .init(
+                top: Metric.topPadding,
+                left: Metric.statusImageViewLeft,
+                bottom: 0,
+                right: Metric.interSpacingForItems),
             size: IssueStatusImageView.size)
         contentsStackView.constraints(
             topAnchor: topAnchor,
             leadingAnchor: statusImageView.trailingAnchor,
             bottomAnchor: bottomAnchor,
             trailingAnchor: trailingStackView.leadingAnchor,
-            padding: .init(top: Metric.topPadding, left: 8, bottom: 16, right: 8))
+            padding: .init(
+                top: Metric.topPadding,
+                left: Metric.interSpacingForItems,
+                bottom: Metric.contentsStackViewBottom,
+                right: Metric.interSpacingForItems))
         trailingStackView.constraints(
             topAnchor: topAnchor,
             leadingAnchor: contentsStackView.trailingAnchor,
             bottomAnchor: nil,
             trailingAnchor: trailingAnchor,
-            padding: .init(top: Metric.topPadding - 2, left: 8, bottom: 16, right: 8),
+            padding: .init(
+                top: Metric.topPadding - 2,
+                left: Metric.interSpacingForItems,
+                bottom: 0,
+                right: Metric.trailingStackViewRight),
             size: .init(width: IssueHorizontalTrailingStackView.width, height: 0))
     }
 }
