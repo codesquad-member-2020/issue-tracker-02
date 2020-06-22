@@ -15,11 +15,15 @@ protocol MoreViewDelegate: class {
 final class MoreView: UIView {
 
     private var dismissButton: UIButton!
+    private var optionsView: UIView!
     
     private enum Metric {
         static let dismissButtonTop: CGFloat = 12.0
         static let dismissButtonRight: CGFloat = 12.0
         static let dismissButtonHeight: CGFloat = 28.0
+        static let optionsViewTop: CGFloat = 16.0
+        static let optionsViewLeftRight: CGFloat = 20.0
+        static let optionsViewBottom: CGFloat = 32.0
     }
     
     weak var delegate: MoreViewDelegate?
@@ -58,10 +62,14 @@ extension MoreView {
         dismissButton = UIButton(type: .system)
         dismissButton.setImage(UIImage(named: "button.dismiss"), for: .normal)
         dismissButton.tintColor = .lightGray
+        optionsView = UIView()
+        optionsView.backgroundColor = .tertiarySystemBackground
+        optionsView.roundCorner(cornerRadius: 16.0)
     }
     
     private func configureLayout() {
         addSubview(dismissButton)
+        addSubview(optionsView)
         dismissButton.constraints(
             topAnchor: topAnchor,
             leadingAnchor: nil,
@@ -73,5 +81,15 @@ extension MoreView {
                 bottom: 0,
                 right: Metric.dismissButtonRight),
             size: .init(width: Metric.dismissButtonHeight, height: Metric.dismissButtonHeight))
+        optionsView.constraints(
+            topAnchor: dismissButton.bottomAnchor,
+            leadingAnchor: leadingAnchor,
+            bottomAnchor: bottomAnchor,
+            trailingAnchor: trailingAnchor,
+            padding: .init(
+                top: Metric.optionsViewTop,
+                left: Metric.optionsViewLeftRight,
+                bottom: Metric.optionsViewBottom,
+                right: Metric.optionsViewLeftRight))
     }
 }

@@ -25,7 +25,7 @@ class MoreViewController: UIViewController {
     
     private func animate() {
         moreView.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        UIView.animateCurveEaseOut(withDuration: 0.3, animations: {
+        UIView.animateCurveEaseOut(withDuration: 0.4, animations: {
             self.backgroundView.alpha = 0.5
             self.view.layoutIfNeeded()
         })
@@ -59,7 +59,7 @@ extension MoreViewController {
     @objc private func backgroundViewDidTap() {
         moreView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         UIView.animateCurveEaseOut(
-            withDuration: 0.2,
+            withDuration: 0.3,
             animations: {
                 self.view.layoutIfNeeded()
                 self.backgroundView.alpha = 0
