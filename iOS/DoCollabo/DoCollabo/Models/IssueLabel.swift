@@ -9,10 +9,10 @@
 import Foundation
 
 struct IssueLabel: Codable {
-    var id: Int
+    var id: Int?
     var title: String
     var color: String
-    var description: String
+    var description: String?
     
     enum CodingKeys: String, CodingKey {
         case id

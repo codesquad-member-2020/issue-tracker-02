@@ -1,17 +1,19 @@
 //
-//  IssueHorizontalTitleLabel.swift
+//  IssueMoreButton.swift
 //  DoCollabo
 //
-//  Created by Cory Kim on 2020/06/11.
+//  Created by Cory Kim on 2020/06/20.
 //  Copyright © 2020 delma. All rights reserved.
 //
 
 import UIKit
 
-final class IssueHorizontalTitleLabel: UILabel {
+final class IssueMoreButton: UIButton {
     
-    private let titleFontSize: CGFloat = 17.0
-
+    static let size: CGSize = CGSize(width: 0.0, height: 24.0)
+    
+    private let image: UIImage? = UIImage(named: "issue.more")
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -22,17 +24,12 @@ final class IssueHorizontalTitleLabel: UILabel {
         configure()
     }
     
-    func configureTitleLabel(with issue: Issue) {
-        text = issue.title
-    }
-    
     private func configure() {
         configureUI()
     }
-
+    
     private func configureUI() {
-        text = "Title"
-        font = .systemFont(ofSize: titleFontSize, weight: .semibold)
-        numberOfLines = 1
+        setImage(image, for: .normal)
+        tintColor = .lightGray
     }
 }

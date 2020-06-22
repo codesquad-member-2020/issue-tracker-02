@@ -12,11 +12,17 @@ final class IssueHorizontalCell: UICollectionViewCell {
 
     static let horizontalPadding: CGFloat = 24.0
     
-    private var contentsStackView: UIStackView!
-    private var titleLabel: IssueHorizontalTitleLabel!
-    private var milestoneView: IssueHorizontalMilestoneContainerView!
+    private enum Metric {
+        static let topPadding: CGFloat = 16.0
+        static let statusImageViewLeft: CGFloat = 12.0
+        static let interSpacingForItems: CGFloat = 8.0
+        static let contentsStackViewBottom: CGFloat = 16.0
+        static let trailingStackViewRight: CGFloat = 16.0
+    }
+    
+    private var statusImageView: IssueStatusImageView!
+    private var contentsStackView: IssueHorizontalContentsStackView!
     private var issueLabelsViewController: IssueLabelsViewController!
-    private var descriptionLabel: IssueHorizontalDescriptionLabel!
     private var trailingStackView: IssueHorizontalTrailingStackView!
     
     override init(frame: CGRect) {
@@ -30,12 +36,8 @@ final class IssueHorizontalCell: UICollectionViewCell {
     }
     
     func configureCell(with issue: Issue) {
-        titleLabel.configureTitleLabel(with: issue)
-
-        if let milestone = issue.labels.first?.title {
-            milestoneView.configureMilestoneLabel(with: issue)
-            contentsStackView.addArrangedSubview(milestoneView)
-        }
+        statusImageView.configureStatusImageView(with: issue)
+        contentsStackView.configureContentsStackView(with: issue)
 
         if issue.labels.count > 0 {
             issueLabelsViewController.updateLabels(issue.labels)
@@ -45,14 +47,17 @@ final class IssueHorizontalCell: UICollectionViewCell {
             issueLabelsViewController.view.heightAnchor.constraint(equalToConstant: issueLabelsViewController.contentHeight).isActive = true
         }
         
-        if issue.description != "" {
-            descriptionLabel.configureDescriptionLabel(with: issue)
-            contentsStackView.addArrangedSubview(descriptionLabel)
-        }
-        
         trailingStackView.configureTrailingStackView(with: issue)
     }
     
+    override func prepareForReuse() {
+        contentsStackView.reset()
+    }
+}
+
+// MARK:- Configuration Privately
+
+extension IssueHorizontalCell {
     private func configure() {
         configureUI()
         configureLayout()
@@ -61,45 +66,51 @@ final class IssueHorizontalCell: UICollectionViewCell {
     private func configureUI() {
         backgroundColor = .tertiarySystemBackground
         
-        titleLabel = IssueHorizontalTitleLabel()
-        milestoneView = IssueHorizontalMilestoneContainerView()
+        statusImageView = IssueStatusImageView()
+        
         issueLabelsViewController = IssueLabelsViewController()
-        descriptionLabel = IssueHorizontalDescriptionLabel()
         trailingStackView = IssueHorizontalTrailingStackView()
-        contentsStackView = IssueHorizontalContentsStackView(arrangedSubviews: [titleLabel])
+        contentsStackView = IssueHorizontalContentsStackView()
         
         roundCorner(cornerRadius: 16.0)
         drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
     }
     
     private func configureLayout() {
+        addSubview(statusImageView)
         addSubview(contentsStackView)
         addSubview(trailingStackView)
-        contentsStackView.constraints(
+        statusImageView.constraints(
             topAnchor: topAnchor,
             leadingAnchor: leadingAnchor,
+            bottomAnchor: nil,
+            trailingAnchor: contentsStackView.leadingAnchor,
+            padding: .init(
+                top: Metric.topPadding,
+                left: Metric.statusImageViewLeft,
+                bottom: 0,
+                right: Metric.interSpacingForItems),
+            size: IssueStatusImageView.size)
+        contentsStackView.constraints(
+            topAnchor: topAnchor,
+            leadingAnchor: statusImageView.trailingAnchor,
             bottomAnchor: bottomAnchor,
             trailingAnchor: trailingStackView.leadingAnchor,
-            padding: .init(top: 16, left: 16, bottom: 16, right: 8))
+            padding: .init(
+                top: Metric.topPadding,
+                left: Metric.interSpacingForItems,
+                bottom: Metric.contentsStackViewBottom,
+                right: Metric.interSpacingForItems))
         trailingStackView.constraints(
             topAnchor: topAnchor,
             leadingAnchor: contentsStackView.trailingAnchor,
             bottomAnchor: nil,
             trailingAnchor: trailingAnchor,
-            padding: .init(top: 16, left: 8, bottom: 16, right: 12),
+            padding: .init(
+                top: Metric.topPadding - 2,
+                left: Metric.interSpacingForItems,
+                bottom: 0,
+                right: Metric.trailingStackViewRight),
             size: .init(width: IssueHorizontalTrailingStackView.width, height: 0))
-    }
-    
-    override func prepareForReuse() {
-        contentsStackView.subviews.forEach { (subview) in
-            contentsStackView.removeArrangedSubview(subview)
-            subview.removeFromSuperview()
-        }
-        titleLabel.text = "Title"
-        contentsStackView.addArrangedSubview(titleLabel)
-        trailingStackView.subviews.forEach { (subview) in
-            contentsStackView.removeArrangedSubview(subview)
-            subview.removeFromSuperview()
-        }
     }
 }

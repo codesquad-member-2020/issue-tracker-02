@@ -17,7 +17,7 @@ protocol Request {
     var path: String { get }
     var method: HTTPMethod { get }
     var headers: HTTPHeaders? { get }
-    var bodyParams: [String : Any]? { get }
+    var bodyParams: Data? { get }
     func setToken() -> HTTPHeaders?
     func asURLRequest() -> URLRequest
 }
@@ -25,7 +25,7 @@ protocol Request {
 extension Request {
     var method: HTTPMethod { return .GET }
     var headers: HTTPHeaders? { return nil }
-    var bodyParams: [String : Any]? { return nil }
+    var bodyParams: Data? { return nil }
     func setToken() -> HTTPHeaders? {
         guard let token = UserDefaults.standard.object(forKey: OAuthNetworkManager.jwtToken) as? String else { return nil }
         let headers: HTTPHeaders = ["Authorization": token]
@@ -37,6 +37,10 @@ extension Request {
         request.httpMethod = self.method.rawValue
         guard let headersWithToken = setToken() else { return request }
         request.headers = headersWithToken
+        guard let bodyParameter = bodyParams else { return request }
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpBody = bodyParameter
         return request
     }
 }

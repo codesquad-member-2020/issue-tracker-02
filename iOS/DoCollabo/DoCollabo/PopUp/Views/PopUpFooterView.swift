@@ -17,6 +17,8 @@ protocol PopUpFooterViewActionDelegate: class {
 final class PopUpFooterView: UIView {
     
     @IBOutlet var frameView: UIView!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     weak var delegate: PopUpFooterViewActionDelegate?
     
@@ -28,6 +30,11 @@ final class PopUpFooterView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configure()
+    }
+    
+    func hideSupplementaryButtons() {
+        resetButton.isHidden = true
+        cancelButton.isHidden = true
     }
     
     private func configure() {

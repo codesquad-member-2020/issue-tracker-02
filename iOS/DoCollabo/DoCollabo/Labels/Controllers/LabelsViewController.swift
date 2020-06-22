@@ -38,6 +38,19 @@ final class LabelsViewController: UIViewController {
             }
         }
     }
+    
+    private func requestAddLabel(bodyParams: Data) {
+        let request = LabelsRequest(method: .POST, id: nil, bodyParams: bodyParams).asURLRequest()
+        labelsUseCase.getStatus(request: request) { result in
+            switch result {
+            case .success(_):
+                self.fetchLabels()
+            case .failure(let error):
+                self.presentErrorAlert(error: error)
+            }
+        }
+        
+    }
 }
 
 // MARK:- Activity Indicator
@@ -92,9 +105,19 @@ extension LabelsViewController: PopUpViewControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
 
-    func submitButtonDidTap(title: String, description: String?) {
+    func submitButtonDidTap(title: String, description: String?, additionalData: String?) {
         dismiss(animated: true, completion: nil)
-        //TODO: - 정보 담아서 네트워크로 라벨 추가 요청
+        encodeLabel(title: title, description: description, color: additionalData!)
+    }
+    
+    private func encodeLabel(title: String, description: String?, color: String) {
+        let label = IssueLabel(id: nil, title: title, color: color, description: description)
+        do {
+            let encodedData = try JSONEncoder().encode(label)
+            requestAddLabel(bodyParams: encodedData)
+        } catch {
+            self.presentErrorAlert(error: NetworkError.BadRequest)
+        }
     }
 }
 
@@ -102,17 +125,15 @@ extension LabelsViewController: PopUpViewControllerDelegate {
 
 extension LabelsViewController {
     private func configure() {
+        configureUI()
         configureHeaderView()
         configurePopUpView()
-        configureUI()
         configureCollectionView()
         configureCollectionViewDataSource()
         configureUseCase()
     }
 
     private func configureUI() {
-        titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
-        titleHeaderView.configureTitle("레이블")
         labelsCollectionView.alpha = 0
     }
 
