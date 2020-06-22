@@ -97,22 +97,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOV-Z3-zry" customClass="TitleHeaderBackgroundView" customModule="DoCollabo" customModuleProvider="target">
-                                <rect key="frame" x="10.5" y="68" width="393" height="240"/>
-                                <color key="backgroundColor" name="key.navy"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="tI8-z5-LEa"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkK-gu-7wE" customClass="TitleHeaderView" customModule="DoCollabo" customModuleProvider="target">
-                                <rect key="frame" x="10.5" y="68" width="393" height="144"/>
+                                <rect key="frame" x="24" y="56" width="366" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="144" id="xqe-CJ-RYG"/>
+                                    <constraint firstAttribute="height" constant="128" id="xqe-CJ-RYG"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wp8-Mv-qY7">
-                                <rect key="frame" x="24" y="190" width="366" height="660"/>
+                                <rect key="frame" x="24" y="156" width="366" height="694"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Yc-cG-g8Z">
                                         <rect key="frame" x="20" y="28" width="326" height="25.5"/>
@@ -120,7 +113,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="az6-HM-vJq">
-                                        <rect key="frame" x="20" y="140.5" width="326" height="495.5"/>
+                                        <rect key="frame" x="20" y="140.5" width="326" height="529.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -152,15 +145,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="eV9-vk-1l4" firstAttribute="trailing" secondItem="Wp8-Mv-qY7" secondAttribute="trailing" constant="24" id="3o4-2T-KbG"/>
+                            <constraint firstItem="mkK-gu-7wE" firstAttribute="leading" secondItem="Wp8-Mv-qY7" secondAttribute="leading" id="C2G-v7-VGB"/>
                             <constraint firstItem="eV9-vk-1l4" firstAttribute="bottom" secondItem="Wp8-Mv-qY7" secondAttribute="bottom" constant="12" id="RIP-8e-Qas"/>
-                            <constraint firstItem="bOV-Z3-zry" firstAttribute="width" secondItem="GBX-aC-tXD" secondAttribute="width" multiplier="0.95" id="Yrj-Za-Af4"/>
-                            <constraint firstItem="mkK-gu-7wE" firstAttribute="top" secondItem="eV9-vk-1l4" secondAttribute="top" constant="24" id="a5z-bg-Wqf"/>
-                            <constraint firstItem="bOV-Z3-zry" firstAttribute="top" secondItem="eV9-vk-1l4" secondAttribute="top" constant="24" id="ceV-Xp-ZPY"/>
-                            <constraint firstItem="Wp8-Mv-qY7" firstAttribute="top" secondItem="mkK-gu-7wE" secondAttribute="bottom" constant="-22" id="hXE-uI-cHT"/>
+                            <constraint firstItem="mkK-gu-7wE" firstAttribute="top" secondItem="eV9-vk-1l4" secondAttribute="top" constant="12" id="a5z-bg-Wqf"/>
+                            <constraint firstItem="mkK-gu-7wE" firstAttribute="trailing" secondItem="Wp8-Mv-qY7" secondAttribute="trailing" id="hBo-CM-lz9"/>
+                            <constraint firstItem="Wp8-Mv-qY7" firstAttribute="top" secondItem="mkK-gu-7wE" secondAttribute="bottom" constant="-28" id="hXE-uI-cHT"/>
                             <constraint firstItem="Wp8-Mv-qY7" firstAttribute="leading" secondItem="eV9-vk-1l4" secondAttribute="leading" constant="24" id="ivz-b7-e9A"/>
-                            <constraint firstItem="bOV-Z3-zry" firstAttribute="trailing" secondItem="mkK-gu-7wE" secondAttribute="trailing" id="qYH-mK-Wf6"/>
-                            <constraint firstItem="bOV-Z3-zry" firstAttribute="centerX" secondItem="GBX-aC-tXD" secondAttribute="centerX" id="yId-Zt-qRj"/>
-                            <constraint firstItem="bOV-Z3-zry" firstAttribute="leading" secondItem="mkK-gu-7wE" secondAttribute="leading" id="yLW-Ih-t9c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eV9-vk-1l4"/>
                     </view>

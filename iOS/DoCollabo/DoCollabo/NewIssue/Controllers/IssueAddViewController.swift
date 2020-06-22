@@ -27,6 +27,7 @@ class IssueAddViewController: UIViewController {
 
     private func configureUI() {
         titleHeaderView.titleLabel.text = "새 이슈"
+        titleHeaderView.changeUI(titleSize: 34, backgroundColor: .white)
         backgroundView.roundCorner(cornerRadius: 16.0)
         backgroundView.drawShadow(color: .black, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
     }
