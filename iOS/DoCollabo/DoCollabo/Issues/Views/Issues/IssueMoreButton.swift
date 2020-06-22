@@ -30,6 +30,6 @@ final class IssueMoreButton: UIButton {
     
     private func configureUI() {
         setImage(image, for: .normal)
-        tintColor = .lightGray
+        tintColor = .darkGray
     }
 }

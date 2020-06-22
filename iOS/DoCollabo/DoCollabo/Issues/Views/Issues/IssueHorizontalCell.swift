@@ -17,7 +17,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
         static let statusImageViewLeft: CGFloat = 12.0
         static let interSpacingForItems: CGFloat = 8.0
         static let contentsStackViewBottom: CGFloat = 16.0
-        static let trailingStackViewRight: CGFloat = 16.0
+        static let trailingStackViewRight: CGFloat = 12.0
     }
     
     private var statusImageView: IssueStatusImageView!
