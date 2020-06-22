@@ -38,7 +38,7 @@ final class LabelPopUpViewController: PopUpViewController {
     }
     
     private func randomColor() -> (color: UIColor, hexString: String) {
-        let randomColor = UIColor().random()
+        let randomColor: UIColor = .generateRandomColor()
         let hexString = randomColor.hexString
         return (randomColor, hexString)
     }
