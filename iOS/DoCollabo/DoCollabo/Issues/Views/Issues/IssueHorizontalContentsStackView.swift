@@ -28,7 +28,7 @@ final class IssueHorizontalContentsStackView: UIStackView {
         writerLabel.configureWriterLabel(with: issue)
     }
     
-    func prepareForReuse() {
+    func reset() {
         subviews.forEach { (subview) in
             removeArrangedSubview(subview)
             subview.removeFromSuperview()
