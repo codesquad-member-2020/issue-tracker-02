@@ -39,7 +39,7 @@ final class LabelsViewController: UIViewController {
         }
     }
     
-    private func addLabel(bodyParams: Data) {
+    private func requestAddLabel(bodyParams: Data) {
         let request = LabelsRequest(method: .POST, id: nil, bodyParams: bodyParams).asURLRequest()
         labelsUseCase.getStatus(request: request) { result in
             switch result {
@@ -114,7 +114,7 @@ extension LabelsViewController: PopUpViewControllerDelegate {
         let label = IssueLabel(id: nil, title: title, color: color, description: description)
         do {
             let encodedData = try JSONEncoder().encode(label)
-            addLabel(bodyParams: encodedData)
+            requestAddLabel(bodyParams: encodedData)
         } catch {
             self.presentErrorAlert(error: NetworkError.BadRequest)
         }
