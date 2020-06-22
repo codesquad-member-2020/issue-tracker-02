@@ -8,10 +8,66 @@
 
 import UIKit
 
+protocol IssueCellMoreViewControllerDelegate: class {
+    func issueStatusToggleButtonDidTap()
+    func editButtonDidTap()
+    func deleteButtonDidTap()
+}
+
 final class IssueCellMoreViewController: MoreViewController {
+    
+    private var issueStatusToggleButton: UIButton!
+    private var editButton: UIButton!
+    private var deleteButton: UIButton!
+    
+    weak var delegate: IssueCellMoreViewControllerDelegate?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureButtons()
+    }
     
     func configureIssueCellMoreViewController(with issue: Issue) {
         configureMoreViewController()
+        addOptions(buttons: issueStatusToggleButton, editButton, deleteButton)
         configureTitle(issue.title)
+    }
+}
+
+// MARK:- Button Actions
+
+extension IssueCellMoreViewController {
+    @objc private func issueStatusToggleButtonDidTap() {
+        delegate?.issueStatusToggleButtonDidTap()
+    }
+    
+    @objc private func editButtonDidTap() {
+        delegate?.editButtonDidTap()
+    }
+    
+    @objc private func deleteButtonDidTap() {
+        delegate?.deleteButtonDidTap()
+    }
+}
+
+// MARK:- Configuration
+
+extension IssueCellMoreViewController {
+    private func configureButtons() {
+        issueStatusToggleButton = generateButton(
+            title: "     이슈 닫기",
+            target: self,
+            action: #selector(issueStatusToggleButtonDidTap),
+            for: .touchUpInside)
+        editButton = generateButton(
+            title: "     수정하기",
+            target: self,
+            action: #selector(editButtonDidTap),
+            for: .touchUpInside)
+        deleteButton = generateButton(
+            title: "     삭제하기",
+            target: self,
+            action: #selector(deleteButtonDidTap),
+            for: .touchUpInside)
     }
 }

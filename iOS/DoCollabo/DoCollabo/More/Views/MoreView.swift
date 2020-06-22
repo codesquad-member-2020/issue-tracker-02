@@ -45,6 +45,10 @@ final class MoreView: UIView {
     func configureTitle(_ title: String) {
         titleLabel.text = title
     }
+    
+    func addOption(buttons: [UIButton]) {
+        optionsView.addOption(buttons: buttons)
+    }
 }
 
 // MARK:- Configuration

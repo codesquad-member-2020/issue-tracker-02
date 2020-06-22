@@ -22,10 +22,12 @@ final class OptionsView: UIView {
         configure()
     }
     
-    func addOption(button: UIButton) {
-        optionsStackView.addArrangedSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+    func addOption(buttons: [UIButton]) {
+        for button in buttons {
+            optionsStackView.addArrangedSubview(button)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        }
     }
 }
 
@@ -47,6 +49,7 @@ extension OptionsView {
     }
     
     private func configureLayout() {
+        addSubview(optionsStackView)
         optionsStackView.fillSuperview()
     }
 }

@@ -19,7 +19,6 @@ class MoreViewController: UIViewController {
     }
     
     private func animate() {
-        moreView.heightAnchor.constraint(equalToConstant: 400).isActive = true
         UIView.animateCurveEaseOut(withDuration: 0.4, animations: {
             self.backgroundView.alpha = 0.5
             self.view.layoutIfNeeded()
@@ -33,13 +32,31 @@ class MoreViewController: UIViewController {
     func configureTitle(_ title: String) {
         moreView.configureTitle(title)
     }
+    
+    func generateButton(
+        title: String,
+        target: Any?,
+        action: Selector,
+        for event: UIControl.Event) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.label, for: .normal)
+        button.addTarget(target, action: action, for: event)
+        button.contentHorizontalAlignment = .leading
+        button.titleLabel?.font = .systemFont(ofSize: 13, weight: .light)
+        return button
+    }
+    
+    func addOptions(buttons: UIButton...) {
+        moreView.addOption(buttons: buttons)
+    }
 }
 
 // MARK:- MoreViewDelegate
 
 extension MoreViewController: MoreViewDelegate {
     func dismissButtonDidTap() {
-        backgroundViewDidTap()
+        dismiss()
     }
 }
 
@@ -60,6 +77,10 @@ extension MoreViewController {
     }
     
     @objc private func backgroundViewDidTap() {
+        dismiss()
+    }
+    
+    private func dismiss() {
         moreView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         UIView.animateCurveEaseOut(
             withDuration: 0.3,

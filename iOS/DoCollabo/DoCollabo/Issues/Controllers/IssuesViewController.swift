@@ -14,6 +14,7 @@ final class IssuesViewController: UIViewController {
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    private var moreViewController: IssueCellMoreViewController!
     
     private var issuesUseCase: UseCase!
     private var dataSource: IssuesCollectionViewDataSource!
@@ -49,6 +50,7 @@ final class IssuesViewController: UIViewController {
         configureCollectionViewDataSource()
         configureUseCase()
         configureNotification()
+        configureMoreViewController()
         hideViews()
     }
     
@@ -179,6 +181,10 @@ extension IssuesViewController {
 // MARK:- Configuration
 
 extension IssuesViewController {
+    private func configureMoreViewController() {
+        moreViewController = IssueCellMoreViewController()
+    }
+    
     private func configureNotification() {
         NotificationCenter.default.addObserver(
             self,
@@ -190,7 +196,8 @@ extension IssuesViewController {
     @objc private func moreButtonDidTap(notification: Notification) {
         guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
         dataSource.referIssue(at: indexPath) { (issue) in
-            let moreViewController = MoreViewController()
+            let moreViewController = IssueCellMoreViewController()
+            moreViewController.configureIssueCellMoreViewController(with: issue)
             moreViewController.modalPresentationStyle = .overFullScreen
             present(moreViewController, animated: false, completion: nil)
         }
