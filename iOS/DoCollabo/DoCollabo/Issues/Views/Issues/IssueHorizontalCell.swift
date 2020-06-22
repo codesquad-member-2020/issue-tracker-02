@@ -38,15 +38,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
     func configureCell(with issue: Issue) {
         statusImageView.configureStatusImageView(with: issue)
         contentsStackView.configureContentsStackView(with: issue)
-
-        if issue.labels.count > 0 {
-            issueLabelsViewController.updateLabels(issue.labels)
-            issueLabelsViewController.reloadCollectionView()
-            contentsStackView.addArrangedSubview(issueLabelsViewController.view)
-            layoutIfNeeded()
-            issueLabelsViewController.view.heightAnchor.constraint(equalToConstant: issueLabelsViewController.contentHeight).isActive = true
-        }
-        
+        configureIssueLabels(with: issue)
         trailingStackView.configureTrailingStackView(with: issue)
     }
     
@@ -63,15 +55,22 @@ extension IssueHorizontalCell {
         configureLayout()
     }
     
+    fileprivate func configureIssueLabels(with issue: Issue) {
+        if issue.labels.count > 0 {
+            issueLabelsViewController.updateLabels(issue.labels)
+            issueLabelsViewController.reloadCollectionView()
+            contentsStackView.addArrangedSubview(issueLabelsViewController.view)
+            layoutIfNeeded()
+            issueLabelsViewController.view.heightAnchor.constraint(equalToConstant: issueLabelsViewController.contentHeight).isActive = true
+        }
+    }
+    
     private func configureUI() {
         backgroundColor = .tertiarySystemBackground
-        
         statusImageView = IssueStatusImageView()
-        
         issueLabelsViewController = IssueLabelsViewController()
         trailingStackView = IssueHorizontalTrailingStackView()
         contentsStackView = IssueHorizontalContentsStackView()
-        
         roundCorner(cornerRadius: 16.0)
         drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
     }
