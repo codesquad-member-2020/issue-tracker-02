@@ -14,13 +14,17 @@ protocol MoreViewDelegate: class {
 
 final class MoreView: UIView {
 
+    private var titleLabel: UILabel!
     private var dismissButton: UIButton!
     private var optionsView: UIView!
+    private var separatorView: UIView!
     
     private enum Metric {
         static let dismissButtonTop: CGFloat = 12.0
         static let dismissButtonRight: CGFloat = 12.0
         static let dismissButtonHeight: CGFloat = 28.0
+        static let separatorViewTop: CGFloat = 16.0
+        static let separatorViewHeight: CGFloat = 0.3
         static let optionsViewTop: CGFloat = 16.0
         static let optionsViewLeftRight: CGFloat = 20.0
         static let optionsViewBottom: CGFloat = 32.0
@@ -59,17 +63,35 @@ extension MoreView {
     private func configureUI() {
         backgroundColor = .secondarySystemBackground
         roundCorner(cornerRadius: 8.0)
+        titleLabel = UILabel()
+        titleLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        titleLabel.text = "Title"
+        titleLabel.textColor = .label
         dismissButton = UIButton(type: .system)
         dismissButton.setImage(UIImage(named: "button.dismiss"), for: .normal)
         dismissButton.tintColor = .lightGray
+        separatorView = UIView()
+        separatorView.backgroundColor = .label
+        separatorView.alpha = 0.3
         optionsView = UIView()
         optionsView.backgroundColor = .tertiarySystemBackground
         optionsView.roundCorner(cornerRadius: 16.0)
     }
     
     private func configureLayout() {
+        addSubview(titleLabel)
         addSubview(dismissButton)
+        addSubview(separatorView)
         addSubview(optionsView)
+        titleLabel.constraints(
+            topAnchor: topAnchor,
+            leadingAnchor: leadingAnchor,
+            bottomAnchor: separatorView.topAnchor,
+            trailingAnchor: dismissButton.leadingAnchor,
+            padding: .init(
+                top: Metric.dismissButtonTop,
+                left: Metric.optionsViewLeftRight,
+                bottom: 8.0, right: 8.0))
         dismissButton.constraints(
             topAnchor: topAnchor,
             leadingAnchor: nil,
@@ -81,8 +103,15 @@ extension MoreView {
                 bottom: 0,
                 right: Metric.dismissButtonRight),
             size: .init(width: Metric.dismissButtonHeight, height: Metric.dismissButtonHeight))
-        optionsView.constraints(
+        separatorView.constraints(
             topAnchor: dismissButton.bottomAnchor,
+            leadingAnchor: leadingAnchor,
+            bottomAnchor: nil,
+            trailingAnchor: trailingAnchor,
+            padding: .init(top:  Metric.separatorViewTop, left: 0, bottom: 0, right: 0),
+            size: .init(width: 0, height: Metric.separatorViewHeight))
+        optionsView.constraints(
+            topAnchor: separatorView.bottomAnchor,
             leadingAnchor: leadingAnchor,
             bottomAnchor: bottomAnchor,
             trailingAnchor: trailingAnchor,
