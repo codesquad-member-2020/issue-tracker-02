@@ -16,7 +16,7 @@ final class MoreView: UIView {
 
     private var titleLabel: UILabel!
     private var dismissButton: UIButton!
-    private var optionsView: UIView!
+    private var optionsView: OptionsView!
     private var separatorView: UIView!
     
     private enum Metric {
@@ -73,9 +73,7 @@ extension MoreView {
         separatorView = UIView()
         separatorView.backgroundColor = .label
         separatorView.alpha = 0.3
-        optionsView = UIView()
-        optionsView.backgroundColor = .tertiarySystemBackground
-        optionsView.roundCorner(cornerRadius: 16.0)
+        optionsView = OptionsView()
     }
     
     private func configureLayout() {

@@ -56,6 +56,7 @@
 		385A50D124915E66004BE8DB /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385A50D024915E66004BE8DB /* UIColor+Hex.swift */; };
 		385BE60A24A0C71B00232523 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BE60924A0C71B00232523 /* MoreViewController.swift */; };
 		385BE60C24A0C7B700232523 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BE60B24A0C7B700232523 /* MoreView.swift */; };
+		385BE61224A1272A00232523 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BE61124A1272A00232523 /* OptionsView.swift */; };
 		3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861B005248FC582006FD89E /* IssuesCollectionView.swift */; };
 		3861B00B248FC654006FD89E /* IssueHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861B009248FC654006FD89E /* IssueHorizontalCell.swift */; };
 		3868A1E5249C5F2100B9982E /* HexColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3868A1E4249C5F2100B9982E /* HexColorTests.swift */; };
@@ -142,6 +143,7 @@
 		385A50D024915E66004BE8DB /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		385BE60924A0C71B00232523 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		385BE60B24A0C7B700232523 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		385BE61124A1272A00232523 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		3861B005248FC582006FD89E /* IssuesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionView.swift; sourceTree = "<group>"; };
 		3861B009248FC654006FD89E /* IssueHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalCell.swift; sourceTree = "<group>"; };
 		3868A1DA249C5E7400B9982E /* DoCollaboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoCollaboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -422,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				385BE60B24A0C7B700232523 /* MoreView.swift */,
+				385BE61124A1272A00232523 /* OptionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				38FF07E4249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift in Sources */,
 				385A50D124915E66004BE8DB /* UIColor+Hex.swift in Sources */,
 				3825A8A5249356530021D512 /* UIView+Animations.swift in Sources */,
+				385BE61224A1272A00232523 /* OptionsView.swift in Sources */,
 				30E22EE52491064A00EC0FD8 /* Request.swift in Sources */,
 				3825A8A324933B040021D512 /* TitleHeaderBackgroundView.swift in Sources */,
 				30E22EFB24910F9F00EC0FD8 /* Issue.swift in Sources */,
