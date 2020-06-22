@@ -43,7 +43,7 @@ final class LabelsViewController: UIViewController {
         let request = LabelsRequest(method: .POST, id: nil, bodyParams: bodyParams).asURLRequest()
         labelsUseCase.getStatus(request: request) { result in
             switch result {
-            case .success(let success):
+            case .success(_):
                 self.fetchLabels()
             case .failure(let error):
                 self.presentErrorAlert(error: error)
