@@ -20,4 +20,8 @@ class AssigneeTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    func configureData(_ data: User) {
+        userIDLabel.text = data.userID
+    }
 }
