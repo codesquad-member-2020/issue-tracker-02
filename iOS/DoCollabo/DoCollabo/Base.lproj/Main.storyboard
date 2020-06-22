@@ -105,7 +105,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wp8-Mv-qY7">
-                                <rect key="frame" x="24" y="156" width="366" height="694"/>
+                                <rect key="frame" x="24" y="156" width="366" height="526.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Yc-cG-g8Z">
                                         <rect key="frame" x="20" y="28" width="326" height="25.5"/>
@@ -113,8 +113,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="az6-HM-vJq">
-                                        <rect key="frame" x="20" y="140.5" width="326" height="529.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <rect key="frame" x="20" y="140.5" width="326" height="362"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -141,16 +140,24 @@
                                     <constraint firstItem="4Yc-cG-g8Z" firstAttribute="leading" secondItem="Wp8-Mv-qY7" secondAttribute="leading" constant="20" id="vnw-8C-BNA"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SbV-ZH-6fy" customClass="IssueAddAccessoryView" customModule="DoCollabo" customModuleProvider="target">
+                                <rect key="frame" x="24" y="721" width="366" height="143"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="eV9-vk-1l4" firstAttribute="trailing" secondItem="Wp8-Mv-qY7" secondAttribute="trailing" constant="24" id="3o4-2T-KbG"/>
+                            <constraint firstItem="SbV-ZH-6fy" firstAttribute="trailing" secondItem="Wp8-Mv-qY7" secondAttribute="trailing" id="4Ns-M3-0vb"/>
                             <constraint firstItem="mkK-gu-7wE" firstAttribute="leading" secondItem="Wp8-Mv-qY7" secondAttribute="leading" id="C2G-v7-VGB"/>
-                            <constraint firstItem="eV9-vk-1l4" firstAttribute="bottom" secondItem="Wp8-Mv-qY7" secondAttribute="bottom" constant="12" id="RIP-8e-Qas"/>
                             <constraint firstItem="mkK-gu-7wE" firstAttribute="top" secondItem="eV9-vk-1l4" secondAttribute="top" constant="12" id="a5z-bg-Wqf"/>
+                            <constraint firstItem="SbV-ZH-6fy" firstAttribute="height" secondItem="GBX-aC-tXD" secondAttribute="height" multiplier="0.18" id="dvK-CR-0vy"/>
                             <constraint firstItem="mkK-gu-7wE" firstAttribute="trailing" secondItem="Wp8-Mv-qY7" secondAttribute="trailing" id="hBo-CM-lz9"/>
                             <constraint firstItem="Wp8-Mv-qY7" firstAttribute="top" secondItem="mkK-gu-7wE" secondAttribute="bottom" constant="-28" id="hXE-uI-cHT"/>
                             <constraint firstItem="Wp8-Mv-qY7" firstAttribute="leading" secondItem="eV9-vk-1l4" secondAttribute="leading" constant="24" id="ivz-b7-e9A"/>
+                            <constraint firstItem="SbV-ZH-6fy" firstAttribute="bottom" secondItem="GBX-aC-tXD" secondAttribute="bottom" constant="-40" id="nGN-uX-i8b"/>
+                            <constraint firstItem="SbV-ZH-6fy" firstAttribute="top" secondItem="Wp8-Mv-qY7" secondAttribute="bottom" constant="12" id="rft-SB-2yW"/>
+                            <constraint firstItem="SbV-ZH-6fy" firstAttribute="leading" secondItem="Wp8-Mv-qY7" secondAttribute="leading" id="tln-f7-Gzk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eV9-vk-1l4"/>
                     </view>
