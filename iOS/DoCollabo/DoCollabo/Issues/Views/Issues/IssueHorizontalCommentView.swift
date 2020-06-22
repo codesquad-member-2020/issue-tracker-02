@@ -14,8 +14,8 @@ final class IssueHorizontalCommentView: UIView {
     private var label: UILabel!
     
     private let commentImage: UIImage? = UIImage(named: "comment.right")
-    private let imageViewHeight: CGFloat = 30.0
-    private let fontSize: CGFloat = 13.0
+    private let imageViewHeight: CGFloat = 26.0
+    private let fontSize: CGFloat = 11.0
 
     override init(frame: CGRect) {
         super.init(frame: frame)
