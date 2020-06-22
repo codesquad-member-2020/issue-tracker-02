@@ -77,8 +77,8 @@ extension LabelPopUpViewController {
     override func submitButtonDidTap() {
         guard let newFeature = validContents() else { return }
         popUpViewControllerDelegate?.submitButtonDidTap(
-                                                               title: newFeature.title,
-                                                               description: newFeature.description,
-                                                               additionalData: selectedColor)
+            title: newFeature.title,
+            description: newFeature.description,
+            additionalData: selectedColor)
     }
 }
