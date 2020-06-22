@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HeaderViewActionDelegate {
+    func newButtonDidTap()
+}
+
 @IBDesignable
 final class TitleHeaderView: UIView {
 

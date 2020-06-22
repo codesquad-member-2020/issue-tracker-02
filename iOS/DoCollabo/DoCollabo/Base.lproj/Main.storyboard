@@ -143,8 +143,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fM1-hM-DKS">
-                                <rect key="frame" x="197" y="418" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fM1-hM-DKS">
+                                <rect key="frame" x="188.5" y="410" width="37" height="37"/>
                                 <color key="color" name="key.red"/>
                             </activityIndicatorView>
                         </subviews>

@@ -35,11 +35,4 @@ final class OAuthNetworkManager {
         session?.presentationContextProvider = viewController as? ASWebAuthenticationPresentationContextProviding
         session?.start()
     }
-    
-    func authenticateWithApple(completion: @escaping (_ token: String) -> Void) {
-        let scheme = "apple.docollabo.app"
-        let urlComponents = URLComponents(string: OAuthURLStub.callbackURL.absoluteString)
-        guard let token = urlComponents?.queryItems?.first?.value else { return }
-        completion(token)
-    }
 }
