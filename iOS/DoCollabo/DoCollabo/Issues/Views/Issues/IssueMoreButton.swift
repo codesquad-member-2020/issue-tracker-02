@@ -13,6 +13,7 @@ final class IssueMoreButton: UIButton {
     static let size: CGSize = CGSize(width: 0.0, height: 24.0)
     
     private let image: UIImage? = UIImage(named: "issue.more")
+    private let color: UIColor! = UIColor(named: "writer.userID")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,6 +31,6 @@ final class IssueMoreButton: UIButton {
     
     private func configureUI() {
         setImage(image, for: .normal)
-        tintColor = .darkGray
+        tintColor = color
     }
 }
