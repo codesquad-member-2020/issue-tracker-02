@@ -73,7 +73,8 @@ public class IssueService {
 
   public IssueView getIssue(Long issueId) {
     Issue findIssue = issueRepository.findById(issueId).orElseThrow(NoSuchElementException::new);
-    return IssueView.from(findIssue, extractLabels(findIssue), extractMilestones(findIssue));
+    return IssueView.from(findIssue, extractLabels(findIssue), extractMilestones(findIssue),
+        findIssue.getReplies());
   }
 
   @Transactional

@@ -76,6 +76,14 @@ VALUES (1, 1),
        (3, 15)
 ;
 
+INSERT INTO issue_replies (issue_id, contents, created_at, emoji, user_id)
+VALUES (5, 'reply contents1', NOW(), 'THUMB_UP', 'Hyune-c')
+     , (5, 'reply contents6', NOW(), 'LAUGH', 'Hyune-c')
+     , (6, 'reply contents2', NOW(), 'THUMB_DOWN', 'delmaSong')
+     , (7, 'reply contents3', NOW(), 'LAUGH', 'corykim0829')
+     , (8, 'reply contents4', NOW(), 'HEART', 'Hyune-c')
+;
+
 -- INSERT INTO reply (user_id, contents, created_at, issue_id)
 -- VALUES ('Hyune-c', 'Hyune-c reply 1\nline2', NOW(), 5),
 --        ('Hyune-c', 'Hyune-c reply 1\nline2', NOW(), 9),
