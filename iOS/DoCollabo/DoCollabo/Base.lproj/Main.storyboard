@@ -215,7 +215,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="signInWithAppleButtonDidTap:" destination="Plx-5T-Tfq" eventType="touchUpInside" id="RHH-j8-RGT"/>
+                                            <action selector="signInWithAppleButtonDidTap:" destination="Plx-5T-Tfq" eventType="touchUpInside" id="dIc-3g-1Al"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -245,6 +245,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="n4e-Wr-YWU"/>
                     </view>
+                    <connections>
+                        <outlet property="appleLoginButton" destination="14g-x2-UWa" id="vYf-R0-qeJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPn-gO-hUd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

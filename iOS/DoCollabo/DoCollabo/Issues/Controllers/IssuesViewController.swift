@@ -26,12 +26,17 @@ final class IssuesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        deleteToken()
         configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkToken()
+    }
+    
+    private func deleteToken() {
+        UserDefaults.standard.removeObject(forKey: OAuthNetworkManager.jwtToken)
     }
     
     private func configure() {
