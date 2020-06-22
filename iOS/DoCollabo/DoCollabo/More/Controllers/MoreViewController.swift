@@ -13,11 +13,6 @@ class MoreViewController: UIViewController {
     private var backgroundView: UIView!
     private var moreView: MoreView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configure()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         animate()
@@ -29,6 +24,14 @@ class MoreViewController: UIViewController {
             self.backgroundView.alpha = 0.5
             self.view.layoutIfNeeded()
         })
+    }
+    
+    func configureMoreViewController() {
+        configure()
+    }
+    
+    func configureTitle(_ title: String) {
+        moreView.configureTitle(title)
     }
 }
 

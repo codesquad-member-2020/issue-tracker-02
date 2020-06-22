@@ -41,6 +41,10 @@ final class MoreView: UIView {
         super.init(coder: coder)
         configure()
     }
+    
+    func configureTitle(_ title: String) {
+        titleLabel.text = title
+    }
 }
 
 // MARK:- Configuration
