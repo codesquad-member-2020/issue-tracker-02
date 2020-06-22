@@ -35,6 +35,10 @@ final class IssuesViewController: UIViewController {
         checkToken()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .issueCellMoreButtonDidTap, object: nil)
+    }
+    
     private func deleteToken() {
         UserDefaults.standard.removeObject(forKey: OAuthNetworkManager.jwtToken)
     }
@@ -44,6 +48,7 @@ final class IssuesViewController: UIViewController {
         configureCollectionViewDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
+        configureNotification()
         hideViews()
     }
     
@@ -174,6 +179,19 @@ extension IssuesViewController {
 // MARK:- Configuration
 
 extension IssuesViewController {
+    private func configureNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(moreButtonDidTap),
+            name: .issueCellMoreButtonDidTap,
+            object: nil)
+    }
+    
+    @objc private func moreButtonDidTap(notification: Notification) {
+        guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
+        print(indexPath.item)
+    }
+    
     private func configureCollectionViewDelegate() {
         issuesCollectionView.delegate = self
     }

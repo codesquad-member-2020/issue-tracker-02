@@ -40,11 +40,32 @@ final class IssueHorizontalCell: UICollectionViewCell {
         contentsStackView.configureContentsStackView(with: issue)
         configureIssueLabels(with: issue)
         trailingStackView.configureTrailingStackView(with: issue)
+        trailingStackView.delegate = self
     }
     
     override func prepareForReuse() {
         contentsStackView.reset()
     }
+}
+
+// MARK:- IssueHorizontalTrailingStackViewDelegate
+
+extension IssueHorizontalCell: IssueHorizontalTrailingStackViewDelegate {
+    func moreButtonDidTap(_ button: UIButton) {
+        let collectionView = self.superview as! UICollectionView
+        let location = button.convert(button.bounds.origin, to: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: location) else { return }
+        NotificationCenter.default.post(
+            name: .issueCellMoreButtonDidTap,
+            object: nil,
+            userInfo: ["indexPath": indexPath])
+    }
+}
+
+// MARK:- Notification
+
+extension Notification.Name {
+    static let issueCellMoreButtonDidTap = Notification.Name(rawValue: "issueCellMoreButtonDidTap")
 }
 
 // MARK:- Configuration Privately
