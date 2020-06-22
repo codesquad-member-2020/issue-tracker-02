@@ -12,17 +12,11 @@ class MoreViewController: UIViewController {
     
     private var backgroundView: UIView!
     private var moreView: MoreView!
+    private var moreViewBottomConstraint: NSLayoutConstraint!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        animate()
-    }
-    
-    private func animate() {
-        UIView.animateCurveEaseOut(withDuration: 0.4, animations: {
-            self.backgroundView.alpha = 0.5
-            self.view.layoutIfNeeded()
-        })
+        presentMoreView()
     }
     
     func configureMoreViewController() {
@@ -52,11 +46,33 @@ class MoreViewController: UIViewController {
     }
 }
 
+extension MoreViewController {
+    private func presentMoreView() {
+        moreViewBottomConstraint.constant = 0
+        UIView.animateCurveEaseOut(withDuration: 0.4, animations: {
+            self.backgroundView.alpha = 0.5
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    private func dismissMoreView() {
+        moreViewBottomConstraint.constant = 500
+        UIView.animateCurveEaseOut(
+            withDuration: 0.3,
+            animations: {
+                self.backgroundView.alpha = 0
+                self.view.layoutIfNeeded()
+        }) { (_) in
+            self.dismiss(animated: false, completion: nil)
+        }
+    }
+}
+
 // MARK:- MoreViewDelegate
 
 extension MoreViewController: MoreViewDelegate {
     func dismissButtonDidTap() {
-        dismiss()
+        dismissMoreView()
     }
 }
 
@@ -77,19 +93,7 @@ extension MoreViewController {
     }
     
     @objc private func backgroundViewDidTap() {
-        dismiss()
-    }
-    
-    private func dismiss() {
-        moreView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-        UIView.animateCurveEaseOut(
-            withDuration: 0.3,
-            animations: {
-                self.view.layoutIfNeeded()
-                self.backgroundView.alpha = 0
-        }) { (_) in
-            self.dismiss(animated: false, completion: nil)
-        }
+        dismissMoreView()
     }
     
     private func configureUI() {
@@ -108,8 +112,18 @@ extension MoreViewController {
         moreView.constraints(
             topAnchor: nil,
             leadingAnchor: view.leadingAnchor,
-            bottomAnchor: view.bottomAnchor,
+            bottomAnchor: nil,
             trailingAnchor: view.trailingAnchor,
+            padding: .init(top: 0, left: 0, bottom: 0, right: 0),
             size: .init(width: 0, height: 0))
+        moreViewBottomConstraint = NSLayoutConstraint(
+            item: moreView!,
+            attribute: .bottom,
+            relatedBy: .equal,
+            toItem: view,
+            attribute: .bottom,
+            multiplier: 1.0,
+            constant: 500)
+        moreViewBottomConstraint.isActive = true
     }
 }
