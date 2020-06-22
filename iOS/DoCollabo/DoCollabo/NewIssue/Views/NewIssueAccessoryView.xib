@@ -53,6 +53,9 @@
                             <state key="normal" image="plus.circle.fill" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="medium"/>
                             </state>
+                            <connections>
+                                <action selector="selectAssignees:" destination="-1" eventType="touchUpInside" id="p03-YY-sa9"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvY-4J-yOg">
                             <rect key="frame" x="0.0" y="54.5" width="50.5" height="50"/>
@@ -63,6 +66,9 @@
                             <state key="normal" image="plus.circle.fill" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="medium"/>
                             </state>
+                            <connections>
+                                <action selector="selectLabels:" destination="-1" eventType="touchUpInside" id="6hC-hh-CL2"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqb-qH-TNK">
                             <rect key="frame" x="0.0" y="108.5" width="50.5" height="50.5"/>
@@ -73,6 +79,9 @@
                             <state key="normal" image="plus.circle.fill" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="medium"/>
                             </state>
+                            <connections>
+                                <action selector="selectMilestones:" destination="-1" eventType="touchUpInside" id="9Tf-CQ-vgI"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>
@@ -118,7 +127,7 @@
     <resources>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="key.navy">
-            <color red="0.20392156862745098" green="0.29019607843137252" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20399999618530273" green="0.28999999165534973" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
