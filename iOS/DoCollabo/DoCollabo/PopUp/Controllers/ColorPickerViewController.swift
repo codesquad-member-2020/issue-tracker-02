@@ -31,9 +31,7 @@ final class ColorPickerViewController: PopUpViewController {
         palette = ColorPicker()
         palette.backgroundColor = .white
         palette.translatesAutoresizingMaskIntoConstraints = false
-        palette.set(
-            color: UIColor().random(),
-            colorSpace: .sRGB)
+        palette.set(color: .generateRandomColor(), colorSpace: .sRGB)
         configureContentView(palette)
         configureSelectedColorString()
     }

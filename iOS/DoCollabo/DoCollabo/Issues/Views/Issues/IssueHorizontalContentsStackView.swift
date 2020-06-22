@@ -9,6 +9,9 @@
 import UIKit
 
 final class IssueHorizontalContentsStackView: UIStackView {
+    
+    private var titleLabel: IssueHorizontalTitleLabel!
+    private var writerLabel: IssueHorizontalWriterLabel!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,9 +23,42 @@ final class IssueHorizontalContentsStackView: UIStackView {
         configure()
     }
     
+    func configureContentsStackView(with issue: Issue) {
+        titleLabel.configureTitleLabel(with: issue)
+        writerLabel.configureWriterLabel(with: issue)
+    }
+    
+    func reset() {
+        subviews.forEach { (subview) in
+            removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
+        configureDefaultSubviews()
+    }
+}
+
+// MARK:- Configuration
+
+extension IssueHorizontalContentsStackView {
     private func configure() {
+        configureStackView()
+        configureUI()
+        configureDefaultSubviews()
+    }
+    
+    private func configureDefaultSubviews() {
+        addArrangedSubview(titleLabel)
+        addArrangedSubview(writerLabel)
+    }
+    
+    private func configureStackView() {
         axis = .vertical
-        spacing = 8
+        spacing = 6
         distribution = .fill
+    }
+    
+    private func configureUI() {
+        titleLabel = IssueHorizontalTitleLabel()
+        writerLabel = IssueHorizontalWriterLabel()
     }
 }

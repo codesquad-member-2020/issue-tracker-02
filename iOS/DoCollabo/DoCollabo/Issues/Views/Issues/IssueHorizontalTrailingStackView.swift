@@ -12,7 +12,7 @@ final class IssueHorizontalTrailingStackView: UIStackView {
 
     static let width: CGFloat = 40.0
     
-    private var dateLabel: UILabel!
+    private var moreButton: IssueMoreButton!
     private var commentsView: IssueHorizontalCommentView!
     
     private let dateLabelFontSize: CGFloat = 14.0
@@ -28,31 +28,37 @@ final class IssueHorizontalTrailingStackView: UIStackView {
     }
     
     func configureTrailingStackView(with issue: Issue) {
-        dateLabel.text = "1min"
         commentsView.configureCommentView(with: issue)
-        configureArrangedSubview()
     }
     
     private func configure() {
         configureStackView()
         configureUI()
         configureArrangedSubview()
+        configureLayout()
     }
     
     private func configureStackView() {
         axis = .vertical
-        spacing = 4.0
+        spacing = 0.0
     }
     
     private func configureUI() {
-        dateLabel = UILabel()
+        moreButton = IssueMoreButton()
         commentsView = IssueHorizontalCommentView()
-        dateLabel.textColor = .lightGray
-        dateLabel.font = .systemFont(ofSize: dateLabelFontSize, weight: .medium)
     }
     
     private func configureArrangedSubview() {
-        addArrangedSubview(dateLabel)
+        addArrangedSubview(moreButton)
         addArrangedSubview(commentsView)
+    }
+    
+    private func configureLayout() {
+        moreButton.constraints(
+            topAnchor: nil,
+            leadingAnchor: nil,
+            bottomAnchor: nil,
+            trailingAnchor: nil,
+            size: IssueMoreButton.size)
     }
 }
