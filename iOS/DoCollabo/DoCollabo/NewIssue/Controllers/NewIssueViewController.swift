@@ -1,5 +1,5 @@
 //
-//  IssueAddViewController.swift
+//  NewIssueViewController.swift
 //  DoCollabo
 //
 //  Created by delma on 2020/06/22.

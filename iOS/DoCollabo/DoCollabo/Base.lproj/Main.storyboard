@@ -89,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--Issue Add View Controller-->
+        <!--New Issue View Controller-->
         <scene sceneID="tIf-fL-iv5">
             <objects>
-                <viewController storyboardIdentifier="IssueAddViewController" id="A2h-U4-Occ" customClass="IssueAddViewController" customModule="DoCollabo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IssueAddViewController" id="A2h-U4-Occ" customClass="NewIssueViewController" customModule="DoCollabo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GBX-aC-tXD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,7 +140,7 @@
                                     <constraint firstItem="4Yc-cG-g8Z" firstAttribute="leading" secondItem="Wp8-Mv-qY7" secondAttribute="leading" constant="20" id="vnw-8C-BNA"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SbV-ZH-6fy" customClass="IssueAddAccessoryView" customModule="DoCollabo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SbV-ZH-6fy" customClass="NewIssueAccessoryView" customModule="DoCollabo" customModuleProvider="target">
                                 <rect key="frame" x="24" y="721" width="366" height="143"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>

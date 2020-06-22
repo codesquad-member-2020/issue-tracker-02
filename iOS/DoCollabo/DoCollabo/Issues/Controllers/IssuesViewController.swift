@@ -131,7 +131,7 @@ extension IssuesViewController: UICollectionViewDelegateFlowLayout {
 extension IssuesViewController: HeaderViewActionDelegate {
     func newButtonDidTap() {
         guard let issueAddViewController = storyboard?.instantiateViewController(
-            identifier: String(describing: IssueAddViewController.self))
+            identifier: String(describing: NewIssueViewController.self))
         else {
             return
         }

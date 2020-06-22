@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IssueAddAccessoryView" customModule="DoCollabo" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewIssueAccessoryView" customModule="DoCollabo" customModuleProvider="target">
             <connections>
                 <outlet property="frameView" destination="iN0-l3-epB" id="19w-GA-i1D"/>
             </connections>
@@ -51,7 +51,7 @@
                             </constraints>
                             <color key="tintColor" name="key.navy"/>
                             <state key="normal" image="plus.circle.fill" catalog="system">
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26" scale="medium"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="medium"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvY-4J-yOg">
@@ -61,7 +61,7 @@
                             </constraints>
                             <color key="tintColor" name="key.navy"/>
                             <state key="normal" image="plus.circle.fill" catalog="system">
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26" scale="medium"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="medium"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqb-qH-TNK">
@@ -71,7 +71,7 @@
                             </constraints>
                             <color key="tintColor" name="key.navy"/>
                             <state key="normal" image="plus.circle.fill" catalog="system">
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26" scale="medium"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="medium"/>
                             </state>
                         </button>
                     </subviews>
