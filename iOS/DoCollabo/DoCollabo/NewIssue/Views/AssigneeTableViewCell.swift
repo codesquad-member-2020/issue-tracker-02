@@ -16,10 +16,6 @@ class AssigneeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     
     func configureData(_ data: User) {
         userIDLabel.text = data.userID
