@@ -23,9 +23,11 @@ final class IssueCellMoreViewController: MoreViewController {
     weak var delegate: IssueCellMoreViewControllerDelegate?
     
     private var issue: Issue!
+    private var issuesUseCase: IssuesUseCase!
     
-    func configureIssueCellMoreViewController(with issue: Issue) {
+    func configureIssueCellMoreViewController(with issue: Issue, issuesUseCase: IssuesUseCase) {
         self.issue = issue
+        self.issuesUseCase = issuesUseCase
         configureButtons()
         configureMoreViewController()
         addOptions(buttons: issueStatusToggleButton, editButton, deleteButton)
@@ -37,6 +39,7 @@ final class IssueCellMoreViewController: MoreViewController {
 
 extension IssueCellMoreViewController {
     @objc private func issueStatusToggleButtonDidTap() {
+        
         delegate?.issueStatusToggleButtonDidTap()
     }
     

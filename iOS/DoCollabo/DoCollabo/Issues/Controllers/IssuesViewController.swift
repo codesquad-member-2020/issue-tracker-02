@@ -16,7 +16,7 @@ final class IssuesViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var moreViewController: IssueCellMoreViewController!
     
-    private var issuesUseCase: UseCase!
+    private var issuesUseCase: IssuesUseCase!
     private var dataSource: IssuesCollectionViewDataSource!
     
     // for scroll animation
@@ -214,7 +214,7 @@ extension IssuesViewController {
     @objc private func moreButtonDidTap(notification: Notification) {
         guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
         dataSource.referIssue(at: indexPath) { (issue) in
-            moreViewController.configureIssueCellMoreViewController(with: issue)
+            moreViewController.configureIssueCellMoreViewController(with: issue, issuesUseCase: issuesUseCase)
             present(moreViewController, animated: false, completion: nil)
         }
     }

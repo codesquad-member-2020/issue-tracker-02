@@ -9,6 +9,6 @@
 import Foundation
 import Alamofire
 
-struct IssuesUseCase: UseCase {
+class IssuesUseCase: UseCase {
     var networkDispatcher: NetworkDispatcher = AF
 }
