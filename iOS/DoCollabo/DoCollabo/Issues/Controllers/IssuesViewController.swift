@@ -14,6 +14,7 @@ final class IssuesViewController: UIViewController {
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    private var moreViewController: IssueCellMoreViewController!
     
     private var issuesUseCase: UseCase!
     private var dataSource: IssuesCollectionViewDataSource!
@@ -34,6 +35,10 @@ final class IssuesViewController: UIViewController {
         checkToken()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .issueCellMoreButtonDidTap, object: nil)
+    }
+    
     private func deleteToken() {
         UserDefaults.standard.removeObject(forKey: OAuthNetworkManager.jwtToken)
     }
@@ -43,6 +48,8 @@ final class IssuesViewController: UIViewController {
         configureCollectionViewDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
+        configureNotification()
+        configureMoreViewController()
         hideViews()
     }
     
@@ -191,6 +198,27 @@ extension IssuesViewController {
 // MARK:- Configuration
 
 extension IssuesViewController {
+    private func configureMoreViewController() {
+        moreViewController = IssueCellMoreViewController()
+        moreViewController.modalPresentationStyle = .overFullScreen
+    }
+    
+    private func configureNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(moreButtonDidTap),
+            name: .issueCellMoreButtonDidTap,
+            object: nil)
+    }
+    
+    @objc private func moreButtonDidTap(notification: Notification) {
+        guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
+        dataSource.referIssue(at: indexPath) { (issue) in
+            moreViewController.configureIssueCellMoreViewController(with: issue)
+            present(moreViewController, animated: false, completion: nil)
+        }
+    }
+    
     private func configureCollectionViewDelegate() {
         issuesCollectionView.delegate = self
     }
