@@ -9,17 +9,21 @@
 import Foundation
 
 struct Issue: Codable {
-    var id: Int
-    var isClosed: Bool
-    var title: String
-    var description: String
-    var createdAt: String
-    var updateTimeAt: String
-    var userId: String
-    var labels: [IssueLabel]
+    private(set) var id: Int
+    private(set) var isClosed: Bool
+    private(set) var title: String
+    private(set) var description: String
+    private(set) var createdAt: String
+    private(set) var updateTimeAt: String
+    private(set) var userId: String
+    private(set) var labels: [IssueLabel]
     
     enum CodingKeys: String, CodingKey {
         case id, title, description, createdAt, updateTimeAt, userId, labels
         case isClosed = "close"
+    }
+    
+    mutating func updateStatus(isClosed: Bool) {
+        self.isClosed = isClosed
     }
 }
