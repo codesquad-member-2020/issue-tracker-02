@@ -77,32 +77,14 @@ public class AuthTest {
     @SpringBootTest
     public class JwtTest {
 
-      @DisplayName("잘못된 Type 으로")
-      @Test
-      void wrongType() throws Exception {
-        // given
-        String jwtType = "yahoo";
-        String sampleAppleJwt = "eyJraWQiOiI4NkQ4OEtmIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwiYXVkIjoiY29tLmRlbG1hLkFwcGxlTG9naW5TYW1wbGUiLCJleHAiOjE1OTI3NDc2MjQsImlhdCI6MTU5Mjc0NzAyNCwic3ViIjoiMDAwNTQxLmJjMTkzY2RkYWZjODQ2NDhhMzFjMGIyZTM3NDI1Y2QxLjEzMDEiLCJjX2hhc2giOiJyLXAzeHpOWU5tbWxkRnRsaEJIbmV3IiwiZW1haWwiOiJzZHkyODU2QG5hdGUuY29tIiwiZW1haWxfdmVyaWZpZWQiOiJ0cnVlIiwiYXV0aF90aW1lIjoxNTkyNzQ3MDI0LCJub25jZV9zdXBwb3J0ZWQiOnRydWV9.SfrHDhEYVmeYq24U4zMhtlNPnoD7XR16cmm5oy3UMBPPDV9uXVOGI3kaof6-3RfqDp1acFrBizmnkqy_uQRTDyMfzY0Bfx-UqOGBttWg7B3-9lSvaYuUjUrbSP1qMY6nTulliC5uXY5bstbZugOk5NDlCZHgEdP02CK_BPORSGE30dNv_bK_69A64M06Za5zbQ2IkhU-Sa6rMC3d-G-CwcClRrQ6TUKc9zXI4t6m_TwrbrzSTBgLqRZUs5KILGTvfV8zKw9v-GKaWALgHr-UxxskdoMDuXhFD5tsMp8sp0qfu9J4yUDY1vbBfUS8xnyb5nkP8eepRj10BLwOAZZGAw";
-        String authorization = jwtType + " " + sampleAppleJwt;
-
-        // when
-
-        // then
-        assertThatExceptionOfType(RuntimeException.class)
-            .isThrownBy(() -> jwtUtil.getUser(authorization))
-            .withMessage("잘못된 Authorization Header 입니다");
-      }
-
       @DisplayName("Apple JWT 으로")
       @Test
       void parseAppleJwt() throws Exception {
         // given
-        String jwtType = "apple";
         String sampleAppleJwt = "eyJraWQiOiI4NkQ4OEtmIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwiYXVkIjoiY29tLmRlbG1hLkFwcGxlTG9naW5TYW1wbGUiLCJleHAiOjE1OTI3NDc2MjQsImlhdCI6MTU5Mjc0NzAyNCwic3ViIjoiMDAwNTQxLmJjMTkzY2RkYWZjODQ2NDhhMzFjMGIyZTM3NDI1Y2QxLjEzMDEiLCJjX2hhc2giOiJyLXAzeHpOWU5tbWxkRnRsaEJIbmV3IiwiZW1haWwiOiJzZHkyODU2QG5hdGUuY29tIiwiZW1haWxfdmVyaWZpZWQiOiJ0cnVlIiwiYXV0aF90aW1lIjoxNTkyNzQ3MDI0LCJub25jZV9zdXBwb3J0ZWQiOnRydWV9.SfrHDhEYVmeYq24U4zMhtlNPnoD7XR16cmm5oy3UMBPPDV9uXVOGI3kaof6-3RfqDp1acFrBizmnkqy_uQRTDyMfzY0Bfx-UqOGBttWg7B3-9lSvaYuUjUrbSP1qMY6nTulliC5uXY5bstbZugOk5NDlCZHgEdP02CK_BPORSGE30dNv_bK_69A64M06Za5zbQ2IkhU-Sa6rMC3d-G-CwcClRrQ6TUKc9zXI4t6m_TwrbrzSTBgLqRZUs5KILGTvfV8zKw9v-GKaWALgHr-UxxskdoMDuXhFD5tsMp8sp0qfu9J4yUDY1vbBfUS8xnyb5nkP8eepRj10BLwOAZZGAw";
-        String authorization = jwtType + " " + sampleAppleJwt;
 
         // when
-        User appleUser = jwtUtil.getUser(authorization);
+        User appleUser = jwtUtil.getUser(sampleAppleJwt);
 
         // then
         assertThat(appleUser.getUserId())
@@ -116,12 +98,10 @@ public class AuthTest {
       @Test
       void parseGitJwt() throws Exception {
         // given
-        String jwtType = "git";
         String sampleAppleJwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTE3MjYxNjIsImV4cCI6MTk1MTcyNjE2MiwiVXNlciI6eyJub2RlSWQiOiJNRFE2VlhObGNqVTFOekl5TVRnMiIsInVzZXJJZCI6Ikh5dW5lLWMiLCJhdmF0YXJVcmwiOiJodHRwczovL2F2YXRhcnMxLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzU1NzIyMTg2P3Y9NCJ9fQ.ochu0snlMTyK-hTNfNimYqoHOOpxcbLXpvEEcqp-WTY";
-        String authorization = jwtType + " " + sampleAppleJwt;
 
         // when
-        User appleUser = jwtUtil.getUser(authorization);
+        User appleUser = jwtUtil.getUser(sampleAppleJwt);
 
         // then
         assertThat(appleUser.getUserId())
