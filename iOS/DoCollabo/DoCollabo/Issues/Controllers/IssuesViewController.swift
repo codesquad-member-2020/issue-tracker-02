@@ -114,7 +114,9 @@ extension IssuesViewController {
 extension IssuesViewController: IssueCellMoreViewControllerDelegate {
     func issueStatusDidChange(isClosed: Bool, at indexPath: IndexPath) {
         dataSource.updateIssueStatus(isClosed: isClosed, at: indexPath)
-        issuesCollectionView.reloadItems(at: [indexPath])
+        issuesCollectionView.performBatchUpdates({
+            issuesCollectionView.reloadItems(at: [indexPath])
+        }, completion: nil)
     }
     
     func editButtonDidTap() {
