@@ -121,6 +121,21 @@ extension LabelsViewController: PopUpViewControllerDelegate {
     }
 }
 
+// MARK:- UICollectionViewDelegateFlowLayout
+
+extension LabelsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = labelsCollectionView.frame.width * 0.9
+        var estimatedSize = CGSize(width: width, height: LabelCell.height)
+        dataSource.referLabel(at: indexPath) { (label) in
+            if label.description != "" {
+                estimatedSize.height += 26.0
+            }
+        }
+        return estimatedSize
+    }
+}
+
 // MARK:- Configuration
 
 extension LabelsViewController {
@@ -128,9 +143,13 @@ extension LabelsViewController {
         configureUI()
         configureHeaderView()
         configurePopUpView()
-        configureCollectionView()
+        configureCollectionViewDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
+    }
+    
+    private func configureCollectionViewDelegate() {
+        labelsCollectionView.delegate = self
     }
 
     private func configureUI() {
@@ -149,15 +168,6 @@ extension LabelsViewController {
         titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
         titleHeaderView.configureTitle("레이블")
         titleHeaderView.delegate = self
-    }
-
-    private func configureCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(
-            width: labelsCollectionView.frame.width * 0.9,
-            height: LabelCell.height)
-        layout.scrollDirection = .vertical
-        labelsCollectionView.collectionViewLayout = layout
     }
 
     private func configureCollectionViewDataSource() {

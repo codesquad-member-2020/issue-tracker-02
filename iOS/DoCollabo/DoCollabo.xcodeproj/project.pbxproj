@@ -59,6 +59,10 @@
 		3825A8A5249356530021D512 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3825A8A4249356530021D512 /* UIView+Animations.swift */; };
 		383AA0AD249B3A67007DCEBE /* IssueLabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383AA0AC249B3A67007DCEBE /* IssueLabelsViewController.swift */; };
 		385A50D124915E66004BE8DB /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385A50D024915E66004BE8DB /* UIColor+Hex.swift */; };
+		385BE60A24A0C71B00232523 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BE60924A0C71B00232523 /* MoreViewController.swift */; };
+		385BE60C24A0C7B700232523 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BE60B24A0C7B700232523 /* MoreView.swift */; };
+		385BE61224A1272A00232523 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BE61124A1272A00232523 /* OptionsView.swift */; };
+		385BE61424A128FB00232523 /* IssueCellMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BE61324A128FB00232523 /* IssueCellMoreViewController.swift */; };
 		3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861B005248FC582006FD89E /* IssuesCollectionView.swift */; };
 		3861B00B248FC654006FD89E /* IssueHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3861B009248FC654006FD89E /* IssueHorizontalCell.swift */; };
 		3868A1E5249C5F2100B9982E /* HexColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3868A1E4249C5F2100B9982E /* HexColorTests.swift */; };
@@ -71,6 +75,7 @@
 		38BDFA2A24912E79008E901D /* IssueHorizontalContentsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */; };
 		38BDFA2C24912F21008E901D /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */; };
 		38BDFA2E24913128008E901D /* IssueHorizontalTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */; };
+		38BE159324A1E96D0031CAA8 /* MoreOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE159224A1E96D0031CAA8 /* MoreOptionButton.swift */; };
 		38D3643D248FA96300884972 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3643C248FA96300884972 /* TitleHeaderView.swift */; };
 		38D3643F248FA96E00884972 /* TitleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38D3643E248FA96E00884972 /* TitleHeaderView.xib */; };
 		38F0FB49248E2D870080FBBD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB48248E2D870080FBBD /* Colors.swift */; };
@@ -148,6 +153,10 @@
 		3825A8A4249356530021D512 /* UIView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
 		383AA0AC249B3A67007DCEBE /* IssueLabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueLabelsViewController.swift; sourceTree = "<group>"; };
 		385A50D024915E66004BE8DB /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		385BE60924A0C71B00232523 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		385BE60B24A0C7B700232523 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		385BE61124A1272A00232523 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
+		385BE61324A128FB00232523 /* IssueCellMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCellMoreViewController.swift; sourceTree = "<group>"; };
 		3861B005248FC582006FD89E /* IssuesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCollectionView.swift; sourceTree = "<group>"; };
 		3861B009248FC654006FD89E /* IssueHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalCell.swift; sourceTree = "<group>"; };
 		3868A1DA249C5E7400B9982E /* DoCollaboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoCollaboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +169,7 @@
 		38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalContentsStackView.swift; sourceTree = "<group>"; };
 		38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalTitleLabel.swift; sourceTree = "<group>"; };
+		38BE159224A1E96D0031CAA8 /* MoreOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreOptionButton.swift; sourceTree = "<group>"; };
 		38D3643C248FA96300884972 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
 		38D3643E248FA96E00884972 /* TitleHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleHeaderView.xib; sourceTree = "<group>"; };
 		38F0FB48248E2D870080FBBD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -294,6 +304,7 @@
 				386B8F96248E28D800ED3A5A /* Issues */,
 				30E505EF249FBA4E00B98BA1 /* NewIssue */,
 				302D13EB24978367001582DD /* PopUp */,
+				385BE60524A0C6B000232523 /* More */,
 				3020A0A224933AE700483727 /* Labels */,
 				38F0FB47248E2D5F0080FBBD /* Extensions */,
 				30789C07248E1E3F001D0415 /* AppDelegate.swift */,
@@ -438,6 +449,34 @@
 				308A9C98249900FE00DE53E4 /* PopUpContentView.xib */,
 				3012917E249B198500D35B26 /* PopUpFooterView.swift */,
 				3012917C249B197600D35B26 /* PopUpFooterView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		385BE60524A0C6B000232523 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				385BE60624A0C6BC00232523 /* Controllers */,
+				385BE60724A0C6C100232523 /* Views */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		385BE60624A0C6BC00232523 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				385BE60924A0C71B00232523 /* MoreViewController.swift */,
+				385BE61324A128FB00232523 /* IssueCellMoreViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		385BE60724A0C6C100232523 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				385BE60B24A0C7B700232523 /* MoreView.swift */,
+				385BE61124A1272A00232523 /* OptionsView.swift */,
+				38BE159224A1E96D0031CAA8 /* MoreOptionButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -732,6 +771,7 @@
 				3012917F249B198500D35B26 /* PopUpFooterView.swift in Sources */,
 				3040B8822492403600A780D5 /* IssuesCollectionViewDataSource.swift in Sources */,
 				301A8D58249CA17700732A5D /* IssueUseCase.swift in Sources */,
+				38BE159324A1E96D0031CAA8 /* MoreOptionButton.swift in Sources */,
 				388B27F3249B98F100F59998 /* LabelPopUpViewController.swift in Sources */,
 				30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */,
 				309CED7824A05CDB006F7DE4 /* NewIssueAccessoryView.swift in Sources */,
@@ -747,7 +787,9 @@
 				3825A8A1249339700021D512 /* IssuesViewController+ScrollAnimation.swift in Sources */,
 				308A9C9B2499010B00DE53E4 /* PopUpContentView.swift in Sources */,
 				30E505ED249F84BA00B98BA1 /* UIColor+Random.swift in Sources */,
+				385BE61424A128FB00232523 /* IssueCellMoreViewController.swift in Sources */,
 				30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */,
+				385BE60A24A0C71B00232523 /* MoreViewController.swift in Sources */,
 				30E22EE22490B09200EC0FD8 /* IssueLabelsCollectionView.swift in Sources */,
 				3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */,
 				380F18A42499F8890084CE56 /* IssueHorizontalCommentView.swift in Sources */,
@@ -762,11 +804,13 @@
 				3020A0AC249347F000483727 /* LabelCell.swift in Sources */,
 				3032C673249B647C003DB8A8 /* ColorPickerViewController.swift in Sources */,
 				30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */,
+				385BE60C24A0C7B700232523 /* MoreView.swift in Sources */,
 				38879C552490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */,
 				38FF07E4249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift in Sources */,
 				385A50D124915E66004BE8DB /* UIColor+Hex.swift in Sources */,
 				3825A8A5249356530021D512 /* UIView+Animations.swift in Sources */,
+				385BE61224A1272A00232523 /* OptionsView.swift in Sources */,
 				30E22EE52491064A00EC0FD8 /* Request.swift in Sources */,
 				3825A8A324933B040021D512 /* TitleHeaderBackgroundView.swift in Sources */,
 				30E22EFB24910F9F00EC0FD8 /* Issue.swift in Sources */,

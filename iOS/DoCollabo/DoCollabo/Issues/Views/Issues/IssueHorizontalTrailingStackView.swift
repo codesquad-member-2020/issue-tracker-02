@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol IssueHorizontalTrailingStackViewDelegate: class {
+    func moreButtonDidTap(_ button: UIButton)
+}
+
 final class IssueHorizontalTrailingStackView: UIStackView {
 
     static let width: CGFloat = 40.0
@@ -16,6 +20,8 @@ final class IssueHorizontalTrailingStackView: UIStackView {
     private var commentsView: IssueHorizontalCommentView!
     
     private let dateLabelFontSize: CGFloat = 14.0
+    
+    weak var delegate: IssueHorizontalTrailingStackViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,12 +36,25 @@ final class IssueHorizontalTrailingStackView: UIStackView {
     func configureTrailingStackView(with issue: Issue) {
         commentsView.configureCommentView(with: issue)
     }
-    
+}
+
+// MARK:- Configuration
+
+extension IssueHorizontalTrailingStackView {
     private func configure() {
         configureStackView()
         configureUI()
+        configureMoreButtonAction()
         configureArrangedSubview()
         configureLayout()
+    }
+    
+    private func configureMoreButtonAction() {
+        moreButton.addTarget(self, action: #selector(moreButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc private func moreButtonDidTap(_ button: UIButton) {
+        delegate?.moreButtonDidTap(button)
     }
     
     private func configureStackView() {
