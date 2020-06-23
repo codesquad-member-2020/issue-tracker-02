@@ -34,6 +34,12 @@ final class TitleHeaderView: UIView {
         super.init(coder: coder)
         configure()
     }
+    
+    func changeUI(titleSize: CGFloat, backgroundColor: UIColor) {
+        titleLabel.font = UIFont.systemFont(ofSize: titleSize, weight: .heavy)
+        backgroundView.backgroundColor = backgroundColor
+        titleLabel.textColor = .black
+    }
 
     func stretched() {
         titleLabel.alpha = 1

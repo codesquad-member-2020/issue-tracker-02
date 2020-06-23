@@ -26,7 +26,6 @@ final class IssuesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        deleteToken()
         configure()
     }
     
@@ -40,11 +39,16 @@ final class IssuesViewController: UIViewController {
     }
     
     private func configure() {
-        titleHeaderView.configureTitle("이슈")
+        configureHeaderView()
         configureCollectionViewDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
         hideViews()
+    }
+    
+    private func configureHeaderView() {
+        titleHeaderView.configureTitle("이슈")
+        titleHeaderView.delegate = self
     }
     
     private func checkToken() {
@@ -123,6 +127,19 @@ extension IssuesViewController: UICollectionViewDelegateFlowLayout {
         let estimatedSize = estimatedSizeCell.systemLayoutSizeFitting(
             CGSize(width: width, height: estimatedHeight))
         return CGSize(width: width, height: estimatedSize.height)
+    }
+}
+
+// MARK:- HeaderViewActionDelegate
+
+extension IssuesViewController: HeaderViewActionDelegate {
+    func newButtonDidTap() {
+        guard let issueAddViewController = storyboard?.instantiateViewController(
+            identifier: String(describing: NewIssueViewController.self))
+        else {
+            return
+        }
+        present(issueAddViewController, animated: true, completion: nil)
     }
 }
 
