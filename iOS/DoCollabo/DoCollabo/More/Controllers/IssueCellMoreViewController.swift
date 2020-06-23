@@ -22,12 +22,8 @@ final class IssueCellMoreViewController: MoreViewController {
     
     weak var delegate: IssueCellMoreViewControllerDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureButtons()
-    }
-    
     func configureIssueCellMoreViewController(with issue: Issue) {
+        configureButtons(with: issue)
         configureMoreViewController()
         addOptions(buttons: issueStatusToggleButton, editButton, deleteButton)
         configureTitle(issue.title)
@@ -53,9 +49,10 @@ extension IssueCellMoreViewController {
 // MARK:- Configuration
 
 extension IssueCellMoreViewController {
-    private func configureButtons() {
+    private func configureButtons(with issue: Issue) {
+        let issueStatusToggleButtonTitle = issue.close ? "이슈 다시 열기" : "이슈 닫기"
         issueStatusToggleButton = generateButton(
-            title: "     이슈 닫기",
+            title: "     \(issueStatusToggleButtonTitle)",
             target: self,
             action: #selector(issueStatusToggleButtonDidTap),
             for: .touchUpInside)
