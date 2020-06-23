@@ -13,6 +13,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Component;
@@ -65,12 +66,15 @@ public class JwtUtil {
   }
 
   public User getUser(String authorization) {
-    String[] splitAuthorization = authorization.split(" ");
-    if (splitAuthorization[0].equals("apple")) {
-      return getAppleUser(splitAuthorization[1]);
-    } else if (splitAuthorization[0].equals("git")) {
-      return getGitUser(splitAuthorization[1]);
-    } else {
+    try {
+      ObjectMapper objectMapper = new ObjectMapper();
+      HashMap<String, String> body = objectMapper
+          .readValue(Base64.decodeBase64(authorization.split("\\.")[0]), HashMap.class);
+
+      return (Objects.isNull(body.get("kid")))
+          ? getGitUser(authorization)
+          : getAppleUser(authorization);
+    } catch (Exception e) {
       throw new RuntimeException("잘못된 Authorization Header 입니다");
     }
   }
