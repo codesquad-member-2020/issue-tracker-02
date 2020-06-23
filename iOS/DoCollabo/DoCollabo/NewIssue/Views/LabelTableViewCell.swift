@@ -13,12 +13,13 @@ class LabelTableViewCell: UITableViewCell {
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelBackground: UIView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    func configureData(_ label: IssueLabel) {
+        let color = UIColor(hexString: label.color)
+        var textColor: UIColor = .black
+        color.isDark ? textColor = .white : nil
+        labelTitle.text = label.title
+        labelTitle.textColor = textColor
+        labelBackground.backgroundColor = color
+        labelBackground.roundCorner(cornerRadius: 16.0)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
 }

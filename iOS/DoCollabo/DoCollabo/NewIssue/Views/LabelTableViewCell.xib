@@ -17,28 +17,28 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OMb-KE-qlw">
-                        <rect key="frame" x="12" y="8" width="58" height="43"/>
+                        <rect key="frame" x="16" y="12" width="60" height="35"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uun-9y-Lw5">
-                                <rect key="frame" x="8" y="8" width="42" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="12" y="8" width="36" height="19"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Uun-9y-Lw5" firstAttribute="leading" secondItem="OMb-KE-qlw" secondAttribute="leading" constant="8" id="Acw-dn-0AW"/>
+                            <constraint firstItem="Uun-9y-Lw5" firstAttribute="leading" secondItem="OMb-KE-qlw" secondAttribute="leading" constant="12" id="Acw-dn-0AW"/>
                             <constraint firstAttribute="bottom" secondItem="Uun-9y-Lw5" secondAttribute="bottom" constant="8" id="NIX-pX-wkX"/>
-                            <constraint firstAttribute="trailing" secondItem="Uun-9y-Lw5" secondAttribute="trailing" constant="8" id="R4w-CN-yob"/>
+                            <constraint firstAttribute="trailing" secondItem="Uun-9y-Lw5" secondAttribute="trailing" constant="12" id="R4w-CN-yob"/>
                             <constraint firstItem="Uun-9y-Lw5" firstAttribute="top" secondItem="OMb-KE-qlw" secondAttribute="top" constant="8" id="yla-V0-bcP"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="OMb-KE-qlw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="1QN-gc-ccW"/>
-                    <constraint firstItem="OMb-KE-qlw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="dAt-hN-BIW"/>
-                    <constraint firstAttribute="bottom" secondItem="OMb-KE-qlw" secondAttribute="bottom" constant="8" id="gMq-1x-qt2"/>
+                    <constraint firstItem="OMb-KE-qlw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="1QN-gc-ccW"/>
+                    <constraint firstItem="OMb-KE-qlw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="dAt-hN-BIW"/>
+                    <constraint firstAttribute="bottom" secondItem="OMb-KE-qlw" secondAttribute="bottom" constant="12" id="gMq-1x-qt2"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
