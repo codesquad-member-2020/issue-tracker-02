@@ -10,15 +10,41 @@ import UIKit
 
 final class ItemSelectionViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var itemSelectionTableView: UITableView!
+    
+    private var dataSource: UITableViewDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
     
+    func assigneeDidLoad(_ users: [User]) {
+        titleLabel.text = "담당자"
+        let cellIdentifier = String(describing: AssigneeTableViewCell.self)
+        configureTableView(cellIdentifier)
+        self.dataSource = GeneralTableViewDataSource(models: users, reuseIdentifier: cellIdentifier) { (user, cell) in
+            let addButton = cell.addButton()
+            addButton.addTarget(self, action: #selector(self.selectItem), for: .touchUpInside)
+            let assigneeCell = cell as! AssigneeTableViewCell
+            assigneeCell.accessoryView = addButton
+            assigneeCell.configureData(user)
+        }
+        itemSelectionTableView.dataSource = dataSource
+    }
+    
+    @objc func selectItem() {
+        //TODO:- 선택한 동작
+    }
+    
     private func configure() {
         configureUI()
+    }
+    
+    private func configureTableView(_ cellIdentifier: String) {
+        let nib = UINib(nibName: cellIdentifier, bundle: nil)
+        itemSelectionTableView.register(nib, forCellReuseIdentifier: cellIdentifier)
     }
     
     private func configureUI() {
@@ -28,15 +54,5 @@ final class ItemSelectionViewController: UIViewController {
     
     @IBAction func cancelButtonDidTap(_ sender: UIButton) {
         dismiss(animated: true)
-    }
-}
-
-extension ItemSelectionViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
     }
 }
