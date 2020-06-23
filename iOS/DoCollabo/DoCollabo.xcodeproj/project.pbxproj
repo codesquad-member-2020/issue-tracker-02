@@ -33,7 +33,6 @@
 		308A9C972498FFA600DE53E4 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308A9C962498FFA600DE53E4 /* PopUpViewController.swift */; };
 		308A9C99249900FE00DE53E4 /* PopUpContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 308A9C98249900FE00DE53E4 /* PopUpContentView.xib */; };
 		308A9C9B2499010B00DE53E4 /* PopUpContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308A9C9A2499010B00DE53E4 /* PopUpContentView.swift */; };
-		308A9C9E249A340500DE53E4 /* HeaderViewActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308A9C9D249A340500DE53E4 /* HeaderViewActionDelegate.swift */; };
 		309CED7824A05CDB006F7DE4 /* NewIssueAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED7724A05CDB006F7DE4 /* NewIssueAccessoryView.swift */; };
 		309CED7A24A05CEB006F7DE4 /* NewIssueAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 309CED7924A05CEB006F7DE4 /* NewIssueAccessoryView.xib */; };
 		309CED7C24A0959B006F7DE4 /* NewIssueHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED7B24A0959B006F7DE4 /* NewIssueHorizontalScrollView.swift */; };
@@ -85,6 +84,7 @@
 		38FF07E0249E1C4C00DBFB5F /* IssueStatusImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF07DF249E1C4C00DBFB5F /* IssueStatusImageView.swift */; };
 		38FF07E2249E20BA00DBFB5F /* IssueMoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF07E1249E20BA00DBFB5F /* IssueMoreButton.swift */; };
 		38FF07E4249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF07E3249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift */; };
+		38FFA15024A20D2100AEE7F4 /* IssuesViewController+LoadingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FFA14F24A20D2100AEE7F4 /* IssuesViewController+LoadingUI.swift */; };
 		BA40E8185B7195779CAC1546 /* Pods_DoCollabo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B2FECD1DEE0B65A447E2D8 /* Pods_DoCollabo.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,7 +127,6 @@
 		308A9C962498FFA600DE53E4 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		308A9C98249900FE00DE53E4 /* PopUpContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpContentView.xib; sourceTree = "<group>"; };
 		308A9C9A2499010B00DE53E4 /* PopUpContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpContentView.swift; sourceTree = "<group>"; };
-		308A9C9D249A340500DE53E4 /* HeaderViewActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewActionDelegate.swift; sourceTree = "<group>"; };
 		309CED7724A05CDB006F7DE4 /* NewIssueAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueAccessoryView.swift; sourceTree = "<group>"; };
 		309CED7924A05CEB006F7DE4 /* NewIssueAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewIssueAccessoryView.xib; sourceTree = "<group>"; };
 		309CED7B24A0959B006F7DE4 /* NewIssueHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueHorizontalScrollView.swift; sourceTree = "<group>"; };
@@ -143,8 +142,8 @@
 		30E22EFA24910F9F00EC0FD8 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueLabel.swift; sourceTree = "<group>"; };
 		30E505EC249F84BA00B98BA1 /* UIColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
-		30E505F1249FBA7200B98BA1 /* NewIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueViewController.swift; sourceTree = "<group>"; };
 		30E505EE249FA47500B98BA1 /* DoCollabo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoCollabo.entitlements; sourceTree = "<group>"; };
+		30E505F1249FBA7200B98BA1 /* NewIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueViewController.swift; sourceTree = "<group>"; };
 		380425502498D8F7005059EB /* IssuesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesRequest.swift; sourceTree = "<group>"; };
 		380F189F2499DFA90084CE56 /* IssueHorizontalTrailingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalTrailingStackView.swift; sourceTree = "<group>"; };
 		380F18A32499F8890084CE56 /* IssueHorizontalCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalCommentView.swift; sourceTree = "<group>"; };
@@ -179,6 +178,7 @@
 		38FF07DF249E1C4C00DBFB5F /* IssueStatusImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueStatusImageView.swift; sourceTree = "<group>"; };
 		38FF07E1249E20BA00DBFB5F /* IssueMoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueMoreButton.swift; sourceTree = "<group>"; };
 		38FF07E3249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalWriterLabel.swift; sourceTree = "<group>"; };
+		38FFA14F24A20D2100AEE7F4 /* IssuesViewController+LoadingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IssuesViewController+LoadingUI.swift"; sourceTree = "<group>"; };
 		C6B2FECD1DEE0B65A447E2D8 /* Pods_DoCollabo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoCollabo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2345F88AB29F4266CE25B2E /* Pods-DoCollabo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoCollabo.debug.xcconfig"; path = "Target Support Files/Pods-DoCollabo/Pods-DoCollabo.debug.xcconfig"; sourceTree = "<group>"; };
 		E7D138CF07A905C904456EFE /* Pods-DoCollabo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoCollabo.release.xcconfig"; path = "Target Support Files/Pods-DoCollabo/Pods-DoCollabo.release.xcconfig"; sourceTree = "<group>"; };
@@ -350,14 +350,6 @@
 			path = Stubs;
 			sourceTree = "<group>";
 		};
-		308A9C9C249A33AB00DE53E4 /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				308A9C9D249A340500DE53E4 /* HeaderViewActionDelegate.swift */,
-			);
-			path = Delegates;
-			sourceTree = "<group>";
-		};
 		309CED7624A05CAC006F7DE4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +488,7 @@
 			children = (
 				386B8F98248E291100ED3A5A /* IssuesViewController.swift */,
 				3825A8A0249339700021D512 /* IssuesViewController+ScrollAnimation.swift */,
+				38FFA14F24A20D2100AEE7F4 /* IssuesViewController+LoadingUI.swift */,
 				383AA0AC249B3A67007DCEBE /* IssueLabelsViewController.swift */,
 			);
 			path = Controllers;
@@ -812,6 +805,7 @@
 				3825A8A5249356530021D512 /* UIView+Animations.swift in Sources */,
 				385BE61224A1272A00232523 /* OptionsView.swift in Sources */,
 				30E22EE52491064A00EC0FD8 /* Request.swift in Sources */,
+				38FFA15024A20D2100AEE7F4 /* IssuesViewController+LoadingUI.swift in Sources */,
 				3825A8A324933B040021D512 /* TitleHeaderBackgroundView.swift in Sources */,
 				30E22EFB24910F9F00EC0FD8 /* Issue.swift in Sources */,
 				38F0FB62248FA23F0080FBBD /* EndPoint.swift in Sources */,
