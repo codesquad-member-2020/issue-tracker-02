@@ -165,6 +165,7 @@
                         <outlet property="backgroundView" destination="Wp8-Mv-qY7" id="Ssw-pw-keC"/>
                         <outlet property="descriptionTextView" destination="az6-HM-vJq" id="pjf-jP-Zs6"/>
                         <outlet property="markDownSegmentedControl" destination="5lT-MA-yKx" id="poo-BC-eKN"/>
+                        <outlet property="newIssueAccessoryView" destination="SbV-ZH-6fy" id="ZbL-BP-OCj"/>
                         <outlet property="titleHeaderView" destination="mkK-gu-7wE" id="cpN-VR-v58"/>
                         <outlet property="titleTextField" destination="4Yc-cG-g8Z" id="Qz5-Zu-iUL"/>
                     </connections>
@@ -182,45 +183,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWr-k1-fRV">
-                                <rect key="frame" x="18" y="58.5" width="36" height="36"/>
+                                <rect key="frame" x="18" y="56" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="U8a-Gd-mzs"/>
                                     <constraint firstAttribute="width" secondItem="fWr-k1-fRV" secondAttribute="height" id="nbk-cl-9hV"/>
                                 </constraints>
                                 <color key="tintColor" name="key.red"/>
                                 <state key="normal" image="xmark.circle.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large" weight="semibold"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18" scale="large" weight="regular"/>
                                 </state>
                                 <connections>
                                     <action selector="cancelButtonDidTap:" destination="qMZ-3b-Ws1" eventType="touchUpInside" id="Qrc-XS-8gp"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwz-xF-uI0">
-                                <rect key="frame" x="177.5" y="62" width="59" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                <rect key="frame" x="182" y="62" width="50.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulw-Pp-Xq3">
-                                <rect key="frame" x="360" y="58.5" width="36" height="36"/>
+                                <rect key="frame" x="360" y="56" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ulw-Pp-Xq3" secondAttribute="height" id="Obj-26-tQP"/>
                                     <constraint firstAttribute="width" constant="36" id="Yyg-Zb-om2"/>
                                 </constraints>
                                 <color key="tintColor" name="key.navy"/>
                                 <state key="normal" image="arrow.up.circle.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large" weight="semibold"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18" scale="large" weight="regular"/>
                                 </state>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tkx-z0-9DN">
-                                <rect key="frame" x="18" y="115" width="378" height="747"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tkx-z0-9DN">
+                                <rect key="frame" x="18" y="110" width="378" height="752"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2i3-7f-z65">
-                                        <rect key="frame" x="0.0" y="28" width="378" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="2i3-7f-z65">
+                                        <rect key="frame" x="0.0" y="28" width="378" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2i3-7f-z65" id="tU1-q5-IID">
-                                            <rect key="frame" x="0.0" y="0.0" width="378" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="378" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -244,6 +245,7 @@
                     </view>
                     <connections>
                         <outlet property="itemSelectionTableView" destination="tkx-z0-9DN" id="3Wg-ng-Txg"/>
+                        <outlet property="titleLabel" destination="bwz-xF-uI0" id="7sB-Ab-j9E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Quv-6t-Ad1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
