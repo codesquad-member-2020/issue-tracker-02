@@ -42,7 +42,7 @@ class MoreViewController: UIViewController {
     }
     
     func addOptions(buttons: UIButton...) {
-        moreView.addOption(buttons: buttons)
+        moreView.addOptions(buttons: buttons)
     }
 }
 

@@ -22,7 +22,7 @@ final class OptionsView: UIView {
         configure()
     }
     
-    func addOption(buttons: [UIButton]) {
+    func addOptions(buttons: [UIButton]) {
         for button in buttons {
             optionsStackView.addArrangedSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
