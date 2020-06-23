@@ -37,7 +37,7 @@
 		309CED7A24A05CEB006F7DE4 /* NewIssueAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 309CED7924A05CEB006F7DE4 /* NewIssueAccessoryView.xib */; };
 		309CED7C24A0959B006F7DE4 /* NewIssueHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED7B24A0959B006F7DE4 /* NewIssueHorizontalScrollView.swift */; };
 		30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC784E248F94C4004BA3B6 /* NetworkError.swift */; };
-		30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */; };
+		30AC7852248F95B9004BA3B6 /* NetworkErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC7851248F95B9004BA3B6 /* NetworkErrorAlertController.swift */; };
 		30E22EDE2490A61200EC0FD8 /* IssueLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EDC2490A61200EC0FD8 /* IssueLabelCell.swift */; };
 		30E22EDF2490A61200EC0FD8 /* IssueLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E22EDD2490A61200EC0FD8 /* IssueLabelCell.xib */; };
 		30E22EE22490B09200EC0FD8 /* IssueLabelsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EE12490B09200EC0FD8 /* IssueLabelsCollectionView.swift */; };
@@ -131,7 +131,7 @@
 		309CED7924A05CEB006F7DE4 /* NewIssueAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewIssueAccessoryView.xib; sourceTree = "<group>"; };
 		309CED7B24A0959B006F7DE4 /* NewIssueHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueHorizontalScrollView.swift; sourceTree = "<group>"; };
 		30AC784E248F94C4004BA3B6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
+		30AC7851248F95B9004BA3B6 /* NetworkErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorAlertController.swift; sourceTree = "<group>"; };
 		30E22EDC2490A61200EC0FD8 /* IssueLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueLabelCell.swift; sourceTree = "<group>"; };
 		30E22EDD2490A61200EC0FD8 /* IssueLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueLabelCell.xib; sourceTree = "<group>"; };
 		30E22EE12490B09200EC0FD8 /* IssueLabelsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueLabelsCollectionView.swift; sourceTree = "<group>"; };
@@ -371,7 +371,7 @@
 		30AC7850248F9598004BA3B6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */,
+				30AC7851248F95B9004BA3B6 /* NetworkErrorAlertController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -799,7 +799,7 @@
 				30789C0A248E1E3F001D0415 /* SceneDelegate.swift in Sources */,
 				385BE60C24A0C7B700232523 /* MoreView.swift in Sources */,
 				38879C552490E2AD00EE84D7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
-				30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */,
+				30AC7852248F95B9004BA3B6 /* NetworkErrorAlertController.swift in Sources */,
 				38FF07E4249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift in Sources */,
 				385A50D124915E66004BE8DB /* UIColor+Hex.swift in Sources */,
 				3825A8A5249356530021D512 /* UIView+Animations.swift in Sources */,

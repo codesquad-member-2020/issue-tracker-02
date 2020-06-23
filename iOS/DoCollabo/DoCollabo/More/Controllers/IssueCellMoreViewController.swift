@@ -48,6 +48,23 @@ final class IssueCellMoreViewController: MoreViewController {
     }
 }
 
+// MARK:- Error Handling
+
+extension IssueCellMoreViewController {
+    func presentError(_ error: NetworkError) {
+        let title = error == .AuthorizationDenied ? "권한 에러" : "네트워크 에러"
+        let alertController = NetworkErrorAlertController(
+            title: nil,
+            message: error.description,
+            preferredStyle: .alert)
+        alertController.configureTitle(title)
+        alertController.configureDoneAction() { (_) in
+            return
+        }
+        present(alertController, animated: true)
+    }
+}
+
 // MARK:- Button Actions
 
 extension IssueCellMoreViewController {
@@ -63,9 +80,8 @@ extension IssueCellMoreViewController {
             case .success(_):
                 self.dismissMoreView()
                 self.delegate?.issueStatusDidChange(isClosed: !self.issue.isClosed, at: self.indexPath)
-            case .failure(_):
-                // error handling
-                break
+            case .failure(let error):
+                self.presentError(error)
             }
         }
     }
@@ -82,8 +98,7 @@ extension IssueCellMoreViewController {
                 self.dismissMoreView()
                 self.delegate?.removeIssue(at: self.indexPath)
             case .failure(let error):
-                // error handling
-                break
+                self.presentError(error)
             }
         }
     }

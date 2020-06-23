@@ -95,14 +95,14 @@ final class IssuesViewController: UIViewController {
 
 extension IssuesViewController {
     private func presentErrorAlert(error: Error) {
-        let alertController = ErrorAlertController(
+        let alertController = NetworkErrorAlertController(
             title: nil,
             message: error.localizedDescription,
             preferredStyle: .alert)
-        alertController.configure(actionTitle: "재요청") { (_) in
+        alertController.configureAction(title: "재요청") { (_) in
             self.fetchIssues()
         }
-        alertController.configure(actionTitle: "확인") { (_) in
+        alertController.configureDoneAction() { (_) in
             return
         }
         self.present(alertController, animated: true)

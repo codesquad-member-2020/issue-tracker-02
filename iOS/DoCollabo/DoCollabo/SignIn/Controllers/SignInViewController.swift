@@ -44,11 +44,11 @@ extension SignInViewController {
     }
     
     private func presentErrorAlert(error: NetworkError) {
-        let alertController = ErrorAlertController(
+        let alertController = NetworkErrorAlertController(
             title: nil,
             message: error.description,
             preferredStyle: .alert)
-        alertController.configure() { _ in
+        alertController.configureDoneAction { (_) in
             return
         }
         self.present(alertController, animated: true)
