@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,17 +17,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="353" height="69"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WFd-DH-gSY">
-                        <rect key="frame" x="16" y="12" width="321" height="32"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WFd-DH-gSY">
+                        <rect key="frame" x="16" y="12" width="289" height="32"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="wmM-Wb-DbF">
-                                <rect key="frame" x="0.0" y="0.0" width="321" height="32"/>
+                                <rect key="frame" x="0.0" y="0.0" width="289" height="32"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MsW-Ig-kr9">
-                                        <rect key="frame" x="0.0" y="0.0" width="321" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="289" height="32"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQX-dr-gJz">
-                                                <rect key="frame" x="12" y="4" width="297" height="24"/>
+                                                <rect key="frame" x="12" y="4" width="265" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -45,12 +46,23 @@
                             </stackView>
                         </subviews>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZp-5v-lpo">
+                        <rect key="frame" x="309" y="8" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="04o-hn-TLT"/>
+                            <constraint firstAttribute="width" constant="32" id="sQb-zp-o6Z"/>
+                        </constraints>
+                        <color key="tintColor" name="writer.userID"/>
+                        <state key="normal" image="issue.more"/>
+                    </button>
                 </subviews>
             </view>
             <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="WFd-DH-gSY" secondAttribute="bottom" constant="12" id="DOB-Xx-Nro"/>
-                <constraint firstAttribute="trailing" secondItem="WFd-DH-gSY" secondAttribute="trailing" constant="16" id="UpS-Fx-yAL"/>
+                <constraint firstAttribute="trailing" secondItem="nZp-5v-lpo" secondAttribute="trailing" constant="12" id="GW7-ya-YRl"/>
+                <constraint firstItem="nZp-5v-lpo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="MFD-BO-RgF"/>
+                <constraint firstItem="nZp-5v-lpo" firstAttribute="leading" secondItem="WFd-DH-gSY" secondAttribute="trailing" constant="4" id="UpS-Fx-yAL"/>
                 <constraint firstItem="WFd-DH-gSY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="lLW-cY-mVm"/>
                 <constraint firstItem="WFd-DH-gSY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="r4C-Ze-Iue"/>
             </constraints>
@@ -65,4 +77,10 @@
             <point key="canvasLocation" x="191" y="138"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="issue.more" width="16" height="4"/>
+        <namedColor name="writer.userID">
+            <color red="0.085000000894069672" green="0.085000000894069672" blue="0.086000002920627594" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
 </document>
