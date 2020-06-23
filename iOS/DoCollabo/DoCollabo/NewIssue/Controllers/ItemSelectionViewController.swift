@@ -16,6 +16,10 @@ final class ItemSelectionViewController: UIViewController {
     private var dataSource: UITableViewDataSource!
     private var labelUseCase: LabelsUseCase!
     private var milestoneUseCase: MilestoneUseCase!
+
+    private var selectedUsers: [User]!
+    private var selectedLabels: [IssueLabel]!
+    private var selectedMilestones: [Milestone]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,7 @@ final class ItemSelectionViewController: UIViewController {
     
     func fetchAssigneeStub() {
         let stubUsers = AssigneesStub.users
+        selectedUsers = []
         assigneeDidLoad(stubUsers)
     }
     
@@ -32,6 +37,7 @@ final class ItemSelectionViewController: UIViewController {
         milestoneUseCase.getResources(request: request, dataType: [Milestone].self) { (result) in
             switch result {
             case .success(let milestones):
+                self.selectedMilestones = []
                 self.milestoneDidLoad(milestones)
             case .failure(let error):
                 self.presentErrorAlert(error: error) {
@@ -46,6 +52,7 @@ final class ItemSelectionViewController: UIViewController {
         labelUseCase.getResources(request: request, dataType: [IssueLabel].self) { (result) in
             switch result {
             case .success(let labels):
+                self.selectedLabels = []
                 self.labelsDidLoad(labels)
             case .failure(let error):
                 self.presentErrorAlert(error: error) {
@@ -59,7 +66,7 @@ final class ItemSelectionViewController: UIViewController {
         titleLabel.text = "담당자"
         let cellIdentifier = String(describing: AssigneeTableViewCell.self)
         configureTableView(cellIdentifier)
-        self.dataSource = GeneralTableViewDataSource(models: users, reuseIdentifier: cellIdentifier) { (user, cell) in
+        self.dataSource = GeneralTableViewDataSource(models: users, selectedModels: selectedUsers, reuseIdentifier: cellIdentifier) { (user, cell) in
             let addButton = cell.addButton()
             addButton.addTarget(self, action: #selector(self.selectItem), for: .touchUpInside)
             let assigneeCell = cell as! AssigneeTableViewCell
@@ -74,7 +81,7 @@ final class ItemSelectionViewController: UIViewController {
         titleLabel.text = "레이블"
         let cellIdentifier = String(describing: LabelTableViewCell.self)
         configureTableView(cellIdentifier)
-        self.dataSource = GeneralTableViewDataSource(models: labels, reuseIdentifier: cellIdentifier) { (label, cell) in
+        self.dataSource = GeneralTableViewDataSource(models: labels, selectedModels: selectedLabels, reuseIdentifier: cellIdentifier) { (label, cell) in
             let addButton = cell.addButton()
             addButton.addTarget(self, action: #selector(self.selectItem), for: .touchUpInside)
             let labelCell = cell as! LabelTableViewCell
@@ -89,7 +96,7 @@ final class ItemSelectionViewController: UIViewController {
         titleLabel.text = "마일스톤"
         let cellIdentifier = String(describing: MilestoneTableViewCell.self)
         configureTableView(cellIdentifier)
-        self.dataSource = GeneralTableViewDataSource(models: milestones, reuseIdentifier: cellIdentifier) { (milestone, cell) in
+        self.dataSource = GeneralTableViewDataSource(models: milestones, selectedModels: selectedMilestones, reuseIdentifier: cellIdentifier) { (milestone, cell) in
             let addButton = cell.addButton()
             addButton.addTarget(self, action: #selector(self.selectItem), for: .touchUpInside)
             let milestoneCell = cell as! MilestoneTableViewCell
