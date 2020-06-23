@@ -11,7 +11,7 @@ import UIKit
 protocol IssueCellMoreViewControllerDelegate: class {
     func issueStatusDidChange(isClosed: Bool, at indexPath: IndexPath)
     func editButtonDidTap()
-    func deleteButtonDidTap()
+    func removeIssue(at indexPath: IndexPath)
 }
 
 final class IssueCellMoreViewController: MoreViewController {
@@ -75,7 +75,17 @@ extension IssueCellMoreViewController {
     }
     
     @objc private func deleteButtonDidTap() {
-        delegate?.deleteButtonDidTap()
+        let request = IssuesRequest(method: .DELETE, id: String(issue.id)).asURLRequest()
+        issuesUseCase.getStatus(request: request) { (result) in
+            switch result {
+            case .success(_):
+                self.dismissMoreView()
+                self.delegate?.removeIssue(at: self.indexPath)
+            case .failure(_):
+                // error handling
+                break
+            }
+        }
     }
 }
 

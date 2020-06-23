@@ -123,8 +123,11 @@ extension IssuesViewController: IssueCellMoreViewControllerDelegate {
         //
     }
     
-    func deleteButtonDidTap() {
-        //
+    func removeIssue(at indexPath: IndexPath) {
+        dataSource.removeIssue(at: indexPath)
+        issuesCollectionView.performBatchUpdates({
+            issuesCollectionView.reloadItems(at: [indexPath])
+        }, completion: nil)
     }
 }
 

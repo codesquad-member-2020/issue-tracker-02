@@ -40,6 +40,10 @@ final class IssuesCollectionViewDataSource: NSObject, UICollectionViewDataSource
         issues[indexPath.item].updateStatus(isClosed: isClosed)
     }
     
+    func removeIssue(at indexPath: IndexPath) {
+        issues.remove(at: indexPath.item)
+    }
+    
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
