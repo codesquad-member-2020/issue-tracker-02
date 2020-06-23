@@ -10,7 +10,6 @@ import UIKit
 
 protocol IssueCellMoreViewControllerDelegate: class {
     func issueStatusDidChange(isClosed: Bool, at indexPath: IndexPath)
-    func editButtonDidTap()
     func removeIssue(at indexPath: IndexPath)
 }
 
@@ -87,7 +86,15 @@ extension IssueCellMoreViewController {
     }
     
     @objc private func editButtonDidTap() {
-        delegate?.editButtonDidTap()
+        let alertController = NetworkErrorAlertController(
+            title: nil,
+            message: "아직 준비 중인 서비스입니다.",
+            preferredStyle: .alert)
+        alertController.configureTitle("안내")
+        alertController.configureDoneAction() { (_) in
+            return
+        }
+        present(alertController, animated: true)
     }
     
     @objc private func deleteButtonDidTap() {

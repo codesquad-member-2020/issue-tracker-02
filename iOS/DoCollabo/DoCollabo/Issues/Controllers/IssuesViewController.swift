@@ -119,10 +119,6 @@ extension IssuesViewController: IssueCellMoreViewControllerDelegate {
         }, completion: nil)
     }
     
-    func editButtonDidTap() {
-        //
-    }
-    
     func removeIssue(at indexPath: IndexPath) {
         dataSource.removeIssue(at: indexPath)
         issuesCollectionView.performBatchUpdates({
