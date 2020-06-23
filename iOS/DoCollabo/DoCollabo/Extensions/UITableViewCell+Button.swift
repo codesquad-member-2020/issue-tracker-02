@@ -12,14 +12,16 @@ extension UITableViewCell {
     func addButton() -> UIButton {
         let button = UIButton()
         button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
-        button.setTitleColor(UIColor(named: "key.navy"), for: .normal)
+        button.tintColor = UIColor(named: "key.navy")
+        button.sizeToFit()
         return button
     }
     
     func cancelButton() -> UIButton {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
-        button.setTitleColor(.lightGray, for: .normal)
+        button.tintColor = .lightGray
+        button.sizeToFit()
         return button
     }
     
