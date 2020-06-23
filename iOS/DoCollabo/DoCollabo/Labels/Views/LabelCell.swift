@@ -10,12 +10,13 @@ import UIKit
 
 final class LabelCell: UICollectionViewCell {
     
-    static let height: CGFloat = 84.0
+    static let height: CGFloat = 56.0
     
-    @IBOutlet weak var background: UIView!
+    @IBOutlet weak var contentsStackView: UIStackView!
+    @IBOutlet weak var labelContainerStackView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleBackground: UIView!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    private var descriptionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,11 +28,14 @@ final class LabelCell: UICollectionViewCell {
     }
     
     private func configureUI() {
+        contentsStackView.spacing = 8
         drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
-        background.roundCorner(cornerRadius: 16.0)
-        titleBackground.roundCorner(cornerRadius: IssueLabelCell.cornerRadius)
+        roundCorner(cornerRadius: 16.0)
+        titleBackground.roundCorner(cornerRadius: 16.0)
+        descriptionLabel = UILabel()
+        descriptionLabel.numberOfLines = 1
+        descriptionLabel.font = .systemFont(ofSize: 14, weight: .regular)
         descriptionLabel.textColor = .label
-        background.backgroundColor = .tertiarySystemBackground
     }
     
     func configureCell(with label: IssueLabel) {
@@ -40,5 +44,16 @@ final class LabelCell: UICollectionViewCell {
         titleLabel.textColor = color.isDark ? .white : .black
         titleBackground.backgroundColor = color
         descriptionLabel.text = label.description
+        if label.description != "" {
+            contentsStackView.addArrangedSubview(descriptionLabel)
+        }
+    }
+    
+    override func prepareForReuse() {
+        contentsStackView.arrangedSubviews.forEach {
+            contentsStackView.removeArrangedSubview($0)
+            $0.removeFromSuperview()
+        }
+        contentsStackView.addArrangedSubview(labelContainerStackView)
     }
 }
