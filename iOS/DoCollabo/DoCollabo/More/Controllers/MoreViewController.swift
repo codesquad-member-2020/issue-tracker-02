@@ -32,12 +32,9 @@ class MoreViewController: UIViewController {
         target: Any?,
         action: Selector,
         for event: UIControl.Event) -> UIButton {
-        let button = UIButton(type: .system)
+        let button = MoreOptionButton()
         button.setTitle(title, for: .normal)
-        button.setTitleColor(.label, for: .normal)
         button.addTarget(target, action: action, for: event)
-        button.contentHorizontalAlignment = .leading
-        button.titleLabel?.font = .systemFont(ofSize: 13, weight: .light)
         return button
     }
     

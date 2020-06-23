@@ -70,6 +70,7 @@
 		38BDFA2A24912E79008E901D /* IssueHorizontalContentsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */; };
 		38BDFA2C24912F21008E901D /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */; };
 		38BDFA2E24913128008E901D /* IssueHorizontalTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */; };
+		38BE159324A1E96D0031CAA8 /* MoreOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE159224A1E96D0031CAA8 /* MoreOptionButton.swift */; };
 		38D3643D248FA96300884972 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3643C248FA96300884972 /* TitleHeaderView.swift */; };
 		38D3643F248FA96E00884972 /* TitleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38D3643E248FA96E00884972 /* TitleHeaderView.xib */; };
 		38F0FB49248E2D870080FBBD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB48248E2D870080FBBD /* Colors.swift */; };
@@ -158,6 +159,7 @@
 		38BDFA2924912E79008E901D /* IssueHorizontalContentsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalContentsStackView.swift; sourceTree = "<group>"; };
 		38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		38BDFA2D24913128008E901D /* IssueHorizontalTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalTitleLabel.swift; sourceTree = "<group>"; };
+		38BE159224A1E96D0031CAA8 /* MoreOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreOptionButton.swift; sourceTree = "<group>"; };
 		38D3643C248FA96300884972 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
 		38D3643E248FA96E00884972 /* TitleHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleHeaderView.xib; sourceTree = "<group>"; };
 		38F0FB48248E2D870080FBBD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 			children = (
 				385BE60B24A0C7B700232523 /* MoreView.swift */,
 				385BE61124A1272A00232523 /* OptionsView.swift */,
+				38BE159224A1E96D0031CAA8 /* MoreOptionButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				3012917F249B198500D35B26 /* PopUpFooterView.swift in Sources */,
 				3040B8822492403600A780D5 /* IssuesCollectionViewDataSource.swift in Sources */,
 				301A8D58249CA17700732A5D /* IssueUseCase.swift in Sources */,
+				38BE159324A1E96D0031CAA8 /* MoreOptionButton.swift in Sources */,
 				388B27F3249B98F100F59998 /* LabelPopUpViewController.swift in Sources */,
 				30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */,
 				301A8D56249CA10C00732A5D /* LabelRequest.swift in Sources */,

@@ -25,8 +25,6 @@ final class OptionsView: UIView {
     func addOptions(buttons: [UIButton]) {
         for button in buttons {
             optionsStackView.addArrangedSubview(button)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
         }
     }
 }

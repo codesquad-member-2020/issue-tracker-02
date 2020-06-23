@@ -52,17 +52,17 @@ extension IssueCellMoreViewController {
     private func configureButtons(with issue: Issue) {
         let issueStatusToggleButtonTitle = issue.close ? "이슈 다시 열기" : "이슈 닫기"
         issueStatusToggleButton = generateButton(
-            title: "     \(issueStatusToggleButtonTitle)",
+            title: "\(issueStatusToggleButtonTitle)",
             target: self,
             action: #selector(issueStatusToggleButtonDidTap),
             for: .touchUpInside)
         editButton = generateButton(
-            title: "     수정하기",
+            title: "수정하기",
             target: self,
             action: #selector(editButtonDidTap),
             for: .touchUpInside)
         deleteButton = generateButton(
-            title: "     삭제하기",
+            title: "삭제하기",
             target: self,
             action: #selector(deleteButtonDidTap),
             for: .touchUpInside)
