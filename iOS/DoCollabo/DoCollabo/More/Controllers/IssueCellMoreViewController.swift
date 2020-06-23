@@ -9,12 +9,20 @@
 import UIKit
 
 protocol IssueCellMoreViewControllerDelegate: class {
-    func issueStatusToggleButtonDidTap()
+    func issueStatusDidChange(isClosed: Bool, at indexPath: IndexPath)
     func editButtonDidTap()
     func deleteButtonDidTap()
 }
 
 final class IssueCellMoreViewController: MoreViewController {
+    
+    struct IssueStatus: Encodable {
+        let isClosed: Bool
+        
+        enum CodingKeys: String, CodingKey {
+            case isClosed = "close"
+        }
+    }
     
     private var issueStatusToggleButton: UIButton!
     private var editButton: UIButton!
@@ -23,10 +31,15 @@ final class IssueCellMoreViewController: MoreViewController {
     weak var delegate: IssueCellMoreViewControllerDelegate?
     
     private var issue: Issue!
+    private var indexPath: IndexPath!
     private var issuesUseCase: IssuesUseCase!
     
-    func configureIssueCellMoreViewController(with issue: Issue, issuesUseCase: IssuesUseCase) {
+    func configureIssueCellMoreViewController(
+        with issue: Issue,
+        issuesUseCase: IssuesUseCase,
+        at indexPath: IndexPath) {
         self.issue = issue
+        self.indexPath = indexPath
         self.issuesUseCase = issuesUseCase
         configureButtons()
         configureMoreViewController()
@@ -39,8 +52,22 @@ final class IssueCellMoreViewController: MoreViewController {
 
 extension IssueCellMoreViewController {
     @objc private func issueStatusToggleButtonDidTap() {
-        
-        delegate?.issueStatusToggleButtonDidTap()
+        let issueStatus = IssueStatus(isClosed: !issue.isClosed)
+        guard let encodedData = try? JSONEncoder().encode(issueStatus) else { return }
+        let request = IssuesRequest(
+            method: .PATCH,
+            id: String(issue.id),
+            bodyParams: encodedData).asURLRequest()
+        issuesUseCase.getStatus(request: request) { (result) in
+            switch result {
+            case .success(_):
+                self.dismissMoreView()
+                self.delegate?.issueStatusDidChange(isClosed: !self.issue.isClosed, at: self.indexPath)
+            case .failure(_):
+                // error handling
+                break
+            }
+        }
     }
     
     @objc private func editButtonDidTap() {

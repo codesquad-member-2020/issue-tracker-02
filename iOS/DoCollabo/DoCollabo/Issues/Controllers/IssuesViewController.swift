@@ -109,6 +109,23 @@ extension IssuesViewController {
     }
 }
 
+// MARK:- IssueCellMoreViewControllerDelegate
+
+extension IssuesViewController: IssueCellMoreViewControllerDelegate {
+    func issueStatusDidChange(isClosed: Bool, at indexPath: IndexPath) {
+        dataSource.updateIssueStatus(isClosed: isClosed, at: indexPath)
+        issuesCollectionView.reloadItems(at: [indexPath])
+    }
+    
+    func editButtonDidTap() {
+        //
+    }
+    
+    func deleteButtonDidTap() {
+        //
+    }
+}
+
 // MARK:- UICollectionViewDelegateFlowLayout
 
 extension IssuesViewController: UICollectionViewDelegateFlowLayout {
@@ -155,6 +172,7 @@ extension IssuesViewController: HeaderViewActionDelegate {
 extension IssuesViewController {
     private func configureMoreViewController() {
         moreViewController = IssueCellMoreViewController()
+        moreViewController.delegate = self
         moreViewController.modalPresentationStyle = .overFullScreen
     }
     
@@ -169,7 +187,10 @@ extension IssuesViewController {
     @objc private func moreButtonDidTap(notification: Notification) {
         guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
         dataSource.referIssue(at: indexPath) { (issue) in
-            moreViewController.configureIssueCellMoreViewController(with: issue, issuesUseCase: issuesUseCase)
+            moreViewController.configureIssueCellMoreViewController(
+                with: issue,
+                issuesUseCase: issuesUseCase,
+                at: indexPath)
             present(moreViewController, animated: false, completion: nil)
         }
     }

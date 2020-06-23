@@ -36,6 +36,10 @@ final class IssuesCollectionViewDataSource: NSObject, UICollectionViewDataSource
         self.issues = issues
     }
     
+    func updateIssueStatus(isClosed: Bool, at indexPath: IndexPath) {
+        issues[indexPath.item].updateStatus(isClosed: isClosed)
+    }
+    
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
