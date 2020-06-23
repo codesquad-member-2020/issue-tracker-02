@@ -33,7 +33,7 @@ final class IssueStatusImageView: UIImageView {
     }
     
     func configureStatusImageView(with issue: Issue) {
-        if issue.close {
+        if issue.isClosed {
             image = Image.close
             tintColor = Color.close
         } else {

@@ -10,11 +10,16 @@ import Foundation
 
 struct Issue: Codable {
     var id: Int
-    var close: Bool
+    var isClosed: Bool
     var title: String
     var description: String
     var createdAt: String
     var updateTimeAt: String
     var userId: String
     var labels: [IssueLabel]
+    
+    enum CodingKeys: String, CodingKey {
+        case id, title, description, createdAt, updateTimeAt, userId, labels
+        case isClosed = "close"
+    }
 }

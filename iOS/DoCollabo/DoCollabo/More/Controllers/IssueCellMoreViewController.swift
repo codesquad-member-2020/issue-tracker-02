@@ -56,7 +56,7 @@ extension IssueCellMoreViewController {
 
 extension IssueCellMoreViewController {
     private func configureButtons() {
-        let issueStatusToggleButtonTitle = issue.close ? "이슈 다시 열기" : "이슈 닫기"
+        let issueStatusToggleButtonTitle = issue.isClosed ? "이슈 다시 열기" : "이슈 닫기"
         issueStatusToggleButton = generateButton(
             title: "\(issueStatusToggleButtonTitle)",
             target: self,
