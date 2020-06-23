@@ -58,12 +58,20 @@ public class IssueService {
 
   public List<IssueView> getIssues(SearchIssueQuery searchIssueQuery) {
     List<Issue> findIssues;
-    if (Objects.isNull(searchIssueQuery.getKeyword())) {
-      findIssues = issueRepository.findAll();
-    } else {
+    if (Objects.nonNull(searchIssueQuery.getKeyword())) {
       findIssues = issueRepository
           .findAllByTitleContainingOrDescriptionContaining(searchIssueQuery.getKeyword(),
               searchIssueQuery.getKeyword());
+    } else if (Objects.nonNull(searchIssueQuery.getClose())
+        && Objects.nonNull(searchIssueQuery.getUserId())) {
+      findIssues = issueRepository
+          .findAllByCloseAndUserId(searchIssueQuery.getClose(), searchIssueQuery.getUserId());
+    } else if (Objects.nonNull(searchIssueQuery.getClose())) {
+      findIssues = issueRepository.findAllByClose(searchIssueQuery.getClose());
+    } else if (Objects.nonNull(searchIssueQuery.getUserId())) {
+      findIssues = issueRepository.findAllByUserId(searchIssueQuery.getUserId());
+    } else {
+      findIssues = issueRepository.findAll();
     }
 
     return findIssues.stream()
