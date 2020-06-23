@@ -183,6 +183,7 @@ extension IssuesViewController {
 extension IssuesViewController {
     private func configureMoreViewController() {
         moreViewController = IssueCellMoreViewController()
+        moreViewController.modalPresentationStyle = .overFullScreen
     }
     
     private func configureNotification() {
@@ -196,9 +197,7 @@ extension IssuesViewController {
     @objc private func moreButtonDidTap(notification: Notification) {
         guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
         dataSource.referIssue(at: indexPath) { (issue) in
-            let moreViewController = IssueCellMoreViewController()
             moreViewController.configureIssueCellMoreViewController(with: issue)
-            moreViewController.modalPresentationStyle = .overFullScreen
             present(moreViewController, animated: false, completion: nil)
         }
     }
