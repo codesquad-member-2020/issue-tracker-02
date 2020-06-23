@@ -47,6 +47,10 @@
 		30A0E6C324A1E0D5002C3F48 /* GeneralTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6C224A1E0D5002C3F48 /* GeneralTableViewDataSource.swift */; };
 		30A0E6C624A1E1AD002C3F48 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6C424A1E1AD002C3F48 /* LabelTableViewCell.swift */; };
 		30A0E6C724A1E1AD002C3F48 /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A0E6C524A1E1AD002C3F48 /* LabelTableViewCell.xib */; };
+		30A0E6C924A1FC9E002C3F48 /* AssigneesStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6C824A1FC9E002C3F48 /* AssigneesStub.swift */; };
+		30A0E6CB24A20D0E002C3F48 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6CA24A20D0E002C3F48 /* Milestone.swift */; };
+		30A0E6CD24A20DE8002C3F48 /* MilestoneUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6CC24A20DE8002C3F48 /* MilestoneUseCase.swift */; };
+		30A0E6CF24A20E43002C3F48 /* MilestoneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6CE24A20E43002C3F48 /* MilestoneRequest.swift */; };
 		30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC784E248F94C4004BA3B6 /* NetworkError.swift */; };
 		30AC7852248F95B9004BA3B6 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */; };
 		30E22EDE2490A61200EC0FD8 /* IssueLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EDC2490A61200EC0FD8 /* IssueLabelCell.swift */; };
@@ -146,6 +150,10 @@
 		30A0E6C224A1E0D5002C3F48 /* GeneralTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableViewDataSource.swift; sourceTree = "<group>"; };
 		30A0E6C424A1E1AD002C3F48 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		30A0E6C524A1E1AD002C3F48 /* LabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelTableViewCell.xib; sourceTree = "<group>"; };
+		30A0E6C824A1FC9E002C3F48 /* AssigneesStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssigneesStub.swift; sourceTree = "<group>"; };
+		30A0E6CA24A20D0E002C3F48 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
+		30A0E6CC24A20DE8002C3F48 /* MilestoneUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneUseCase.swift; sourceTree = "<group>"; };
+		30A0E6CE24A20E43002C3F48 /* MilestoneRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneRequest.swift; sourceTree = "<group>"; };
 		30AC784E248F94C4004BA3B6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		30AC7851248F95B9004BA3B6 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 		30E22EDC2490A61200EC0FD8 /* IssueLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueLabelCell.swift; sourceTree = "<group>"; };
@@ -355,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */,
+				30A0E6C824A1FC9E002C3F48 /* AssigneesStub.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -406,6 +415,7 @@
 				30E22EE42491064A00EC0FD8 /* Request.swift */,
 				380425502498D8F7005059EB /* IssuesRequest.swift */,
 				301A8D55249CA10C00732A5D /* LabelRequest.swift */,
+				30A0E6CE24A20E43002C3F48 /* MilestoneRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -416,6 +426,7 @@
 				30E22EF724910EF800EC0FD8 /* UseCase.swift */,
 				301A8D57249CA17700732A5D /* IssueUseCase.swift */,
 				301A8D59249CA18F00732A5D /* LabelUseCase.swift */,
+				30A0E6CC24A20DE8002C3F48 /* MilestoneUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -426,6 +437,7 @@
 				30E22EFA24910F9F00EC0FD8 /* Issue.swift */,
 				30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */,
 				309CED8B24A0DF54006F7DE4 /* User.swift */,
+				30A0E6CA24A20D0E002C3F48 /* Milestone.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -767,6 +779,7 @@
 				3012917F249B198500D35B26 /* PopUpFooterView.swift in Sources */,
 				3040B8822492403600A780D5 /* IssuesCollectionViewDataSource.swift in Sources */,
 				301A8D58249CA17700732A5D /* IssueUseCase.swift in Sources */,
+				30A0E6CF24A20E43002C3F48 /* MilestoneRequest.swift in Sources */,
 				388B27F3249B98F100F59998 /* LabelPopUpViewController.swift in Sources */,
 				30AC784F248F94C4004BA3B6 /* NetworkError.swift in Sources */,
 				30A0E6C624A1E1AD002C3F48 /* LabelTableViewCell.swift in Sources */,
@@ -785,9 +798,11 @@
 				308A9C9B2499010B00DE53E4 /* PopUpContentView.swift in Sources */,
 				30E505ED249F84BA00B98BA1 /* UIColor+Random.swift in Sources */,
 				30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */,
+				30A0E6CD24A20DE8002C3F48 /* MilestoneUseCase.swift in Sources */,
 				30E22EE22490B09200EC0FD8 /* IssueLabelsCollectionView.swift in Sources */,
 				3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */,
 				380F18A42499F8890084CE56 /* IssueHorizontalCommentView.swift in Sources */,
+				30A0E6CB24A20D0E002C3F48 /* Milestone.swift in Sources */,
 				309CED8224A0D011006F7DE4 /* AssigneeTableViewCell.swift in Sources */,
 				3020A0B024936FB200483727 /* LabelsCollectionViewDataSource.swift in Sources */,
 				38FF07E0249E1C4C00DBFB5F /* IssueStatusImageView.swift in Sources */,
@@ -811,6 +826,7 @@
 				30E22EE52491064A00EC0FD8 /* Request.swift in Sources */,
 				3825A8A324933B040021D512 /* TitleHeaderBackgroundView.swift in Sources */,
 				309CED8A24A0DE71006F7DE4 /* AssigneeTableViewDataSource.swift in Sources */,
+				30A0E6C924A1FC9E002C3F48 /* AssigneesStub.swift in Sources */,
 				30E22EFB24910F9F00EC0FD8 /* Issue.swift in Sources */,
 				38F0FB62248FA23F0080FBBD /* EndPoint.swift in Sources */,
 				3861B00B248FC654006FD89E /* IssueHorizontalCell.swift in Sources */,
