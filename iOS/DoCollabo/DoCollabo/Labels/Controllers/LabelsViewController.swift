@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 final class LabelsViewController: UIViewController {
 
     @IBOutlet weak var titleHeaderBackgroundView: UIView!
@@ -49,7 +48,6 @@ final class LabelsViewController: UIViewController {
                 self.presentErrorAlert(error: error)
             }
         }
-        
     }
 }
 
