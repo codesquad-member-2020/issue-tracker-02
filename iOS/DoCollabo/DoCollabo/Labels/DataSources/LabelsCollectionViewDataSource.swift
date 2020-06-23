@@ -23,6 +23,11 @@ final class LabelsCollectionViewDataSource: NSObject, UICollectionViewDataSource
         self.changedHandler = changedHandler
     }
     
+    func referLabel(at indexPath: IndexPath, handler: (IssueLabel) -> Void) {
+        let label = labels[indexPath.item]
+        handler(label)
+    }
+    
     func updateNotify(handler: @escaping handler) {
          self.changedHandler = handler
      }
