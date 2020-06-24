@@ -64,10 +64,10 @@ extension LabelCellMoreViewController {
     
     @objc private func deleteButtonDidTap() {
         let alertController = UIAlertController(title: "경고", message: "삭제하시겠습니까?", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "예", style: .default) { (_) in
+        let okAction = UIAlertAction(title: "삭제", style: .default) { (_) in
             self.removeLabel()
         }
-        let cancelAction = UIAlertAction(title: "아니요", style: .default) { (_) in
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { (_) in
             return
         }
         alertController.addAction(okAction)
