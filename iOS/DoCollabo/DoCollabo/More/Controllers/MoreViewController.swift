@@ -52,7 +52,7 @@ extension MoreViewController {
         })
     }
     
-    private func dismissMoreView() {
+    func dismissMoreView() {
         moreViewBottomConstraint.constant = 500
         UIView.animateCurveEaseOut(
             withDuration: 0.3,
