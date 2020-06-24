@@ -22,8 +22,7 @@ class PopUpViewController: UIViewController {
     
     weak var popUpViewControllerDelegate: PopUpViewControllerDelegate?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func resetContentView() {
         contentView.reset()
     }
     
@@ -97,7 +96,7 @@ extension PopUpViewController {
         backgroundView.backgroundColor = .black
         backgroundView.alpha = 0.5
         frameView = UIView()
-        frameView.backgroundColor = .white
+        frameView.backgroundColor = .tertiarySystemBackground
         frameView.roundCorner(cornerRadius: 16.0)
     }
     

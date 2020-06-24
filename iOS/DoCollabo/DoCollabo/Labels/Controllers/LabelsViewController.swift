@@ -66,6 +66,13 @@ final class LabelsViewController: UIViewController {
 // MARK:- LabelCellMoreViewControllerDelegate
 
 extension LabelsViewController: LabelCellMoreViewControllerDelegate {
+    func editButtonDidTap(at indexPath: IndexPath) {
+        dataSource.referLabel(at: indexPath) { (issue) in
+            popUpViewController.updatePopupView(with: issue)
+            self.present(popUpViewController, animated: true, completion: nil)
+        }
+    }
+    
     func removeLabelCell(at indexPath: IndexPath) {
         let cell = self.labelsCollectionView.cellForItem(at: indexPath) as! LabelCell
         DispatchQueue.main.async {
@@ -138,6 +145,8 @@ extension LabelsViewController {
 
 extension LabelsViewController: HeaderViewActionDelegate {
     func newButtonDidTap() {
+        popUpViewController.configureRandomColor()
+        popUpViewController.resetContentView()
         present(popUpViewController, animated: true, completion: nil)
     }
 }

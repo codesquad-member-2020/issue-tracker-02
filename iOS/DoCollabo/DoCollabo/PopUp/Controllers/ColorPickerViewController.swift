@@ -20,20 +20,20 @@ final class ColorPickerViewController: PopUpViewController {
     
     weak var delegate: ColorPickerViewControllerDelegate?
     
-    func configureColorPickerView() {
+    func configureColorPickerView(_ color: UIColor) {
         configure()
-        configurePalette()
+        configurePalette(with: color)
+        configureSelectedColorString()
         hideSupplementaryButtons()
         configureSecondLevelBackgroundView()
     }
     
-    private func configurePalette() {
+    private func configurePalette(with color: UIColor) {
         palette = ColorPicker()
-        palette.backgroundColor = .white
+        palette.backgroundColor = .tertiarySystemBackground
         palette.translatesAutoresizingMaskIntoConstraints = false
-        palette.set(color: .generateRandomColor(), colorSpace: .sRGB)
         configureContentView(palette)
-        configureSelectedColorString()
+        palette.set(color: color, colorSpace: .sRGB)
     }
     
     private func configureSelectedColorString() {

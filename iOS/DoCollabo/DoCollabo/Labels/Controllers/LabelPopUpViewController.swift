@@ -11,12 +11,7 @@ import UIKit
 final class LabelPopUpViewController: PopUpViewController {
     
     private var popUpColorPickerView: PopUpColorPickerView!
-    private var selectedColor: String!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureRandomColor()
-    }
+    private var selectedColorHexString: String!
     
     func configureLabelPopupViewController() {
         configure()
@@ -26,15 +21,25 @@ final class LabelPopUpViewController: PopUpViewController {
         popUpColorPickerView.delegate = self
     }
     
-    private func configureUI() {
-        popUpColorPickerView = PopUpColorPickerView()
-        configureRandomColor()
+    func updatePopupView(with label: IssueLabel) {
+        var hexString = label.color
+        if !hexString.contains("#") {
+            hexString = "#\(hexString)"
+        }
+        contentView.updateTextFields(title: label.title, description: label.description)
+        let color = UIColor(hexString: label.color)
+        popUpColorPickerView.configureColorInfo(color: color, hexString: hexString)
+        selectedColorHexString = hexString
     }
     
-    private func configureRandomColor() {
+    private func configureUI() {
+        popUpColorPickerView = PopUpColorPickerView()
+    }
+    
+    func configureRandomColor() {
         let randomColorInfo = randomColor()
         popUpColorPickerView.configureColorInfo(color: randomColorInfo.color, hexString: randomColorInfo.hexString)
-        selectedColor = randomColorInfo.hexString
+        selectedColorHexString = randomColorInfo.hexString
     }
     
     private func randomColor() -> (color: UIColor, hexString: String) {
@@ -50,14 +55,14 @@ extension LabelPopUpViewController: ColorPickerActionDelegate {
     func colorPickerButtonDidTap() {
         let colorPickerViewController = ColorPickerViewController()
         colorPickerViewController.modalPresentationStyle = .overCurrentContext
-        colorPickerViewController.configureColorPickerView()
+        colorPickerViewController.configureColorPickerView(UIColor(hexString: selectedColorHexString))
         colorPickerViewController.delegate = self
         present(colorPickerViewController, animated: false, completion: nil)
     }
     
     func randomButtonDidTap() -> (color: UIColor, hexString: String) {
         let colorInfo = randomColor()
-        selectedColor = colorInfo.hexString
+        selectedColorHexString = colorInfo.hexString
         return colorInfo
     }
 }
@@ -67,7 +72,7 @@ extension LabelPopUpViewController: ColorPickerActionDelegate {
 extension LabelPopUpViewController: ColorPickerViewControllerDelegate {
     func SubmitButtonDidTap(color: UIColor) {
         popUpColorPickerView.configureColorInfo(color: color, hexString: color.hexString)
-        selectedColor = color.hexString
+        selectedColorHexString = color.hexString
     }
 }
 
@@ -79,6 +84,6 @@ extension LabelPopUpViewController {
         popUpViewControllerDelegate?.submitButtonDidTap(
             title: newFeature.title,
             description: newFeature.description,
-            additionalData: selectedColor)
+            additionalData: selectedColorHexString)
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 
 protocol LabelCellMoreViewControllerDelegate: class {
     func removeLabelCell(at indexPath: IndexPath)
+    func editButtonDidTap(at indexPath: IndexPath)
 }
 
 final class LabelCellMoreViewController: MoreViewController {
@@ -59,7 +60,9 @@ extension LabelCellMoreViewController {
 
 extension LabelCellMoreViewController {
     @objc private func editButtonDidTap() {
-        
+        dismissMoreView {
+            self.delegate?.editButtonDidTap(at: self.indexPath)
+        }
     }
     
     @objc private func deleteButtonDidTap() {

@@ -56,7 +56,7 @@ extension MoreViewController {
         })
     }
     
-    func dismissMoreView() {
+    func dismissMoreView(completion: @escaping () -> Void = {  }) {
         moreViewBottomConstraint.constant = 500
         UIView.animateCurveEaseOut(
             withDuration: 0.3,
@@ -65,6 +65,7 @@ extension MoreViewController {
                 self.view.layoutIfNeeded()
         }) { (_) in
             self.dismiss(animated: false, completion: nil)
+            completion()
         }
     }
 }
