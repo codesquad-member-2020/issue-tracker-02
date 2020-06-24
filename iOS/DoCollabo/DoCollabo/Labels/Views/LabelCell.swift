@@ -32,10 +32,7 @@ final class LabelCell: UICollectionViewCell {
         drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
         roundCorner(cornerRadius: 16.0)
         titleBackground.roundCorner(cornerRadius: 16.0)
-        descriptionLabel = UILabel()
-        descriptionLabel.numberOfLines = 1
-        descriptionLabel.font = .systemFont(ofSize: 14, weight: .regular)
-        descriptionLabel.textColor = .label
+        descriptionLabel = LabelDescriptionLabel()
     }
     
     func configureCell(with label: IssueLabel) {

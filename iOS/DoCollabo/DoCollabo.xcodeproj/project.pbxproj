@@ -81,6 +81,7 @@
 		38F0FB5C248E6E4C0080FBBD /* OAuthURLStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */; };
 		38F0FB5E248E73690080FBBD /* OAuthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB5D248E73690080FBBD /* OAuthNetworkManager.swift */; };
 		38F0FB62248FA23F0080FBBD /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0FB61248FA23F0080FBBD /* EndPoint.swift */; };
+		38F7CA5A24A334C7003E7AD4 /* LabelDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA5924A334C7003E7AD4 /* LabelDescriptionLabel.swift */; };
 		38FF07E0249E1C4C00DBFB5F /* IssueStatusImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF07DF249E1C4C00DBFB5F /* IssueStatusImageView.swift */; };
 		38FF07E2249E20BA00DBFB5F /* IssueMoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF07E1249E20BA00DBFB5F /* IssueMoreButton.swift */; };
 		38FF07E4249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF07E3249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift */; };
@@ -175,6 +176,7 @@
 		38F0FB5B248E6E4C0080FBBD /* OAuthURLStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthURLStub.swift; sourceTree = "<group>"; };
 		38F0FB5D248E73690080FBBD /* OAuthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthNetworkManager.swift; sourceTree = "<group>"; };
 		38F0FB61248FA23F0080FBBD /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		38F7CA5924A334C7003E7AD4 /* LabelDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDescriptionLabel.swift; sourceTree = "<group>"; };
 		38FF07DF249E1C4C00DBFB5F /* IssueStatusImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueStatusImageView.swift; sourceTree = "<group>"; };
 		38FF07E1249E20BA00DBFB5F /* IssueMoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueMoreButton.swift; sourceTree = "<group>"; };
 		38FF07E3249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalWriterLabel.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				3020A0A82493479200483727 /* LabelsCollectionView.swift */,
 				3020A0AA249347F000483727 /* LabelCell.swift */,
 				3020A0AB249347F000483727 /* LabelCell.xib */,
+				38F7CA5924A334C7003E7AD4 /* LabelDescriptionLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -785,6 +788,7 @@
 				385BE60A24A0C71B00232523 /* MoreViewController.swift in Sources */,
 				30E22EE22490B09200EC0FD8 /* IssueLabelsCollectionView.swift in Sources */,
 				3861B006248FC582006FD89E /* IssuesCollectionView.swift in Sources */,
+				38F7CA5A24A334C7003E7AD4 /* LabelDescriptionLabel.swift in Sources */,
 				380F18A42499F8890084CE56 /* IssueHorizontalCommentView.swift in Sources */,
 				3020A0B024936FB200483727 /* LabelsCollectionViewDataSource.swift in Sources */,
 				38FF07E0249E1C4C00DBFB5F /* IssueStatusImageView.swift in Sources */,
