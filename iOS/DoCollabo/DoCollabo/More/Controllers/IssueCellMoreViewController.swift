@@ -98,6 +98,19 @@ extension IssueCellMoreViewController {
     }
     
     @objc private func deleteButtonDidTap() {
+        let alertController = UIAlertController(title: "경고", message: "삭제하시겠습니까?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "예", style: .default) { (_) in
+            self.removeIssue()
+        }
+        let cancelAction = UIAlertAction(title: "아니요", style: .default) { (_) in
+            return
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func removeIssue() {
         let request = IssuesRequest(method: .DELETE, id: String(issue.id)).asURLRequest()
         issuesUseCase.requestDelete(request: request) { (result) in
             switch result {
