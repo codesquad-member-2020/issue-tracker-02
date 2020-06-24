@@ -12,6 +12,7 @@ enum NetworkError: Error, CustomStringConvertible {
     case NotFound
     case BadRequest
     case AuthenticationFailure
+    case AuthorizationDenied
     
     var description: String {
         switch self {
@@ -21,6 +22,8 @@ enum NetworkError: Error, CustomStringConvertible {
             return "잘못된 요청입니다."
         case .AuthenticationFailure:
             return "인증에 실패했습니다."
+        case .AuthorizationDenied:
+            return "권한이 없습니다."
         }
     }
 }
