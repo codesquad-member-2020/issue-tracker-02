@@ -50,6 +50,7 @@
 		30E22EFD2491101A00EC0FD8 /* IssueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */; };
 		30E505ED249F84BA00B98BA1 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E505EC249F84BA00B98BA1 /* UIColor+Random.swift */; };
 		30E505F2249FBA7200B98BA1 /* NewIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E505F1249FBA7200B98BA1 /* NewIssueViewController.swift */; };
+		38035DD124A33A8D004C7E20 /* LabelCellMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38035DD024A33A8D004C7E20 /* LabelCellMoreViewController.swift */; };
 		380425512498D8F7005059EB /* IssuesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380425502498D8F7005059EB /* IssuesRequest.swift */; };
 		380F18A02499DFA90084CE56 /* IssueHorizontalTrailingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F189F2499DFA90084CE56 /* IssueHorizontalTrailingStackView.swift */; };
 		380F18A42499F8890084CE56 /* IssueHorizontalCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F18A32499F8890084CE56 /* IssueHorizontalCommentView.swift */; };
@@ -145,6 +146,7 @@
 		30E505EC249F84BA00B98BA1 /* UIColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
 		30E505EE249FA47500B98BA1 /* DoCollabo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoCollabo.entitlements; sourceTree = "<group>"; };
 		30E505F1249FBA7200B98BA1 /* NewIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueViewController.swift; sourceTree = "<group>"; };
+		38035DD024A33A8D004C7E20 /* LabelCellMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCellMoreViewController.swift; sourceTree = "<group>"; };
 		380425502498D8F7005059EB /* IssuesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesRequest.swift; sourceTree = "<group>"; };
 		380F189F2499DFA90084CE56 /* IssueHorizontalTrailingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalTrailingStackView.swift; sourceTree = "<group>"; };
 		380F18A32499F8890084CE56 /* IssueHorizontalCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHorizontalCommentView.swift; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 			children = (
 				385BE60924A0C71B00232523 /* MoreViewController.swift */,
 				385BE61324A128FB00232523 /* IssueCellMoreViewController.swift */,
+				38035DD024A33A8D004C7E20 /* LabelCellMoreViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 				30E22EF824910EF800EC0FD8 /* UseCase.swift in Sources */,
 				380425512498D8F7005059EB /* IssuesRequest.swift in Sources */,
 				309CED7C24A0959B006F7DE4 /* NewIssueHorizontalScrollView.swift in Sources */,
+				38035DD124A33A8D004C7E20 /* LabelCellMoreViewController.swift in Sources */,
 				3825A8A1249339700021D512 /* IssuesViewController+ScrollAnimation.swift in Sources */,
 				308A9C9B2499010B00DE53E4 /* PopUpContentView.swift in Sources */,
 				30E505ED249F84BA00B98BA1 /* UIColor+Random.swift in Sources */,

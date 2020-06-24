@@ -15,6 +15,7 @@ final class LabelsViewController: UIViewController {
     @IBOutlet weak var labelsCollectionView: LabelsCollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var popUpViewController: LabelPopUpViewController!
+    private var moreViewController: LabelCellMoreViewController!
 
     private var labelsUseCase: UseCase!
     private var dataSource: LabelsCollectionViewDataSource!
@@ -64,6 +65,12 @@ extension LabelsViewController {
     @objc private func moreButtonDidTap(notification: Notification) {
         guard let cell = notification.object as? LabelCell else { return }
         guard let indexPath = labelsCollectionView.indexPath(for: cell) else { return }
+        dataSource.referLabel(at: indexPath) { (label) in
+            moreViewController.configureLabelCellMoreViewController(
+                with: label,
+                at: indexPath)
+            present(moreViewController, animated: false, completion: nil)
+        }
     }
 }
 
@@ -161,6 +168,12 @@ extension LabelsViewController {
         configureCollectionViewDataSource()
         configureUseCase()
         configureNotification()
+        configureMoreViewController()
+    }
+    
+    private func configureMoreViewController() {
+        moreViewController = LabelCellMoreViewController()
+        moreViewController.modalPresentationStyle = .overFullScreen
     }
     
     private func configureNotification() {
