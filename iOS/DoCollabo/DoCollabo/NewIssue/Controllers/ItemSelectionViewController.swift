@@ -16,7 +16,7 @@ final class ItemSelectionViewController: UIViewController {
     private var dataSource: UITableViewDataSource!
     private var labelUseCase: LabelsUseCase!
     private var milestoneUseCase: MilestoneUseCase!
-
+    
     private var users: [User]!
     private var labels: [IssueLabel]!
     private var milestones: [Milestone]!
@@ -124,18 +124,16 @@ final class ItemSelectionViewController: UIViewController {
     }
     
     @objc func selectUser(_ button: UIButton) {
-        let location = button.convert(button.bounds.origin, to: self.itemSelectionTableView)
-        guard let indexPath = self.itemSelectionTableView.indexPathForRow(at: location) else { return }
+        guard let indexPath = location(at: button) else { return }
         let user = users[indexPath.row]
         selectedUsers.append(user)
-    
+        
         guard let index = users.firstIndex(of: user) else { return }
         users.remove(at: index)
     }
     
     @objc func selectLabel(_ button: UIButton) {
-        let location = button.convert(button.bounds.origin, to: self.itemSelectionTableView)
-        guard let indexPath = self.itemSelectionTableView.indexPathForRow(at: location) else { return }
+        guard let indexPath = location(at: button) else { return }
         let label = labels[indexPath.row]
         selectedLabels.append(label)
         
@@ -144,13 +142,18 @@ final class ItemSelectionViewController: UIViewController {
     }
     
     @objc func selectMilestone(_ button: UIButton) {
-        let location = button.convert(button.bounds.origin, to: self.itemSelectionTableView)
-        guard let indexPath = self.itemSelectionTableView.indexPathForRow(at: location) else { return }
+        guard let indexPath = location(at: button) else { return }
         let milestone = milestones[indexPath.row]
         selectedMilestones.append(milestone)
-
+        
         guard let index = milestones.firstIndex(of: milestone) else { return }
         milestones.remove(at: index)
+    }
+    
+    private func location(at button: UIButton) -> IndexPath? {
+        let location = button.convert(button.bounds.origin, to: self.itemSelectionTableView)
+        guard let indexPath = self.itemSelectionTableView.indexPathForRow(at: location) else { return nil }
+        return indexPath
     }
     
     private func configure() {
