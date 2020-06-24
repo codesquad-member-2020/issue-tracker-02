@@ -22,15 +22,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UK-oi-2fz" customClass="NewIssueHorizontalScrollView" customModule="DoCollabo" customModuleProvider="target">
-                    <rect key="frame" x="101.5" y="16" width="246" height="50.5"/>
+                    <rect key="frame" x="101.5" y="16" width="230" height="50.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Eb-5c-eWu" customClass="NewIssueHorizontalScrollView" customModule="DoCollabo" customModuleProvider="target">
-                    <rect key="frame" x="101.5" y="70.5" width="246" height="50"/>
+                    <rect key="frame" x="101.5" y="70.5" width="230" height="50"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nt9-SS-HVr" customClass="NewIssueHorizontalScrollView" customModule="DoCollabo" customModuleProvider="target">
-                    <rect key="frame" x="101.5" y="124.5" width="246" height="50.5"/>
+                    <rect key="frame" x="101.5" y="124.5" width="230" height="50.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="DBK-Ro-976">
@@ -58,10 +58,9 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="OaH-jG-C7L">
-                    <rect key="frame" x="363.5" y="16" width="50.5" height="159"/>
+                    <rect key="frame" x="347.5" y="16" width="50.5" height="159"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUW-av-Lww">
                             <rect key="frame" x="0.0" y="0.0" width="50.5" height="50.5"/>
@@ -106,14 +105,13 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="7UK-oi-2fz" firstAttribute="bottom" secondItem="Qky-qo-q1P" secondAttribute="bottom" id="0wY-36-z2n"/>
                 <constraint firstItem="4Eb-5c-eWu" firstAttribute="top" secondItem="yBD-Wz-m7h" secondAttribute="top" id="40e-It-7DI"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OaH-jG-C7L" secondAttribute="trailing" id="6FC-AW-7ca"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OaH-jG-C7L" secondAttribute="trailing" constant="16" id="6FC-AW-7ca"/>
                 <constraint firstItem="Qky-qo-q1P" firstAttribute="top" secondItem="OaH-jG-C7L" secondAttribute="top" id="94c-D4-NGz"/>
                 <constraint firstItem="nt9-SS-HVr" firstAttribute="top" secondItem="QUW-Bo-GVU" secondAttribute="top" id="FKr-QT-qVV"/>
                 <constraint firstItem="nt9-SS-HVr" firstAttribute="bottom" secondItem="QUW-Bo-GVU" secondAttribute="bottom" id="HDF-hB-8mM"/>
