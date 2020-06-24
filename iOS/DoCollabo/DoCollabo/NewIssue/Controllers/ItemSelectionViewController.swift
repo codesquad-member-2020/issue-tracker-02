@@ -17,9 +17,25 @@ final class ItemSelectionViewController: UIViewController {
     private var labelUseCase: LabelsUseCase!
     private var milestoneUseCase: MilestoneUseCase!
 
-    private var selectedUsers: [User]!
-    private var selectedLabels: [IssueLabel]!
-    private var selectedMilestones: [Milestone]!
+    private var users: [User]!
+    private var labels: [IssueLabel]!
+    private var milestones: [Milestone]!
+    
+    private var selectedUsers: [User] = [] {
+        didSet {
+            assigneeDidLoad(users)
+        }
+    }
+    private var selectedLabels: [IssueLabel] = [] {
+        didSet {
+            labelsDidLoad(labels)
+        }
+    }
+    private var selectedMilestones: [Milestone] = [] {
+        didSet {
+            milestoneDidLoad(milestones)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +44,7 @@ final class ItemSelectionViewController: UIViewController {
     
     func fetchAssigneeStub() {
         let stubUsers = AssigneesStub.users
-        selectedUsers = []
+        users = stubUsers
         assigneeDidLoad(stubUsers)
     }
     
@@ -37,7 +53,7 @@ final class ItemSelectionViewController: UIViewController {
         milestoneUseCase.getResources(request: request, dataType: [Milestone].self) { (result) in
             switch result {
             case .success(let milestones):
-                self.selectedMilestones = []
+                self.milestones = milestones
                 self.milestoneDidLoad(milestones)
             case .failure(let error):
                 self.presentErrorAlert(error: error) {
@@ -52,7 +68,7 @@ final class ItemSelectionViewController: UIViewController {
         labelUseCase.getResources(request: request, dataType: [IssueLabel].self) { (result) in
             switch result {
             case .success(let labels):
-                self.selectedLabels = []
+                self.labels = labels
                 self.labelsDidLoad(labels)
             case .failure(let error):
                 self.presentErrorAlert(error: error) {
@@ -68,7 +84,7 @@ final class ItemSelectionViewController: UIViewController {
         configureTableView(cellIdentifier)
         self.dataSource = GeneralTableViewDataSource(models: users, selectedModels: selectedUsers, reuseIdentifier: cellIdentifier) { (user, cell) in
             let addButton = cell.addButton()
-            addButton.addTarget(self, action: #selector(self.selectItem), for: .touchUpInside)
+            addButton.addTarget(self, action: #selector(self.selectUser), for: .touchUpInside)
             let assigneeCell = cell as! AssigneeTableViewCell
             assigneeCell.accessoryView = addButton
             assigneeCell.configureData(user)
@@ -83,7 +99,7 @@ final class ItemSelectionViewController: UIViewController {
         configureTableView(cellIdentifier)
         self.dataSource = GeneralTableViewDataSource(models: labels, selectedModels: selectedLabels, reuseIdentifier: cellIdentifier) { (label, cell) in
             let addButton = cell.addButton()
-            addButton.addTarget(self, action: #selector(self.selectItem), for: .touchUpInside)
+            addButton.addTarget(self, action: #selector(self.selectLabel), for: .touchUpInside)
             let labelCell = cell as! LabelTableViewCell
             labelCell.accessoryView = addButton
             labelCell.configureData(label)
@@ -97,9 +113,9 @@ final class ItemSelectionViewController: UIViewController {
         let cellIdentifier = String(describing: MilestoneTableViewCell.self)
         configureTableView(cellIdentifier)
         self.dataSource = GeneralTableViewDataSource(models: milestones, selectedModels: selectedMilestones, reuseIdentifier: cellIdentifier) { (milestone, cell) in
-            let addButton = cell.addButton()
-            addButton.addTarget(self, action: #selector(self.selectItem), for: .touchUpInside)
             let milestoneCell = cell as! MilestoneTableViewCell
+            let addButton = cell.addButton()
+            addButton.addTarget(self, action: #selector(self.selectMilestone), for: .touchUpInside)
             milestoneCell.accessoryView = addButton
             milestoneCell.configureData(milestone)
         }
@@ -107,8 +123,34 @@ final class ItemSelectionViewController: UIViewController {
         itemSelectionTableView.reloadData()
     }
     
-    @objc func selectItem() {
-        //TODO:- 선택한 동작
+    @objc func selectUser(_ button: UIButton) {
+        let location = button.convert(button.bounds.origin, to: self.itemSelectionTableView)
+        guard let indexPath = self.itemSelectionTableView.indexPathForRow(at: location) else { return }
+        let user = users[indexPath.row]
+        selectedUsers.append(user)
+    
+        guard let index = users.firstIndex(of: user) else { return }
+        users.remove(at: index)
+    }
+    
+    @objc func selectLabel(_ button: UIButton) {
+        let location = button.convert(button.bounds.origin, to: self.itemSelectionTableView)
+        guard let indexPath = self.itemSelectionTableView.indexPathForRow(at: location) else { return }
+        let label = labels[indexPath.row]
+        selectedLabels.append(label)
+        
+        guard let index = labels.firstIndex(of: label) else { return }
+        labels.remove(at: index)
+    }
+    
+    @objc func selectMilestone(_ button: UIButton) {
+        let location = button.convert(button.bounds.origin, to: self.itemSelectionTableView)
+        guard let indexPath = self.itemSelectionTableView.indexPathForRow(at: location) else { return }
+        let milestone = milestones[indexPath.row]
+        selectedMilestones.append(milestone)
+
+        guard let index = milestones.firstIndex(of: milestone) else { return }
+        milestones.remove(at: index)
     }
     
     private func configure() {
