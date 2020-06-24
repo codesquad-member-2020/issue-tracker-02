@@ -54,7 +54,7 @@ final class ItemSelectionViewController: UIViewController {
     func fetchAssigneeStub() {
         hideTableView()
         let stubUsers = AssigneesStub.users
-        users = stubUsers
+        users = stubUsers.filter() { !selectedUsers.contains($0) }
         assigneeDidLoad()
         showTableView()
     }
@@ -65,7 +65,7 @@ final class ItemSelectionViewController: UIViewController {
         milestoneUseCase.getResources(request: request, dataType: [Milestone].self) { (result) in
             switch result {
             case .success(let milestones):
-                self.milestones = milestones
+                self.milestones = milestones.filter() { !self.selectedMilestones.contains($0) }
                 self.milestoneDidLoad()
             case .failure(let error):
                 self.presentErrorAlert(error: error) {
@@ -82,7 +82,7 @@ final class ItemSelectionViewController: UIViewController {
         labelUseCase.getResources(request: request, dataType: [IssueLabel].self) { (result) in
             switch result {
             case .success(let labels):
-                self.labels = labels
+                self.labels = labels.filter() { !self.selectedLabels.contains($0) }
                 self.labelsDidLoad()
             case .failure(let error):
                 self.presentErrorAlert(error: error) {
