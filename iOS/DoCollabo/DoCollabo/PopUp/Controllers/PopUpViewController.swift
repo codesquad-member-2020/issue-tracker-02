@@ -10,7 +10,6 @@ import UIKit
 
 protocol PopUpViewControllerDelegate: class {
     func cancelButtonDidTap()
-    func submitButtonDidTap(title: String, description: String?, additionalData: String?)
 }
 
 class PopUpViewController: UIViewController {
@@ -69,11 +68,7 @@ class PopUpViewController: UIViewController {
     }
     
     func submitButtonDidTap() {
-        guard let newFeature = validContents() else { return }
-         popUpViewControllerDelegate?.submitButtonDidTap(
-                                                        title: newFeature.title,
-                                                        description: newFeature.description,
-                                                        additionalData: nil)
+        
     }
 }
 

@@ -22,13 +22,13 @@ final class ColorPickerViewController: PopUpViewController {
     
     func configureColorPickerView(_ color: UIColor) {
         configure()
-        configurePalette(with: color)
+        configurePalette(color)
         configureSelectedColorString()
         hideSupplementaryButtons()
         configureSecondLevelBackgroundView()
     }
     
-    private func configurePalette(with color: UIColor) {
+    private func configurePalette(_ color: UIColor) {
         palette = ColorPicker()
         palette.backgroundColor = .tertiarySystemBackground
         palette.translatesAutoresizingMaskIntoConstraints = false

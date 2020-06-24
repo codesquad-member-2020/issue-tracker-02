@@ -32,7 +32,7 @@ final class LabelCell: UICollectionViewCell {
     
     func configureCell(with label: IssueLabel) {
         titleLabel.text = label.title
-        let color = UIColor(hexString: label.color)
+        let color = UIColor(hexString: label.colorHexString)
         titleLabel.textColor = color.isDark ? .white : .black
         titleBackground.backgroundColor = color
         descriptionLabel.text = label.description

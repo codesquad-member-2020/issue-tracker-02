@@ -8,10 +8,27 @@
 
 import UIKit
 
+protocol LabelPopUpViewControllerDelegate: class {
+    func submitButtonDidTap(label: IssueLabel, isEditMode: Bool, at indexPath: IndexPath?)
+}
+
 final class LabelPopUpViewController: PopUpViewController {
     
     private var popUpColorPickerView: PopUpColorPickerView!
     private var selectedColorHexString: String!
+    private var isEditMode: Bool = false
+    private var editingLabel: IssueLabel!
+    private var indexPath: IndexPath?
+    
+    weak var labelPopUpDelegate: LabelPopUpViewControllerDelegate?
+    
+    func configureIndexPath(_ indexPath: IndexPath) {
+        self.indexPath = indexPath
+    }
+    
+    func configureEditMode(_ isEditMode: Bool) {
+        self.isEditMode = isEditMode
+    }
     
     func configureLabelPopupViewController() {
         configure()
@@ -21,13 +38,14 @@ final class LabelPopUpViewController: PopUpViewController {
         popUpColorPickerView.delegate = self
     }
     
-    func updatePopupView(with label: IssueLabel) {
-        var hexString = label.color
+    func updatePopupViewForEditing(with label: IssueLabel) {
+        self.editingLabel = label
+        var hexString = label.colorHexString
         if !hexString.contains("#") {
             hexString = "#\(hexString)"
         }
         contentView.updateTextFields(title: label.title, description: label.description)
-        let color = UIColor(hexString: label.color)
+        let color = UIColor(hexString: label.colorHexString)
         popUpColorPickerView.configureColorInfo(color: color, hexString: hexString)
         selectedColorHexString = hexString
     }
@@ -80,10 +98,21 @@ extension LabelPopUpViewController: ColorPickerViewControllerDelegate {
 
 extension LabelPopUpViewController {
     override func submitButtonDidTap() {
-        guard let newFeature = validContents() else { return }
-        popUpViewControllerDelegate?.submitButtonDidTap(
-            title: newFeature.title,
-            description: newFeature.description,
-            additionalData: selectedColorHexString)
+        guard let validContents = validContents() else { return }
+        dismiss(animated: true, completion: nil)
+        if isEditMode {
+            editingLabel.update(
+                title: validContents.title,
+                colorHexString: selectedColorHexString,
+                description: validContents.description)
+            labelPopUpDelegate?.submitButtonDidTap(label: editingLabel, isEditMode: isEditMode, at: indexPath)
+        } else {
+            let newLabel = IssueLabel(
+                id: nil,
+                title: validContents.title,
+                colorHexString: selectedColorHexString,
+                description: validContents.description)
+            labelPopUpDelegate?.submitButtonDidTap(label: newLabel, isEditMode: isEditMode, at: nil)
+        }
     }
 }

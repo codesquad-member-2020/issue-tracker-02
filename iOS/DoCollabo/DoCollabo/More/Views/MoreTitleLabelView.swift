@@ -25,7 +25,7 @@ final class MoreTitleLabelView: UIView {
     
     func configureLabel(with label: IssueLabel) {
         labelTextLabel.text = label.title
-        let color = UIColor(hexString: label.color)
+        let color = UIColor(hexString: label.colorHexString)
         labelBackgroundView.backgroundColor = color
         labelTextLabel.textColor = color.isDark ? .white : .black
     }

@@ -49,18 +49,6 @@ final class LabelsViewController: UIViewController {
             }
         }
     }
-    
-    private func requestAddLabel(bodyParams: Data) {
-        let request = LabelsRequest(method: .POST, id: nil, bodyParams: bodyParams).asURLRequest()
-        labelsUseCase.getStatus(request: request) { result in
-            switch result {
-            case .success(_):
-                self.fetchLabels()
-            case .failure(let error):
-                self.presentErrorAlert(error: error)
-            }
-        }
-    }
 }
 
 // MARK:- LabelCellMoreViewControllerDelegate
@@ -68,7 +56,9 @@ final class LabelsViewController: UIViewController {
 extension LabelsViewController: LabelCellMoreViewControllerDelegate {
     func editButtonDidTap(at indexPath: IndexPath) {
         dataSource.referLabel(at: indexPath) { (issue) in
-            popUpViewController.updatePopupView(with: issue)
+            popUpViewController.updatePopupViewForEditing(with: issue)
+            popUpViewController.configureIndexPath(indexPath)
+            popUpViewController.configureEditMode(true)
             self.present(popUpViewController, animated: true, completion: nil)
         }
     }
@@ -147,30 +137,71 @@ extension LabelsViewController: HeaderViewActionDelegate {
     func newButtonDidTap() {
         popUpViewController.configureRandomColor()
         popUpViewController.resetContentView()
+        popUpViewController.configureEditMode(false)
         present(popUpViewController, animated: true, completion: nil)
     }
 }
 
 // MARK:- ButtonStackActionDelegate
 
-extension LabelsViewController: PopUpViewControllerDelegate {
-    func cancelButtonDidTap() {
-        dismiss(animated: true, completion: nil)
-    }
-
-    func submitButtonDidTap(title: String, description: String?, additionalData: String?) {
-        dismiss(animated: true, completion: nil)
-        encodeLabel(title: title, description: description, color: additionalData!)
+extension LabelsViewController: LabelPopUpViewControllerDelegate {
+    func submitButtonDidTap(label: IssueLabel, isEditMode: Bool, at indexPath: IndexPath? = nil) {
+        if isEditMode {
+            requestEditLabel(with: label, at: indexPath)
+        } else {
+            requestAddLabel(with: label)
+        }
     }
     
-    private func encodeLabel(title: String, description: String?, color: String) {
-        let label = IssueLabel(id: nil, title: title, color: color, description: description)
+    private func requestAddLabel(with label: IssueLabel) {
+        encodeLabel(label) { encodedData in
+            let request = LabelsRequest(method: .POST, id: nil, bodyParams: encodedData).asURLRequest()
+            labelsUseCase.getStatus(request: request) { result in
+                switch result {
+                case .success(_):
+                    self.fetchLabels()
+                case .failure(let error):
+                    self.presentErrorAlert(error: error)
+                }
+            }
+        }
+    }
+    
+    private func requestEditLabel(with label: IssueLabel, at indexPath: IndexPath?) {
+        encodeLabel(label) { encodedData in
+            let request = LabelsRequest(method: .PUT, id: String(label.id!), bodyParams: encodedData).asURLRequest()
+            labelsUseCase.getStatus(request: request) { result in
+                switch result {
+                case .success(_):
+                    self.updateCollectionView(with: label, at: indexPath)
+                case .failure(let error):
+                    self.presentErrorAlert(error: error)
+                }
+            }
+        }
+    }
+    
+    private func updateCollectionView(with label: IssueLabel, at indexPath: IndexPath?) {
+        guard let indexPath = indexPath else { return }
+        dataSource.updateLabel(with: label, at: indexPath)
+        labelsCollectionView.performBatchUpdates({
+            labelsCollectionView.reloadItems(at: [indexPath])
+        }, completion: nil)
+    }
+    
+    private func encodeLabel(_ label: IssueLabel, completion: (Data) -> Void) {
         do {
             let encodedData = try JSONEncoder().encode(label)
-            requestAddLabel(bodyParams: encodedData)
+            completion(encodedData)
         } catch {
             self.presentErrorAlert(error: NetworkError.BadRequest)
         }
+    }
+}
+
+extension LabelsViewController: PopUpViewControllerDelegate {
+    func cancelButtonDidTap() {
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -234,6 +265,7 @@ extension LabelsViewController {
         popUpViewController.modalTransitionStyle = .crossDissolve
         popUpViewController.configureLabelPopupViewController()
         popUpViewController.popUpViewControllerDelegate = self
+        popUpViewController.labelPopUpDelegate = self
     }
 
     private func configureHeaderView() {
