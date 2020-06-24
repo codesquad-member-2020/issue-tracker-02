@@ -32,17 +32,17 @@ final class ItemSelectionViewController: UIViewController {
     
     private var selectedUsers: [User] = [] {
         didSet {
-            assigneeDidLoad()
+            configureAssigneeTableView()
         }
     }
     private var selectedLabels: [IssueLabel] = [] {
         didSet {
-            labelsDidLoad()
+            configureLabelTableView()
         }
     }
     private var selectedMilestones: [Milestone] = [] {
         didSet {
-            milestoneDidLoad()
+            configureMilestoneTableView()
         }
     }
     
@@ -51,29 +51,14 @@ final class ItemSelectionViewController: UIViewController {
         configure()
     }
     
+    //MARK: - Fetch Data
+    
     func fetchAssigneeStub() {
         hideTableView()
         let stubUsers = AssigneesStub.users
         users = stubUsers.filter() { !selectedUsers.contains($0) }
-        assigneeDidLoad()
+        configureAssigneeTableView()
         showTableView()
-    }
-    
-    func fetchMilestones() {
-        hideTableView()
-        let request = MilestoneRequest().asURLRequest()
-        milestoneUseCase.getResources(request: request, dataType: [Milestone].self) { (result) in
-            switch result {
-            case .success(let milestones):
-                self.milestones = milestones.filter() { !self.selectedMilestones.contains($0) }
-                self.milestoneDidLoad()
-            case .failure(let error):
-                self.presentErrorAlert(error: error) {
-                    self.fetchMilestones()
-                }
-            }
-            self.showTableView()
-        }
     }
     
     func fetchLabels() {
@@ -83,7 +68,7 @@ final class ItemSelectionViewController: UIViewController {
             switch result {
             case .success(let labels):
                 self.labels = labels.filter() { !self.selectedLabels.contains($0) }
-                self.labelsDidLoad()
+                self.configureLabelTableView()
             case .failure(let error):
                 self.presentErrorAlert(error: error) {
                     self.fetchLabels()
@@ -93,30 +78,70 @@ final class ItemSelectionViewController: UIViewController {
         }
     }
     
-    private func hideTableView() {
-        itemSelectionTableView.alpha = 0
-        networkIndicator.startAnimating()
+    func fetchMilestones() {
+        hideTableView()
+        let request = MilestoneRequest().asURLRequest()
+        milestoneUseCase.getResources(request: request, dataType: [Milestone].self) { (result) in
+            switch result {
+            case .success(let milestones):
+                self.milestones = milestones.filter() { !self.selectedMilestones.contains($0) }
+                self.configureMilestoneTableView()
+            case .failure(let error):
+                self.presentErrorAlert(error: error) {
+                    self.fetchMilestones()
+                }
+            }
+            self.showTableView()
+        }
     }
     
-    private func showTableView() {
-        UIView.animate(
-            withDuration: 0.7,
-            delay: 0,
-            usingSpringWithDamping: 1,
-            initialSpringVelocity: 1,
-            options: .curveEaseOut,
-            animations: {
-                self.itemSelectionTableView.alpha = 1
-                self.networkIndicator.alpha = 0
-        }, completion: { _ in
-            self.networkIndicator.stopAnimating()
-        })
+   
+    @IBAction func cancelButtonDidTap(_ sender: UIButton) {
+        dismiss(animated: true)
     }
     
-    private func assigneeDidLoad() {
+    @IBAction func submitButtonDidTap(_ sender: UIButton) {
+        if titleLabel.text == "담당자" {
+            delegate?.assigneesSubmitButtonDidTap(selectedUsers)
+        } else if titleLabel.text == "레이블" {
+            delegate?.labelSubmitButtonDidTap(selectedLabels)
+        } else if titleLabel.text == "마일스톤" {
+            delegate?.milestoneSubmitButtonDidTap(selectedMilestones)
+        }
+        dismiss(animated: true)
+    }
+}
+
+//MARK: - Configure TableViews
+
+extension ItemSelectionViewController {
+    private func configureAssigneeTableView() {
         titleLabel.text = "담당자"
         let cellIdentifier = String(describing: AssigneeTableViewCell.self)
         configureTableView(cellIdentifier)
+        configureAssigneeDataSource(cellIdentifier)
+        configureDataSource()
+    }
+    
+    private func configureLabelTableView() {
+        titleLabel.text = "레이블"
+        let cellIdentifier = String(describing: LabelTableViewCell.self)
+        configureTableView(cellIdentifier)
+        configureLabelDataSource(cellIdentifier)
+        configureDataSource()
+    }
+    
+    private func configureMilestoneTableView() {
+        titleLabel.text = "마일스톤"
+        let cellIdentifier = String(describing: MilestoneTableViewCell.self)
+        configureTableView(cellIdentifier)
+        configureMilestoneDataSource(cellIdentifier)
+        configureDataSource()
+    }
+    
+    //MARK: - Configure DataSources
+    
+    private func configureAssigneeDataSource(_ cellIdentifier: String) {
         self.dataSource = GeneralTableViewDataSource(models: users, selectedModels: selectedUsers, reuseIdentifier: cellIdentifier) { (user, cell) in
             let assigneeCell = cell as! AssigneeTableViewCell
             if self.users.contains(user) {
@@ -130,14 +155,9 @@ final class ItemSelectionViewController: UIViewController {
             }
             assigneeCell.configureData(user)
         }
-        itemSelectionTableView.dataSource = dataSource
-        itemSelectionTableView.reloadData()
     }
     
-    private func labelsDidLoad() {
-        titleLabel.text = "레이블"
-        let cellIdentifier = String(describing: LabelTableViewCell.self)
-        configureTableView(cellIdentifier)
+    private func configureLabelDataSource(_ cellIdentifier: String) {
         self.dataSource = GeneralTableViewDataSource(models: labels, selectedModels: selectedLabels, reuseIdentifier: cellIdentifier) { (label, cell) in
             let labelCell = cell as! LabelTableViewCell
             if self.labels.contains(label) {
@@ -151,14 +171,9 @@ final class ItemSelectionViewController: UIViewController {
             }
             labelCell.configureData(label)
         }
-        itemSelectionTableView.dataSource = dataSource
-        itemSelectionTableView.reloadData()
     }
     
-    private func milestoneDidLoad() {
-        titleLabel.text = "마일스톤"
-        let cellIdentifier = String(describing: MilestoneTableViewCell.self)
-        configureTableView(cellIdentifier)
+    private func configureMilestoneDataSource(_ cellIdentifier: String) {
         self.dataSource = GeneralTableViewDataSource(models: milestones, selectedModels: selectedMilestones, reuseIdentifier: cellIdentifier) { (milestone, cell) in
             let milestoneCell = cell as! MilestoneTableViewCell
             if self.milestones.contains(milestone) {
@@ -172,12 +187,17 @@ final class ItemSelectionViewController: UIViewController {
             }
             milestoneCell.configureData(milestone)
         }
+    }
+    
+    private func configureDataSource() {
         itemSelectionTableView.dataSource = dataSource
         itemSelectionTableView.reloadData()
     }
-    
-    //MARK:- select
-    
+}
+
+//MARK: - Accessory Button Actions
+
+extension ItemSelectionViewController {
     @objc func selectUser(_ button: UIButton) {
         guard let indexPath = location(at: button) else { return }
         let user = users[indexPath.row]
@@ -201,8 +221,6 @@ final class ItemSelectionViewController: UIViewController {
         milestones.remove(at: index)
         selectedMilestones.append(milestone)
     }
-    
-    //MARK:- deselect
     
     @objc func deselectUser(_ button: UIButton) {
         guard let indexPath = location(at: button) else { return }
@@ -233,42 +251,58 @@ final class ItemSelectionViewController: UIViewController {
         guard let indexPath = self.itemSelectionTableView.indexPathForRow(at: location) else { return nil }
         return indexPath
     }
+}
+
+//MARK: - Animation
+
+extension ItemSelectionViewController {
+    private func hideTableView() {
+        itemSelectionTableView.alpha = 0
+        networkIndicator.startAnimating()
+    }
     
+    private func showTableView() {
+        UIView.animate(
+            withDuration: 0.7,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.itemSelectionTableView.alpha = 1
+                self.networkIndicator.alpha = 0
+        }, completion: { _ in
+            self.networkIndicator.stopAnimating()
+        })
+    }
+}
+
+//MARK: - Configurations
+
+extension ItemSelectionViewController {
     private func configure() {
-        configureUI()
-        configureUseCase()
-    }
-    
-    private func configureUseCase() {
-        labelUseCase = LabelsUseCase()
-        milestoneUseCase = MilestoneUseCase()
-    }
-    
-    private func configureTableView(_ cellIdentifier: String) {
-        let nib = UINib(nibName: cellIdentifier, bundle: nil)
-        itemSelectionTableView.register(nib, forCellReuseIdentifier: cellIdentifier)
-    }
-    
-    private func configureUI() {
-        itemSelectionTableView.roundCorner(cornerRadius: 12.0)
-        itemSelectionTableView.drawShadow(color: .black, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
-    }
-    
-    @IBAction func cancelButtonDidTap(_ sender: UIButton) {
-        dismiss(animated: true)
-    }
-    
-    @IBAction func submitButtonDidTap(_ sender: UIButton) {
-        if titleLabel.text == "담당자" {
-            delegate?.assigneesSubmitButtonDidTap(selectedUsers)
-        }else if titleLabel.text == "레이블" {
-            delegate?.labelSubmitButtonDidTap(selectedLabels)
-        }else if titleLabel.text == "마일스톤" {
-            delegate?.milestoneSubmitButtonDidTap(selectedMilestones)
-        }
-        dismiss(animated: true)
-    }
-    
+           configureUI()
+           configureUseCase()
+       }
+       
+       private func configureUseCase() {
+           labelUseCase = LabelsUseCase()
+           milestoneUseCase = MilestoneUseCase()
+       }
+       
+       private func configureTableView(_ cellIdentifier: String) {
+           let nib = UINib(nibName: cellIdentifier, bundle: nil)
+           itemSelectionTableView.register(nib, forCellReuseIdentifier: cellIdentifier)
+       }
+       
+       private func configureUI() {
+           itemSelectionTableView.roundCorner(cornerRadius: 12.0)
+           itemSelectionTableView.drawShadow(
+            color: .black,
+            offset: CGSize(width: 1, height: 1),
+            radius: 4,
+            opacity: 0.3)
+       }
 }
 
 // MARK:- Error Alert
