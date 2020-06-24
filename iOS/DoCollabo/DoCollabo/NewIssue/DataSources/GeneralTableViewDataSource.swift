@@ -36,7 +36,7 @@ class GeneralTableViewDataSource<Model>: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? selectedModels.count : models.count - selectedModels.count
+        return section == 0 ? selectedModels.count : models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

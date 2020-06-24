@@ -23,17 +23,17 @@ final class ItemSelectionViewController: UIViewController {
     
     private var selectedUsers: [User] = [] {
         didSet {
-            assigneeDidLoad(users)
+            assigneeDidLoad()
         }
     }
     private var selectedLabels: [IssueLabel] = [] {
         didSet {
-            labelsDidLoad(labels)
+            labelsDidLoad()
         }
     }
     private var selectedMilestones: [Milestone] = [] {
         didSet {
-            milestoneDidLoad(milestones)
+            milestoneDidLoad()
         }
     }
     
@@ -45,7 +45,7 @@ final class ItemSelectionViewController: UIViewController {
     func fetchAssigneeStub() {
         let stubUsers = AssigneesStub.users
         users = stubUsers
-        assigneeDidLoad(stubUsers)
+        assigneeDidLoad()
     }
     
     func fetchMilestones() {
@@ -54,7 +54,7 @@ final class ItemSelectionViewController: UIViewController {
             switch result {
             case .success(let milestones):
                 self.milestones = milestones
-                self.milestoneDidLoad(milestones)
+                self.milestoneDidLoad()
             case .failure(let error):
                 self.presentErrorAlert(error: error) {
                     self.fetchMilestones()
@@ -69,7 +69,7 @@ final class ItemSelectionViewController: UIViewController {
             switch result {
             case .success(let labels):
                 self.labels = labels
-                self.labelsDidLoad(labels)
+                self.labelsDidLoad()
             case .failure(let error):
                 self.presentErrorAlert(error: error) {
                     self.fetchLabels()
@@ -78,7 +78,7 @@ final class ItemSelectionViewController: UIViewController {
         }
     }
     
-    private func assigneeDidLoad(_ users: [User]) {
+    private func assigneeDidLoad() {
         titleLabel.text = "담당자"
         let cellIdentifier = String(describing: AssigneeTableViewCell.self)
         configureTableView(cellIdentifier)
@@ -93,7 +93,7 @@ final class ItemSelectionViewController: UIViewController {
         itemSelectionTableView.reloadData()
     }
     
-    private func labelsDidLoad(_ labels: [IssueLabel]) {
+    private func labelsDidLoad() {
         titleLabel.text = "레이블"
         let cellIdentifier = String(describing: LabelTableViewCell.self)
         configureTableView(cellIdentifier)
@@ -108,7 +108,7 @@ final class ItemSelectionViewController: UIViewController {
         itemSelectionTableView.reloadData()
     }
     
-    private func milestoneDidLoad(_ milestones: [Milestone]) {
+    private func milestoneDidLoad() {
         titleLabel.text = "마일스톤"
         let cellIdentifier = String(describing: MilestoneTableViewCell.self)
         configureTableView(cellIdentifier)
@@ -126,28 +126,26 @@ final class ItemSelectionViewController: UIViewController {
     @objc func selectUser(_ button: UIButton) {
         guard let indexPath = location(at: button) else { return }
         let user = users[indexPath.row]
-        selectedUsers.append(user)
-        
+        print("selected \(user)")
         guard let index = users.firstIndex(of: user) else { return }
         users.remove(at: index)
+        selectedUsers.append(user)
     }
     
     @objc func selectLabel(_ button: UIButton) {
         guard let indexPath = location(at: button) else { return }
         let label = labels[indexPath.row]
-        selectedLabels.append(label)
-        
         guard let index = labels.firstIndex(of: label) else { return }
         labels.remove(at: index)
+        selectedLabels.append(label)
     }
     
     @objc func selectMilestone(_ button: UIButton) {
         guard let indexPath = location(at: button) else { return }
         let milestone = milestones[indexPath.row]
-        selectedMilestones.append(milestone)
-        
         guard let index = milestones.firstIndex(of: milestone) else { return }
         milestones.remove(at: index)
+        selectedMilestones.append(milestone)
     }
     
     private func location(at button: UIButton) -> IndexPath? {
