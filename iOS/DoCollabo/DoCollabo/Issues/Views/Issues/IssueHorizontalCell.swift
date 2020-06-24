@@ -44,6 +44,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
+        alpha = 1
         contentsStackView.reset()
     }
 }

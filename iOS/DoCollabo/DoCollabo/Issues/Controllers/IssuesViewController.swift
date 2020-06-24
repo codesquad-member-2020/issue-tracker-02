@@ -120,10 +120,17 @@ extension IssuesViewController: IssueCellMoreViewControllerDelegate {
     }
     
     func removeIssue(at indexPath: IndexPath) {
-        self.issuesCollectionView.performBatchUpdates({
-            self.issuesCollectionView.deleteItems(at: [indexPath])
-            self.dataSource.removeIssue(at: indexPath)
-        }, completion: nil)
+        let cell = self.issuesCollectionView.cellForItem(at: indexPath) as! IssueHorizontalCell
+        DispatchQueue.main.async {
+            UIView.animateCurveEaseOut(withDuration: 0.3, animations: {
+                cell.alpha = 0
+            }, completion: { _ in
+                self.issuesCollectionView.performBatchUpdates({
+                    self.issuesCollectionView.deleteItems(at: [indexPath])
+                    self.dataSource.removeIssue(at: indexPath)
+                }, completion: nil)
+            })
+        }
     }
 }
 
