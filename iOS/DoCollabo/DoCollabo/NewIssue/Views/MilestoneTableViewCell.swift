@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MilestoneTableViewCell: UITableViewCell {
+final class MilestoneTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!

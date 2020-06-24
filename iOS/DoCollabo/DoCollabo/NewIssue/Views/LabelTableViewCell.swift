@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabelTableViewCell: UITableViewCell {
+final class LabelTableViewCell: UITableViewCell {
 
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelBackground: UIView!

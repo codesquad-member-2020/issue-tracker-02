@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AssigneeTableViewCell: UITableViewCell {
+final class AssigneeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userIDLabel: UILabel!
