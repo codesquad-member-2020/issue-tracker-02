@@ -43,7 +43,7 @@ class GeneralTableViewDataSource<Model>: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         if indexPath.section == 0 {
             cellConfigurator(selectedModels[indexPath.row], cell)
-        }else {
+        } else {
          cellConfigurator(models[indexPath.row], cell)
         }
         return cell
