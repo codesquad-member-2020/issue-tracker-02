@@ -145,11 +145,11 @@ extension ItemSelectionViewController {
         self.dataSource = GeneralTableViewDataSource(models: users, selectedModels: selectedUsers, reuseIdentifier: cellIdentifier) { (user, cell) in
             let assigneeCell = cell as! AssigneeTableViewCell
             if self.users.contains(user) {
-                let addButton = cell.addButton()
+                let addButton = self.configureAddButton()
                 addButton.addTarget(self, action: #selector(self.selectUser), for: .touchUpInside)
                 assigneeCell.accessoryView = addButton
             }else {
-                let removeButton = cell.cancelButton()
+                let removeButton = self.configureRemoveButton()
                 removeButton.addTarget(self, action: #selector(self.deselectUser(_:)), for: .touchUpInside)
                 assigneeCell.accessoryView = removeButton
             }
@@ -161,11 +161,11 @@ extension ItemSelectionViewController {
         self.dataSource = GeneralTableViewDataSource(models: labels, selectedModels: selectedLabels, reuseIdentifier: cellIdentifier) { (label, cell) in
             let labelCell = cell as! LabelTableViewCell
             if self.labels.contains(label) {
-                let addButton = cell.addButton()
+                let addButton = self.configureAddButton()
                 addButton.addTarget(self, action: #selector(self.selectLabel), for: .touchUpInside)
                 labelCell.accessoryView = addButton
             }else {
-                let removeButton = cell.cancelButton()
+                let removeButton = self.configureRemoveButton()
                 removeButton.addTarget(self, action: #selector(self.deselectLabel(_:)), for: .touchUpInside)
                 labelCell.accessoryView = removeButton
             }
@@ -177,11 +177,11 @@ extension ItemSelectionViewController {
         self.dataSource = GeneralTableViewDataSource(models: milestones, selectedModels: selectedMilestones, reuseIdentifier: cellIdentifier) { (milestone, cell) in
             let milestoneCell = cell as! MilestoneTableViewCell
             if self.milestones.contains(milestone) {
-                let addButton = cell.addButton()
+                let addButton = self.configureAddButton()
                 addButton.addTarget(self, action: #selector(self.selectMilestone), for: .touchUpInside)
                 milestoneCell.accessoryView = addButton
             }else {
-                let removeButton = cell.cancelButton()
+                let removeButton = self.configureRemoveButton()
                 removeButton.addTarget(self, action: #selector(self.deselectMilestone(_:)), for: .touchUpInside)
                 milestoneCell.accessoryView = removeButton
             }
@@ -198,6 +198,23 @@ extension ItemSelectionViewController {
 //MARK: - Accessory Button Actions
 
 extension ItemSelectionViewController {
+    
+    private func configureAddButton() -> UIButton {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        button.tintColor = UIColor(named: "key.navy")
+        button.sizeToFit()
+        return button
+    }
+    
+    private func configureRemoveButton() -> UIButton {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        button.tintColor = .lightGray
+        button.sizeToFit()
+        return button
+    }
+    
     @objc func selectUser(_ button: UIButton) {
         guard let indexPath = location(at: button) else { return }
         let user = users[indexPath.row]
