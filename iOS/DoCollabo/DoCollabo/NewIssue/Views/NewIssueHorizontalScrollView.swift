@@ -30,6 +30,7 @@ class NewIssueHorizontalScrollView: UIScrollView {
         configureStackView()
         configureLayout()
         configureUI()
+        bounces = false
     }
     
     private func configureUI() {
