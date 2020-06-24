@@ -34,6 +34,7 @@ final class NewIssueAccessoryView: UIView {
     }
     
     func makeAssigneeView(_ users: [User]) {
+        assigneeStackView.removeAllSubviews()
         users.forEach { _ in
             let imageView = UIImageView(image: UIImage(systemName: "person.fill"))
             add(assignee: imageView)
@@ -41,6 +42,7 @@ final class NewIssueAccessoryView: UIView {
     }
     
     func makeLabelView(_ labels: [IssueLabel]) {
+        labelStackView.removeAllSubviews()
         labels.forEach {
             let label = PaddingLabel()
             let color = UIColor(hexString: $0.color)
@@ -55,6 +57,7 @@ final class NewIssueAccessoryView: UIView {
     }
     
     func makeMilestoneView(_ milestones: [Milestone]) {
+        milestoneStackView.removeAllSubviews()
         milestones.forEach {
             let label = PaddingLabel()
             label.text = $0.title
