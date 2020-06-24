@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyMarkdown
 
 class NewIssueViewController: UIViewController {
     
@@ -18,6 +19,8 @@ class NewIssueViewController: UIViewController {
     @IBOutlet weak var newIssueAccessoryView: NewIssueAccessoryView!
     
     private var itemSelectionViewController: ItemSelectionViewController!
+    private var markdownViewer: SwiftyMarkdown!
+    private var originText: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,7 @@ class NewIssueViewController: UIViewController {
         configureUI()
         configureSubViewController()
         newIssueAccessoryView.delegate = self
+        configureMarkdownViewer()
     }
     
     private func configureUI() {
@@ -40,6 +44,25 @@ class NewIssueViewController: UIViewController {
     private func configureSubViewController() {
         itemSelectionViewController = storyboard?.instantiateViewController(
             identifier: String(describing: ItemSelectionViewController.self))
+    }
+    
+    private func configureMarkdownViewer() {
+        markdownViewer = SwiftyMarkdown(string: "")
+    }
+    
+    @IBAction func switchMarkdownEditor(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            descriptionTextView.isEditable = true
+            descriptionTextView.text = originText
+            break
+        case 1:
+            originText = descriptionTextView.text
+            descriptionTextView.attributedText = markdownViewer.attributedString(from: descriptionTextView.text)
+            descriptionTextView.isEditable = false
+        default:
+            break
+        }
     }
 }
 

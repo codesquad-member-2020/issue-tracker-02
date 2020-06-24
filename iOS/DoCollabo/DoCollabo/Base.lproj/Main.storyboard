@@ -124,6 +124,9 @@
                                             <segment title="마크다운"/>
                                             <segment title="미리보기"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="switchMarkdownEditor:" destination="A2h-U4-Occ" eventType="valueChanged" id="IOh-U9-FZ9"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
