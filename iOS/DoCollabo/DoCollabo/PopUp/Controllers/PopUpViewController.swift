@@ -15,9 +15,11 @@ protocol PopUpViewControllerDelegate: class {
 class PopUpViewController: UIViewController {
     
     private var backgroundView: UIView!
-    private var frameView: UIView!
+    private var popUpContainerView: UIView!
     internal var contentView: PopUpContentView!
     private var footerView: PopUpFooterView!
+    
+    private var popUpContainerCenterY: NSLayoutConstraint!
     
     weak var popUpViewControllerDelegate: PopUpViewControllerDelegate?
     
@@ -56,6 +58,17 @@ class PopUpViewController: UIViewController {
     }
 }
 
+// MARK:- Keyboard Notificaiton
+
+extension PopUpViewController {
+    func movePopUpContainerView(constant: CGFloat) {
+        popUpContainerCenterY.constant = constant
+        UIView.animateCurveEaseOut(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+}
+
 // MARK:- PopUpFooterViewAction
 
 @objc extension PopUpViewController: PopUpFooterViewActionDelegate {
@@ -90,9 +103,9 @@ extension PopUpViewController {
         backgroundView = UIView()
         backgroundView.backgroundColor = .black
         backgroundView.alpha = 0.5
-        frameView = UIView()
-        frameView.backgroundColor = .tertiarySystemBackground
-        frameView.roundCorner(cornerRadius: 16.0)
+        popUpContainerView = UIView()
+        popUpContainerView.backgroundColor = .tertiarySystemBackground
+        popUpContainerView.roundCorner(cornerRadius: 16.0)
     }
     
     private func configureFooterView() {
@@ -101,27 +114,38 @@ extension PopUpViewController {
     
     private func configureSubViews() {
         view.addSubview(backgroundView)
-        view.addSubview(frameView)
-        frameView.addSubview(contentView)
-        frameView.addSubview(footerView)
+        view.addSubview(popUpContainerView)
+        popUpContainerView.addSubview(contentView)
+        popUpContainerView.addSubview(footerView)
     }
     
     private func configureLayout() {
         backgroundView.fillSuperview()
-        frameView.centerInSuperview()
+//        frameView.centerInSuperview()
+        popUpContainerView.translatesAutoresizingMaskIntoConstraints = false
+        popUpContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        popUpContainerCenterY = NSLayoutConstraint(
+            item: popUpContainerView!,
+            attribute: .centerY,
+            relatedBy: .equal,
+            toItem: view,
+            attribute: .centerY,
+            multiplier: 1.0,
+            constant: 0)
+        popUpContainerCenterY.isActive = true
         let sidePadding: CGFloat = 24.0
-        frameView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-        frameView.heightAnchor.constraint(equalTo: frameView.widthAnchor, multiplier: 1.1).isActive = true
+        popUpContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        popUpContainerView.heightAnchor.constraint(equalTo: popUpContainerView.widthAnchor, multiplier: 1.1).isActive = true
         contentView.translatesAutoresizingMaskIntoConstraints = false
         footerView.translatesAutoresizingMaskIntoConstraints = false
         
-        contentView.topAnchor.constraint(equalTo: frameView.topAnchor, constant: 24).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: frameView.leadingAnchor, constant: sidePadding).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: frameView.trailingAnchor, constant: -sidePadding).isActive = true
+        contentView.topAnchor.constraint(equalTo: popUpContainerView.topAnchor, constant: 24).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: popUpContainerView.leadingAnchor, constant: sidePadding).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: popUpContainerView.trailingAnchor, constant: -sidePadding).isActive = true
         contentView.bottomAnchor.constraint(equalTo: footerView.topAnchor, constant: -24).isActive = true
         
-        footerView.heightAnchor.constraint(equalTo: frameView.heightAnchor, multiplier: 0.2).isActive = true
-        footerView.bottomAnchor.constraint(equalTo: frameView.bottomAnchor, constant: -24).isActive = true
+        footerView.heightAnchor.constraint(equalTo: popUpContainerView.heightAnchor, multiplier: 0.2).isActive = true
+        footerView.bottomAnchor.constraint(equalTo: popUpContainerView.bottomAnchor, constant: -24).isActive = true
         footerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         footerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
     }

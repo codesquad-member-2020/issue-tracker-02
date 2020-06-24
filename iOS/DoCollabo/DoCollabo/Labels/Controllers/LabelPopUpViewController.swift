@@ -22,6 +22,17 @@ final class LabelPopUpViewController: PopUpViewController {
     
     weak var labelPopUpDelegate: LabelPopUpViewControllerDelegate?
     
+    deinit {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
+    }
+    
     func configureIndexPath(_ indexPath: IndexPath) {
         self.indexPath = indexPath
     }
@@ -36,6 +47,7 @@ final class LabelPopUpViewController: PopUpViewController {
         configureSegmentView(popUpColorPickerView)
         popUpColorPickerView.fillSuperview()
         popUpColorPickerView.delegate = self
+        configureKeyboardNotification()
     }
     
     func updatePopupViewForEditing(with label: IssueLabel) {
@@ -114,5 +126,30 @@ extension LabelPopUpViewController {
                 description: validContents.description)
             labelPopUpDelegate?.submitButtonDidTap(label: newLabel, isEditMode: isEditMode, at: nil)
         }
+    }
+}
+
+// MARK:- Keyboard Notification
+
+extension LabelPopUpViewController {
+    private func configureKeyboardNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
+    }
+    
+    @objc private func keyboardWillShow(notification: Notification) {
+        movePopUpContainerView(constant: -80)
+    }
+    
+    @objc private func keyboardWillHide(notification: Notification) {
+        movePopUpContainerView(constant: 0)
     }
 }
