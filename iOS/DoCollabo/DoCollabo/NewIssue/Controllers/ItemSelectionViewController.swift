@@ -83,10 +83,16 @@ final class ItemSelectionViewController: UIViewController {
         let cellIdentifier = String(describing: AssigneeTableViewCell.self)
         configureTableView(cellIdentifier)
         self.dataSource = GeneralTableViewDataSource(models: users, selectedModels: selectedUsers, reuseIdentifier: cellIdentifier) { (user, cell) in
-            let addButton = cell.addButton()
-            addButton.addTarget(self, action: #selector(self.selectUser), for: .touchUpInside)
             let assigneeCell = cell as! AssigneeTableViewCell
-            assigneeCell.accessoryView = addButton
+            if self.users.contains(user) {
+                let addButton = cell.addButton()
+                addButton.addTarget(self, action: #selector(self.selectUser), for: .touchUpInside)
+                assigneeCell.accessoryView = addButton
+            }else {
+                let removeButton = cell.cancelButton()
+                removeButton.addTarget(self, action: #selector(self.deselectUser(_:)), for: .touchUpInside)
+                assigneeCell.accessoryView = removeButton
+            }
             assigneeCell.configureData(user)
         }
         itemSelectionTableView.dataSource = dataSource
@@ -98,10 +104,16 @@ final class ItemSelectionViewController: UIViewController {
         let cellIdentifier = String(describing: LabelTableViewCell.self)
         configureTableView(cellIdentifier)
         self.dataSource = GeneralTableViewDataSource(models: labels, selectedModels: selectedLabels, reuseIdentifier: cellIdentifier) { (label, cell) in
-            let addButton = cell.addButton()
-            addButton.addTarget(self, action: #selector(self.selectLabel), for: .touchUpInside)
             let labelCell = cell as! LabelTableViewCell
-            labelCell.accessoryView = addButton
+            if self.labels.contains(label) {
+                let addButton = cell.addButton()
+                addButton.addTarget(self, action: #selector(self.selectLabel), for: .touchUpInside)
+                labelCell.accessoryView = addButton
+            }else {
+                let removeButton = cell.cancelButton()
+                removeButton.addTarget(self, action: #selector(self.deselectLabel(_:)), for: .touchUpInside)
+                labelCell.accessoryView = removeButton
+            }
             labelCell.configureData(label)
         }
         itemSelectionTableView.dataSource = dataSource
@@ -114,19 +126,26 @@ final class ItemSelectionViewController: UIViewController {
         configureTableView(cellIdentifier)
         self.dataSource = GeneralTableViewDataSource(models: milestones, selectedModels: selectedMilestones, reuseIdentifier: cellIdentifier) { (milestone, cell) in
             let milestoneCell = cell as! MilestoneTableViewCell
-            let addButton = cell.addButton()
-            addButton.addTarget(self, action: #selector(self.selectMilestone), for: .touchUpInside)
-            milestoneCell.accessoryView = addButton
+            if self.milestones.contains(milestone) {
+                let addButton = cell.addButton()
+                addButton.addTarget(self, action: #selector(self.selectMilestone), for: .touchUpInside)
+                milestoneCell.accessoryView = addButton
+            }else {
+                let removeButton = cell.cancelButton()
+                removeButton.addTarget(self, action: #selector(self.deselectMilestone(_:)), for: .touchUpInside)
+                milestoneCell.accessoryView = removeButton
+            }
             milestoneCell.configureData(milestone)
         }
         itemSelectionTableView.dataSource = dataSource
         itemSelectionTableView.reloadData()
     }
     
+    //MARK:- select
+    
     @objc func selectUser(_ button: UIButton) {
         guard let indexPath = location(at: button) else { return }
         let user = users[indexPath.row]
-        print("selected \(user)")
         guard let index = users.firstIndex(of: user) else { return }
         users.remove(at: index)
         selectedUsers.append(user)
@@ -146,6 +165,32 @@ final class ItemSelectionViewController: UIViewController {
         guard let index = milestones.firstIndex(of: milestone) else { return }
         milestones.remove(at: index)
         selectedMilestones.append(milestone)
+    }
+    
+    //MARK:- deselect
+    
+    @objc func deselectUser(_ button: UIButton) {
+        guard let indexPath = location(at: button) else { return }
+        let user = selectedUsers[indexPath.row]
+        guard let index = selectedUsers.firstIndex(of: user) else { return }
+        users.append(user)
+        selectedUsers.remove(at: index)
+    }
+    
+    @objc func deselectLabel(_ button: UIButton) {
+        guard let indexPath = location(at: button) else { return }
+        let label = selectedLabels[indexPath.row]
+        guard let index = selectedLabels.firstIndex(of: label) else { return }
+        labels.append(label)
+        selectedLabels.remove(at: index)
+    }
+    
+    @objc func deselectMilestone(_ button: UIButton) {
+        guard let indexPath = location(at: button) else { return }
+        let milestone = selectedMilestones[indexPath.row]
+        guard let index = selectedMilestones.firstIndex(of: milestone) else { return }
+        milestones.append(milestone)
+        selectedMilestones.remove(at: index)
     }
     
     private func location(at button: UIButton) -> IndexPath? {
