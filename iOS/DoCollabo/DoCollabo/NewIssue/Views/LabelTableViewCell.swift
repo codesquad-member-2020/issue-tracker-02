@@ -13,6 +13,12 @@ class LabelTableViewCell: UITableViewCell {
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelBackground: UIView!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        labelTitle.text = ""
+        labelBackground.backgroundColor = .clear
+    }
+    
     func configureData(_ label: IssueLabel) {
         let color = UIColor(hexString: label.color)
         var textColor: UIColor = .black

@@ -13,8 +13,9 @@ class AssigneeTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userIDLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        userIDLabel.text = ""
     }
     
     func configureData(_ data: User) {
