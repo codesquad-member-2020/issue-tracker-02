@@ -29,6 +29,7 @@ class NewIssueHorizontalScrollView: UIScrollView {
     func removeAllSubviews() {
         contentsStackView.subviews.forEach {
             contentsStackView.removeArrangedSubview($0)
+            $0.removeFromSuperview()
         }
     }
     
