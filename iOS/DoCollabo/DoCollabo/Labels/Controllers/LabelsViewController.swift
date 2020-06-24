@@ -250,6 +250,5 @@ extension LabelsViewController {
 
     private func configureUseCase() {
         labelsUseCase = LabelsUseCase()
-        fetchLabels()
     }
 }
