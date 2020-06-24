@@ -28,6 +28,7 @@ class NewIssueViewController: UIViewController {
         configureUI()
         configureSubViewController()
         newIssueAccessoryView.delegate = self
+        itemSelectionViewController.delegate = self
     }
     
     private func configureUI() {
@@ -59,5 +60,19 @@ extension NewIssueViewController: NewIssueAccessoryDelegate {
     func selectMilestoneButtonDidTap() {
         present(itemSelectionViewController, animated: true)
         itemSelectionViewController.fetchMilestones()
+    }
+}
+
+extension NewIssueViewController: ItemSelectionViewDelegate {
+    func assigneesSubmitButtonDidTap(_ users: [User]) {
+        newIssueAccessoryView.makeAssigneeView(users)
+    }
+    
+    func labelSubmitButtonDidTap(_ labels: [IssueLabel]) {
+        newIssueAccessoryView.makeLabelView(labels)
+    }
+    
+    func milestoneSubmitButtonDidTap(_ milestones: [Milestone]) {
+        newIssueAccessoryView.makeMilestoneView(milestones)
     }
 }
