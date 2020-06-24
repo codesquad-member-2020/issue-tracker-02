@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct IssueLabel: Codable {
+struct IssueLabel: Codable, Equatable {
     var id: Int?
     var title: String
     var color: String

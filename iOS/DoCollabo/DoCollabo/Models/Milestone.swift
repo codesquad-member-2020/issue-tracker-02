@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Milestone: Codable {
+struct Milestone: Codable, Equatable {
     private(set) var id: Int
     private(set) var issueCount: Int
     private(set) var title: String
