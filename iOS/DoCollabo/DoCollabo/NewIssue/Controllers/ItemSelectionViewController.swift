@@ -8,11 +8,19 @@
 
 import UIKit
 
+protocol ItemSelectionViewDelegate: class {
+    func assigneesSubmitButtonDidTap(_ users: [User])
+    func labelSubmitButtonDidTap(_ labels: [IssueLabel])
+    func milestoneSubmitButtonDidTap(_ milestones: [Milestone])
+}
+
 final class ItemSelectionViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var itemSelectionTableView: UITableView!
     @IBOutlet weak var networkIndicator: UIActivityIndicatorView!
+    
+    weak var delegate: ItemSelectionViewDelegate?
     
     private var dataSource: UITableViewDataSource!
     private var labelUseCase: LabelsUseCase!
@@ -249,6 +257,18 @@ final class ItemSelectionViewController: UIViewController {
     @IBAction func cancelButtonDidTap(_ sender: UIButton) {
         dismiss(animated: true)
     }
+    
+    @IBAction func submitButtonDidTap(_ sender: UIButton) {
+        if titleLabel.text == "담당자" {
+            delegate?.assigneesSubmitButtonDidTap(selectedUsers)
+        }else if titleLabel.text == "레이블" {
+            delegate?.labelSubmitButtonDidTap(selectedLabels)
+        }else if titleLabel.text == "마일스톤" {
+            delegate?.milestoneSubmitButtonDidTap(selectedMilestones)
+        }
+        dismiss(animated: true)
+    }
+    
 }
 
 // MARK:- Error Alert

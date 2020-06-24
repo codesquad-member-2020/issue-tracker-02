@@ -212,6 +212,9 @@
                                 <state key="normal" image="arrow.up.circle.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18" scale="large" weight="regular"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitButtonDidTap:" destination="qMZ-3b-Ws1" eventType="touchUpInside" id="g9q-W9-MEG"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tkx-z0-9DN">
                                 <rect key="frame" x="18" y="110" width="378" height="752"/>
