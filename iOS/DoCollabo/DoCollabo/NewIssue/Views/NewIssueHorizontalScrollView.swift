@@ -26,6 +26,12 @@ class NewIssueHorizontalScrollView: UIScrollView {
         contentsStackView.addArrangedSubview(view)
     }
     
+    func removeAllSubviews() {
+        contentsStackView.subviews.forEach {
+            contentsStackView.removeArrangedSubview($0)
+        }
+    }
+    
     private func configure() {
         configureStackView()
         configureLayout()
@@ -36,6 +42,7 @@ class NewIssueHorizontalScrollView: UIScrollView {
     private func configureUI() {
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
+        clipsToBounds = true
     }
     
     private func configureStackView() {
