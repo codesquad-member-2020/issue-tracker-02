@@ -227,6 +227,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="E6F-Xt-mZG">
+                                <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
+                                <color key="color" name="key.red"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -236,8 +240,10 @@
                             <constraint firstItem="tkx-z0-9DN" firstAttribute="bottom" secondItem="qNf-No-dmH" secondAttribute="bottom" id="Tju-fK-8rf"/>
                             <constraint firstItem="qNf-No-dmH" firstAttribute="trailing" secondItem="ulw-Pp-Xq3" secondAttribute="trailing" constant="18" id="W4E-Dp-XRK"/>
                             <constraint firstItem="bwz-xF-uI0" firstAttribute="centerX" secondItem="fcj-8B-g1t" secondAttribute="centerX" id="bPt-XP-q9M"/>
+                            <constraint firstItem="E6F-Xt-mZG" firstAttribute="centerY" secondItem="qNf-No-dmH" secondAttribute="centerY" id="ghy-sV-Xlr"/>
                             <constraint firstItem="bwz-xF-uI0" firstAttribute="top" secondItem="qNf-No-dmH" secondAttribute="top" constant="18" id="iQj-Te-Ioe"/>
                             <constraint firstItem="fWr-k1-fRV" firstAttribute="leading" secondItem="qNf-No-dmH" secondAttribute="leading" constant="18" id="j8e-Go-52E"/>
+                            <constraint firstItem="E6F-Xt-mZG" firstAttribute="centerX" secondItem="qNf-No-dmH" secondAttribute="centerX" id="mfk-yz-dr7"/>
                             <constraint firstItem="bwz-xF-uI0" firstAttribute="centerY" secondItem="fWr-k1-fRV" secondAttribute="centerY" id="vGS-TO-1fk"/>
                             <constraint firstItem="ulw-Pp-Xq3" firstAttribute="centerY" secondItem="bwz-xF-uI0" secondAttribute="centerY" id="y5A-Lc-IgE"/>
                         </constraints>
@@ -245,6 +251,7 @@
                     </view>
                     <connections>
                         <outlet property="itemSelectionTableView" destination="tkx-z0-9DN" id="3Wg-ng-Txg"/>
+                        <outlet property="networkIndicator" destination="E6F-Xt-mZG" id="pdD-gm-yXC"/>
                         <outlet property="titleLabel" destination="bwz-xF-uI0" id="7sB-Ab-j9E"/>
                     </connections>
                 </viewController>

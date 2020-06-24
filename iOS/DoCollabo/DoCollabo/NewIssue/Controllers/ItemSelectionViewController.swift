@@ -12,6 +12,7 @@ final class ItemSelectionViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var itemSelectionTableView: UITableView!
+    @IBOutlet weak var networkIndicator: UIActivityIndicatorView!
     
     private var dataSource: UITableViewDataSource!
     private var labelUseCase: LabelsUseCase!
@@ -43,12 +44,15 @@ final class ItemSelectionViewController: UIViewController {
     }
     
     func fetchAssigneeStub() {
+        hideTableView()
         let stubUsers = AssigneesStub.users
         users = stubUsers
         assigneeDidLoad()
+        showTableView()
     }
     
     func fetchMilestones() {
+        hideTableView()
         let request = MilestoneRequest().asURLRequest()
         milestoneUseCase.getResources(request: request, dataType: [Milestone].self) { (result) in
             switch result {
@@ -60,10 +64,12 @@ final class ItemSelectionViewController: UIViewController {
                     self.fetchMilestones()
                 }
             }
+            self.showTableView()
         }
     }
     
     func fetchLabels() {
+        hideTableView()
         let request = LabelsRequest().asURLRequest()
         labelUseCase.getResources(request: request, dataType: [IssueLabel].self) { (result) in
             switch result {
@@ -75,7 +81,28 @@ final class ItemSelectionViewController: UIViewController {
                     self.fetchLabels()
                 }
             }
+            self.showTableView()
         }
+    }
+    
+    private func hideTableView() {
+        itemSelectionTableView.alpha = 0
+        networkIndicator.startAnimating()
+    }
+    
+    private func showTableView() {
+        UIView.animate(
+            withDuration: 0.7,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.itemSelectionTableView.alpha = 1
+                self.networkIndicator.alpha = 0
+        }, completion: { _ in
+            self.networkIndicator.stopAnimating()
+        })
     }
     
     private func assigneeDidLoad() {
