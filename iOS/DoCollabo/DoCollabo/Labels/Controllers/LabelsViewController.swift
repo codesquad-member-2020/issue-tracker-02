@@ -24,6 +24,13 @@ final class LabelsViewController: UIViewController {
         configure()
         fetchLabels()
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: .labelCellMoreButtonDidTap,
+            object: nil)
+    }
 
     private func fetchLabels() {
         startActivityIndicator()
@@ -48,6 +55,15 @@ final class LabelsViewController: UIViewController {
                 self.presentErrorAlert(error: error)
             }
         }
+    }
+}
+
+// MARK:- Notification Action
+
+extension LabelsViewController {
+    @objc private func moreButtonDidTap(notification: Notification) {
+        guard let cell = notification.object as? LabelCell else { return }
+        guard let indexPath = labelsCollectionView.indexPath(for: cell) else { return }
     }
 }
 
@@ -144,6 +160,15 @@ extension LabelsViewController {
         configureCollectionViewDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
+        configureNotification()
+    }
+    
+    private func configureNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(moreButtonDidTap),
+            name: .labelCellMoreButtonDidTap,
+            object: nil)
     }
     
     private func configureCollectionViewDelegate() {

@@ -23,16 +23,11 @@ final class LabelCell: UICollectionViewCell {
         configure()
     }
     
-    private func configure() {
-        configureUI()
-    }
-    
-    private func configureUI() {
-        contentsStackView.spacing = 8
-        drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
-        roundCorner(cornerRadius: 16.0)
-        titleBackground.roundCorner(cornerRadius: 16.0)
-        descriptionLabel = LabelDescriptionLabel()
+    @IBAction func moreButtonDidTap(_ sender: Any) {
+        NotificationCenter.default.post(
+            name: .labelCellMoreButtonDidTap,
+            object: self,
+            userInfo: nil)
     }
     
     func configureCell(with label: IssueLabel) {
@@ -52,5 +47,27 @@ final class LabelCell: UICollectionViewCell {
             $0.removeFromSuperview()
         }
         contentsStackView.addArrangedSubview(labelContainerStackView)
+    }
+}
+
+// MARK:- Notification
+
+extension Notification.Name {
+    static let labelCellMoreButtonDidTap = Notification.Name(rawValue: "labelCellMoreButtonDidTap")
+}
+
+// MARK:- Configuration
+
+extension LabelCell {
+    private func configure() {
+        configureUI()
+    }
+    
+    private func configureUI() {
+        contentsStackView.spacing = 8
+        drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
+        roundCorner(cornerRadius: 16.0)
+        titleBackground.roundCorner(cornerRadius: 16.0)
+        descriptionLabel = LabelDescriptionLabel()
     }
 }

@@ -54,6 +54,9 @@
                         </constraints>
                         <color key="tintColor" name="writer.userID"/>
                         <state key="normal" image="issue.more"/>
+                        <connections>
+                            <action selector="moreButtonDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="aaf-oI-Uuk"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
