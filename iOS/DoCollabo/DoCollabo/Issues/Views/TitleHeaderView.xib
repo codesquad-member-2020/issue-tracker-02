@@ -74,7 +74,7 @@
     <resources>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="key.navy">
-            <color red="0.20392156862745098" green="0.29019607843137252" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20399999618530273" green="0.28999999165534973" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="key.yellow">
             <color red="0.94900000095367432" green="0.66699999570846558" blue="0.32199999690055847" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
