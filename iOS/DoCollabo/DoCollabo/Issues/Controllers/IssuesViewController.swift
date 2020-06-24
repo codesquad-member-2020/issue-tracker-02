@@ -120,9 +120,9 @@ extension IssuesViewController: IssueCellMoreViewControllerDelegate {
     }
     
     func removeIssue(at indexPath: IndexPath) {
-        dataSource.removeIssue(at: indexPath)
-        issuesCollectionView.performBatchUpdates({
-            issuesCollectionView.reloadItems(at: [indexPath])
+        self.issuesCollectionView.performBatchUpdates({
+            self.issuesCollectionView.deleteItems(at: [indexPath])
+            self.dataSource.removeIssue(at: indexPath)
         }, completion: nil)
     }
 }
