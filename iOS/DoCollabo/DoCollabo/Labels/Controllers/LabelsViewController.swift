@@ -17,12 +17,16 @@ final class LabelsViewController: UIViewController {
     private var popUpViewController: LabelPopUpViewController!
     private var moreViewController: LabelCellMoreViewController!
 
-    private var labelsUseCase: UseCase!
+    private var labelsUseCase: LabelsUseCase!
     private var dataSource: LabelsCollectionViewDataSource!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         fetchLabels()
     }
     
@@ -59,6 +63,24 @@ final class LabelsViewController: UIViewController {
     }
 }
 
+// MARK:- LabelCellMoreViewControllerDelegate
+
+extension LabelsViewController: LabelCellMoreViewControllerDelegate {
+    func removeLabelCell(at indexPath: IndexPath) {
+        let cell = self.labelsCollectionView.cellForItem(at: indexPath) as! LabelCell
+        DispatchQueue.main.async {
+            UIView.animateCurveEaseOut(withDuration: 0.3, animations: {
+                cell.alpha = 0
+            }, completion: { _ in
+                self.labelsCollectionView.performBatchUpdates({
+                    self.labelsCollectionView.deleteItems(at: [indexPath])
+                    self.dataSource.removeLabel(at: indexPath)
+                }, completion: nil)
+            })
+        }
+    }
+}
+
 // MARK:- Notification Action
 
 extension LabelsViewController {
@@ -68,6 +90,7 @@ extension LabelsViewController {
         dataSource.referLabel(at: indexPath) { (label) in
             moreViewController.configureLabelCellMoreViewController(
                 with: label,
+                labelsUseCase: labelsUseCase,
                 at: indexPath)
             present(moreViewController, animated: false, completion: nil)
         }
@@ -145,7 +168,10 @@ extension LabelsViewController: PopUpViewControllerDelegate {
 // MARK:- UICollectionViewDelegateFlowLayout
 
 extension LabelsViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = labelsCollectionView.frame.width * 0.9
         var estimatedSize = CGSize(width: width, height: LabelCell.height)
         dataSource.referLabel(at: indexPath) { (label) in
@@ -161,7 +187,6 @@ extension LabelsViewController: UICollectionViewDelegateFlowLayout {
 
 extension LabelsViewController {
     private func configure() {
-        configureUI()
         configureHeaderView()
         configurePopUpView()
         configureCollectionViewDelegate()
@@ -169,10 +194,12 @@ extension LabelsViewController {
         configureUseCase()
         configureNotification()
         configureMoreViewController()
+        hideCollectionView()
     }
     
     private func configureMoreViewController() {
         moreViewController = LabelCellMoreViewController()
+        moreViewController.delegate = self
         moreViewController.modalPresentationStyle = .overFullScreen
     }
     
@@ -188,7 +215,7 @@ extension LabelsViewController {
         labelsCollectionView.delegate = self
     }
 
-    private func configureUI() {
+    private func hideCollectionView() {
         labelsCollectionView.alpha = 0
     }
 

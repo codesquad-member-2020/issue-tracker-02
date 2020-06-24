@@ -28,6 +28,10 @@ final class LabelsCollectionViewDataSource: NSObject, UICollectionViewDataSource
         handler(label)
     }
     
+    func removeLabel(at indexPath: IndexPath) {
+        labels.remove(at: indexPath.item)
+    }
+    
     func updateNotify(handler: @escaping handler) {
          self.changedHandler = handler
      }
