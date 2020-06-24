@@ -41,7 +41,6 @@
 		309CED8324A0D011006F7DE4 /* AssigneeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 309CED8124A0D011006F7DE4 /* AssigneeTableViewCell.xib */; };
 		309CED8624A0D141006F7DE4 /* MilestoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED8424A0D141006F7DE4 /* MilestoneTableViewCell.swift */; };
 		309CED8724A0D141006F7DE4 /* MilestoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 309CED8524A0D141006F7DE4 /* MilestoneTableViewCell.xib */; };
-		309CED8A24A0DE71006F7DE4 /* AssigneeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED8924A0DE71006F7DE4 /* AssigneeTableViewDataSource.swift */; };
 		309CED8C24A0DF54006F7DE4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED8B24A0DF54006F7DE4 /* User.swift */; };
 		309CED9124A0E1D1006F7DE4 /* UITableViewCell+Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED9024A0E1D1006F7DE4 /* UITableViewCell+Button.swift */; };
 		30A0E6C324A1E0D5002C3F48 /* GeneralTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6C224A1E0D5002C3F48 /* GeneralTableViewDataSource.swift */; };
@@ -144,7 +143,6 @@
 		309CED8124A0D011006F7DE4 /* AssigneeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssigneeTableViewCell.xib; sourceTree = "<group>"; };
 		309CED8424A0D141006F7DE4 /* MilestoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneTableViewCell.swift; sourceTree = "<group>"; };
 		309CED8524A0D141006F7DE4 /* MilestoneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MilestoneTableViewCell.xib; sourceTree = "<group>"; };
-		309CED8924A0DE71006F7DE4 /* AssigneeTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssigneeTableViewDataSource.swift; sourceTree = "<group>"; };
 		309CED8B24A0DF54006F7DE4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		309CED9024A0E1D1006F7DE4 /* UITableViewCell+Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Button.swift"; sourceTree = "<group>"; };
 		30A0E6C224A1E0D5002C3F48 /* GeneralTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -387,7 +385,6 @@
 		309CED8824A0DE22006F7DE4 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				309CED8924A0DE71006F7DE4 /* AssigneeTableViewDataSource.swift */,
 				30A0E6C224A1E0D5002C3F48 /* GeneralTableViewDataSource.swift */,
 			);
 			path = DataSources;
@@ -825,7 +822,6 @@
 				3825A8A5249356530021D512 /* UIView+Animations.swift in Sources */,
 				30E22EE52491064A00EC0FD8 /* Request.swift in Sources */,
 				3825A8A324933B040021D512 /* TitleHeaderBackgroundView.swift in Sources */,
-				309CED8A24A0DE71006F7DE4 /* AssigneeTableViewDataSource.swift in Sources */,
 				30A0E6C924A1FC9E002C3F48 /* AssigneesStub.swift in Sources */,
 				30E22EFB24910F9F00EC0FD8 /* Issue.swift in Sources */,
 				38F0FB62248FA23F0080FBBD /* EndPoint.swift in Sources */,
