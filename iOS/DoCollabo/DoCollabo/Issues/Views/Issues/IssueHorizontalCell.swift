@@ -17,7 +17,7 @@ final class IssueHorizontalCell: UICollectionViewCell {
         static let statusImageViewLeft: CGFloat = 12.0
         static let interSpacingForItems: CGFloat = 8.0
         static let contentsStackViewBottom: CGFloat = 16.0
-        static let trailingStackViewRight: CGFloat = 16.0
+        static let trailingStackViewRight: CGFloat = 12.0
     }
     
     private var statusImageView: IssueStatusImageView!
@@ -38,21 +38,35 @@ final class IssueHorizontalCell: UICollectionViewCell {
     func configureCell(with issue: Issue) {
         statusImageView.configureStatusImageView(with: issue)
         contentsStackView.configureContentsStackView(with: issue)
-
-        if issue.labels.count > 0 {
-            issueLabelsViewController.updateLabels(issue.labels)
-            issueLabelsViewController.reloadCollectionView()
-            contentsStackView.addArrangedSubview(issueLabelsViewController.view)
-            layoutIfNeeded()
-            issueLabelsViewController.view.heightAnchor.constraint(equalToConstant: issueLabelsViewController.contentHeight).isActive = true
-        }
-        
+        configureIssueLabels(with: issue)
         trailingStackView.configureTrailingStackView(with: issue)
+        trailingStackView.delegate = self
     }
     
     override func prepareForReuse() {
+        alpha = 1
         contentsStackView.reset()
     }
+}
+
+// MARK:- IssueHorizontalTrailingStackViewDelegate
+
+extension IssueHorizontalCell: IssueHorizontalTrailingStackViewDelegate {
+    func moreButtonDidTap(_ button: UIButton) {
+        let collectionView = self.superview as! UICollectionView
+        let location = button.convert(button.bounds.origin, to: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: location) else { return }
+        NotificationCenter.default.post(
+            name: .issueCellMoreButtonDidTap,
+            object: nil,
+            userInfo: ["indexPath": indexPath])
+    }
+}
+
+// MARK:- Notification
+
+extension Notification.Name {
+    static let issueCellMoreButtonDidTap = Notification.Name(rawValue: "issueCellMoreButtonDidTap")
 }
 
 // MARK:- Configuration Privately
@@ -63,15 +77,22 @@ extension IssueHorizontalCell {
         configureLayout()
     }
     
+    fileprivate func configureIssueLabels(with issue: Issue) {
+        if issue.labels.count > 0 {
+            issueLabelsViewController.updateLabels(issue.labels)
+            issueLabelsViewController.reloadCollectionView()
+            contentsStackView.addArrangedSubview(issueLabelsViewController.view)
+            layoutIfNeeded()
+            issueLabelsViewController.view.heightAnchor.constraint(equalToConstant: issueLabelsViewController.contentHeight).isActive = true
+        }
+    }
+    
     private func configureUI() {
         backgroundColor = .tertiarySystemBackground
-        
         statusImageView = IssueStatusImageView()
-        
         issueLabelsViewController = IssueLabelsViewController()
         trailingStackView = IssueHorizontalTrailingStackView()
         contentsStackView = IssueHorizontalContentsStackView()
-        
         roundCorner(cornerRadius: 16.0)
         drawShadow(color: .darkGray, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
     }

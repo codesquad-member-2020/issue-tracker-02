@@ -14,8 +14,9 @@ final class IssuesViewController: UIViewController {
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    private var moreViewController: IssueCellMoreViewController!
     
-    private var issuesUseCase: UseCase!
+    private var issuesUseCase: IssuesUseCase!
     private var dataSource: IssuesCollectionViewDataSource!
     
     // for scroll animation
@@ -34,6 +35,10 @@ final class IssuesViewController: UIViewController {
         checkToken()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .issueCellMoreButtonDidTap, object: nil)
+    }
+    
     private func deleteToken() {
         UserDefaults.standard.removeObject(forKey: OAuthNetworkManager.jwtToken)
     }
@@ -43,6 +48,8 @@ final class IssuesViewController: UIViewController {
         configureCollectionViewDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
+        configureNotification()
+        configureMoreViewController()
         hideViews()
     }
     
@@ -88,17 +95,42 @@ final class IssuesViewController: UIViewController {
 
 extension IssuesViewController {
     private func presentErrorAlert(error: Error) {
-        let alertController = ErrorAlertController(
+        let alertController = NetworkErrorAlertController(
             title: nil,
             message: error.localizedDescription,
             preferredStyle: .alert)
-        alertController.configure(actionTitle: "재요청") { (_) in
+        alertController.configureAction(title: "재요청") { (_) in
             self.fetchIssues()
         }
-        alertController.configure(actionTitle: "확인") { (_) in
+        alertController.configureDoneAction() { (_) in
             return
         }
         self.present(alertController, animated: true)
+    }
+}
+
+// MARK:- IssueCellMoreViewControllerDelegate
+
+extension IssuesViewController: IssueCellMoreViewControllerDelegate {
+    func issueStatusDidChange(isClosed: Bool, at indexPath: IndexPath) {
+        dataSource.updateIssueStatus(isClosed: isClosed, at: indexPath)
+        issuesCollectionView.performBatchUpdates({
+            issuesCollectionView.reloadItems(at: [indexPath])
+        }, completion: nil)
+    }
+    
+    func removeIssue(at indexPath: IndexPath) {
+        let cell = self.issuesCollectionView.cellForItem(at: indexPath) as! IssueHorizontalCell
+        DispatchQueue.main.async {
+            UIView.animateCurveEaseOut(withDuration: 0.3, animations: {
+                cell.alpha = 0
+            }, completion: { _ in
+                self.issuesCollectionView.performBatchUpdates({
+                    self.issuesCollectionView.deleteItems(at: [indexPath])
+                    self.dataSource.removeIssue(at: indexPath)
+                }, completion: nil)
+            })
+        }
     }
 }
 
@@ -143,54 +175,34 @@ extension IssuesViewController: HeaderViewActionDelegate {
     }
 }
 
-// MARK:- Loading UI
-
-extension IssuesViewController {
-    private func hideViews() {
-        titleHeaderBackgroundView.alpha = 0
-        titleHeaderView.alpha = 0
-        issuesCollectionView.alpha = 0
-        activityIndicator.alpha = 1
-        activityIndicator.startAnimating()
-    }
-    
-    private func showViews() {
-        UIView.animate(
-            withDuration: 0.7,
-            delay: 0,
-            usingSpringWithDamping: 1,
-            initialSpringVelocity: 1,
-            options: .curveEaseOut,
-            animations: {
-                self.titleHeaderBackgroundView.alpha = 1
-                self.activityIndicator.alpha = 0
-        }, completion: { _ in
-            self.activityIndicator.stopAnimating()
-        })
-        UIView.animate(
-            withDuration: 1,
-            delay: 0.2,
-            usingSpringWithDamping: 1,
-            initialSpringVelocity: 1,
-            options: .curveEaseOut,
-            animations: {
-                self.titleHeaderView.alpha = 1
-        })
-        UIView.animate(
-            withDuration: 0.5,
-            delay: 0.4,
-            usingSpringWithDamping: 1.1,
-            initialSpringVelocity: 1,
-            options: .curveEaseOut,
-            animations: {
-                self.issuesCollectionView.alpha = 1
-        })
-    }
-}
-
 // MARK:- Configuration
 
 extension IssuesViewController {
+    private func configureMoreViewController() {
+        moreViewController = IssueCellMoreViewController()
+        moreViewController.delegate = self
+        moreViewController.modalPresentationStyle = .overFullScreen
+    }
+    
+    private func configureNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(moreButtonDidTap),
+            name: .issueCellMoreButtonDidTap,
+            object: nil)
+    }
+    
+    @objc private func moreButtonDidTap(notification: Notification) {
+        guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
+        dataSource.referIssue(at: indexPath) { (issue) in
+            moreViewController.configureIssueCellMoreViewController(
+                with: issue,
+                issuesUseCase: issuesUseCase,
+                at: indexPath)
+            present(moreViewController, animated: false, completion: nil)
+        }
+    }
+    
     private func configureCollectionViewDelegate() {
         issuesCollectionView.delegate = self
     }

@@ -11,9 +11,11 @@ import Foundation
 struct IssuesRequest: Request {
     var path: String = EndPoint.issues
     var method: HTTPMethod
+    var bodyParams: Data?
     
-    init(method: HTTPMethod = .GET, id: String? = nil) {
+    init(method: HTTPMethod = .GET, id: String? = nil, bodyParams: Data? = nil) {
         self.method = method
+        self.bodyParams = bodyParams
         guard let id = id else { return }
         path += "/" + id
     }
