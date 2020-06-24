@@ -9,12 +9,19 @@
 import UIKit
 
 protocol IssueCellMoreViewControllerDelegate: class {
-    func issueStatusToggleButtonDidTap()
-    func editButtonDidTap()
-    func deleteButtonDidTap()
+    func issueStatusDidChange(isClosed: Bool, at indexPath: IndexPath)
+    func removeIssue(at indexPath: IndexPath)
 }
 
 final class IssueCellMoreViewController: MoreViewController {
+    
+    struct IssueStatus: Encodable {
+        let isClosed: Bool
+        
+        enum CodingKeys: String, CodingKey {
+            case isClosed = "close"
+        }
+    }
     
     private var issueStatusToggleButton: UIButton!
     private var editButton: UIButton!
@@ -22,11 +29,38 @@ final class IssueCellMoreViewController: MoreViewController {
     
     weak var delegate: IssueCellMoreViewControllerDelegate?
     
-    func configureIssueCellMoreViewController(with issue: Issue) {
-        configureButtons(with: issue)
+    private var issue: Issue!
+    private var indexPath: IndexPath!
+    private var issuesUseCase: IssuesUseCase!
+    
+    func configureIssueCellMoreViewController(
+        with issue: Issue,
+        issuesUseCase: IssuesUseCase,
+        at indexPath: IndexPath) {
+        self.issue = issue
+        self.indexPath = indexPath
+        self.issuesUseCase = issuesUseCase
+        configureButtons()
         configureMoreViewController()
         addOptions(buttons: issueStatusToggleButton, editButton, deleteButton)
         configureTitle(issue.title)
+    }
+}
+
+// MARK:- Error Handling
+
+extension IssueCellMoreViewController {
+    func presentError(_ error: NetworkError) {
+        let title = error == .AuthorizationDenied ? "권한 에러" : "네트워크 에러"
+        let alertController = NetworkErrorAlertController(
+            title: nil,
+            message: error.description,
+            preferredStyle: .alert)
+        alertController.configureTitle(title)
+        alertController.configureDoneAction() { (_) in
+            return
+        }
+        present(alertController, animated: true)
     }
 }
 
@@ -34,23 +68,67 @@ final class IssueCellMoreViewController: MoreViewController {
 
 extension IssueCellMoreViewController {
     @objc private func issueStatusToggleButtonDidTap() {
-        delegate?.issueStatusToggleButtonDidTap()
+        let issueStatus = IssueStatus(isClosed: !issue.isClosed)
+        guard let encodedData = try? JSONEncoder().encode(issueStatus) else { return }
+        let request = IssuesRequest(
+            method: .PATCH,
+            id: String(issue.id),
+            bodyParams: encodedData).asURLRequest()
+        issuesUseCase.getStatus(request: request) { (result) in
+            switch result {
+            case .success(_):
+                self.dismissMoreView()
+                self.delegate?.issueStatusDidChange(isClosed: !self.issue.isClosed, at: self.indexPath)
+            case .failure(let error):
+                self.presentError(error)
+            }
+        }
     }
     
     @objc private func editButtonDidTap() {
-        delegate?.editButtonDidTap()
+        let alertController = NetworkErrorAlertController(
+            title: nil,
+            message: "아직 준비 중인 서비스입니다.",
+            preferredStyle: .alert)
+        alertController.configureTitle("안내")
+        alertController.configureDoneAction() { (_) in
+            return
+        }
+        present(alertController, animated: true)
     }
     
     @objc private func deleteButtonDidTap() {
-        delegate?.deleteButtonDidTap()
+        let alertController = UIAlertController(title: "경고", message: "삭제하시겠습니까?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "예", style: .default) { (_) in
+            self.removeIssue()
+        }
+        let cancelAction = UIAlertAction(title: "아니요", style: .default) { (_) in
+            return
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func removeIssue() {
+        let request = IssuesRequest(method: .DELETE, id: String(issue.id)).asURLRequest()
+        issuesUseCase.requestDelete(request: request) { (result) in
+            switch result {
+            case .success(_):
+                self.dismissMoreView()
+                self.delegate?.removeIssue(at: self.indexPath)
+            case .failure(let error):
+                self.presentError(error)
+            }
+        }
     }
 }
 
 // MARK:- Configuration
 
 extension IssueCellMoreViewController {
-    private func configureButtons(with issue: Issue) {
-        let issueStatusToggleButtonTitle = issue.close ? "이슈 다시 열기" : "이슈 닫기"
+    private func configureButtons() {
+        let issueStatusToggleButtonTitle = issue.isClosed ? "이슈 다시 열기" : "이슈 닫기"
         issueStatusToggleButton = generateButton(
             title: "\(issueStatusToggleButtonTitle)",
             target: self,
