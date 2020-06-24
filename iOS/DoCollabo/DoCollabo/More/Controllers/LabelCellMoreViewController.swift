@@ -12,6 +12,7 @@ final class LabelCellMoreViewController: MoreViewController {
     
     private var editButton: UIButton!
     private var deleteButton: UIButton!
+    private var titleLabelView: MoreTitleLabelView!
     
     private var label: IssueLabel!
     private var indexPath: IndexPath!
@@ -24,7 +25,9 @@ final class LabelCellMoreViewController: MoreViewController {
         configureButtons()
         configureMoreViewController()
         addOptions(buttons: editButton, deleteButton)
-        configureTitle(label.title)
+        configureTitle(nil)
+        configureTitleViewUI()
+        configureTitleView(titleLabelView)
     }
 }
 
@@ -43,6 +46,11 @@ extension LabelCellMoreViewController {
 // MARK:- Configuration
 
 extension LabelCellMoreViewController {
+    private func configureTitleViewUI() {
+        titleLabelView = MoreTitleLabelView()
+        titleLabelView.configureLabel(with: label)
+    }
+    
     private func configureButtons() {
         editButton = generateButton(
             title: "수정하기",

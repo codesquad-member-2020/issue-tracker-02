@@ -23,8 +23,12 @@ class MoreViewController: UIViewController {
         configure()
     }
     
-    func configureTitle(_ title: String) {
+    func configureTitle(_ title: String?) {
         moreView.configureTitle(title)
+    }
+    
+    func configureTitleView(_ view: UIView) {
+        moreView.configureTitleView(view)
     }
     
     func generateButton(
