@@ -28,11 +28,12 @@ class NewIssueViewController: UIViewController {
         configureUI()
         configureSubViewController()
         newIssueAccessoryView.delegate = self
+        itemSelectionViewController.delegate = self
     }
     
     private func configureUI() {
         titleHeaderView.titleLabel.text = "새 이슈"
-        titleHeaderView.changeUI(titleSize: 34, backgroundColor: .white)
+        titleHeaderView.changeUI(titleSize: 34, backgroundColor: .systemBackground)
         backgroundView.roundCorner(cornerRadius: 16.0)
         backgroundView.drawShadow(color: .black, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
     }
@@ -59,5 +60,19 @@ extension NewIssueViewController: NewIssueAccessoryDelegate {
     func selectMilestoneButtonDidTap() {
         present(itemSelectionViewController, animated: true)
         itemSelectionViewController.fetchMilestones()
+    }
+}
+
+extension NewIssueViewController: ItemSelectionViewDelegate {
+    func assigneesSubmitButtonDidTap(_ users: [User]) {
+        newIssueAccessoryView.generateAssigneeView(users)
+    }
+    
+    func labelSubmitButtonDidTap(_ labels: [IssueLabel]) {
+        newIssueAccessoryView.generateLabelView(labels)
+    }
+    
+    func milestoneSubmitButtonDidTap(_ milestones: [Milestone]) {
+        newIssueAccessoryView.generateMilestoneView(milestones)
     }
 }

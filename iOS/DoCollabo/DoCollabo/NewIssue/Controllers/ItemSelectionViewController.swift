@@ -326,14 +326,14 @@ extension ItemSelectionViewController {
 
 extension ItemSelectionViewController {
     private func presentErrorAlert(error: Error, handler: @escaping () -> Void) {
-        let alertController = ErrorAlertController(
+        let alertController = NetworkErrorAlertController(
             title: nil,
             message: error.localizedDescription,
             preferredStyle: .alert)
-        alertController.configure(actionTitle: "재요청") { (_) in
+        alertController.configureAction(title: "재요청") { (_) in
             handler()
         }
-        alertController.configure(actionTitle: "확인") { (_) in
+        alertController.configureAction(title: "확인") { (_) in
             return
         }
         self.present(alertController, animated: true)

@@ -10,7 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewIssueAccessoryView" customModule="DoCollabo" customModuleProvider="target">
             <connections>
+                <outlet property="assigneeStackView" destination="7UK-oi-2fz" id="18U-Lx-cB4"/>
                 <outlet property="frameView" destination="iN0-l3-epB" id="19w-GA-i1D"/>
+                <outlet property="labelStackView" destination="4Eb-5c-eWu" id="M98-zB-fKA"/>
+                <outlet property="milestoneStackView" destination="nt9-SS-HVr" id="GDR-fA-6eg"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -18,23 +21,38 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="191"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UK-oi-2fz" customClass="NewIssueHorizontalScrollView" customModule="DoCollabo" customModuleProvider="target">
+                    <rect key="frame" x="101.5" y="16" width="230" height="50.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Eb-5c-eWu" customClass="NewIssueHorizontalScrollView" customModule="DoCollabo" customModuleProvider="target">
+                    <rect key="frame" x="101.5" y="70.5" width="230" height="50"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nt9-SS-HVr" customClass="NewIssueHorizontalScrollView" customModule="DoCollabo" customModuleProvider="target">
+                    <rect key="frame" x="101.5" y="124.5" width="230" height="50.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="DBK-Ro-976">
                     <rect key="frame" x="16" y="16" width="69.5" height="159"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="69.5" placeholderIntrinsicHeight="55" text="담당자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qky-qo-q1P">
                             <rect key="frame" x="0.0" y="0.0" width="69.5" height="50.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="69.5" placeholderIntrinsicHeight="55" text="레이블" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBD-Wz-m7h">
                             <rect key="frame" x="0.0" y="54.5" width="69.5" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="69.5" placeholderIntrinsicHeight="55" text="마일스톤" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUW-Bo-GVU">
                             <rect key="frame" x="0.0" y="108.5" width="69.5" height="50.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -46,6 +64,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUW-av-Lww">
                             <rect key="frame" x="0.0" y="0.0" width="50.5" height="50.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="PUW-av-Lww" secondAttribute="height" id="Fs2-HK-y8r"/>
                             </constraints>
@@ -59,6 +78,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvY-4J-yOg">
                             <rect key="frame" x="0.0" y="54.5" width="50.5" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="hvY-4J-yOg" secondAttribute="height" multiplier="1:1" id="KsC-8G-Yoz"/>
                             </constraints>
@@ -72,6 +92,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqb-qH-TNK">
                             <rect key="frame" x="0.0" y="108.5" width="50.5" height="50.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Nqb-qH-TNK" secondAttribute="height" multiplier="1:1" id="hzb-d9-0ZW"/>
                             </constraints>
@@ -85,18 +106,6 @@
                         </button>
                     </subviews>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UK-oi-2fz" customClass="NewIssueHorizontalScrollView" customModule="DoCollabo" customModuleProvider="target">
-                    <rect key="frame" x="101.5" y="16" width="230" height="50.5"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Eb-5c-eWu" customClass="NewIssueHorizontalScrollView" customModule="DoCollabo" customModuleProvider="target">
-                    <rect key="frame" x="101.5" y="70.5" width="230" height="50"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nt9-SS-HVr" customClass="NewIssueHorizontalScrollView" customModule="DoCollabo" customModuleProvider="target">
-                    <rect key="frame" x="101.5" y="124.5" width="230" height="50.5"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>

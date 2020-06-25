@@ -42,6 +42,7 @@
 		309CED8624A0D141006F7DE4 /* MilestoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED8424A0D141006F7DE4 /* MilestoneTableViewCell.swift */; };
 		309CED8724A0D141006F7DE4 /* MilestoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 309CED8524A0D141006F7DE4 /* MilestoneTableViewCell.xib */; };
 		309CED8C24A0DF54006F7DE4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED8B24A0DF54006F7DE4 /* User.swift */; };
+		309D56DD24A3727F0026715D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309D56DC24A3727F0026715D /* PaddingLabel.swift */; };
 		30A0E6C324A1E0D5002C3F48 /* GeneralTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6C224A1E0D5002C3F48 /* GeneralTableViewDataSource.swift */; };
 		30A0E6C624A1E1AD002C3F48 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6C424A1E1AD002C3F48 /* LabelTableViewCell.swift */; };
 		30A0E6C724A1E1AD002C3F48 /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A0E6C524A1E1AD002C3F48 /* LabelTableViewCell.xib */; };
@@ -149,6 +150,7 @@
 		309CED8424A0D141006F7DE4 /* MilestoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneTableViewCell.swift; sourceTree = "<group>"; };
 		309CED8524A0D141006F7DE4 /* MilestoneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MilestoneTableViewCell.xib; sourceTree = "<group>"; };
 		309CED8B24A0DF54006F7DE4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		309D56DC24A3727F0026715D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		30A0E6C224A1E0D5002C3F48 /* GeneralTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableViewDataSource.swift; sourceTree = "<group>"; };
 		30A0E6C424A1E1AD002C3F48 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		30A0E6C524A1E1AD002C3F48 /* LabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelTableViewCell.xib; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 				38879C572490E48600EE84D7 /* UIView+Shadow.swift */,
 				38BDFA2B24912F21008E901D /* UIView+AutoLayout.swift */,
 				3825A8A4249356530021D512 /* UIView+Animations.swift */,
+				309D56DC24A3727F0026715D /* PaddingLabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -861,6 +864,7 @@
 				30AC7852248F95B9004BA3B6 /* NetworkErrorAlertController.swift in Sources */,
 				38FF07E4249E268C00DBFB5F /* IssueHorizontalWriterLabel.swift in Sources */,
 				385A50D124915E66004BE8DB /* UIColor+Hex.swift in Sources */,
+				309D56DD24A3727F0026715D /* PaddingLabel.swift in Sources */,
 				3825A8A5249356530021D512 /* UIView+Animations.swift in Sources */,
 				385BE61224A1272A00232523 /* OptionsView.swift in Sources */,
 				30E22EE52491064A00EC0FD8 /* Request.swift in Sources */,
