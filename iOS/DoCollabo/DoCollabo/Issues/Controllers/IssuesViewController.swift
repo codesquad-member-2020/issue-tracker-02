@@ -55,11 +55,17 @@ final class IssuesViewController: UIViewController {
         configureMoreViewController()
         hideViews()
         configureRefreshControl()
+        configureKeyboardOption()
+    }
+    
+    private func configureKeyboardOption() {
+        issuesCollectionView.keyboardDismissMode = .interactive
     }
     
     private func configureHeaderView() {
         titleHeaderView.configureTitle("이슈")
         titleHeaderView.delegate = self
+        titleHeaderView.hasSearchBar()
     }
     
     private func checkToken() {
