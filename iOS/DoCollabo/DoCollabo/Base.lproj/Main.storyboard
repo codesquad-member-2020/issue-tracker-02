@@ -289,18 +289,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5o-fc-rf6" userLabel="Title Header Background View">
-                                <rect key="frame" x="10.5" y="44" width="393" height="275.5"/>
+                                <rect key="frame" x="10.5" y="44" width="393" height="240"/>
                                 <color key="backgroundColor" name="key.navy"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="I5o-fc-rf6" secondAttribute="height" multiplier="5:3.5" id="gdT-Aj-28R"/>
+                                    <constraint firstAttribute="height" constant="240" id="mga-mY-V5y"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pY4-0L-Kev" customClass="TitleHeaderView" customModule="DoCollabo" customModuleProvider="target">
-                                <rect key="frame" x="10.5" y="44" width="393" height="151.5"/>
+                                <rect key="frame" x="10.5" y="44" width="393" height="144"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="BA8-U5-sMT"/>
+                                </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BzL-rz-PPs" customClass="LabelsCollectionView" customModule="DoCollabo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="173.5" width="414" height="639.5"/>
+                                <rect key="frame" x="0.0" y="188" width="414" height="625"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DGE-hk-S5h">
                                     <size key="itemSize" width="402" height="108"/>
@@ -328,16 +331,14 @@
                         <constraints>
                             <constraint firstItem="BzL-rz-PPs" firstAttribute="bottom" secondItem="Ux8-ec-BGX" secondAttribute="bottom" id="2Re-nz-QqE"/>
                             <constraint firstItem="pY4-0L-Kev" firstAttribute="trailing" secondItem="I5o-fc-rf6" secondAttribute="trailing" id="5FZ-js-Rwj"/>
-                            <constraint firstItem="pY4-0L-Kev" firstAttribute="height" secondItem="I5o-fc-rf6" secondAttribute="height" multiplier="0.55" id="AcE-kd-hHK"/>
                             <constraint firstItem="pY4-0L-Kev" firstAttribute="top" secondItem="Ux8-ec-BGX" secondAttribute="top" id="EFq-qF-eB6"/>
                             <constraint firstItem="pY4-0L-Kev" firstAttribute="leading" secondItem="I5o-fc-rf6" secondAttribute="leading" id="KdM-Qw-Wv5"/>
-                            <constraint firstItem="BzL-rz-PPs" firstAttribute="top" secondItem="pY4-0L-Kev" secondAttribute="bottom" constant="-22" id="TUi-3h-JYZ"/>
+                            <constraint firstItem="BzL-rz-PPs" firstAttribute="top" secondItem="pY4-0L-Kev" secondAttribute="bottom" id="TUi-3h-JYZ"/>
                             <constraint firstItem="fM1-hM-DKS" firstAttribute="centerY" secondItem="Ux8-ec-BGX" secondAttribute="centerY" id="baa-AZ-lGc"/>
                             <constraint firstItem="I5o-fc-rf6" firstAttribute="centerX" secondItem="b4o-O0-JAl" secondAttribute="centerX" id="egQ-sn-JI4"/>
                             <constraint firstItem="I5o-fc-rf6" firstAttribute="width" secondItem="b4o-O0-JAl" secondAttribute="width" multiplier="0.95" id="fzz-f0-bZ2"/>
                             <constraint firstItem="Ux8-ec-BGX" firstAttribute="trailing" secondItem="BzL-rz-PPs" secondAttribute="trailing" id="hbL-qt-vv2"/>
                             <constraint firstItem="I5o-fc-rf6" firstAttribute="top" secondItem="Ux8-ec-BGX" secondAttribute="top" id="hzA-jp-97a"/>
-                            <constraint firstItem="I5o-fc-rf6" firstAttribute="width" secondItem="I5o-fc-rf6" secondAttribute="height" multiplier="5:3.5" id="p5g-VD-Sj6"/>
                             <constraint firstItem="fM1-hM-DKS" firstAttribute="centerX" secondItem="Ux8-ec-BGX" secondAttribute="centerX" id="p8V-5j-UEN"/>
                             <constraint firstItem="BzL-rz-PPs" firstAttribute="leading" secondItem="Ux8-ec-BGX" secondAttribute="leading" id="tx6-C9-6T9"/>
                         </constraints>
@@ -348,7 +349,10 @@
                         <outlet property="activityIndicator" destination="fM1-hM-DKS" id="Vpx-pi-VpP"/>
                         <outlet property="labelsCollectionView" destination="BzL-rz-PPs" id="IHD-Ws-dzP"/>
                         <outlet property="titleHeaderBackgroundView" destination="I5o-fc-rf6" id="tho-Hx-JGe"/>
+                        <outlet property="titleHeaderBackgroundViewHeightAnchor" destination="mga-mY-V5y" id="VcD-lY-Afg"/>
+                        <outlet property="titleHeaderBackgroundViewTopAnchor" destination="hzA-jp-97a" id="oYC-GN-Tt1"/>
                         <outlet property="titleHeaderView" destination="pY4-0L-Kev" id="5YC-Og-2bf"/>
+                        <outlet property="titleHeaderViewHeightAnchor" destination="BA8-U5-sMT" id="73m-oL-Jtp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0l-5P-pw5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
