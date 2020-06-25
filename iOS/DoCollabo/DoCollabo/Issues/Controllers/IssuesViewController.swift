@@ -174,6 +174,19 @@ extension IssuesViewController: HeaderViewActionDelegate {
     }
 }
 
+extension IssuesViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        titleHeaderView.didBeginEditing()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let searchText = titleHeaderView.searchText() else { return false }
+        
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
 // MARK:- Configuration
 
 extension IssuesViewController {
@@ -211,6 +224,9 @@ extension IssuesViewController {
     private func configureDelegate() {
         issuesCollectionView.delegate = self
         newIssueViewController.delegate = self
+        titleHeaderView.configureDelegate { textField in
+            textField.delegate = self
+        }
     }
     
     private func configureCollectionViewDataSource() {

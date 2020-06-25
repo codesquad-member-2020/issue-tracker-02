@@ -10,7 +10,6 @@ import UIKit
 
 protocol HeaderViewActionDelegate {
     func newButtonDidTap()
-//    func 
 }
 
 @IBDesignable
@@ -60,6 +59,21 @@ final class TitleHeaderView: UIView {
 
     func hideSearchTextField() {
         searchTextField.isHidden = true
+    }
+    
+    func didBeginEditing() {
+        searchTextField.text = ""
+    }
+    
+    func searchText() -> String? {
+        if let searchText = searchTextField.text, searchText != "" {
+            return searchText
+        }
+        return nil
+    }
+    
+    func configureDelegate(handler: (UITextField) -> Void) {
+        handler(searchTextField)
     }
     
     @IBAction func pressAddButton(_ sender: UIButton) {
