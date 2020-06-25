@@ -14,8 +14,9 @@ final class IssuesViewController: UIViewController {
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    private var moreViewController: IssueCellMoreViewController!
     
+    private var moreViewController: IssueCellMoreViewController!
+    private var newIssueViewController: NewIssueViewController!
     private var issuesUseCase: IssuesUseCase!
     private var dataSource: IssuesCollectionViewDataSource!
     var refreshControl = UIRefreshControl()
@@ -46,7 +47,8 @@ final class IssuesViewController: UIViewController {
     
     private func configure() {
         configureHeaderView()
-        configureCollectionViewDelegate()
+        configureNewIssueViewController()
+        configureDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
         configureNotification()
@@ -168,12 +170,7 @@ extension IssuesViewController: UICollectionViewDelegateFlowLayout {
 
 extension IssuesViewController: HeaderViewActionDelegate {
     func newButtonDidTap() {
-        guard let issueAddViewController = storyboard?.instantiateViewController(
-            identifier: String(describing: NewIssueViewController.self))
-            else {
-                return
-        }
-        present(issueAddViewController, animated: true, completion: nil)
+        present(newIssueViewController, animated: true, completion: nil)
     }
 }
 
@@ -205,8 +202,14 @@ extension IssuesViewController {
         }
     }
     
-    private func configureCollectionViewDelegate() {
+    private func configureNewIssueViewController() {
+        newIssueViewController = storyboard?.instantiateViewController(
+            identifier: String(describing: NewIssueViewController.self))
+    }
+    
+    private func configureDelegate() {
         issuesCollectionView.delegate = self
+        newIssueViewController.delegate = self
     }
     
     private func configureCollectionViewDataSource() {
@@ -220,7 +223,7 @@ extension IssuesViewController {
     private func configureUseCase() {
         issuesUseCase = IssuesUseCase()
     }
-
+    
     private func configureRefreshControl() {
         issuesCollectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshIssues), for: .valueChanged)
@@ -228,5 +231,13 @@ extension IssuesViewController {
     
     @objc private func refreshIssues() {
         issuesCollectionView.reloadData()
+    }
+}
+
+//MARK: - NewIssueActionDelegate
+
+extension IssuesViewController: NewIssueActionDelegate {
+    func submitButtonDidTap() {
+        fetchIssues()
     }
 }

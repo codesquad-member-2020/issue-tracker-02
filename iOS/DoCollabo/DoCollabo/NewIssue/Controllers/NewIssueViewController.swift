@@ -9,6 +9,10 @@
 import UIKit
 import SwiftyMarkdown
 
+protocol NewIssueActionDelegate: class {
+    func submitButtonDidTap()
+}
+
 class NewIssueViewController: UIViewController {
     
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
@@ -26,6 +30,8 @@ class NewIssueViewController: UIViewController {
     private var selectedLabelsID: [Int] = []
     private var selectedMilestonesID: [Int] = []
     
+    weak var delegate: NewIssueActionDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -39,6 +45,7 @@ class NewIssueViewController: UIViewController {
                 switch result {
                 case .success(_):
                     self.dismiss(animated: true)
+                    self.delegate?.submitButtonDidTap()
                 case .failure(let error):
                     self.presentErrorAlert(error: error) {
                         self.requestAddIssue()
