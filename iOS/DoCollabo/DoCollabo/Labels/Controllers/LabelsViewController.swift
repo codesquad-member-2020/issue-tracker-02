@@ -16,6 +16,10 @@ final class LabelsViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var popUpViewController: LabelPopUpViewController!
     private var moreViewController: LabelCellMoreViewController!
+    
+    @IBOutlet weak var titleHeaderBackgroundViewTopAnchor: NSLayoutConstraint!
+    @IBOutlet weak var titleHeaderBackgroundViewHeightAnchor: NSLayoutConstraint!
+    @IBOutlet weak var titleHeaderViewHeightAnchor: NSLayoutConstraint!
 
     private var labelsUseCase: LabelsUseCase!
     private var dataSource: LabelsCollectionViewDataSource!
