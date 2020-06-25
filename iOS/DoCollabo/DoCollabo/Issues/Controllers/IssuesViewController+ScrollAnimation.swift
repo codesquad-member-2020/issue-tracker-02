@@ -51,6 +51,7 @@ extension IssuesViewController: UIScrollViewDelegate {
                 (headerStretchedHeight - headerHuggedHeight)
             titleHeaderView.titleLabel.alpha = offsetProgress
             titleHeaderView.smallTitleLabel.alpha = 1.0 - offsetProgress
+            titleHeaderView.updateSearchBar(offsetProgress: offsetProgress)
         }
     }
     
