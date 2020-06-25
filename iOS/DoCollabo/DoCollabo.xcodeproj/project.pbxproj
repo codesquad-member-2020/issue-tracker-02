@@ -12,6 +12,7 @@
 		301A8D56249CA10C00732A5D /* LabelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A8D55249CA10C00732A5D /* LabelRequest.swift */; };
 		301A8D58249CA17700732A5D /* IssueUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A8D57249CA17700732A5D /* IssueUseCase.swift */; };
 		301A8D5A249CA18F00732A5D /* LabelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A8D59249CA18F00732A5D /* LabelUseCase.swift */; };
+		301B3C0D24A4591300413085 /* NewIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301B3C0C24A4591300413085 /* NewIssue.swift */; };
 		3020A0A524933B0D00483727 /* LabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0A424933B0D00483727 /* LabelsViewController.swift */; };
 		3020A0A92493479200483727 /* LabelsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0A82493479200483727 /* LabelsCollectionView.swift */; };
 		3020A0AC249347F000483727 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3020A0AA249347F000483727 /* LabelCell.swift */; };
@@ -42,8 +43,8 @@
 		309CED8624A0D141006F7DE4 /* MilestoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED8424A0D141006F7DE4 /* MilestoneTableViewCell.swift */; };
 		309CED8724A0D141006F7DE4 /* MilestoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 309CED8524A0D141006F7DE4 /* MilestoneTableViewCell.xib */; };
 		309CED8C24A0DF54006F7DE4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED8B24A0DF54006F7DE4 /* User.swift */; };
-		309D56E024A39C1E0026715D /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 309D56DF24A39C1E0026715D /* SwiftyMarkdown */; };
 		309D56DD24A3727F0026715D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309D56DC24A3727F0026715D /* PaddingLabel.swift */; };
+		309D56E024A39C1E0026715D /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 309D56DF24A39C1E0026715D /* SwiftyMarkdown */; };
 		30A0E6C324A1E0D5002C3F48 /* GeneralTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6C224A1E0D5002C3F48 /* GeneralTableViewDataSource.swift */; };
 		30A0E6C624A1E1AD002C3F48 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6C424A1E1AD002C3F48 /* LabelTableViewCell.swift */; };
 		30A0E6C724A1E1AD002C3F48 /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A0E6C524A1E1AD002C3F48 /* LabelTableViewCell.xib */; };
@@ -122,6 +123,7 @@
 		301A8D55249CA10C00732A5D /* LabelRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelRequest.swift; sourceTree = "<group>"; };
 		301A8D57249CA17700732A5D /* IssueUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueUseCase.swift; sourceTree = "<group>"; };
 		301A8D59249CA18F00732A5D /* LabelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelUseCase.swift; sourceTree = "<group>"; };
+		301B3C0C24A4591300413085 /* NewIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssue.swift; sourceTree = "<group>"; };
 		3020A0A424933B0D00483727 /* LabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
 		3020A0A82493479200483727 /* LabelsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsCollectionView.swift; sourceTree = "<group>"; };
 		3020A0AA249347F000483727 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 				30E22EFC2491101A00EC0FD8 /* IssueLabel.swift */,
 				309CED8B24A0DF54006F7DE4 /* User.swift */,
 				30A0E6CA24A20D0E002C3F48 /* Milestone.swift */,
+				301B3C0C24A4591300413085 /* NewIssue.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				3825A8A1249339700021D512 /* IssuesViewController+ScrollAnimation.swift in Sources */,
 				308A9C9B2499010B00DE53E4 /* PopUpContentView.swift in Sources */,
 				30E505ED249F84BA00B98BA1 /* UIColor+Random.swift in Sources */,
+				301B3C0D24A4591300413085 /* NewIssue.swift in Sources */,
 				385BE61424A128FB00232523 /* IssueCellMoreViewController.swift in Sources */,
 				30789C0C248E1E3F001D0415 /* TabBarViewController.swift in Sources */,
 				30A0E6CD24A20DE8002C3F48 /* MilestoneUseCase.swift in Sources */,

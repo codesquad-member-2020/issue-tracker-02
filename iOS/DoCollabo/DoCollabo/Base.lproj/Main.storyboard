@@ -129,7 +129,7 @@
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="5lT-MA-yKx" firstAttribute="leading" secondItem="4Yc-cG-g8Z" secondAttribute="leading" id="2R8-Nq-47C"/>
                                     <constraint firstItem="4Yc-cG-g8Z" firstAttribute="top" secondItem="Wp8-Mv-qY7" secondAttribute="top" constant="28" id="5l5-yz-sxd"/>
@@ -145,7 +145,7 @@
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SbV-ZH-6fy" customClass="NewIssueAccessoryView" customModule="DoCollabo" customModuleProvider="target">
                                 <rect key="frame" x="24" y="721" width="366" height="143"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

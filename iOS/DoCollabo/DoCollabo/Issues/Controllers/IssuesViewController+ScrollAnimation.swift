@@ -57,6 +57,10 @@ extension IssuesViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
         scrollDidEnd(offsetY: offsetY)
+        if refreshControl.isRefreshing {
+            self.refreshControl.endRefreshing()
+            self.fetchIssues()
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
