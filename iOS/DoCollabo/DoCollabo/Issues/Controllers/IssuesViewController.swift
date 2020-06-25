@@ -9,7 +9,7 @@
 import UIKit
 
 final class IssuesViewController: UIViewController {
-
+    
     @IBOutlet weak var titleHeaderBackgroundView: TitleHeaderBackgroundView!
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
@@ -18,6 +18,7 @@ final class IssuesViewController: UIViewController {
     
     private var issuesUseCase: IssuesUseCase!
     private var dataSource: IssuesCollectionViewDataSource!
+    var refreshControl = UIRefreshControl()
     
     // for scroll animation
     @IBOutlet weak var titleHeaderBackgroundViewTopAnchor: NSLayoutConstraint!
@@ -51,6 +52,7 @@ final class IssuesViewController: UIViewController {
         configureNotification()
         configureMoreViewController()
         hideViews()
+        configureRefreshControl()
     }
     
     private func configureHeaderView() {
@@ -60,9 +62,9 @@ final class IssuesViewController: UIViewController {
     
     private func checkToken() {
         guard let token = UserDefaults.standard.object(forKey: OAuthNetworkManager.jwtToken) as? String
-        else {
-            presentSignIn()
-            return
+            else {
+                presentSignIn()
+                return
         }
         fetchIssues()
     }
@@ -70,15 +72,15 @@ final class IssuesViewController: UIViewController {
     private func presentSignIn() {
         guard let singInViewController = storyboard?.instantiateViewController(
             identifier: String(describing: SignInViewController.self))
-        else {
-            return
+            else {
+                return
         }
         singInViewController.modalPresentationStyle = .currentContext
         singInViewController.modalTransitionStyle = .crossDissolve
         present(singInViewController, animated: true, completion: nil)
     }
     
-    private func fetchIssues() {
+    func fetchIssues() {
         let request = IssuesRequest().asURLRequest()
         issuesUseCase.getResources(request: request, dataType: [Issue].self) { (result) in
             switch result {
@@ -168,8 +170,8 @@ extension IssuesViewController: HeaderViewActionDelegate {
     func newButtonDidTap() {
         guard let issueAddViewController = storyboard?.instantiateViewController(
             identifier: String(describing: NewIssueViewController.self))
-        else {
-            return
+            else {
+                return
         }
         present(issueAddViewController, animated: true, completion: nil)
     }
@@ -217,5 +219,14 @@ extension IssuesViewController {
     
     private func configureUseCase() {
         issuesUseCase = IssuesUseCase()
+    }
+
+    private func configureRefreshControl() {
+        issuesCollectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshIssues), for: .valueChanged)
+    }
+    
+    @objc private func refreshIssues() {
+        issuesCollectionView.reloadData()
     }
 }
