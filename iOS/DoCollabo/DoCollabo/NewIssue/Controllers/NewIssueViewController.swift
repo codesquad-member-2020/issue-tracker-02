@@ -65,14 +65,14 @@ extension NewIssueViewController: NewIssueAccessoryDelegate {
 
 extension NewIssueViewController: ItemSelectionViewDelegate {
     func assigneesSubmitButtonDidTap(_ users: [User]) {
-        newIssueAccessoryView.makeAssigneeView(users)
+        newIssueAccessoryView.generateAssigneeView(users)
     }
     
     func labelSubmitButtonDidTap(_ labels: [IssueLabel]) {
-        newIssueAccessoryView.makeLabelView(labels)
+        newIssueAccessoryView.generateLabelView(labels)
     }
     
     func milestoneSubmitButtonDidTap(_ milestones: [Milestone]) {
-        newIssueAccessoryView.makeMilestoneView(milestones)
+        newIssueAccessoryView.generateMilestoneView(milestones)
     }
 }
