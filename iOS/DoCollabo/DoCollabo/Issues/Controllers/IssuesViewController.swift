@@ -55,6 +55,11 @@ final class IssuesViewController: UIViewController {
         configureMoreViewController()
         hideViews()
         configureRefreshControl()
+        configureKeyboardOption()
+    }
+    
+    private func configureKeyboardOption() {
+        issuesCollectionView.keyboardDismissMode = .interactive
     }
     
     private func configureHeaderView() {
