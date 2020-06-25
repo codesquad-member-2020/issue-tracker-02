@@ -180,6 +180,34 @@ extension IssuesViewController: HeaderViewActionDelegate {
     }
 }
 
+extension IssuesViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        titleHeaderView.didBeginEditing()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let searchText = titleHeaderView.searchText() else { return false }
+        requestIssuesWithSearchKeywords(searchText: searchText)
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func requestIssuesWithSearchKeywords(searchText: String) {
+        var request = IssuesRequest()
+        request.append(name: .keyword, value: searchText)
+        let urlRequest = request.asURLRequest()
+        issuesUseCase.getResources(request: urlRequest, dataType: [Issue].self) { result in
+            switch result {
+            case .success(let issues):
+                self.dataSource.updateIssues(issues)
+            case .failure(let error):
+                self.presentErrorAlert(error: error)
+            }
+        }
+    }
+    
+}
+
 // MARK:- Configuration
 
 extension IssuesViewController {
@@ -217,6 +245,9 @@ extension IssuesViewController {
     private func configureDelegate() {
         issuesCollectionView.delegate = self
         newIssueViewController.delegate = self
+        titleHeaderView.configureDelegate { textField in
+            textField.delegate = self
+        }
     }
     
     private func configureCollectionViewDataSource() {
