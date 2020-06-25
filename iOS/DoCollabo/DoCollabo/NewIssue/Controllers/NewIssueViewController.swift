@@ -32,9 +32,7 @@ class NewIssueViewController: UIViewController {
     }
     
     private func requestAddIssue() {
-        guard let title = titleTextField.text else { return }
-        let newIssue = NewIssue(title: title, description: originText, idOfLabels: selectedLabelsID, idOfMilestones: selectedMilestonesID)
-        
+        guard let newIssue = generateNewIssue() else { return }
         encodeNewIssue(newIssue) { encodedData in
             let request = IssuesRequest(method: .POST, id: nil, bodyParams: encodedData).asURLRequest()
             issueUseCase.getStatus(request: request) { result in
@@ -56,7 +54,7 @@ class NewIssueViewController: UIViewController {
             completion(encodedData)
         } catch {
             self.presentErrorAlert(error: NetworkError.BadRequest) {  }
-         }
+        }
     }
     
     @IBAction func switchMarkdownEditor(_ sender: UISegmentedControl) {
@@ -177,9 +175,15 @@ extension NewIssueViewController: HeaderViewActionDelegate {
     
     private func presentEmptyAlert(content: String) {
         let alert = UIAlertController(title: "알림", message: "\(content)을 반드시 작성해주세요.", preferredStyle: .alert)
-               let ok = UIAlertAction(title: "확인", style: .default) { _ in }
-               alert.addAction(ok)
-               present(alert, animated: true)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in }
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
+    
+    private func generateNewIssue() -> NewIssue? {
+        guard let title = titleTextField.text else { return nil }
+        let newIssue = NewIssue(title: title, description: originText, idOfLabels: selectedLabelsID, idOfMilestones: selectedMilestonesID)
+        return newIssue
     }
 }
 
