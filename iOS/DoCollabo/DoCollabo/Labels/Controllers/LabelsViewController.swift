@@ -88,6 +88,10 @@ extension LabelsViewController {
     @objc private func moreButtonDidTap(notification: Notification) {
         guard let cell = notification.object as? LabelCell else { return }
         guard let indexPath = labelsCollectionView.indexPath(for: cell) else { return }
+        presentMoreViewController(at: indexPath)
+    }
+    
+    private func presentMoreViewController(at indexPath: IndexPath) {
         dataSource.referLabel(at: indexPath) { (label) in
             moreViewController.configureLabelCellMoreViewController(
                 with: label,
@@ -239,6 +243,28 @@ extension LabelsViewController {
         configureNotification()
         configureMoreViewController()
         hideCollectionView()
+        configureLongPressGestureRecognizer()
+    }
+    
+    private func configureLongPressGestureRecognizer() {
+        let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(cellDidPressLong))
+        recognizer.minimumPressDuration = 0.5
+        labelsCollectionView.addGestureRecognizer(recognizer)
+    }
+    
+    @objc private func cellDidPressLong(gesture : UILongPressGestureRecognizer) {
+        if gesture.state != .ended {
+            let location = gesture.location(in: self.labelsCollectionView)
+            guard let indexPath = self.labelsCollectionView.indexPathForItem(at: location) else { return }
+            guard !moreViewController.isBeingPresented &&
+                !moreViewController.isModalInPresentation &&
+                !moreViewController.isBeingDismissed
+            else {
+                return
+            }
+            presentMoreViewController(at: indexPath)
+            return
+        }
     }
     
     private func configureMoreViewController() {

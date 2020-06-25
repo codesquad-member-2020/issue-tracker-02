@@ -65,6 +65,7 @@ extension IssueHorizontalTrailingStackView {
     private func configureUI() {
         moreButton = IssueMoreButton()
         commentsView = IssueHorizontalCommentView()
+        commentsView.isHidden = true
     }
     
     private func configureArrangedSubview() {
