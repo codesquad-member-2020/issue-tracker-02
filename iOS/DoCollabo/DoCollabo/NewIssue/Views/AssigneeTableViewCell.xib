@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AssigneeTableViewCell" rowHeight="64" id="KGk-i7-Jjw" customClass="AssigneeTableViewCell" customModule="DoCollabo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4SB-Iu-tss">
+                        <rect key="frame" x="16" y="13.5" width="40" height="37"/>
+                        <color key="tintColor" name="key.navy"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="4SB-Iu-tss" secondAttribute="height" id="XJe-PC-Klj"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8Q-sR-dRm">
+                        <rect key="frame" x="64" y="21.5" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4SB-Iu-tss" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="5z6-l6-cCN"/>
+                    <constraint firstItem="4SB-Iu-tss" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="AAg-47-c5D"/>
+                    <constraint firstAttribute="bottom" secondItem="4SB-Iu-tss" secondAttribute="bottom" constant="12" id="D72-JQ-DmO"/>
+                    <constraint firstItem="4SB-Iu-tss" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ReT-0c-L1U"/>
+                    <constraint firstItem="4SB-Iu-tss" firstAttribute="centerY" secondItem="j8Q-sR-dRm" secondAttribute="centerY" id="WCs-7w-8Da"/>
+                    <constraint firstItem="j8Q-sR-dRm" firstAttribute="leading" secondItem="4SB-Iu-tss" secondAttribute="trailing" constant="8" id="heE-05-WOh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="userIDLabel" destination="j8Q-sR-dRm" id="oQr-Ve-QSC"/>
+                <outlet property="userImageView" destination="4SB-Iu-tss" id="7Xj-31-1hU"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="105.13392857142857"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <namedColor name="key.navy">
+            <color red="0.20399999618530273" green="0.28999999165534973" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

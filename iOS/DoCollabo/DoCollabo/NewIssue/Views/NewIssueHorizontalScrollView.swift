@@ -26,15 +26,24 @@ class NewIssueHorizontalScrollView: UIScrollView {
         contentsStackView.addArrangedSubview(view)
     }
     
+    func removeAllSubviews() {
+        contentsStackView.subviews.forEach {
+            contentsStackView.removeArrangedSubview($0)
+            $0.removeFromSuperview()
+        }
+    }
+    
     private func configure() {
         configureStackView()
         configureLayout()
         configureUI()
+        bounces = false
     }
     
     private func configureUI() {
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
+        clipsToBounds = true
     }
     
     private func configureStackView() {
@@ -42,16 +51,17 @@ class NewIssueHorizontalScrollView: UIScrollView {
         contentsStackView.translatesAutoresizingMaskIntoConstraints = false
         contentsStackView.alignment = .center
         contentsStackView.axis = .horizontal
-        contentsStackView.distribution = .fillEqually
+        contentsStackView.distribution = .fill
         contentsStackView.spacing = 4
         addSubview(contentsStackView)
     }
     
     private func configureLayout() {
-        contentsStackView.topAnchor.constraint(equalTo: frameLayoutGuide.topAnchor).isActive = true
-        contentsStackView.leadingAnchor.constraint(equalTo: frameLayoutGuide.leadingAnchor).isActive = true
-        contentsStackView.bottomAnchor.constraint(equalTo: frameLayoutGuide.bottomAnchor).isActive = true
+        contentsStackView.topAnchor.constraint(equalTo: contentLayoutGuide.topAnchor).isActive = true
+        contentsStackView.leadingAnchor.constraint(equalTo: contentLayoutGuide.leadingAnchor).isActive = true
+        contentsStackView.bottomAnchor.constraint(equalTo: contentLayoutGuide.bottomAnchor).isActive = true
         contentsStackView.trailingAnchor.constraint(equalTo: contentLayoutGuide.trailingAnchor).isActive = true
+        contentsStackView.heightAnchor.constraint(equalTo: frameLayoutGuide.heightAnchor).isActive = true
     }
     
 }
