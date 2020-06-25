@@ -20,7 +20,7 @@ final class LabelTableViewCell: UITableViewCell {
     }
     
     func configureData(_ label: IssueLabel) {
-        let color = UIColor(hexString: label.color)
+        let color = UIColor(hexString: label.colorHexString)
         var textColor: UIColor = .black
         color.isDark ? textColor = .white : nil
         labelTitle.text = label.title
