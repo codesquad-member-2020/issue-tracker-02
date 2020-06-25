@@ -21,38 +21,42 @@ class NewIssueViewController: UIViewController {
     private var itemSelectionViewController: ItemSelectionViewController!
     private var markdownViewer: SwiftyMarkdown!
     private var originText: String!
+    private var issueUseCase: IssuesUseCase!
+    
+    private var selectedLabelsID: [Int] = []
+    private var selectedMilestonesID: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
     
-    private func configure() {
-        configureUI()
-        configureSubViewController()
-        configureMarkdownViewer()
-        configureDelegates()
-    }  
-  
-    private func configureUI() {
-        titleHeaderView.titleLabel.text = "새 이슈"
-        titleHeaderView.changeUI(titleSize: 34, backgroundColor: .systemBackground)
-        backgroundView.roundCorner(cornerRadius: 16.0)
-        backgroundView.drawShadow(color: .black, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
-    }
-  
-    private func configureDelegates() {
-        newIssueAccessoryView.delegate = self
-        itemSelectionViewController.delegate = self
-    }
-    
-    private func configureSubViewController() {
-        itemSelectionViewController = storyboard?.instantiateViewController(
-            identifier: String(describing: ItemSelectionViewController.self))
+    private func requestAddIssue() {
+        guard let title = titleTextField.text else { return }
+        let newIssue = NewIssue(title: title, description: originText, idOfLabels: selectedLabelsID, idOfMilestones: selectedMilestonesID)
+        
+        encodeNewIssue(newIssue) { encodedData in
+            let request = IssuesRequest(method: .POST, id: nil, bodyParams: encodedData).asURLRequest()
+            issueUseCase.getStatus(request: request) { result in
+                switch result {
+                case .success(_):
+                    self.dismiss(animated: true)
+                case .failure(let error):
+                    self.presentErrorAlert(error: error) {
+                        self.requestAddIssue()
+                    }
+                }
+            }
+        }
     }
     
-    private func configureMarkdownViewer() {
-        markdownViewer = SwiftyMarkdown(string: "")
+    private func encodeNewIssue(_ newIssue: NewIssue, completion: (Data) -> Void) {
+        do {
+            let encodedData = try JSONEncoder().encode(newIssue)
+            completion(encodedData)
+        } catch {
+            self.presentErrorAlert(error: NetworkError.BadRequest) {  }
+         }
     }
     
     @IBAction func switchMarkdownEditor(_ sender: UISegmentedControl) {
@@ -97,9 +101,82 @@ extension NewIssueViewController: ItemSelectionViewDelegate {
     
     func labelSubmitButtonDidTap(_ labels: [IssueLabel]) {
         newIssueAccessoryView.generateLabelView(labels)
+        labels.forEach {
+            guard let id = $0.id else { return }
+            selectedLabelsID.append(id)
+        }
     }
     
     func milestoneSubmitButtonDidTap(_ milestones: [Milestone]) {
         newIssueAccessoryView.generateMilestoneView(milestones)
+        milestones.forEach {
+            selectedMilestonesID.append($0.id)
+        }
+    }
+}
+
+//MARK: - Configurations
+
+extension NewIssueViewController {
+    private func configure() {
+        configureUI()
+        configureSubViewController()
+        configureDelegates()
+        configureMarkdownViewer()
+        configureUseCase()
+    }
+    
+    private func configureUI() {
+        titleHeaderView.titleLabel.text = "새 이슈"
+        titleHeaderView.changeUI(titleSize: 34, backgroundColor: .systemBackground)
+        backgroundView.roundCorner(cornerRadius: 16.0)
+        backgroundView.drawShadow(color: .black, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
+    }
+    
+    private func configureDelegates() {
+        newIssueAccessoryView.delegate = self
+        itemSelectionViewController.delegate = self
+        titleHeaderView.delegate = self
+    }
+    
+    private func configureSubViewController() {
+        itemSelectionViewController = storyboard?.instantiateViewController(
+            identifier: String(describing: ItemSelectionViewController.self))
+    }
+    
+    private func configureMarkdownViewer() {
+        markdownViewer = SwiftyMarkdown(string: "")
+    }
+    
+    private func configureUseCase() {
+        issueUseCase = IssuesUseCase()
+    }
+}
+
+//MARK: - HeaderViewActionDelegate
+
+extension NewIssueViewController: HeaderViewActionDelegate {
+    func newButtonDidTap() {
+        // 제목, 본문 입력 되었는지 분기처리
+        originText = descriptionTextView.text 
+        requestAddIssue()
+    }
+}
+
+// MARK:- Error Alert
+
+extension NewIssueViewController {
+    private func presentErrorAlert(error: Error, handler: @escaping () -> Void) {
+        let alertController = NetworkErrorAlertController(
+            title: nil,
+            message: error.localizedDescription,
+            preferredStyle: .alert)
+        alertController.configureAction(title: "재요청") { (_) in
+            handler()
+        }
+        alertController.configureDoneAction() { (_) in
+            return
+        }
+        self.present(alertController, animated: true)
     }
 }
