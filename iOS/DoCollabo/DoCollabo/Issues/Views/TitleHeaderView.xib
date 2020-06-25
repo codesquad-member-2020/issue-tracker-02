@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="backgroundView" destination="ehg-ev-cjs" id="1Yp-NV-SPi"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="f3L-Hk-Rfu"/>
+                <outlet property="searchTextField" destination="g7J-dc-w7X" id="XtF-7u-687"/>
                 <outlet property="smallTitleLabel" destination="TAe-45-RYa" id="MDh-l9-Np8"/>
                 <outlet property="titleLabel" destination="7CZ-o7-xGD" id="wo5-3N-hjh"/>
             </connections>
@@ -48,14 +49,22 @@
                                 <action selector="pressAddButton:" destination="-1" eventType="touchUpInside" id="1Hb-Zt-Zv7"/>
                             </connections>
                         </button>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="검색어를 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g7J-dc-w7X">
+                            <rect key="frame" x="16" y="108" width="382" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                     </subviews>
                     <color key="backgroundColor" name="key.navy"/>
                     <constraints>
                         <constraint firstItem="TAe-45-RYa" firstAttribute="top" secondItem="ehg-ev-cjs" secondAttribute="top" constant="20" id="RXg-8O-M62"/>
                         <constraint firstItem="TAe-45-RYa" firstAttribute="centerX" secondItem="ehg-ev-cjs" secondAttribute="centerX" id="YCF-cS-LLi"/>
                         <constraint firstItem="7CZ-o7-xGD" firstAttribute="top" secondItem="ehg-ev-cjs" secondAttribute="top" constant="44" id="cd6-ru-EUm"/>
+                        <constraint firstAttribute="trailing" secondItem="g7J-dc-w7X" secondAttribute="trailing" constant="16" id="lKV-Sf-NNf"/>
                         <constraint firstAttribute="trailing" secondItem="E3E-28-q6e" secondAttribute="trailing" constant="12" id="oEO-au-LP4"/>
+                        <constraint firstItem="g7J-dc-w7X" firstAttribute="leading" secondItem="ehg-ev-cjs" secondAttribute="leading" constant="16" id="pAQ-nZ-YqR"/>
                         <constraint firstItem="E3E-28-q6e" firstAttribute="top" secondItem="TAe-45-RYa" secondAttribute="top" id="rWW-SH-NRr"/>
+                        <constraint firstItem="g7J-dc-w7X" firstAttribute="top" secondItem="7CZ-o7-xGD" secondAttribute="bottom" constant="16" id="uf2-JK-dLw"/>
                         <constraint firstItem="7CZ-o7-xGD" firstAttribute="leading" secondItem="ehg-ev-cjs" secondAttribute="leading" constant="20" id="yUL-h7-ag4"/>
                     </constraints>
                 </view>

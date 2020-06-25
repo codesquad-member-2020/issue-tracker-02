@@ -24,7 +24,8 @@ final class TitleHeaderView: UIView {
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var smallTitleLabel: UILabel!
-
+    @IBOutlet weak var searchTextField: UITextField!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -56,6 +57,10 @@ final class TitleHeaderView: UIView {
         smallTitleLabel.text = text
     }
 
+    func hideSearchTextField() {
+        searchTextField.isHidden = true
+    }
+    
     @IBAction func pressAddButton(_ sender: UIButton) {
         delegate?.newButtonDidTap()
     }
@@ -67,7 +72,6 @@ extension TitleHeaderView {
     private func configure() {
         configureNib()
         configureUI()
-
     }
 
     private func configureUI() {

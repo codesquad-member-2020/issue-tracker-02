@@ -271,6 +271,7 @@ extension LabelsViewController {
     private func configureHeaderView() {
         titleHeaderBackgroundView.roundCorner(cornerRadius: 16.0)
         titleHeaderView.configureTitle("레이블")
+        titleHeaderView.hideSearchTextField()
         titleHeaderView.delegate = self
     }
 
