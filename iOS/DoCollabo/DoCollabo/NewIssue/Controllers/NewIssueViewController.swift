@@ -157,23 +157,23 @@ extension NewIssueViewController {
 
 extension NewIssueViewController: HeaderViewActionDelegate {
     func newButtonDidTap() {
-        validContents()
-        requestAddIssue()
+        validContents() ? requestAddIssue() : nil
     }
     
-    private func validContents() {
+    private func validContents() -> Bool {
         originText = descriptionTextView.text
         guard titleTextField.text != "" else {
-            presentEmptyAlert(content: "제목")
-            return
+            presentEmptyAlert("제목")
+            return false
         }
         guard descriptionTextView.text != "" else {
-            presentEmptyAlert(content: "내용")
-            return
+            presentEmptyAlert("내용")
+            return false
         }
+        return true
     }
     
-    private func presentEmptyAlert(content: String) {
+    private func presentEmptyAlert(_ content: String) {
         let alert = UIAlertController(title: "알림", message: "\(content)을 반드시 작성해주세요.", preferredStyle: .alert)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in }
         alert.addAction(ok)
