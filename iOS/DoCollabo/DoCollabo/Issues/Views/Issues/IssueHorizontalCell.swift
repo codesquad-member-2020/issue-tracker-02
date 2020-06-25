@@ -53,13 +53,10 @@ final class IssueHorizontalCell: UICollectionViewCell {
 
 extension IssueHorizontalCell: IssueHorizontalTrailingStackViewDelegate {
     func moreButtonDidTap(_ button: UIButton) {
-        let collectionView = self.superview as! UICollectionView
-        let location = button.convert(button.bounds.origin, to: collectionView)
-        guard let indexPath = collectionView.indexPathForItem(at: location) else { return }
         NotificationCenter.default.post(
             name: .issueCellMoreButtonDidTap,
-            object: nil,
-            userInfo: ["indexPath": indexPath])
+            object: self,
+            userInfo: nil)
     }
 }
 

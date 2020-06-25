@@ -15,14 +15,26 @@ final class LabelsViewController: UIViewController {
     @IBOutlet weak var labelsCollectionView: LabelsCollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var popUpViewController: LabelPopUpViewController!
+    private var moreViewController: LabelCellMoreViewController!
 
-    private var labelsUseCase: UseCase!
+    private var labelsUseCase: LabelsUseCase!
     private var dataSource: LabelsCollectionViewDataSource!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         fetchLabels()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: .labelCellMoreButtonDidTap,
+            object: nil)
     }
 
     private func fetchLabels() {
@@ -37,16 +49,47 @@ final class LabelsViewController: UIViewController {
             }
         }
     }
+}
+
+// MARK:- LabelCellMoreViewControllerDelegate
+
+extension LabelsViewController: LabelCellMoreViewControllerDelegate {
+    func editButtonDidTap(at indexPath: IndexPath) {
+        dataSource.referLabel(at: indexPath) { (issue) in
+            popUpViewController.updatePopupViewForEditing(with: issue)
+            popUpViewController.configureIndexPath(indexPath)
+            popUpViewController.configureEditMode(true)
+            self.present(popUpViewController, animated: true, completion: nil)
+        }
+    }
     
-    private func requestAddLabel(bodyParams: Data) {
-        let request = LabelsRequest(method: .POST, id: nil, bodyParams: bodyParams).asURLRequest()
-        labelsUseCase.getStatus(request: request) { result in
-            switch result {
-            case .success(_):
-                self.fetchLabels()
-            case .failure(let error):
-                self.presentErrorAlert(error: error)
-            }
+    func removeLabelCell(at indexPath: IndexPath) {
+        let cell = self.labelsCollectionView.cellForItem(at: indexPath) as! LabelCell
+        DispatchQueue.main.async {
+            UIView.animateCurveEaseOut(withDuration: 0.3, animations: {
+                cell.alpha = 0
+            }, completion: { _ in
+                self.labelsCollectionView.performBatchUpdates({
+                    self.labelsCollectionView.deleteItems(at: [indexPath])
+                    self.dataSource.removeLabel(at: indexPath)
+                }, completion: nil)
+            })
+        }
+    }
+}
+
+// MARK:- Notification Action
+
+extension LabelsViewController {
+    @objc private func moreButtonDidTap(notification: Notification) {
+        guard let cell = notification.object as? LabelCell else { return }
+        guard let indexPath = labelsCollectionView.indexPath(for: cell) else { return }
+        dataSource.referLabel(at: indexPath) { (label) in
+            moreViewController.configureLabelCellMoreViewController(
+                with: label,
+                labelsUseCase: labelsUseCase,
+                at: indexPath)
+            present(moreViewController, animated: false, completion: nil)
         }
     }
 }
@@ -92,37 +135,83 @@ extension LabelsViewController {
 
 extension LabelsViewController: HeaderViewActionDelegate {
     func newButtonDidTap() {
+        popUpViewController.configureRandomColor()
+        popUpViewController.resetContentView()
+        popUpViewController.configureEditMode(false)
         present(popUpViewController, animated: true, completion: nil)
     }
 }
 
 // MARK:- ButtonStackActionDelegate
 
-extension LabelsViewController: PopUpViewControllerDelegate {
-    func cancelButtonDidTap() {
-        dismiss(animated: true, completion: nil)
-    }
-
-    func submitButtonDidTap(title: String, description: String?, additionalData: String?) {
-        dismiss(animated: true, completion: nil)
-        encodeLabel(title: title, description: description, color: additionalData!)
+extension LabelsViewController: LabelPopUpViewControllerDelegate {
+    func submitButtonDidTap(label: IssueLabel, isEditMode: Bool, at indexPath: IndexPath? = nil) {
+        if isEditMode {
+            requestEditLabel(with: label, at: indexPath)
+        } else {
+            requestAddLabel(with: label)
+        }
     }
     
-    private func encodeLabel(title: String, description: String?, color: String) {
-        let label = IssueLabel(id: nil, title: title, color: color, description: description)
+    private func requestAddLabel(with label: IssueLabel) {
+        encodeLabel(label) { encodedData in
+            let request = LabelsRequest(method: .POST, id: nil, bodyParams: encodedData).asURLRequest()
+            labelsUseCase.getStatus(request: request) { result in
+                switch result {
+                case .success(_):
+                    self.fetchLabels()
+                case .failure(let error):
+                    self.presentErrorAlert(error: error)
+                }
+            }
+        }
+    }
+    
+    private func requestEditLabel(with label: IssueLabel, at indexPath: IndexPath?) {
+        encodeLabel(label) { encodedData in
+            let request = LabelsRequest(method: .PUT, id: String(label.id!), bodyParams: encodedData).asURLRequest()
+            labelsUseCase.getStatus(request: request) { result in
+                switch result {
+                case .success(_):
+                    self.updateCollectionView(with: label, at: indexPath)
+                case .failure(let error):
+                    self.presentErrorAlert(error: error)
+                }
+            }
+        }
+    }
+    
+    private func updateCollectionView(with label: IssueLabel, at indexPath: IndexPath?) {
+        guard let indexPath = indexPath else { return }
+        dataSource.updateLabel(with: label, at: indexPath)
+        labelsCollectionView.performBatchUpdates({
+            labelsCollectionView.reloadItems(at: [indexPath])
+        }, completion: nil)
+    }
+    
+    private func encodeLabel(_ label: IssueLabel, completion: (Data) -> Void) {
         do {
             let encodedData = try JSONEncoder().encode(label)
-            requestAddLabel(bodyParams: encodedData)
+            completion(encodedData)
         } catch {
             self.presentErrorAlert(error: NetworkError.BadRequest)
         }
     }
 }
 
+extension LabelsViewController: PopUpViewControllerDelegate {
+    func cancelButtonDidTap() {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
 // MARK:- UICollectionViewDelegateFlowLayout
 
 extension LabelsViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = labelsCollectionView.frame.width * 0.9
         var estimatedSize = CGSize(width: width, height: LabelCell.height)
         dataSource.referLabel(at: indexPath) { (label) in
@@ -138,19 +227,35 @@ extension LabelsViewController: UICollectionViewDelegateFlowLayout {
 
 extension LabelsViewController {
     private func configure() {
-        configureUI()
         configureHeaderView()
         configurePopUpView()
         configureCollectionViewDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
+        configureNotification()
+        configureMoreViewController()
+        hideCollectionView()
+    }
+    
+    private func configureMoreViewController() {
+        moreViewController = LabelCellMoreViewController()
+        moreViewController.delegate = self
+        moreViewController.modalPresentationStyle = .overFullScreen
+    }
+    
+    private func configureNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(moreButtonDidTap),
+            name: .labelCellMoreButtonDidTap,
+            object: nil)
     }
     
     private func configureCollectionViewDelegate() {
         labelsCollectionView.delegate = self
     }
 
-    private func configureUI() {
+    private func hideCollectionView() {
         labelsCollectionView.alpha = 0
     }
 
@@ -160,6 +265,7 @@ extension LabelsViewController {
         popUpViewController.modalTransitionStyle = .crossDissolve
         popUpViewController.configureLabelPopupViewController()
         popUpViewController.popUpViewControllerDelegate = self
+        popUpViewController.labelPopUpDelegate = self
     }
 
     private func configureHeaderView() {
@@ -185,6 +291,5 @@ extension LabelsViewController {
 
     private func configureUseCase() {
         labelsUseCase = LabelsUseCase()
-        fetchLabels()
     }
 }
