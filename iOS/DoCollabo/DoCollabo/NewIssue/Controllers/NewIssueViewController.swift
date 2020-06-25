@@ -38,7 +38,7 @@ class NewIssueViewController: UIViewController {
             issueUseCase.getStatus(request: request) { result in
                 switch result {
                 case .success(_):
-                    self.addIssueCompleteAlert()
+                    self.dismiss(animated: true)
                 case .failure(let error):
                     self.presentErrorAlert(error: error) {
                         self.requestAddIssue()
@@ -186,15 +186,6 @@ extension NewIssueViewController {
     private func presentEmptyAlert(_ content: String) {
         let alert = UIAlertController(title: "알림", message: "\(content)을 반드시 작성해주세요.", preferredStyle: .alert)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in }
-        alert.addAction(ok)
-        present(alert, animated: true)
-    }
-    
-    private func addIssueCompleteAlert() {
-        let alert = UIAlertController(title: "성공", message: "새로운 이슈가 성공적으로 작성되었습니다", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "확인", style: .default) { _ in
-            self.dismiss(animated: true)
-        }
         alert.addAction(ok)
         present(alert, animated: true)
     }
