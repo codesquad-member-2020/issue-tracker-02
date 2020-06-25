@@ -42,6 +42,7 @@
 		309CED8624A0D141006F7DE4 /* MilestoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED8424A0D141006F7DE4 /* MilestoneTableViewCell.swift */; };
 		309CED8724A0D141006F7DE4 /* MilestoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 309CED8524A0D141006F7DE4 /* MilestoneTableViewCell.xib */; };
 		309CED8C24A0DF54006F7DE4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CED8B24A0DF54006F7DE4 /* User.swift */; };
+		309D56E024A39C1E0026715D /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 309D56DF24A39C1E0026715D /* SwiftyMarkdown */; };
 		309D56DD24A3727F0026715D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309D56DC24A3727F0026715D /* PaddingLabel.swift */; };
 		30A0E6C324A1E0D5002C3F48 /* GeneralTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6C224A1E0D5002C3F48 /* GeneralTableViewDataSource.swift */; };
 		30A0E6C624A1E1AD002C3F48 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0E6C424A1E1AD002C3F48 /* LabelTableViewCell.swift */; };
@@ -219,6 +220,7 @@
 			files = (
 				30E22EE8249106A300EC0FD8 /* Alamofire in Frameworks */,
 				BA40E8185B7195779CAC1546 /* Pods_DoCollabo.framework in Frameworks */,
+				309D56E024A39C1E0026715D /* SwiftyMarkdown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +661,7 @@
 			name = DoCollabo;
 			packageProductDependencies = (
 				30E22EE7249106A300EC0FD8 /* Alamofire */,
+				309D56DF24A39C1E0026715D /* SwiftyMarkdown */,
 			);
 			productName = DoCollabo;
 			productReference = 30789C04248E1E3F001D0415 /* DoCollabo.app */;
@@ -712,6 +715,7 @@
 			mainGroup = 30789BFB248E1E3F001D0415;
 			packageReferences = (
 				30E22EE6249106A300EC0FD8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				309D56DE24A39C1E0026715D /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */,
 			);
 			productRefGroup = 30789C05248E1E3F001D0415 /* Products */;
 			projectDirPath = "";
@@ -1147,6 +1151,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		309D56DE24A39C1E0026715D /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimonFairbairn/SwiftyMarkdown.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.2;
+			};
+		};
 		30E22EE6249106A300EC0FD8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1158,6 +1170,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		309D56DF24A39C1E0026715D /* SwiftyMarkdown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 309D56DE24A39C1E0026715D /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */;
+			productName = SwiftyMarkdown;
+		};
 		30E22EE7249106A300EC0FD8 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 30E22EE6249106A300EC0FD8 /* XCRemoteSwiftPackageReference "Alamofire" */;

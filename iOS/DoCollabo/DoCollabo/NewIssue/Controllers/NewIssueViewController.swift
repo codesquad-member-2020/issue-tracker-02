@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyMarkdown
 
 class NewIssueViewController: UIViewController {
     
@@ -18,6 +19,8 @@ class NewIssueViewController: UIViewController {
     @IBOutlet weak var newIssueAccessoryView: NewIssueAccessoryView!
     
     private var itemSelectionViewController: ItemSelectionViewController!
+    private var markdownViewer: SwiftyMarkdown!
+    private var originText: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,20 +30,44 @@ class NewIssueViewController: UIViewController {
     private func configure() {
         configureUI()
         configureSubViewController()
-        newIssueAccessoryView.delegate = self
-        itemSelectionViewController.delegate = self
-    }
-    
+        configureMarkdownViewer()
+        configureDelegates()
+    }  
+  
     private func configureUI() {
         titleHeaderView.titleLabel.text = "새 이슈"
         titleHeaderView.changeUI(titleSize: 34, backgroundColor: .systemBackground)
         backgroundView.roundCorner(cornerRadius: 16.0)
         backgroundView.drawShadow(color: .black, offset: CGSize(width: 1, height: 1), radius: 4, opacity: 0.3)
     }
+  
+    private func configureDelegates() {
+        newIssueAccessoryView.delegate = self
+        itemSelectionViewController.delegate = self
+    }
     
     private func configureSubViewController() {
         itemSelectionViewController = storyboard?.instantiateViewController(
             identifier: String(describing: ItemSelectionViewController.self))
+    }
+    
+    private func configureMarkdownViewer() {
+        markdownViewer = SwiftyMarkdown(string: "")
+    }
+    
+    @IBAction func switchMarkdownEditor(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            descriptionTextView.isEditable = true
+            descriptionTextView.text = originText
+            break
+        case 1:
+            originText = descriptionTextView.text
+            descriptionTextView.attributedText = markdownViewer.attributedString(from: descriptionTextView.text)
+            descriptionTextView.isEditable = false
+        default:
+            break
+        }
     }
 }
 
