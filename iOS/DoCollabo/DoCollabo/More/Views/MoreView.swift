@@ -15,6 +15,7 @@ protocol MoreViewDelegate: class {
 final class MoreView: UIView {
 
     private var titleLabel: UILabel!
+    private var titleView: UIView!
     private var dismissButton: UIButton!
     private var optionsView: OptionsView!
     private var separatorView: UIView!
@@ -42,8 +43,13 @@ final class MoreView: UIView {
         configure()
     }
     
-    func configureTitle(_ title: String) {
+    func configureTitle(_ title: String?) {
         titleLabel.text = title
+    }
+    
+    func configureTitleView(_ view: UIView) {
+        titleView.addSubview(view)
+        view.fillSuperview()
     }
     
     func addOptions(buttons: [UIButton]) {
@@ -75,6 +81,8 @@ extension MoreView {
         titleLabel.font = .systemFont(ofSize: 16, weight: .medium)
         titleLabel.text = "Title"
         titleLabel.textColor = .label
+        titleView = UIView()
+        titleView.backgroundColor = .clear
         dismissButton = UIButton(type: .system)
         dismissButton.setImage(UIImage(named: "button.dismiss"), for: .normal)
         dismissButton.tintColor = .lightGray
@@ -89,6 +97,7 @@ extension MoreView {
         addSubview(dismissButton)
         addSubview(separatorView)
         addSubview(optionsView)
+        titleLabel.addSubview(titleView)
         titleLabel.constraints(
             topAnchor: topAnchor,
             leadingAnchor: leadingAnchor,
@@ -126,5 +135,6 @@ extension MoreView {
                 left: Metric.optionsViewLeftRight,
                 bottom: Metric.optionsViewBottom,
                 right: Metric.optionsViewLeftRight))
+        titleView.fillSuperview(padding: .init(top: 4, left: 0, bottom: 4, right: 0))
     }
 }

@@ -45,7 +45,7 @@ final class NewIssueAccessoryView: UIView {
         labelStackView.removeAllSubviews()
         labels.forEach {
             let label = PaddingLabel()
-            let color = UIColor(hexString: $0.color)
+            let color = UIColor(hexString: $0.colorHexString)
             label.text = $0.title
             label.font = UIFont.boldSystemFont(ofSize: 12)
             color.isDark ? label.textColor = .white : nil

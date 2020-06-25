@@ -193,7 +193,8 @@ extension IssuesViewController {
     }
     
     @objc private func moreButtonDidTap(notification: Notification) {
-        guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
+        guard let cell = notification.object as? IssueHorizontalCell else { return }
+        guard let indexPath = issuesCollectionView.indexPath(for: cell) else { return }
         dataSource.referIssue(at: indexPath) { (issue) in
             moreViewController.configureIssueCellMoreViewController(
                 with: issue,
