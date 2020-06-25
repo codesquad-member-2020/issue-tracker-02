@@ -29,6 +29,7 @@ final class IssuesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        deleteToken()
         configure()
     }
     

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Issues-->
+        <!--이슈-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="IssuesViewController" customModule="DoCollabo" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,7 +73,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Issues" id="zRf-ee-Xos"/>
+                    <tabBarItem key="tabBarItem" title="이슈" selectedImage="tray.fill" catalog="system" id="zRf-ee-Xos"/>
                     <connections>
                         <outlet property="activityIndicator" destination="7rp-jf-7jW" id="BiU-W8-l4z"/>
                         <outlet property="issuesCollectionView" destination="ei8-PE-PvC" id="0KY-LB-fAa"/>
@@ -280,7 +280,7 @@
             </objects>
             <point key="canvasLocation" x="170" y="822"/>
         </scene>
-        <!--Labels-->
+        <!--레이블-->
         <scene sceneID="ep0-lX-Scg">
             <objects>
                 <viewController id="tmK-A3-o63" customClass="LabelsViewController" customModule="DoCollabo" customModuleProvider="target" sceneMemberID="viewController">
@@ -344,7 +344,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ux8-ec-BGX"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Labels" id="j8W-F7-h2d"/>
+                    <tabBarItem key="tabBarItem" title="레이블" selectedImage="bookmark.fill" catalog="system" id="j8W-F7-h2d"/>
                     <connections>
                         <outlet property="activityIndicator" destination="fM1-hM-DKS" id="Vpx-pi-VpP"/>
                         <outlet property="labelsCollectionView" destination="BzL-rz-PPs" id="IHD-Ws-dzP"/>
@@ -452,10 +452,12 @@
     </scenes>
     <resources>
         <image name="arrow.up.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="logo.apple" width="21.333333969116211" height="21.333333969116211"/>
         <image name="logo.github" width="21.333333969116211" height="21.333333969116211"/>
         <image name="logo1" width="151.33332824707031" height="68"/>
         <image name="signin.background" width="108" height="234.66667175292969"/>
+        <image name="tray.fill" catalog="system" width="128" height="88"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="key.navy">
             <color red="0.20399999618530273" green="0.28999999165534973" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
