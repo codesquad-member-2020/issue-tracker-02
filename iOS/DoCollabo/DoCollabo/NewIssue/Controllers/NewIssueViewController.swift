@@ -94,6 +94,8 @@ extension NewIssueViewController: NewIssueAccessoryDelegate {
     }
 }
 
+//MARK: - ItemSelectionDelegate
+
 extension NewIssueViewController: ItemSelectionViewDelegate {
     func assigneesSubmitButtonDidTap(_ users: [User]) {
         newIssueAccessoryView.generateAssigneeView(users)
