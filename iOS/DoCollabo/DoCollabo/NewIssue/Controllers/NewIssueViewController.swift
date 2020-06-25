@@ -159,9 +159,27 @@ extension NewIssueViewController {
 
 extension NewIssueViewController: HeaderViewActionDelegate {
     func newButtonDidTap() {
-        // 제목, 본문 입력 되었는지 분기처리
-        originText = descriptionTextView.text 
+        validContents()
         requestAddIssue()
+    }
+    
+    private func validContents() {
+        originText = descriptionTextView.text
+        guard titleTextField.text != "" else {
+            presentEmptyAlert(content: "제목")
+            return
+        }
+        guard descriptionTextView.text != "" else {
+            presentEmptyAlert(content: "내용")
+            return
+        }
+    }
+    
+    private func presentEmptyAlert(content: String) {
+        let alert = UIAlertController(title: "알림", message: "\(content)을 반드시 작성해주세요.", preferredStyle: .alert)
+               let ok = UIAlertAction(title: "확인", style: .default) { _ in }
+               alert.addAction(ok)
+               present(alert, animated: true)
     }
 }
 
