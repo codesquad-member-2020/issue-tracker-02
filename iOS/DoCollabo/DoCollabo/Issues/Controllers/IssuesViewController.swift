@@ -65,6 +65,7 @@ final class IssuesViewController: UIViewController {
     private func configureHeaderView() {
         titleHeaderView.configureTitle("이슈")
         titleHeaderView.delegate = self
+        titleHeaderView.hasSearchBar()
     }
     
     private func checkToken() {

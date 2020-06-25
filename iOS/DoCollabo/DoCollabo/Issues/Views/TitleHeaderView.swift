@@ -39,6 +39,10 @@ final class TitleHeaderView: UIView {
         configure()
     }
     
+    func hasSearchBar() {
+        searchBarView.isHidden = false
+    }
+    
     func changeUI(titleSize: CGFloat, backgroundColor: UIColor) {
         titleLabel.font = UIFont.systemFont(ofSize: titleSize, weight: .heavy)
         backgroundView.backgroundColor = backgroundColor
