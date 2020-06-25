@@ -14,4 +14,5 @@ enum EndPoint {
     static let githubURLScheme: String = "github.docollabo.app"
     static let issues: String = "\(Self.baseURL)/api/issues"
     static let labels: String = "\(Self.baseURL)/api/labels"
+    static let milestones: String = "\(Self.baseURL)/api/milestones"
 }

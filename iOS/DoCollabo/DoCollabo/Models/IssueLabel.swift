@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct IssueLabel: Codable {
+struct IssueLabel: Codable, Equatable {
     private(set) var id: Int?
     private(set) var title: String
     private(set) var colorHexString: String
