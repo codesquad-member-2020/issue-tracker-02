@@ -17,6 +17,9 @@ protocol NewIssueAccessoryDelegate: class {
 final class NewIssueAccessoryView: UIView {
     
     @IBOutlet weak var frameView: UIView!
+    @IBOutlet weak var assigneeStackView: NewIssueHorizontalScrollView!
+    @IBOutlet weak var labelStackView: NewIssueHorizontalScrollView!
+    @IBOutlet weak var milestoneStackView: NewIssueHorizontalScrollView!
     
     weak var delegate: NewIssueAccessoryDelegate?
     
@@ -28,6 +31,56 @@ final class NewIssueAccessoryView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configure()
+    }
+    
+    func generateAssigneeView(_ users: [User]) {
+        assigneeStackView.removeAllSubviews()
+        users.forEach { _ in
+            let imageView = UIImageView(image: UIImage(systemName: "person.fill"))
+            add(assignee: imageView)
+        }
+    }
+    
+    func generateLabelView(_ labels: [IssueLabel]) {
+        labelStackView.removeAllSubviews()
+        labels.forEach {
+            let label = PaddingLabel()
+            let color = UIColor(hexString: $0.color)
+            label.text = $0.title
+            label.font = UIFont.boldSystemFont(ofSize: 12)
+            color.isDark ? label.textColor = .white : nil
+            label.roundCorner(cornerRadius: 12.0)
+            label.backgroundColor = color
+            label.clipsToBounds = true
+            add(label: label)
+        }
+    }
+    
+    func generateMilestoneView(_ milestones: [Milestone]) {
+        milestoneStackView.removeAllSubviews()
+        milestones.forEach {
+            let label = PaddingLabel()
+            label.text = $0.title
+            label.font = UIFont.systemFont(ofSize: 12)
+            label.roundCorner(cornerRadius: 12.0)
+            label.drawBorder(color: .darkText, width: 0.6)
+            add(milestone: label)
+        }
+    }
+    
+    func add(assignee imageView: UIImageView) {
+        assigneeStackView.addArrangedSubview(imageView)
+        reloadInputViews()
+    }
+    
+    func add(label: UILabel) {
+        labelStackView.addArrangedSubview(label)
+        reloadInputViews()
+    }
+    
+    func add(milestone label: UILabel) {
+        milestoneStackView.addArrangedSubview(label)
+        reloadInputViews()
     }
     
     private func configure() {
