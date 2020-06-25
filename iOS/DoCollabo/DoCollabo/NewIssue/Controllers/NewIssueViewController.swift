@@ -173,17 +173,21 @@ extension NewIssueViewController: HeaderViewActionDelegate {
         return true
     }
     
+    private func generateNewIssue() -> NewIssue? {
+        guard let title = titleTextField.text else { return nil }
+        let newIssue = NewIssue(title: title, description: originText, idOfLabels: selectedLabelsID, idOfMilestones: selectedMilestonesID)
+        return newIssue
+    }
+}
+
+// MARK:- Alert
+
+extension NewIssueViewController {
     private func presentEmptyAlert(_ content: String) {
         let alert = UIAlertController(title: "알림", message: "\(content)을 반드시 작성해주세요.", preferredStyle: .alert)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in }
         alert.addAction(ok)
         present(alert, animated: true)
-    }
-    
-    private func generateNewIssue() -> NewIssue? {
-        guard let title = titleTextField.text else { return nil }
-        let newIssue = NewIssue(title: title, description: originText, idOfLabels: selectedLabelsID, idOfMilestones: selectedMilestonesID)
-        return newIssue
     }
     
     private func addIssueCompleteAlert() {
@@ -194,11 +198,7 @@ extension NewIssueViewController: HeaderViewActionDelegate {
         alert.addAction(ok)
         present(alert, animated: true)
     }
-}
-
-// MARK:- Error Alert
-
-extension NewIssueViewController {
+    
     private func presentErrorAlert(error: Error, handler: @escaping () -> Void) {
         let alertController = NetworkErrorAlertController(
             title: nil,
