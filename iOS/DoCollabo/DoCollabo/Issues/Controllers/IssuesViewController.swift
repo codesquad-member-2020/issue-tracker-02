@@ -193,13 +193,17 @@ extension IssuesViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let searchText = titleHeaderView.searchText() else { return false }
+        let searchText = titleHeaderView.searchText()
         requestIssuesWithSearchKeywords(searchText: searchText)
         textField.resignFirstResponder()
         return true
     }
     
-    func requestIssuesWithSearchKeywords(searchText: String) {
+    func requestIssuesWithSearchKeywords(searchText: String?) {
+        guard let searchText = searchText else {
+            fetchIssues()
+            return
+        }
         var request = IssuesRequest()
         request.append(name: .keyword, value: searchText)
         let urlRequest = request.asURLRequest()
