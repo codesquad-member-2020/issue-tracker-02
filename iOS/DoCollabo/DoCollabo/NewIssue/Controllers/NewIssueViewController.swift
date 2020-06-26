@@ -157,6 +157,7 @@ extension NewIssueViewController {
         newIssueAccessoryView.delegate = self
         itemSelectionViewController.delegate = self
         titleHeaderView.delegate = self
+        titleTextField.delegate = self
     }
     
     private func configureSubViewController() {
@@ -222,5 +223,14 @@ extension NewIssueViewController {
             return
         }
         self.present(alertController, animated: true)
+    }
+}
+
+
+// MARK: - UITextFieldDelegate
+
+extension NewIssueViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
