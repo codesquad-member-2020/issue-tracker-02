@@ -181,7 +181,13 @@ extension IssuesViewController: HeaderViewActionDelegate {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension IssuesViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         titleHeaderView.didBeginEditing()
     }
