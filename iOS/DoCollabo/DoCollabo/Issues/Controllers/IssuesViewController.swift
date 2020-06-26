@@ -57,7 +57,6 @@ final class IssuesViewController: UIViewController {
         hideViews()
         configureRefreshControl()
         configureKeyboardOption()
-        configureLongPressGestureRecognizer()
     }
     
     private func configureKeyboardOption() {
@@ -213,27 +212,6 @@ extension IssuesViewController: UITextFieldDelegate {
 // MARK:- Configuration
 
 extension IssuesViewController {
-    private func configureLongPressGestureRecognizer() {
-        let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(cellDidPressLong))
-        recognizer.minimumPressDuration = 0.5
-        issuesCollectionView.addGestureRecognizer(recognizer)
-    }
-    
-    @objc private func cellDidPressLong(gesture : UILongPressGestureRecognizer) {
-        if gesture.state != .ended {
-            let location = gesture.location(in: self.issuesCollectionView)
-            guard let indexPath = self.issuesCollectionView.indexPathForItem(at: location) else { return }
-            guard !moreViewController.isBeingPresented &&
-                !moreViewController.isModalInPresentation &&
-                !moreViewController.isBeingDismissed
-            else {
-                return
-            }
-            presentMoreViewController(at: indexPath)
-            return
-        }
-    }
-    
     private func configureMoreViewController() {
         moreViewController = IssueCellMoreViewController()
         moreViewController.delegate = self
@@ -251,10 +229,6 @@ extension IssuesViewController {
     @objc private func moreButtonDidTap(notification: Notification) {
         guard let cell = notification.object as? IssueHorizontalCell else { return }
         guard let indexPath = issuesCollectionView.indexPath(for: cell) else { return }
-        presentMoreViewController(at: indexPath)
-    }
-    
-    private func presentMoreViewController(at indexPath: IndexPath) {
         dataSource.referIssue(at: indexPath) { (issue) in
             moreViewController.configureIssueCellMoreViewController(
                 with: issue,
