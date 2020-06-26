@@ -181,19 +181,29 @@ extension IssuesViewController: HeaderViewActionDelegate {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension IssuesViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         titleHeaderView.didBeginEditing()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let searchText = titleHeaderView.searchText() else { return false }
+        let searchText = titleHeaderView.searchText()
         requestIssuesWithSearchKeywords(searchText: searchText)
         textField.resignFirstResponder()
         return true
     }
     
-    func requestIssuesWithSearchKeywords(searchText: String) {
+    func requestIssuesWithSearchKeywords(searchText: String?) {
+        guard let searchText = searchText else {
+            fetchIssues()
+            return
+        }
         var request = IssuesRequest()
         request.append(name: .keyword, value: searchText)
         let urlRequest = request.asURLRequest()

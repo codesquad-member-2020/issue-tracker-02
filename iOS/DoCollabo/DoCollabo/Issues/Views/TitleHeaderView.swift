@@ -83,10 +83,7 @@ final class TitleHeaderView: UIView {
     }
     
     func searchText() -> String? {
-        if let searchText = searchTextField.text, searchText != "" {
-            return searchText
-        }
-        return nil
+        return searchTextField.text
     }
     
     func configureDelegate(handler: (UITextField) -> Void) {
