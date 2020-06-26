@@ -51,6 +51,12 @@ final class ItemSelectionViewController: UIViewController {
         configure()
     }
     
+    func emptyItems() {
+        selectedUsers.count > 0 ? selectedUsers = [] : nil
+        selectedLabels.count > 0 ? selectedLabels = [] : nil
+        selectedMilestones.count > 0 ? selectedMilestones = [] : nil
+    }
+    
     //MARK: - Fetch Data
     
     func fetchAssigneeStub() {

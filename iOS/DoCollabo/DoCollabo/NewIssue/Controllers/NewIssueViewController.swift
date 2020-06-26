@@ -37,6 +37,18 @@ class NewIssueViewController: UIViewController {
         configure()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        emptyAll()
+    }
+    
+    private func emptyAll() {
+        titleTextField.text = ""
+        descriptionTextView.text = ""
+        newIssueAccessoryView.removeAllStackViews()
+        itemSelectionViewController.emptyItems()
+    }
+    
     private func requestAddIssue() {
         guard let newIssue = generateNewIssue() else { return }
         encodeNewIssue(newIssue) { encodedData in

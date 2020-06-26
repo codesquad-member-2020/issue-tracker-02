@@ -33,6 +33,12 @@ final class NewIssueAccessoryView: UIView {
         configure()
     }
     
+    func removeAllStackViews() {
+        assigneeStackView.removeAllSubviews()
+        labelStackView.removeAllSubviews()
+        milestoneStackView.removeAllSubviews()
+    }
+    
     func generateAssigneeView(_ users: [User]) {
         assigneeStackView.removeAllSubviews()
         users.forEach { _ in
