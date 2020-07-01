@@ -25,6 +25,8 @@ final class IssueHorizontalCell: UICollectionViewCell {
     private var issueLabelsViewController: IssueLabelsViewController!
     private var trailingStackView: IssueHorizontalTrailingStackView!
     
+    private var issueLabelsHeightConstraint: NSLayoutConstraint!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -46,6 +48,8 @@ final class IssueHorizontalCell: UICollectionViewCell {
     override func prepareForReuse() {
         alpha = 1
         contentsStackView.reset()
+        guard issueLabelsHeightConstraint != nil else { return }
+        issueLabelsHeightConstraint.isActive = false
     }
 }
 
@@ -80,8 +84,14 @@ extension IssueHorizontalCell {
             issueLabelsViewController.reloadCollectionView()
             contentsStackView.addArrangedSubview(issueLabelsViewController.view)
             layoutIfNeeded()
-            issueLabelsViewController.view.heightAnchor.constraint(equalToConstant: issueLabelsViewController.contentHeight).isActive = true
+            configureIssueLabelsHeightConstraint()
         }
+    }
+    
+    private func configureIssueLabelsHeightConstraint() {
+        issueLabelsHeightConstraint = issueLabelsViewController.view.heightAnchor.constraint(
+            equalToConstant: issueLabelsViewController.contentHeight)
+        issueLabelsHeightConstraint.isActive = true
     }
     
     private func configureUI() {
