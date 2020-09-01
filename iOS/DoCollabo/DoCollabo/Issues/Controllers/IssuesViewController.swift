@@ -9,15 +9,17 @@
 import UIKit
 
 final class IssuesViewController: UIViewController {
-
+    
     @IBOutlet weak var titleHeaderBackgroundView: TitleHeaderBackgroundView!
     @IBOutlet weak var titleHeaderView: TitleHeaderView!
     @IBOutlet weak var issuesCollectionView: IssuesCollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    private var moreViewController: IssueCellMoreViewController!
     
+    private var moreViewController: IssueCellMoreViewController!
+    private var newIssueViewController: NewIssueViewController!
     private var issuesUseCase: IssuesUseCase!
     private var dataSource: IssuesCollectionViewDataSource!
+    var refreshControl = UIRefreshControl()
     
     // for scroll animation
     @IBOutlet weak var titleHeaderBackgroundViewTopAnchor: NSLayoutConstraint!
@@ -27,6 +29,7 @@ final class IssuesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        deleteToken()
         configure()
     }
     
@@ -45,24 +48,32 @@ final class IssuesViewController: UIViewController {
     
     private func configure() {
         configureHeaderView()
-        configureCollectionViewDelegate()
+        configureNewIssueViewController()
+        configureDelegate()
         configureCollectionViewDataSource()
         configureUseCase()
         configureNotification()
         configureMoreViewController()
         hideViews()
+        configureRefreshControl()
+        configureKeyboardOption()
+    }
+    
+    private func configureKeyboardOption() {
+        issuesCollectionView.keyboardDismissMode = .interactive
     }
     
     private func configureHeaderView() {
         titleHeaderView.configureTitle("이슈")
         titleHeaderView.delegate = self
+        titleHeaderView.hasSearchBar()
     }
     
     private func checkToken() {
         guard let token = UserDefaults.standard.object(forKey: OAuthNetworkManager.jwtToken) as? String
-        else {
-            presentSignIn()
-            return
+            else {
+                presentSignIn()
+                return
         }
         fetchIssues()
     }
@@ -70,15 +81,15 @@ final class IssuesViewController: UIViewController {
     private func presentSignIn() {
         guard let singInViewController = storyboard?.instantiateViewController(
             identifier: String(describing: SignInViewController.self))
-        else {
-            return
+            else {
+                return
         }
         singInViewController.modalPresentationStyle = .currentContext
         singInViewController.modalTransitionStyle = .crossDissolve
         present(singInViewController, animated: true, completion: nil)
     }
     
-    private func fetchIssues() {
+    func fetchIssues() {
         let request = IssuesRequest().asURLRequest()
         issuesUseCase.getResources(request: request, dataType: [Issue].self) { (result) in
             switch result {
@@ -166,13 +177,46 @@ extension IssuesViewController: UICollectionViewDelegateFlowLayout {
 
 extension IssuesViewController: HeaderViewActionDelegate {
     func newButtonDidTap() {
-        guard let issueAddViewController = storyboard?.instantiateViewController(
-            identifier: String(describing: NewIssueViewController.self))
-        else {
+        present(newIssueViewController, animated: true, completion: nil)
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension IssuesViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        titleHeaderView.didBeginEditing()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let searchText = titleHeaderView.searchText()
+        requestIssuesWithSearchKeywords(searchText: searchText)
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func requestIssuesWithSearchKeywords(searchText: String?) {
+        guard let searchText = searchText else {
+            fetchIssues()
             return
         }
-        present(issueAddViewController, animated: true, completion: nil)
+        var request = IssuesRequest()
+        request.append(name: .keyword, value: searchText)
+        let urlRequest = request.asURLRequest()
+        issuesUseCase.getResources(request: urlRequest, dataType: [Issue].self) { result in
+            switch result {
+            case .success(let issues):
+                self.dataSource.updateIssues(issues)
+            case .failure(let error):
+                self.presentErrorAlert(error: error)
+            }
+        }
     }
+    
 }
 
 // MARK:- Configuration
@@ -204,8 +248,17 @@ extension IssuesViewController {
         }
     }
     
-    private func configureCollectionViewDelegate() {
+    private func configureNewIssueViewController() {
+        newIssueViewController = storyboard?.instantiateViewController(
+            identifier: String(describing: NewIssueViewController.self))
+    }
+    
+    private func configureDelegate() {
         issuesCollectionView.delegate = self
+        newIssueViewController.delegate = self
+        titleHeaderView.configureDelegate { textField in
+            textField.delegate = self
+        }
     }
     
     private func configureCollectionViewDataSource() {
@@ -218,5 +271,22 @@ extension IssuesViewController {
     
     private func configureUseCase() {
         issuesUseCase = IssuesUseCase()
+    }
+    
+    private func configureRefreshControl() {
+        issuesCollectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshIssues), for: .valueChanged)
+    }
+    
+    @objc private func refreshIssues() {
+        issuesCollectionView.reloadData()
+    }
+}
+
+//MARK: - NewIssueActionDelegate
+
+extension IssuesViewController: NewIssueActionDelegate {
+    func submitButtonDidTap() {
+        fetchIssues()
     }
 }

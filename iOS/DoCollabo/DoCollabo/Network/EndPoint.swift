@@ -16,3 +16,13 @@ enum EndPoint {
     static let labels: String = "\(Self.baseURL)/api/labels"
     static let milestones: String = "\(Self.baseURL)/api/milestones"
 }
+
+enum QueryParameters: CustomStringConvertible {
+    case keyword
+
+    var description: String{
+        switch self {
+        case .keyword: return "keyword"
+        }
+    }
+}

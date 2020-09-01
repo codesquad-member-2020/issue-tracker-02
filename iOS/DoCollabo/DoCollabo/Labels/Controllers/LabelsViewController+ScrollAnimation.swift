@@ -1,14 +1,14 @@
 //
-//  IssuesViewController+ScrollAnimation.swift
+//  LabelsViewController+ScrollAnimation.swift
 //  DoCollabo
 //
-//  Created by Cory Kim on 2020/06/12.
+//  Created by Cory Kim on 2020/06/25.
 //  Copyright © 2020 delma. All rights reserved.
 //
 
 import UIKit
 
-extension IssuesViewController: UIScrollViewDelegate {
+extension LabelsViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let headerStretchedHeight = TitleHeaderView.stretchedHeight
         let headerHuggedHeight = TitleHeaderView.huggedHeight
@@ -51,17 +51,12 @@ extension IssuesViewController: UIScrollViewDelegate {
                 (headerStretchedHeight - headerHuggedHeight)
             titleHeaderView.titleLabel.alpha = offsetProgress
             titleHeaderView.smallTitleLabel.alpha = 1.0 - offsetProgress
-            titleHeaderView.updateSearchBar(offsetProgress: offsetProgress)
         }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
         scrollDidEnd(offsetY: offsetY)
-        if refreshControl.isRefreshing {
-            self.refreshControl.endRefreshing()
-            self.fetchIssues()
-        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
