@@ -1,10 +1,12 @@
-package com.codesquad.issuetracker.label.data;
+package com.codesquad.issuetracker.issue.data.relation;
 
-import com.codesquad.issuetracker.label.web.model.LabelQuery;
+import com.codesquad.issuetracker.issue.data.Issue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,21 +18,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @Entity
-public class Label {
+public class IssueLabelRelation {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private String title;
-  private String description;
-  private String color;
+  @ManyToOne
+  @JoinColumn(name = "issue_id")
+  private Issue issue;
 
-  public static Label from(LabelQuery labelQuery) {
-    return Label.builder()
-        .title(labelQuery.getTitle())
-        .description(labelQuery.getDescription())
-        .color(labelQuery.getColor())
+  private Long labelId;
+
+  public static IssueLabelRelation of(Issue issue, Long labelId) {
+    return IssueLabelRelation.builder()
+        .issue(issue)
+        .labelId(labelId)
         .build();
   }
 }

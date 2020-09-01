@@ -1,6 +1,7 @@
 package com.codesquad.issuetracker.exception;
 
-import lombok.Getter;
+import com.codesquad.issuetracker.exception.reponse.ExceptionResponse;
+import java.util.NoSuchElementException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -13,18 +14,17 @@ public class CustomAdvice {
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   public ExceptionResponse handleException(Exception e) {
     return new ExceptionResponse(e.getClass().toString(), e.getMessage());
-
   }
 
-  @Getter
-  private class ExceptionResponse {
+  @ExceptionHandler(NotAllowedException.class)
+  @ResponseStatus(HttpStatus.CONFLICT)
+  public ExceptionResponse handleNotAllowedException(NotAllowedException e) {
+    return new ExceptionResponse(e.getClass().toString(), e.getMessage());
+  }
 
-    String exceptionClass;
-    String message;
-
-    public ExceptionResponse(String exceptionClass, String message) {
-      this.exceptionClass = exceptionClass;
-      this.message = message;
-    }
+  @ExceptionHandler(NoSuchElementException.class)
+  @ResponseStatus(HttpStatus.CONFLICT)
+  public ExceptionResponse handleNoSuchElementException(NoSuchElementException e) {
+    return new ExceptionResponse(e.getClass().toString(), e.getMessage());
   }
 }
